@@ -34,7 +34,8 @@ Tengo 38 años y estoy iniciándome en el mundo de la programación. Espero pode
 
 Sitio | Elegido en base a:
 ------|-------------------
+[MWLab](https://mwelab.net/) | Principalmente por su diseño de barra de navegacion, tanto en vista móvil como desde un ordenador, por el concepto de ser un work station y su público objetivo.
+[Ergosit](https://ergosit.com.ar/) | Por su estética, por los productos que ofrecen, por el publico al que se dirigen y por el movimiento en el que se oculta la barra de navegación al ir para abajo.
 [Tempo](www.tempo.com.ar/categoria-producto/tipo-de-producto/puestos-de-trabajo/) | Por su diseño, público objetivo y presentación de los productos ofrecidos.
-[MWLab](https://www.mwelab.com/en/index.html) | Por su diseño móvil (principalmente en la barra de navegación) y su público objetivo.
-[DellaCasa](https://dellacasaonline.com/home-office) | Por la distribución de los productos ofrecidos y la funcionalidad para intercambiar entre vistas tipo lista y tipo grilla
-[Ergosit](https://ergosit.com.ar/) | Por su estética y por el diseño de la barra de navegación en versión de escritorio.
+[DellaCasa](https://dellacasaonline.com/home-office) | Por la distribución de los productos ofrecidos y la funcionalidad para intercambiar entre vistas de tipo "lista" y tipo "grilla".
+[Woodmarket](https://woodmarket.com.ar/) | Por su estética y diseño, por las transiciones que tiene y por la forma en que se presenta cada producto individualmente.
