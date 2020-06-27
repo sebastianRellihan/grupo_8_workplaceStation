@@ -25,3 +25,16 @@ Soy un joven que se esta iniciando en el mundo del desarrollo web Full-Stack. Te
 Tengo 38 años y estoy iniciándome en el mundo de la programación. Espero poder cumplir con todos los objetivos marcados y poder desarrollar satisfactoriamente nuestro proyecto.
 
 **Github:** [@Tinchomv](https://github.com/Tinchomv)
+
+## Sítios de referencia
+
+
+> Esta es una lista de páginas web que sirve como referencia para nuestro diseño, ya sea por su estilo visual y/o funcionalidades.
+
+
+Sitio | Elegido en base a:
+------|-------------------
+[Tempo](www.tempo.com.ar/categoria-producto/tipo-de-producto/puestos-de-trabajo/) | Por su diseño, público objetivo y presentación de los productos ofrecidos.
+[MWLab](https://www.mwelab.com/en/index.html) | Por su diseño móvil (principalmente en la barra de navegación) y su público objetivo.
+[DellaCasa](https://dellacasaonline.com/home-office) | Por la distribución de los productos ofrecidos y la funcionalidad para intercambiar entre vistas tipo lista y tipo grilla
+[Ergosit](https://ergosit.com.ar/) | Por su estética y por el diseño de la barra de navegación en versión de escritorio.
