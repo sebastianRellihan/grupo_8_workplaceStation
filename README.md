@@ -1,6 +1,6 @@
 # Workplace Station
 
-> Este repositorio corresponde al proyecto integrador del curso de [desarrollo Web Full-Stack](https://www.digitalhouse.com/ar/curso/programacion-web-full-stack) de la organización educativa  [Digital House](https://www.digitalhouse.com/ar), **grupo 8**
+> _Este repositorio corresponde al proyecto integrador del curso de_ [desarrollo Web Full-Stack](https://www.digitalhouse.com/ar/curso/programacion-web-full-stack) _de la organización educativa_  [Digital House](https://www.digitalhouse.com/ar), **grupo 8**
 
 En Workplace Station vas a poder encontrar todos los productos necesarios para armar tu espacio de trabajo. Estos productos pueden ser desde escritorios, sillas ergonómicas, periféricos para PC, hasta accesorios de todo tipo. 
 
