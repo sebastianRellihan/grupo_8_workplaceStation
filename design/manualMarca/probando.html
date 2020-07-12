@@ -14,11 +14,12 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,800;1,400&family=Rajdhani:wght@700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" sizes="img192x192" href="../logo/isotipo-workplace-station.png">
-
     <style>
         /* Header */
 header {
     background-color: #283e4a;
+    overflow: auto;
+    margin: 0px 0px 15px 0px;
 }
 .main-title {
     color: #f8ffff;
@@ -40,6 +41,7 @@ header img {
 body {
     background-color:#ebebeb;
     color: #333;
+    margin: auto;
 }
 section {
     background-color: white;
@@ -64,58 +66,49 @@ section h2 {
     font-size: 15px;
     margin-left: 15px;
 }
-.c-uno {
-    background-color: #3498db;
-}
-.c-dos {
-    background-color: #85c1e9;
-}
-.c-tres {
-    background-color: #D6EAF8;
-}
-.c-cuatro {
-    background-color: #3498db;
-}
-.c-cinco {
-    background-color: #f0ffff;
-}
-.c-seis {
-    background-color: #283e4a;
-    color: whitesmoke;
-}
-.c-siete {
-    background-color:#ebebeb;
-}
-.c-ocho {
-    background-color:#283e4a;
-    color: whitesmoke;
-}
-.c8 {
-    color: #283e4a;
-    font-weight: 500;
-}
-.c-nueve {
-    background-color:#333;
-    color: whitesmoke;
-}
-.c9 {
-    color: #333;
-    font-weight: 500;
-}
-.c-diez {
-    background-color:#666;
-    color: whitesmoke;
-}
-.c10 {
-    color: #666;
-    font-weight: 500;
-}
 .bold {
-    font-weight: 500;
+    font-weight: 700;
+    text-decoration: underline;
 }
-
 section img {
     width: 500px;
+}
+/* FOOTER */
+footer {
+    background-color: #283e4a;
+    color: #f8ffff;
+    overflow: auto;
+}
+/* COLORES */
+.color-1 {
+    background-color: #3498db;
+}
+.color-2 {
+    background-color: #85c1e9;
+}
+.color-3 {
+    background-color: #D6EAF8;
+}
+.color-4 {
+    background-color: #f0ffff;
+}
+.color-5 {
+    background-color:#333;
+    color: white;
+}
+.color-6 {
+    background-color:#666;
+    color: white;
+}
+.fondo-1 {
+    background-color: #283e4a;
+    color: white;
+}
+.fondo-2 {
+    background-color:#ebebeb;
+}
+.fondo-3 {
+    background-color: white;
 }
     </style>
     <title>Workplace Station</title>
@@ -125,9 +118,9 @@ section img {
     <header>
         <img src="../logo/imagotipo-workplace-station.png" alt="logo">
         <h1 class="main-title"><span class="primer-letra-color">W</span>ORKPLACE <span
-                class="primer-letra-color">S</span>TATION</h1>
-    </header>
-    <main>
+            class="primer-letra-color">S</span>TATION</h1>
+        </header>
+        <main>
         <section>
             <h2 class="montserrat">TIPOGRAFIAS</h1>
                 <h2 class="montserrat">Títulos En "Montserrat"</h1>
@@ -146,31 +139,29 @@ section img {
                         doloribus ratione tenetur enim vel qui molestiae necessitatibus consequatur excepturi id
                         possimus, voluptatibus est commodi quaerat?</p>
         </section>
-        <section>
+        <section class="paletas">
             <h2 class="montserrat">Paletas de Colores</h2>
             <p class="apple bold">Colores que componen el isotipo: </p>
-            <p class="apple c-uno">Celeste 1</p>
-            <p class="apple c-dos">Celeste 2</p>
-            <p class="apple c-tres">Celeste 3</p>
+            <p class="apple color-1">Color 1 (#3498db)</p>
+            <p class="apple color-2">Color 2 (#85c1e9)</p>
+            <p class="apple color-3">Color 3 (#D6EAF8)</p>
 
             <p class="apple bold">Colores que componen el logotipo: </p>
-            <p class="apple c-cuatro">Letras iniciales: W & S</p>
-            <p class="apple c-cinco">Resto de las letras</p>
+            <p class="apple color-1">Color 1 (#3498db) - Letras iniciales: W & S</p>
+            <p class="apple color-4">Color 4 (#f0ffff) - Resto de las letras</p>
 
             <p class="apple bold">Colores que componen el fondo: </p>
-            <p class="apple c-seis">Fondo Nav</p>
-            <p class="apple c-siete">Fondo body</p>
-            <p class="apple">Fondo blanco "White"</p>
+            <p class="apple fondo-1">Fondo 1 (#283e4a)</p>
+            <p class="apple fondo-2">Fondo 2 (#ebebeb)</p>
+            <p class="apple fondo-3">Fondo 3 ("White")</p>
 
             <p class="apple bold">Colores que componen la tipografía: </p>
-            <p class="apple c-ocho">Color de titulos (mimso que fondo de nav)</p>
-            <p class="apple c8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, laboriosam.</p>
-            <p class="apple c-nueve">Color textos oscuro</p>
-            <p class="apple c9">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, illum!</p>
-            <p class="apple c-diez">Color textos claro</p>
-            <p class="apple c10">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam, ea.</p>
+            <p class="apple fondo-1">Color de titulos (#283e4a)</p>
+            <p class="apple color-5">Color textos oscuro (#333)</p>
+            <p class="apple color-6">Color textos claro (#666)</p>
+            <p class="apple color-4">Color textos sobre fondo 1 (#f0ffff)</p>
         </section>
-        <section>
+        <section class="logos">
             <h2 class="montserrat">Diseños de logos</h2>
             <div class="box-left">
                 <p class="apple bold">Imagotipo: </p>
@@ -191,6 +182,7 @@ section img {
         </section>
     </main>
     <footer>
+        <p class="apple">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt molestias aut veniam nesciunt illo voluptate quos laudantium, libero quam nemo, atque praesentium et ut. Architecto laboriosam accusamus itaque, neque nemo odit sit ullam doloremque soluta veritatis qui. Nisi, ratione. Suscipit error illo, cumque ut repudiandae recusandae perferendis iure minus molestias.</p>
     </footer>
 </body>
 
