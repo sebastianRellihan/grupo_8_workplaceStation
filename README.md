@@ -1,6 +1,6 @@
-# Workplace Station
+# Workplace Station  <img src="design\logo\isotipo-workplace-station.png" alt="imagotipo workplace station" width="25" /> 
 
-> _Este repositorio corresponde al proyecto integrador del curso de_ [desarrollo Web Full-Stack](https://www.digitalhouse.com/ar/curso/programacion-web-full-stack) _de la organización educativa_  [Digital House](https://www.digitalhouse.com/ar), **grupo 8**
+> _Este repositorio corresponde al proyecto integrador del curso de_ [desarrollo Web Full-Stack en Node](https://www.digitalhouse.com/ar/curso/programacion-web-full-stack) _de la organización educativa_  [Digital House](https://www.digitalhouse.com/ar), **grupo** :8ball:
 
 En Workplace Station vas a poder encontrar todos los productos necesarios para armar tu espacio de trabajo. Estos productos pueden ser desde escritorios, sillas ergonómicas, periféricos para PC, hasta accesorios de todo tipo. 
 
@@ -8,25 +8,25 @@ Este sitio esta dirigido a todas aquellas personas que pasen mucho tiempo trabaj
 
 ## Descripción de los integrantes:
 
-### Eduardo Brahim Alí: 
+- ### Eduardo Brahim Alí: 
 
 Soy un desarrollador iniciante con algunos conocimientos en diseño web, aplicaciones de escritorio en Java y desarrollo en Android. Estoy buscando constanstemente seguir expandiendo mis conocimientos en distintas áreas del desarrollo de software.
 
-**Github:** [@Brahim006](https://github.com/Brahim006)
+:octocat: [@Brahim006](https://github.com/Brahim006)
 
-### Sebastián Rellihan: 
+- ### Sebastián Rellihan: 
 
 Soy un joven que se esta iniciando en el mundo del desarrollo web Full-Stack. Tengo conocimiento en desarrollo web front-end y experiencia en diseño.
 
-**Github:** [@sebastianRellihan](https://github.com/sebastianRellihan)
+:octocat: [@sebastianRellihan](https://github.com/sebastianRellihan)
 
-### Martín Valdez:
+- ### Martín Valdez:
 
 Tengo 38 años y estoy iniciándome en el mundo de la programación. Espero poder cumplir con todos los objetivos marcados y poder desarrollar satisfactoriamente nuestro proyecto. :call_me_hand:
 
-**Github:** [@Tinchomv](https://github.com/Tinchomv)
+:octocat: [@Tinchomv](https://github.com/Tinchomv)
 
-## Sítios de referencia
+## Sítios de referencia:
 
 
 > _Esta es una lista de páginas web que sirve como referencia para nuestro diseño, ya sea por su estilo visual y/o funcionalidades._
