@@ -39,3 +39,6 @@ Sitio | Elegido en base a:
 [Tempo](www.tempo.com.ar/categoria-producto/tipo-de-producto/puestos-de-trabajo/) | Por su diseño, público objetivo y presentación de los productos ofrecidos.
 [DellaCasa](https://dellacasaonline.com/home-office) | Por la distribución de los productos ofrecidos y la funcionalidad para intercambiar entre vistas de tipo "lista" y tipo "grilla".
 [Woodmarket](https://woodmarket.com.ar/) | Por su estética y diseño, por las transiciones que tiene, por diseño y presentación del carrito de compras.
+
+## ¿Querés seguir nuestro proyecto?
+[Tablero de trello](https://trello.com/b/IjkYT0Zy/grupo8)
