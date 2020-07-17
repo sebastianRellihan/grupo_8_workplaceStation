@@ -1,0 +1,21 @@
+{
+  "name": "workplace-station-grupo-8",
+  "version": "1.0.0",
+  "description": "E-commerse Workplace Station, proyecto integrador del curso de Desarrollo Web Full-Stack de Digital House",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "WorkPlace",
+    "Station",
+    "E-commerce",
+    "proyecto",
+    "final"
+  ],
+  "author": "Grupo 8: Sebastián Rellihan, Eduardo Brahim Alí",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
