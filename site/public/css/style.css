@@ -15,6 +15,8 @@
     --text-dark-gray: #333333;
     --text-light-gray: #666666;
     --text-light: #f0ffff;
+    /* Alert colors */
+    --text-alert: #EF1010;
     /* FONTS */
     --title-font: 'Montserrat', sans-serif;
     --text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -83,3 +85,73 @@ footer {
     color: var(--text-light);
     background-color: var(--background-2);
 }
+/* Forms de registro y login */
+.main-form-container{
+    margin: 10vh 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .form-container{
+        width: 90%;
+        padding: 10px;
+        align-self: center;
+
+        background-color: var(--background-3);
+        border-radius: 3px;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
+    }
+        .form-container h1{
+            margin-top: 10px;
+            color: var(--title-dark-blue);
+            font-style: italic;
+        }
+        .form-container form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            .form-container form input{
+                width: 80%;
+                margin-bottom: 15px;
+                padding: 5px 10px;
+                border-radius: 5px;
+
+                font-family: var(--text-font);
+                font-size: 1em;
+                
+                border-style: none;
+                box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
+                background-color: var(--logo-color-4);
+            }
+            .form-container form input:focus { /* Cambia el estilo resaltando el input al seleccionarlo */
+                background-color: var(--logo-color-3);
+                box-shadow: 1px 1px 5px var(--logo-color-1);
+            }
+            .form-container form a{
+                margin-bottom: 5px;
+                font-size: 0.9em;
+                text-decoration: none;
+                color: var(--title-dark-blue);
+            }
+            #login-alert{
+                margin: 15px 0px 0px;
+                color: var(--text-alert);
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+            .submit-button{
+                width: 35%;
+                margin: 15px 0px;
+                padding: 5px;
+
+                background-color: var(--title-dark-blue);
+                color: var(--text-light);
+                border-style: none;
+                border-radius: 5px;
+
+                font-weight: bold;
+                font-size: 0.9em;
+            }
+        
