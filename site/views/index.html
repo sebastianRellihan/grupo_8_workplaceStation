@@ -13,9 +13,9 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <!-- Browser page icon -->
     <link rel="icon" type="image/png" sizes="img14x14" href="/img/isotipo-workplace-station.png">
     <!-- CSS Stylesheet -->
@@ -30,8 +30,10 @@
                 <i class="fas fa-bars"></i>
             </div>
             <div class="site-header-center">
-                <img class="site-header-center-img-1" src="/img/isotipo-workplace-station.png" alt="Isotipo Workplace Station">
-                <img class="site-header-center-img-2" src="/img/logotipo-y-eslogan-workplace-station.png" alt="Logotipo y Eslogan Workplace Station">
+                <img class="site-header-center-img-1" src="/img/isotipo-workplace-station.png"
+                    alt="Isotipo Workplace Station">
+                <img class="site-header-center-img-2" src="/img/logotipo-y-eslogan-workplace-station.png"
+                    alt="Logotipo y Eslogan Workplace Station">
             </div>
             <div class="site-header-end">
                 <i class="far fa-user"></i>
@@ -40,9 +42,39 @@
         <div class="site-cart">
             <i class="fas fa-shopping-cart"></i>
         </div>
+        <nav class="mobile-nav-side-bar">
+            <div class="mobile-nav-side-bar-close-button">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="mobile-nav-side-bar-content">
+                <p class="mobile-nav-side-bar-content-search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </p>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <p>
+                            <a href="#">Productos</a>
+                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-minus"></i>
+                        </p>
+                        <ul class="mobile-nav-side-bar-content-products">
+                            <li><a href="#">Todos</a></li>
+                            <li><a href="#">Estaciones de trabajo</a></li>
+                            <li><a href="#">Escritorios</a></li>
+                            <li><a href="#">Sillas</a></li>
+                            <li><a href="#">Accesorios</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Quienes somos</a></li>
+                    <li><a href="#">Accesorios</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <main class="main-index">
-        <section class="photo-carousel"> 
+        <section class="photo-carousel">
             <img src="/img/carousel-1.jpg" alt="">
         </section>
         <section class="featured-products">
@@ -54,17 +86,17 @@
             <div class="why-us-container">
                 <article class="why-us-container-start">
                     <i class="fas fa-medal"></i>
-                    <h4>5 años de garantía</h4>
+                    <h3>5 años de garantía</h3>
                     <p>Todos nuestros productos cuentan con cobertura de 5 años.</p>
                 </article>
                 <article class="why-us-container-center">
                     <i class="fas fa-shipping-fast"></i>
-                    <h4>Tiempo de entrega</h4>
+                    <h3>Tiempo de entrega</h3>
                     <p>Orgullosos de realizar el 95% de nuestras entregas en menos de días a todo el país.</p>
                 </article>
                 <article class="why-us-container-end">
                     <i class="fas fa-award"></i>
-                    <h4>Más de 20 años de experiencia</h4>
+                    <h3>Más de 20 años de experiencia</h3>
                     <p>Desde 1995 innovando en muebles ergonómicos para el trabajo.</p>
                 </article>
             </div>
@@ -72,26 +104,27 @@
         <section class="our-products">
             <h2>Nuestros productos</h2>
             <article class="our-products-workplace-stations">
-                <h6>Estaciones de trabajo</h6>
+                <h4>Estaciones de trabajo</h4>
                 <button>Ver más</button>
             </article>
             <article class="our-products-desks">
-                <h6>Escritorios</h6>
+                <h4>Escritorios</h4>
                 <button>Ver más</button>
             </article>
             <article class="our-products-chairs">
-                <h6>Sillas</h6>
+                <h4>Sillas ergonómicas</h4>
                 <button>Ver más</button>
             </article>
             <article class="our-products-accesories">
-                <h6>Accesorios</h6>
+                <h4>Accesorios</h4>
                 <button>Ver más</button>
             </article>
         </section>
     </main>
     <footer>
         <p>
-            © Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quibusdam aperiam excepturi veniam perspiciatis exercitationem.
+            © Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quibusdam aperiam excepturi veniam
+            perspiciatis exercitationem.
         </p>
     </footer>
 </body>

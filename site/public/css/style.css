@@ -24,6 +24,7 @@
 /* FOR ALL */
 * {
     box-sizing: border-box;
+    text-decoration: none;
 }
 /* BODY */
 body {
@@ -79,14 +80,110 @@ header {
         width: 55px;
         height: 55px;
         border-radius: 50%;
-        border: solid 1px var(--background-2);
-        background-color: var(--logo-color-3);
-        box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
+        /* border: solid 1px var(--background-2); */
+        font-size: 18px;
+        background-color: var(--logo-color-4);
+        box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
     }
         .site-cart i {
             align-self: center;
             color: var(--background-2);
         }
+    .mobile-nav-side-bar {
+        display: none; /* Alternará entre none y flex */
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        width: 75vw;
+        height: 100vh;
+        padding: 10px;
+
+        color: var(--title-dark-blue);
+        background-color: var(--background-1);
+    }
+        .mobile-nav-side-bar-close-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 50vh;
+            right: 5vw;
+            
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 18px;
+            color: var(--background-2);
+            background-color: var(--logo-color-4);
+            box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
+        }
+        .mobile-nav-side-bar-content {
+            display: flex;
+            flex-direction: column;
+
+            color: var(--background-2);
+        }
+            .mobile-nav-side-bar-content-search-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin: 30px 0;;
+            }
+                .mobile-nav-side-bar-content-search-bar input {
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    border-style: none;
+
+                    box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
+                    background-color: var(--logo-color-4);
+
+                    font-family: var(--text-font);
+                    font-size: 1em;
+                }
+                .mobile-nav-side-bar-content-search-bar button {
+                    width: 40px;
+                    padding: 5px;
+                    border-style: none;
+                    border-radius: 5px;
+                    box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
+                    background-color: var(--title-dark-blue);
+                    color: var(--text-light);
+                }
+            .mobile-nav-side-bar-content ul{
+                padding: 5px;
+                margin: 10px;
+                
+                list-style: none;
+                font-weight: bold;
+                font-size: 18px;
+            }
+                .mobile-nav-side-bar-content ul li {
+                    padding: 10px;
+                    border-bottom: solid 1px var(--background-2);
+                }
+                    .mobile-nav-side-bar-content ul li a {
+                        color: var(--title-dark-blue);
+                    }
+                    .mobile-nav-side-bar-content ul li p {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 0;
+                    }
+                        .mobile-nav-side-bar-content ul li p .fa-minus{
+                            display: none;
+                        }
+                    .mobile-nav-side-bar-content ul li ul li {
+                        padding: 5px;
+                        border: none;
+                        font-size: 16px;
+                    }
+
+            .mobile-nav-side-bar-content-products {
+                /* display: none;  */
+            }
 /* MAIN */
 main {
     flex-grow: 1;
@@ -103,7 +200,6 @@ main {
     .main-index section{
         width: 100vw;
         flex-grow: 1;
-        border-bottom: solid 1px var(--text-light-gray);
     }
     .main-index section h2 {
         font-family: var(--title-font);
@@ -138,12 +234,24 @@ main {
             align-items: center;
         }
             .why-us-container article {
-            width: 50%;
-        }
+            width: 75%;
+            margin: 20px 0;
+            }
             .why-us-container article i {
             font-size: 36px;
             color: #fbd581;
-        }
+            
+            }
+            .why-us-container article h3 {
+                font-family: var(--title-font);
+                font-size: 18px;
+                font-weight: bold;
+                margin: 15px 0;
+            }
+            .why-us-container article p {
+                font-family: var(--text-font);
+                margin: 0;
+            }
     .our-products {
         display: flex;
         flex-direction: column;
@@ -183,11 +291,11 @@ main {
                 background-image: url(/img/our-products-accesories.jpg);
                 background-size: cover;
             }
-                .our-products article h6 {
+                .our-products article h4 {
                     padding: 5px;
                     margin: 10px;
 
-                    border-radius: 5px;
+                    border-radius: 3px;
                     
                     color: var(--title-dark-blue);
                     background-color: rgba(255, 255, 255, 0.8);
@@ -195,12 +303,14 @@ main {
                 }
                 .our-products article button {
                     margin: 10px;
-                    padding: 10px;
+                    padding: 5px;
 
-                    border-radius: 5px;
+                    border-radius: 3px;
                     border: 0;
 
+                    font-family: var(--title-font);
                     font-weight: 600;
+                    font-size: 16px;
                     color: var(--text-light);
                     background-color: var(--background-2);
                     box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
