@@ -29,12 +29,13 @@
                 <i class="fas fa-bars"></i>
             </div>
             <div class="site-header-center">
-                <!-- <img src="/img/imagotipo-workplace-station.png" alt="Imagotipo Workplace Station"> -->
                 <img class="site-header-center-img-1" src="/img/isotipo-workplace-station.png" alt="Isotipo Workplace Station">
                 <img class="site-header-center-img-2" src="/img/logotipo-y-eslogan-workplace-station.png" alt="Logotipo y Eslogan Workplace Station">
             </div>
             <div class="site-header-end">
-                <i class="fas fa-shopping-cart"></i>
+                <a href="/register">
+                    <i class="far fa-id-badge"></i>
+                </a>
             </div>
         </div>
     </header>
@@ -46,13 +47,17 @@
                 Ingresá <i class="fas fa-sign-in-alt"></i>
             </h1>
             <form action="" method="GET">
-                <input type="text" name="user-name" id="user-name" placeholder="Nombre de usuario">
-                <input type="password" name="password" id="password" placeholder="Contraseña">
+
+                <input type="text" name="user-name" id="user-name" placeholder="Nombre de usuario" 
+                    autocomplete="true" required>
+                <input type="password" name="password" id="password" placeholder="Contraseña"
+                    autocomplete="true" required>
                 <!-- Mensaje visible sólo en caso de que se hayan ingresado datos inválidos -->
-                <p id="login-alert">Nombre de usuario ó contraseña incorrecta</p>
+                <p id="login-alert" class="alert-label">Nombre de usuario ó contraseña incorrecta</p>
                 <button type="submit" class="submit-button">Ingresar</button>
                 <a href="">Olvidé mi contraseña.</a>
                 <a href="/register">¿No tenés cuenta? Registrate acá</a>
+                
             </form>
         </div>
 
