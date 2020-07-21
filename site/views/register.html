@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Description for SEO -->
+    <meta name="description" content="">
+    <!-- Key Words for SEO -->
+    <meta name="keywords" content="palabraClave1, palabraClave2, palabraClave3">
+    <!-- Authors -->
+    <meta name="author" content="Brahim Alí y Sebastián Rellihan">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Browser page icon -->
+    <link rel="icon" type="image/png" sizes="img14x14" href="/img/isotipo-workplace-station.png">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Workplace Station</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="site-header">
+            <div class="site-header-start">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="site-header-center">
+                <img class="site-header-center-img-1" src="/img/isotipo-workplace-station.png" 
+                    alt="Isotipo Workplace Station">
+                <img class="site-header-center-img-2" src="/img/logotipo-y-eslogan-workplace-station.png" 
+                    alt="Logotipo y Eslogan Workplace Station">
+            </div>
+            <div class="site-header-end">
+                <a href="/login">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="form-container">
+
+        <h1> Registro <i class="far fa-id-badge"></i></h1>
+
+        <form action="" method="GET">
+            <!-- Información personal -->
+            <input type="text" name="name" id="name" placeholder="Nombre/s (*)" 
+                autocomplete="true" required>
+            <input type="text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
+                autocomplete="true" required>
+            <input type="email" name="email" id="email" placeholder="Dirección de e-mail (*)" 
+                autocomplete="true" required>
+
+            <div class="checkable-container gender-radio-container">
+                <label for="gender" class="input-label">Género</label>
+                <input type="radio" name="gender" id="masc-radio" class="checkable-value" value="1">
+                <p id="masc-label" class="checkable-label">Masculino</p>
+                <input type="radio" name="gender" id="fem-radio" class="checkable-value" value="2">
+                <p id="fem-label" class="checkable-label">Femenino</p>
+                <input type="radio" name="gender" id="other-radio" class="checkable-value" value="3" checked>
+                <p id="other-label" class="checkable-label">Otro</p>
+            </div>
+
+            <label for="birth" class="input-label">Fecha de nacimiento (*)</label>
+            <input type="date" name="birth" id="birth" required>
+            <p class="alert-label" id="underage-alert-label">¡Debe ser mayor de edad para poder registrarte!</p>
+
+            <input type="text" name="adress" id="adress" placeholder="Domicilio (*)" 
+                autocomplete="true" required>
+
+            <input type="tel" name="cellphone-number" id="cellphone-number" placeholder="Número de teléfono celular (*)"
+            autocomplete="true">
+            <p class="alert-label" id="cellnumber-alert-label">Debe ingresar un número válido</p>
+            <input type="tel" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
+                autocomplete="true">
+            <p class="alert-label" id="telnumber-alert-label">Debe ingresar un número válido</p>
+
+            <!-- Información de perfil -->
+            <input type="text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
+                autocomplete="true" required>
+            <label for="password" class="input-label">8 caracteres como mínimo.</label>
+            <input type="password" name="password" id="password" placeholder="Contraseña (*)" 
+                autocomplete="true" required>
+            <p class="alert-label" id="password-alert-label">Debe ingresar una contraseña válida</p>
+            <input type="password" name="repeat-password" id="repeat-password" placeholder="Repetir contraseña (*)" 
+                autocomplete="true" required>
+            <p class="alert-label" id="unmatched-password-alert-label">Ambas contraseñas deben coincidir.</p>
+
+            <label class="custom-file-upload">
+                <input type="file" name="profile-photo" id="profile-photo">
+                Foto de perfil
+            </label>
+
+            <!-- Miscelánea + botones de envío y reseteo -->
+            
+            <div class="checkable-container interests-checkbox-container">
+                <label for="interests" class="input-label">Intereses</label>
+                <input type="checkbox" name="interests" id="ws-check" class="checkable-value" value="1">
+                <p id="ws-label" class="checkable-label">Estaciones de trabajo</p>
+                <input type="checkbox" name="interests" id="furniture-check" class="checkable-value" value="2">
+                <p id="furniture-label" class="checkable-label">Mobiliaria</p>
+                <input type="checkbox" name="interests" id="pcs-check" class="checkable-value" value="3">
+                <p id="pcs-label" class="checkable-label">Computadoras</p>
+            </div>
+
+            <p class="input-label">
+                Los campos indicados con (*) son obligatorios.
+            </p>
+
+            <button type="submit" class="submit-button">Enviar</button>
+            <button type="reset" class="submit-button">Resetear</button>
+
+        </form>
+
+    </main>
+
+    <footer>
+        <p>
+            © Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quibusdam aperiam excepturi veniam perspiciatis exercitationem.
+        </p>
+    </footer>
+
+</body>
+
+</html>
