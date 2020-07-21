@@ -217,6 +217,14 @@ footer {
         margin: 0;
     }
 /* Forms de registro y login */
+.alert-label{
+    display: none;
+    color: var(--text-alert);
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8em;
+}
 .main-form-container{
     margin: 10vh 0px;
     display: flex;
@@ -266,17 +274,14 @@ footer {
                 text-decoration: none;
                 color: var(--title-dark-blue);
             }
-            #login-alert{
-                margin: 15px 0px 0px;
-                color: var(--text-alert);
-                text-align: center;
-                font-weight: bold;
-                display: none;
-            }
+            
+            #login-alert{ margin-top: 15px; }
+
             .submit-button{
                 width: 35%;
                 margin: 15px 0px;
                 padding: 5px;
+                cursor: pointer;
 
                 background-color: var(--title-dark-blue);
                 color: var(--text-light);
@@ -286,4 +291,78 @@ footer {
                 font-weight: bold;
                 font-size: 0.9em;
             }
+/* Estilos específicos del formulario de registro */
+.input-label{ 
+    font-size: 1.2em;
+    color: var(--text-light-gray);
+    text-align: center;
+}
+.gender-radio-container{
+    width: 50%;
+    margin: 20px 0px;
+
+    display: grid;
+    grid-template-areas: 
+        "gender-label gender-label"
+        "masc-label masc-radio"
+        "fem-label fem-radio"
+        "other-label other-radio";
+        grid-template-columns: 1fr 0.5fr;
+        grid-template-rows: auto;
+}
+    .gender-radio-container label{
+        grid-area: gender-label;
+        justify-self: start;
+    }
+    /* Distribuciones grid para la elección de género */
+    #masc-label{ grid-area: masc-label; }
+    #fem-label{ grid-area: fem-label; }
+    #other-label{ grid-area: other-label; }
+
+    #masc-radio{ grid-area: masc-radio; }
+    #fem-radio{ grid-area: fem-radio; }
+    #other-radio{grid-area: other-radio; } 
+    /* La clase checkable-container representa un contenedor
+       para inuts chequeables (como checkbox y radio buttons) */
+    .checkable-container .checkable-label{
+        justify-self: end;
+        color: var(--text-light-gray);
+    }
+    .checkable-container .checkable-value{ align-self: end; }
+
+.interests-checkbox-container{
+    display: grid;
+    grid-template-areas: 
+        "interests-label interests-label"
+        "ws-label ws-check"
+        "furniture-label furniture-check"
+        "pcs-label pcs-check";
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: auto;
+}
+    .interests-checkbox-container label{
+        grid-area: interests-label;
+    }
+    /* Distribución grid para los checkbox de intereses */
+    #ws-check{ grid-area: ws-check; }
+    #furniture-check{ grid-area: furniture-check; }
+    #pcs-check{ grid-area: pcs-check; }
+    #ws-label{ grid-area: ws-label; }
+    #furniture-label{ grid-area: furniture-label; }
+    #pcs-label{ grid-area: pcs-label; }
+    /* Anula el estilo por defecto del input tipo file y usa una etiqueta para definir un estilo propio */
+    .custom-file-upload{
+        width: 40%;
+        margin-bottom: 15px;
+        padding: 5px;
+        border-radius: 5px;
+
+        cursor: pointer;
+        background-color: var(--background-2);
+        color: var(--logo-color-4);
         
+        font-weight: bold;
+        font-size: 0.9em;
+        text-align: center;  
+    }
+        #profile-photo{ display: none; }
