@@ -59,14 +59,23 @@
             <input type="email" name="email" id="email" placeholder="Dirección de e-mail (*)" 
                 autocomplete="true" required>
 
-            <div class="checkable-container gender-radio-container">
+            <div class="gender-radio-container">
                 <label for="gender" class="input-label">Género</label>
-                <input type="radio" name="gender" id="masc-radio" class="checkable-value" value="1">
-                <p id="masc-label" class="checkable-label">Masculino</p>
-                <input type="radio" name="gender" id="fem-radio" class="checkable-value" value="2">
-                <p id="fem-label" class="checkable-label">Femenino</p>
-                <input type="radio" name="gender" id="other-radio" class="checkable-value" value="3" checked>
-                <p id="other-label" class="checkable-label">Otro</p>
+
+                <label class="checkable-container" id="masc-radio">Masculino
+                    <input type="radio" name="gender" value="1">
+                    <span class="custom-checkable"></span>
+                </label>
+
+                <label class="checkable-container" id="fem-radio">Femenino
+                    <input type="radio" name="gender" value="2">
+                    <span class="custom-checkable"></span>
+                </label>
+
+                <label class="checkable-container" id="other-radio">Otro
+                    <input type="radio" name="gender" value="3" checked>
+                    <span class="custom-checkable"></span>
+                </label>
             </div>
 
             <label for="birth" class="input-label">Fecha de nacimiento (*)</label>
@@ -101,14 +110,24 @@
 
             <!-- Miscelánea + botones de envío y reseteo -->
             
-            <div class="checkable-container interests-checkbox-container">
+            <div class="interests-checkbox-container">
                 <label for="interests" class="input-label">Intereses</label>
-                <input type="checkbox" name="interests" id="ws-check" class="checkable-value" value="1">
-                <p id="ws-label" class="checkable-label">Estaciones de trabajo</p>
-                <input type="checkbox" name="interests" id="furniture-check" class="checkable-value" value="2">
-                <p id="furniture-label" class="checkable-label">Mobiliaria</p>
-                <input type="checkbox" name="interests" id="pcs-check" class="checkable-value" value="3">
-                <p id="pcs-label" class="checkable-label">Computadoras</p>
+
+                <label class="checkable-container">Estaciones de trabajo
+                    <input type="checkbox" name="interests" id="ws-check" value="1">
+                    <span class="custom-checkable"></span>
+                </label>
+                
+                <label class="checkable-container">Mobiliaria
+                    <input type="checkbox" name="interests" id="furniture-check" value="2">
+                    <span class="custom-checkable"></span>
+                </label>
+                
+                <label class="checkable-container">Computadoras
+                    <input type="checkbox" name="interests" id="pcs-check" value="3">
+                    <span class="custom-checkable"></span>
+                </label>
+                
             </div>
 
             <p class="input-label">

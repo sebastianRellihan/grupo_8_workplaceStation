@@ -20,6 +20,8 @@
     /* FONTS */
     --title-font: 'Montserrat', sans-serif;
     --text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* DIMENSIONES */
+    --checkable-dimension: 16px;
 }
 /* FOR ALL */
 * {
@@ -198,9 +200,9 @@ header {
                         font-size: 16px;
                     }
 
-            .mobile-nav-side-bar-content-products {
-                /* display: none;  */
-            }
+            /*.mobile-nav-side-bar-content-products {
+                display: none;  
+            } */
 /* MAIN */
 main {
     flex-grow: 1;
@@ -424,63 +426,26 @@ footer {
     color: var(--text-light-gray);
     text-align: center;
 }
+.gender-radio-container,
+.interests-checkbox-container{
+    justify-self: end;
+    color: var(--text-light-gray);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .gender-radio-container{
     width: 50%;
     margin: 20px 0px;
-
-    display: grid;
-    grid-template-areas: 
-        "gender-label gender-label"
-        "masc-label masc-radio"
-        "fem-label fem-radio"
-        "other-label other-radio";
-        grid-template-columns: 1fr 0.5fr;
-        grid-template-rows: auto;
 }
-    .gender-radio-container label{
-        grid-area: gender-label;
-        justify-self: start;
-    }
-    /* Distribuciones grid para la elección de género */
-    #masc-label{ grid-area: masc-label; }
-    #fem-label{ grid-area: fem-label; }
-    #other-label{ grid-area: other-label; }
-
-    #masc-radio{ grid-area: masc-radio; }
-    #fem-radio{ grid-area: fem-radio; }
-    #other-radio{grid-area: other-radio; } 
-    /* La clase checkable-container representa un contenedor
-       para inuts chequeables (como checkbox y radio buttons) */
-    .checkable-container .checkable-label{
-        justify-self: end;
-        color: var(--text-light-gray);
-    }
-    .checkable-container .checkable-value{ align-self: end; }
-
-.interests-checkbox-container{
-    display: grid;
-    grid-template-areas: 
-        "interests-label interests-label"
-        "ws-label ws-check"
-        "furniture-label furniture-check"
-        "pcs-label pcs-check";
-    grid-template-columns: 1fr 0.5fr;
-    grid-template-rows: auto;
-}
-    .interests-checkbox-container label{
-        grid-area: interests-label;
-    }
-    /* Distribución grid para los checkbox de intereses */
-    #ws-check{ grid-area: ws-check; }
-    #furniture-check{ grid-area: furniture-check; }
-    #pcs-check{ grid-area: pcs-check; }
-    #ws-label{ grid-area: ws-label; }
-    #furniture-label{ grid-area: furniture-label; }
-    #pcs-label{ grid-area: pcs-label; }
-    /* Anula el estilo por defecto del input tipo file y usa una etiqueta para definir un estilo propio */
+    
+    /* Anula el estilo por defecto del input tipo file y usa una 
+       etiqueta para definir un estilo propio */
     .custom-file-upload{
         width: 40%;
-        margin-bottom: 15px;
+        margin: 15px 0px;
         padding: 5px;
         border-radius: 5px;
 
@@ -490,6 +455,62 @@ footer {
         
         font-weight: bold;
         font-size: 0.9em;
-        text-align: center;  
+        text-align: center;
     }
         #profile-photo{ display: none; }
+    /* Anulación del estilo por defecto de radio buttons y 
+       checboxes y aplicación de estilo propio */
+    .checkable-container{
+        display: block;
+        position: relative;
+        cursor: pointer;
+        /* Deja sobreescribir la apariencia del elemento */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+        .gender-radio-container label:first-child,
+        .interests-checkbox-container label:first-child{
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .checkable-container input{
+            /* Oculta el selector por defecto */
+            position: absolute;
+            opacity: 0;
+            height: 0;
+            width: 0;
+            cursor: pointer;
+        }
+        .custom-checkable{
+            /* Radio button con estilo propio */
+            position: absolute;
+            bottom: 0;
+            right: calc( -2 * var(--checkable-dimension));
+            height: var(--checkable-dimension);
+            width: var(--checkable-dimension);
+
+            background-color: var(--background-1);
+            border-radius: 50%;
+        }
+        /* Fondo al pasar el cursor */
+        .checkable-container:hover .custom-checkable{ background-color: var(--logo-color-2); }
+        /* Fondo al ser seleccionado */
+        .checkable-container input:checked ~ .custom-checkable{ background-color: var(--logo-color-1); }
+        /* Círculo central al checkear el botón */
+        .custom-checkable:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .checkable-container input:checked ~ .custom-checkable:after { display: block; }
+        .checkable-container .custom-checkable:after {
+            /* Estilo del círculo central */
+            top: calc(var(--checkable-dimension) / 4);
+            left: calc(var(--checkable-dimension) / 4);
+            width: calc(var(--checkable-dimension) / 2);
+            height: calc(var(--checkable-dimension) / 2);
+            border-radius: 50%;
+            background: white;
+        }
