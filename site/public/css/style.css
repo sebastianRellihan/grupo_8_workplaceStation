@@ -355,7 +355,7 @@ footer {
     font-size: 0.8em;
 }
 .main-form-container{
-    margin: 10vh 0px;
+    margin: 5vh 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -406,19 +406,21 @@ footer {
             
             #login-alert{ margin-top: 15px; }
 
-            .submit-button{
-                width: 35%;
+            .form-button{
+                width: 40%;
                 margin: 15px 0px;
                 padding: 5px;
                 cursor: pointer;
 
                 background-color: var(--title-dark-blue);
                 color: var(--text-light);
+                box-shadow: 1px 2px 3px rgba(0,0,0,0.7);
                 border-style: none;
                 border-radius: 5px;
 
                 font-weight: bold;
                 font-size: 0.9em;
+                text-align: center;
             }
 /* Estilos específicos del formulario de registro */
 .input-label{ 
@@ -428,9 +430,7 @@ footer {
 }
 .gender-radio-container,
 .interests-checkbox-container{
-    justify-self: end;
     color: var(--text-light-gray);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -440,30 +440,17 @@ footer {
     width: 50%;
     margin: 20px 0px;
 }
-    
-    /* Anula el estilo por defecto del input tipo file y usa una 
-       etiqueta para definir un estilo propio */
-    .custom-file-upload{
-        width: 40%;
-        margin: 15px 0px;
-        padding: 5px;
-        border-radius: 5px;
 
-        cursor: pointer;
-        background-color: var(--background-2);
-        color: var(--logo-color-4);
-        
-        font-weight: bold;
-        font-size: 0.9em;
-        text-align: center;
-    }
-        #profile-photo{ display: none; }
+    /* Anula el estilo por defecto del input tipo file y usa una 
+       etiqueta con el estilo de los botones de formularios */
+    #profile-photo{ display: none; }
     /* Anulación del estilo por defecto de radio buttons y 
        checboxes y aplicación de estilo propio */
     .checkable-container{
         display: block;
         position: relative;
         cursor: pointer;
+        width: 100%;
         /* Deja sobreescribir la apariencia del elemento */
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -472,7 +459,7 @@ footer {
     }
         .gender-radio-container label:first-child,
         .interests-checkbox-container label:first-child{
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-size: 1.5em;
         }
         .checkable-container input{
