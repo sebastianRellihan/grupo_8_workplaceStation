@@ -20,14 +20,8 @@ Soy un joven que se esta iniciando en el mundo del desarrollo web Full-Stack. Te
 
 :octocat: [@sebastianRellihan](https://github.com/sebastianRellihan)
 
-- ### Martín Valdez:
-
-Tengo 38 años y estoy iniciándome en el mundo de la programación. Espero poder cumplir con todos los objetivos marcados y poder desarrollar satisfactoriamente nuestro proyecto. :call_me_hand:
-
-:octocat: [@Tinchomv](https://github.com/Tinchomv)
 
 ## Sítios de referencia:
-
 
 > _Esta es una lista de páginas web que sirve como referencia para nuestro diseño, ya sea por su estilo visual y/o funcionalidades._
 

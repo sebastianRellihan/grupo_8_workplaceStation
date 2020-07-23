@@ -43,7 +43,6 @@ body {
 header {
     display: flex;
     flex-direction: column;
-
     font-family: var(--title-font);
     color: var(--text-light);
     background-color: var(--background-2);
@@ -105,6 +104,37 @@ header {
             align-self: center;
             color: var(--logo-color-4);
         }
+    .site-cart-side-bar {
+        display: none; /* Alternará entre none y flex */
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 0;
+
+        width: 75vw;
+        height: 100vh;
+        padding: 10px;
+
+        color: var(--title-dark-blue);
+        background-color: var(--background-1);
+        box-shadow: 0px 0px 10px #666;
+    }
+        .site-cart-side-bar-close-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 50vh;
+            left: 5vw;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border-style: none;
+            font-size: 24px;
+            color: var(--logo-color-4);
+            background-color: var(--background-2);
+            box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
+        }
     .mobile-nav-side-bar {
         display: none; /* Alternará entre none y flex */
         flex-direction: column;
@@ -118,6 +148,7 @@ header {
 
         color: var(--title-dark-blue);
         background-color: var(--background-1);
+        box-shadow: 0px 0px 10px #666;
     }
         .mobile-nav-side-bar-close-button {
             display: flex;
@@ -206,7 +237,6 @@ header {
 /* MAIN */
 main {
     flex-grow: 1;
-
     background-color: var(--background-1);
 }
 .main-index {
