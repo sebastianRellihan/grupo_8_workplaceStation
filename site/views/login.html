@@ -15,7 +15,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <!-- Browser page icon -->
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/favicon.ico">
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="/css/style.css">
     <title>Workplace Station - Ingresá</title>
@@ -44,6 +44,46 @@
                 </a>
             </button>
         </div>
+        <button class="site-cart">
+            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+        </button>
+        <div class="site-cart-side-bar">
+            <button class="site-cart-side-bar-close-button">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="site-cart-side-bar-content">
+            </div>
+        </div>
+        <nav class="mobile-nav-side-bar">
+            <button class="mobile-nav-side-bar-close-button">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mobile-nav-side-bar-content">
+                <p class="mobile-nav-side-bar-content-search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </p>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <p>
+                            <a href="#">Productos</a>
+                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-minus"></i>
+                        </p>
+                        <ul class="mobile-nav-side-bar-content-products">
+                            <li><a href="#">Todos</a></li>
+                            <li><a href="#">Estaciones de trabajo</a></li>
+                            <li><a href="#">Escritorios</a></li>
+                            <li><a href="#">Sillas</a></li>
+                            <li><a href="#">Accesorios</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Quienes somos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main class="main-form-container">

@@ -21,7 +21,7 @@
     <link rel="icon" href="/img/favicon.ico">
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="/css/style.css">
-    <title>Workplace Station - Inicio</title>
+    <title>Carrito de compras</title>
 </head>
 
 <body>
@@ -43,16 +43,6 @@
             <button class="site-header-end">
                 <a href="/login"><i class="far fa-user"></i></a>
             </button>
-        </div>
-        <button class="site-cart">
-            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
-        </button>
-        <div class="site-cart-side-bar">
-            <button class="site-cart-side-bar-close-button">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="site-cart-side-bar-content">
-            </div>
         </div>
         <nav class="mobile-nav-side-bar">
             <button class="mobile-nav-side-bar-close-button">
@@ -85,52 +75,61 @@
             </div>
         </nav>
     </header>
-    <main class="main-index">
-        <section class="photo-carousel">
-            <img src="/img/carousel-1.jpg" alt="">
-        </section>
-        <section class="featured-products">
-            <h2>Productos destacados</h2>
-            <div>Carrusel de productos destacados</div>
-        </section>
-        <section class="why-us">
-            <h2>¿Por qué elegirnos?</h2>
-            <div class="why-us-container">
-                <article class="why-us-container-start">
-                    <i class="fas fa-medal"></i>
-                    <h3>5 años de garantía</h3>
-                    <p>Todos nuestros productos cuentan con cobertura de 5 años.</p>
+    <main class="main-cart">
+        <h2>Carrito de compras</h2>
+        <section class="cart-container">
+            <div class="cart-products">
+                <article class="cart-item">
+                    <img src="/img/our-products-chair.jpg" alt="">
+                    <div class="cart-item-info">
+                        <p>Titulo de producto</p>
+                        <p><span>$10.000</span></p>
+                        <div class="cart-item-actions">
+                            <div class="cart-item-actions-quantity-selector">
+                                - 1 +
+                            </div>
+                            <button class="cart-actions-empty">Eliminar</button>
+                        </div>
+                    </div>
                 </article>
-                <article class="why-us-container-center">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h3>Tiempo de entrega</h3>
-                    <p>Orgullosos de realizar el 95% de nuestras entregas en menos de días a todo el país.</p>
+                <article class="cart-item">
+                    <img src="/img/our-products-chair.jpg" alt="">
+                    <div class="cart-item-info">
+                        <p>Titulo de producto</p>
+                        <p><span>$10.000</span></p>
+                        <div class="cart-item-actions">
+                            <div class="cart-item-actions-quantity-selector">
+                                - 1 +
+                            </div>
+                            <button class="cart-actions-empty">Eliminar</button>
+                        </div>
+                    </div>
                 </article>
-                <article class="why-us-container-end">
-                    <i class="fas fa-award"></i>
-                    <h3>Más de 20 años de experiencia</h3>
-                    <p>Desde 1995 innovando en muebles ergonómicos para el trabajo.</p>
+                <article class="cart-item">
+                    <img src="/img/our-products-chair.jpg" alt="">
+                    <div class="cart-item-info">
+                        <p>Titulo de producto</p>
+                        <p><span>$10.000</span></p>
+                        <div class="cart-item-actions">
+                            <div class="cart-item-actions-quantity-selector">
+                                - 1 +
+                            </div>
+                            <button class="cart-actions-empty">Eliminar</button>
+                        </div>
+                    </div>
                 </article>
             </div>
-        </section>
-        <section class="our-products">
-            <h2>Nuestros productos</h2>
-            <article class="our-products-workplace-stations">
-                <h4>Estaciones de trabajo</h4>
-                <button>Ver más</button>
-            </article>
-            <article class="our-products-desks">
-                <h4>Escritorios</h4>
-                <button>Ver más</button>
-            </article>
-            <article class="our-products-chairs">
-                <h4>Sillas ergonómicas</h4>
-                <button>Ver más</button>
-            </article>
-            <article class="our-products-accesories">
-                <h4>Accesorios</h4>
-                <button>Ver más</button>
-            </article>
+            <div class="cart-summary">
+                <div class="cart-summary-note-container">
+                    <span>Agregar nota de orden:</span>
+                    <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."></textarea>
+                </div>
+                <p>Total: <span>$10.000</span></p>
+            </div>
+            <div class="cart-actions">
+                <button class="form-button">Comprar</button>
+                <button class="cart-actions-empty">Vaciar carrito</button>
+            </div>
         </section>
     </main>
     <footer>

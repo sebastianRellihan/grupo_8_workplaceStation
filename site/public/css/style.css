@@ -28,6 +28,11 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+h2 {
+    font-family: var(--title-font);
+    font-size: 1.5em;
+    color: var(--title-dark-blue);
+}
 /* BODY */
 body {
     display: flex;
@@ -35,6 +40,7 @@ body {
     min-height: 100vh;    
     margin: 0;
 
+    font-size: 16px;
     font-family: var(--text-font);
     color: var(--text-dark-gray);
     background-color: var(--background-1);
@@ -43,7 +49,6 @@ body {
 header {
     display: flex;
     flex-direction: column;
-
     font-family: var(--title-font);
     color: var(--text-light);
     background-color: var(--background-2);
@@ -60,6 +65,7 @@ header {
             border-style: none;
             align-self: stretch;
             flex-grow: 1;
+            cursor: pointer;
         }
         .site-header-end {
             padding: 0;
@@ -67,6 +73,7 @@ header {
             border-style: none;
             align-self: stretch;
             flex-grow: 1;
+            cursor: pointer;
         }
         .site-header-center {
             display: flex;
@@ -105,6 +112,40 @@ header {
             align-self: center;
             color: var(--logo-color-4);
         }
+        .site-cart a {
+            align-self: center;
+        }
+    .site-cart-side-bar {
+        display: none; /* Alternará entre none y flex */
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 0;
+
+        width: 75vw;
+        height: 100vh;
+        padding: 10px;
+
+        color: var(--title-dark-blue);
+        background-color: var(--background-1);
+        box-shadow: 0px 0px 10px #666;
+    }
+        .site-cart-side-bar-close-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 50vh;
+            left: 5vw;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border-style: none;
+            font-size: 24px;
+            color: var(--logo-color-4);
+            background-color: var(--background-2);
+            box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
+        }
     .mobile-nav-side-bar {
         display: none; /* Alternará entre none y flex */
         flex-direction: column;
@@ -118,6 +159,7 @@ header {
 
         color: var(--title-dark-blue);
         background-color: var(--background-1);
+        box-shadow: 0px 0px 10px #666;
     }
         .mobile-nav-side-bar-close-button {
             display: flex;
@@ -206,7 +248,6 @@ header {
 /* MAIN */
 main {
     flex-grow: 1;
-
     background-color: var(--background-1);
 }
 .main-index {
@@ -323,10 +364,9 @@ main {
                 .our-products article button {
                     margin: 10px;
                     padding: 5px;
-
                     border-radius: 3px;
                     border: 0;
-
+                    cursor: pointer;
                     font-family: var(--title-font);
                     font-weight: 600;
                     font-size: 16px;
@@ -345,6 +385,8 @@ footer {
     footer p {
         margin: 0;
     }
+
+
 /* Forms de registro y login */
 .alert-label{
     display: none;
@@ -501,3 +543,97 @@ footer {
             border-radius: 50%;
             background: white;
         }
+
+/* Carrito de compras */
+.main-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 85vh;
+}
+    .cart-container {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: var(--background-3);
+        border-radius: 3px;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
+    }
+        .cart-products {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            min-height: 30vh;
+            padding: 5px;
+            border-bottom: solid 1px var(--background-1);
+        }
+            .cart-item {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                margin: 20px 0;
+            }
+                .cart-item img {
+                    width: 40%;
+                }
+                .cart-item-info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 60%;
+                    height: 130px;
+                }
+                    .cart-item-info p {
+                        margin: 5px;
+                    }
+                .cart-item-actions {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 1005;
+                }
+                    .cart-item-actions-quantity-selector {
+                        width: 60px;
+                        height: 20px;
+                        text-align: center;
+                        background-color: var(--background-1);
+                    }
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 10vh;
+            margin: 0 30px;
+        }
+            .cart-summary-note-container {
+                margin-top: 10px;
+                text-align: center;
+            }
+                .cart-summary-note-container textarea {
+                    margin-top: 10px;
+                    width: 100%;
+                }
+            .cart-summary p {
+                align-self: flex-end;
+            }
+        .cart-actions {
+            display: flex;
+            justify-content: space-around;
+            min-height: 5vh;
+        }
+            .cart-actions-empty {
+                border: 0;
+                padding: 5px;
+                text-decoration: underline;
+                cursor: pointer;
+                font-family: var(--title-font);
+                font-size: 0.9em;
+                color: var(--title-dark-blue);
+                background-color: var(--background-3);
+            }

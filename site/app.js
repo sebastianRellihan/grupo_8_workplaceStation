@@ -26,3 +26,7 @@ app.get("/login", (req, res) => {
 app.get("/products", (req, res) => {
     res.sendFile(__dirname + "/views/products.html");
 });
+
+app.get("/cart", (req, res) => {
+    res.sendFile(__dirname + "/views/cart.html");
+});
