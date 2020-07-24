@@ -637,3 +637,40 @@ footer {
                 color: var(--title-dark-blue);
                 background-color: var(--background-3);
             }
+
+/* Estilos de la sección de productos */
+.nav-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .navmap-container{
+        margin: 15px 0px;
+        display: flex;
+        justify-content: center;
+    }
+        .navmap-container a,
+        .navmap-container span{
+            color: var(--background-2);
+        }
+
+    .product-buttons-container{
+        padding: 5px 0px;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: var(--logo-color-3);
+        border-bottom: 1px solid var(--logo-color-2);
+    }
+        .product-buttons-container button{
+            flex-grow: 1;
+            cursor: pointer;
+            background-color: inherit;
+            color: var(--title-dark-blue);
+            border-style: none; /* Pisa el borde por defecto p/botones */
+            border-right: 1px solid var(--logo-color-2);
+
+            font-size: 1em;
+            font-weight: bold;
+            text-align: center;
+        }
+            .distributions button{ border-right: none; }

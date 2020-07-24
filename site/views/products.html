@@ -41,15 +41,22 @@
                 </a>
             </div>
             <button class="site-header-end">
-                <i class="far fa-user"></i>
+                <a href="/login"><i class="far fa-user"></i></a>
             </button>
         </div>
         <button class="site-cart">
-            <i class="fas fa-shopping-cart"></i>
+            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
         </button>
+        <div class="site-cart-side-bar">
+            <button class="site-cart-side-bar-close-button">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="site-cart-side-bar-content">
+            </div>
+        </div>
         <nav class="mobile-nav-side-bar">
             <button class="mobile-nav-side-bar-close-button">
-                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-times"></i>
             </button>
             <div class="mobile-nav-side-bar-content">
                 <p class="mobile-nav-side-bar-content-search-bar">
@@ -73,7 +80,7 @@
                         </ul>
                     </li>
                     <li><a href="#">Quienes somos</a></li>
-                    <li><a href="#">Accesorios</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
         </nav>
@@ -81,6 +88,30 @@
 
     <main>
 
+        <section class="nav-section">
+            <div class="navmap-container">
+                <!-- Mapa de navegación dentro de la sección de productos -->
+                <a href="">Inicio</a>
+                <span>/</span>
+                <a href="">Productos</a>
+                <span>/</span>
+                <a href="">Escritorios</a>
+            </div>
+    
+            <div class="product-buttons-container">
+                <button>
+                    <i class="fas fa-caret-down"> Ordenar</i>
+                </button>
+                <button>
+                    <i class="fas fa-caret-down"> Categorías</i>
+                </button>
+                <div class="distributions">
+                    <button><i class="fas fa-stop"></i></button>
+                    <button><i class="fas fa-th-large"></i></button>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
     <footer>
