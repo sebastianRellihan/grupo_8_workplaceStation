@@ -674,3 +674,48 @@ footer {
             text-align: center;
         }
             .distributions button{ border-right: none; }
+/* Sección de tarjetas de productos */
+.products-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .products-section article{
+        width: 90%;
+        margin: 20px 0;
+        align-self: center;
+        
+        background-color: var(--background-3);
+        border-radius: 5px;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
+    }
+        .products-section article img{ width: 100%; }
+        
+        .products-section article h2{
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            color: var(--text-light-gray);
+            font-size: 1.2em;
+            font-weight: normal;
+        }
+            .products-section-info{
+                display: flex;
+                padding-left: 20px;
+                padding-bottom: 20px;
+            }
+                .products-section-info-price{
+                    flex-grow: 1;
+                    color: var(--text-light-gray);
+                    font-size: 1.2em;
+                    text-align: center;
+                }
+                .products-section-info-discount{
+                    align-self: end;
+                    flex-grow: 3;
+                    
+                    color: green;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                    text-align: center;
+                }
