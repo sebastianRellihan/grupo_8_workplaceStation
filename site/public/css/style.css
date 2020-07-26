@@ -351,7 +351,7 @@ main {
                 background-image: url(/img/our-products-accesories.jpg);
                 background-size: cover;
             }
-                .our-products article h4 {
+                .our-products article h3 {
                     padding: 5px;
                     margin: 10px;
 
@@ -365,15 +365,17 @@ main {
                     margin: 10px;
                     padding: 5px;
                     border-radius: 3px;
-                    border: 0;
+                    border: none;
                     cursor: pointer;
-                    font-family: var(--title-font);
-                    font-weight: 600;
-                    font-size: 16px;
-                    color: var(--text-light);
                     background-color: var(--background-2);
                     box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
                 }
+                    .our-products article button a{
+                        color: var(--text-light);
+                        font-family: var(--title-font);
+                        font-weight: 600;
+                        font-size: 1em;
+                    }
 /* FOOTER */
 footer {
     padding: 10px;
