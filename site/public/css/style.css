@@ -721,3 +721,33 @@ footer {
                     font-size: 1.1em;
                     text-align: center;
                 }
+/* Detalle de producto */
+.main-product-detail {
+    display: flex;
+    flex-direction: column;
+}
+    .product-template {
+        display: flex;
+        flex-direction: column;
+    }
+        .product-template img {
+            width: 100%;
+            box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
+        }
+        .product-info {
+            padding: 10px;
+            text-align: center;
+        }
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            .product-actions .form-button {
+                width: 80%;
+            }
+        .product-more-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
