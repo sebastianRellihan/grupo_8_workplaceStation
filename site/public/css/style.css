@@ -451,6 +451,11 @@ footer {
                 text-decoration: none;
                 color: var(--title-dark-blue);
             }
+            .form-container form .checkable-container{
+                width: auto;
+                margin-bottom: 10px;
+                color: var(--title-dark-blue);
+            }
             
             #login-alert{ margin-top: 15px; }
 

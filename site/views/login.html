@@ -98,9 +98,16 @@
                     autocomplete="true" required>
                 <input type="password" name="password" id="password" placeholder="Contraseña"
                     autocomplete="true" required>
+
                 <!-- Mensaje visible sólo en caso de que se hayan ingresado datos inválidos -->
                 <p id="login-alert" class="alert-label">Nombre de usuario ó contraseña incorrecta</p>
                 <button type="submit" class="form-button">Ingresar</button>
+
+                <label class="checkable-container">Recordarme
+                    <input type="checkbox" name="remember-me" id="remember-me" value="remember-me">
+                    <span class="custom-checkable"></span>
+                </label>
+
                 <a href="">Olvidé mi contraseña.</a>
                 <a href="/register">¿No tenés cuenta? Registrate acá</a>
                 
