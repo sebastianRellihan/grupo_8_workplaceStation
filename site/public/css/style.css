@@ -99,6 +99,7 @@ header {
         position: fixed;
         bottom: 5vw;
         right: 5vw;
+        z-index: 10000;
 
         width: 55px;
         height: 55px;
@@ -609,21 +610,28 @@ footer {
                     align-items: center;
                     width: 1005;
                 }
-                    .cart-item-actions-quantity-selector {
+                    .quantity-selector {
                         display: flex;
+                        align-content: center;
+                        justify-content: center;
                         height: 20px;
                         border-radius: 5px;
                         text-align: center;
                         background-color: var(--background-1);
                         
                     }
-                        .cart-item-actions-quantity-selector span{ padding: 0 5px; }
-                        .cart-item-actions-quantity-selector button{
+                        .quantity-selector span{
+                            padding: 0 10px;
+                            font-size: 1rem;
+                            line-height: initial;
+                        }
+                        .quantity-selector button{
                             cursor: pointer;
                             border: none;
-                            border-radius: 5px;
+                            line-height: initial;
                             background-color: var(--background-2);
                             color: var(--logo-color-3);
+                            font-size: 1rem;
                         }
         .cart-summary {
             display: flex;
