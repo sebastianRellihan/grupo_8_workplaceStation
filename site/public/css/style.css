@@ -733,10 +733,10 @@ footer {
         display: flex;
         flex-direction: column;
     }
-        .product-template img {
+        /* .product-template img {
             width: 100%;
             box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
-        }
+        } */
         .product-info {
             padding: 10px;
             text-align: center;
