@@ -28,6 +28,16 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+p {
+    font-family: var(--text-font);
+    font-size: 1rem;
+    color: var(--text-dark-gray);
+}
+h1 {
+    font-family: var(--title-font);
+    font-size: 2rem;
+    color: var(--title-dark-blue);
+}
 h2 {
     font-family: var(--title-font);
     font-size: 1.5rem;
@@ -122,6 +132,7 @@ header {
         position: fixed;
         right: 0;
         top: 0;
+        z-index: 1;
 
         width: 75vw;
         height: 100vh;
@@ -153,6 +164,7 @@ header {
         position: fixed;
         left: 0;
         top: 0;
+        z-index: 1;
 
         width: 75vw;
         height: 100vh;
@@ -314,6 +326,7 @@ main {
             .why-us-container article p {
                 font-family: var(--text-font);
                 margin: 0;
+                color: var(--text-light);
             }
     .our-products {
         display: flex;
@@ -390,6 +403,7 @@ footer {
 }
     footer p {
         margin: 0;
+        color: var(--text-light);
     }
 
 
@@ -447,12 +461,11 @@ footer {
             }
             .form-container form a{
                 margin-bottom: 5px;
-                font-size: 0.9em;
+                font-size: 1rem;
                 text-decoration: none;
                 color: var(--title-dark-blue);
             }
             .form-container form .checkable-container{
-                width: auto;
                 margin-bottom: 10px;
                 color: var(--title-dark-blue);
             }
@@ -471,8 +484,9 @@ footer {
                 border-style: none;
                 border-radius: 5px;
 
+                font-family: var(--text-font);
                 font-weight: bold;
-                font-size: 0.9em;
+                font-size: 1em;
                 text-align: center;
             }
 /* Estilos específicos del formulario de registro */
@@ -564,7 +578,7 @@ footer {
     min-height: 85vh;
 }
     .main-cart h1{
-        font-size: 1.9em;
+        font-size: 1.8em;
         color: var(--title-dark-blue);
     }
     .cart-container {
@@ -679,8 +693,8 @@ footer {
                 padding: 5px;
                 text-decoration: underline;
                 cursor: pointer;
-                font-family: var(--title-font);
-                font-size: 0.9em;
+                font-family: var(--text-font);
+                font-size: 1em;
                 color: var(--title-dark-blue);
                 background-color: var(--background-3);
             }
@@ -702,11 +716,9 @@ footer {
         }
 
     .product-buttons-container{
-        padding: 5px 0px;
         display: flex;
-        justify-content: space-evenly;
-        background-color: var(--logo-color-3);
-        border-bottom: 1px solid var(--logo-color-2);
+        justify-content: space-around;
+        background-color: var(--background-3);
     }
         .product-buttons-container button{
             flex-grow: 1;
@@ -714,13 +726,13 @@ footer {
             background-color: inherit;
             color: var(--title-dark-blue);
             border-style: none; /* Pisa el borde por defecto p/botones */
-            border-right: 1px solid var(--logo-color-2);
-
+            border-right: 1px solid var(--background-1);
+            padding: 5px 0;
+            font-family: var(--title-font);
             font-size: 1em;
-            font-weight: bold;
+            font-weight: 500;
             text-align: center;
         }
-            .distributions button{ border-right: none; }
 /* Sección de tarjetas de productos */
 .products-section{
     display: flex;
@@ -739,32 +751,27 @@ footer {
         .products-section article img{ width: 100%; }
         
         .products-section article h2{
-            margin-left: 10px;
-            margin-bottom: 10px;
-
             color: var(--text-light-gray);
             font-size: 1.2em;
-            font-weight: normal;
+            font-weight: 500;
+            text-align: center;
         }
             .products-section-info{
-                display: flex;
-                padding-left: 20px;
-                padding-bottom: 20px;
+                text-align: center;
+                margin-top: 10px;
             }
                 .products-section-info-price{
-                    flex-grow: 1;
-                    color: var(--text-light-gray);
-                    font-size: 1.2em;
+                    color: var(--title-dark-blue);
+                    font-size: 1.5em;
+                    font-weight: 700;
                     text-align: center;
                 }
                 .products-section-info-discount{
-                    align-self: end;
-                    flex-grow: 3;
-                    
-                    color: green;
-                    font-weight: bold;
-                    font-size: 1.1em;
-                    text-align: center;
+                    position: relative;
+                    bottom: 3px;
+                    color: #00a650;
+                    font-weight: 500;
+                    font-size: 1em;
                 }
 /* Detalle de producto */
 .main-product-detail {
