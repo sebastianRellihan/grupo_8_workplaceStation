@@ -30,7 +30,7 @@
 }
 h2 {
     font-family: var(--title-font);
-    font-size: 1.5em;
+    font-size: 1.5rem;
     color: var(--title-dark-blue);
 }
 /* BODY */
@@ -263,7 +263,6 @@ main {
     }
     .main-index section h2 {
         font-family: var(--title-font);
-        font-size: 24px;
         font-weight: 800;
         padding: 5px;
         margin: 10px;
@@ -287,6 +286,9 @@ main {
         color: var(--text-light);
         background-color: var(--background-2);
     }
+        .why-us h2 {
+            color: var(--text-light);
+        }
         .why-us-container {
             display: flex;
             flex-direction: column;
@@ -304,7 +306,7 @@ main {
             }
             .why-us-container article h3 {
                 font-family: var(--title-font);
-                font-size: 18px;
+                font-size: 1.25rem;
                 font-weight: bold;
                 margin: 15px 0;
             }
@@ -320,7 +322,6 @@ main {
         padding: 20px;
     }
         .our-products h2 {
-            font-size: 24px;
             color: var(--title-dark-blue);
             font-family: var(--title-font);
         }
@@ -357,6 +358,8 @@ main {
 
                     border-radius: 3px;
                     
+                    font-size: 1.2rem;
+                    font-weight: 600;
                     color: var(--title-dark-blue);
                     background-color: rgba(255, 255, 255, 0.8);
                     box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
@@ -374,7 +377,7 @@ main {
                         color: var(--text-light);
                         font-family: var(--title-font);
                         font-weight: 600;
-                        font-size: 1em;
+                        font-size: 1rem;
                     }
 /* FOOTER */
 footer {
@@ -759,10 +762,10 @@ footer {
         display: flex;
         flex-direction: column;
     }
-        .product-template img {
+        /* .product-template img {
             width: 100%;
             box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
-        }
+        } */
         .product-info {
             padding: 10px;
             text-align: center;
