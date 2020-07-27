@@ -469,6 +469,15 @@ footer {
                 margin-bottom: 10px;
                 color: var(--title-dark-blue);
             }
+                .gender-radio-container .checkable-container{
+                    width: 80%;
+                }
+                .form-container form .remember-me-container{ width: auto; }
+                
+                    .form-container form .checkable-container .remember-me-checkable{
+                        bottom: calc(var(--checkable-dimension) / 10);
+                        left: calc( -1.3 * var(--checkable-dimension));
+                    }
             
             #login-alert{ margin-top: 15px; }
 
