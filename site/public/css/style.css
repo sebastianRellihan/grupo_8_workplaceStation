@@ -456,6 +456,10 @@ footer {
                 margin-bottom: 10px;
                 color: var(--title-dark-blue);
             }
+                .form-container form .checkable-container span{
+                    bottom: calc(var(--checkable-dimension) / 10);
+                    left: calc( -1.3 * var(--checkable-dimension));
+                }
             
             #login-alert{ margin-top: 15px; }
 
