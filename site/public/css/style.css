@@ -554,6 +554,10 @@ footer {
     align-items: center;
     min-height: 85vh;
 }
+    .main-cart h1{
+        font-size: 1.9em;
+        color: var(--title-dark-blue);
+    }
     .cart-container {
         display: flex;
         flex-direction: column;
@@ -590,8 +594,11 @@ footer {
                     width: 60%;
                     height: 130px;
                 }
-                    .cart-item-info p {
+                    .cart-item-info h2 {
                         margin: 5px;
+                        font-size: 1em;
+                        font-weight: normal;
+                        color: var(--text-light-gray);
                     }
                 .cart-item-actions {
                     display: flex;
@@ -600,11 +607,21 @@ footer {
                     width: 1005;
                 }
                     .cart-item-actions-quantity-selector {
-                        width: 60px;
+                        display: flex;
                         height: 20px;
+                        border-radius: 5px;
                         text-align: center;
                         background-color: var(--background-1);
+                        
                     }
+                        .cart-item-actions-quantity-selector span{ padding: 0 5px; }
+                        .cart-item-actions-quantity-selector button{
+                            cursor: pointer;
+                            border: none;
+                            border-radius: 5px;
+                            background-color: var(--background-2);
+                            color: var(--logo-color-3);
+                        }
         .cart-summary {
             display: flex;
             flex-direction: column;
@@ -617,9 +634,21 @@ footer {
                 margin-top: 10px;
                 text-align: center;
             }
+                .cart-summary-note-container span{ color: var(--text-light-gray); }
                 .cart-summary-note-container textarea {
                     margin-top: 10px;
                     width: 100%;
+                    padding: 10px;
+                    border-radius: 5px;
+
+                    background-color: var(--logo-color-4);
+                    border: 1px solid var(--logo-color-3);
+                    color: var(--title-dark-blue);
+                    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+                }
+                .cart-summary-note-container textarea:focus{
+                    background-color: var(--logo-color-3);
+                    box-shadow: 1px 1px 5px var(--logo-color-1);
                 }
             .cart-summary p {
                 align-self: flex-end;
