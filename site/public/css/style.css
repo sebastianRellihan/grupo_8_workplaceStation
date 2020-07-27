@@ -737,6 +737,9 @@ footer {
             width: 100%;
             box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
         } */
+        .main-product-detail .carousel {
+            min-height: 425px;
+        }
         .product-info {
             padding: 10px;
             text-align: center;
@@ -745,6 +748,7 @@ footer {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 25px 0;
         }
             .product-actions .form-button {
                 width: 80%;
@@ -752,5 +756,9 @@ footer {
         .product-more-info {
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
+            .card-header h5 button {
+                width: 100%;
+                color: var(--title-dark-blue);
+                text-align: center;
+            } 
