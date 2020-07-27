@@ -736,7 +736,7 @@ footer {
             color: var(--title-dark-blue);
             border-style: none; /* Pisa el borde por defecto p/botones */
             border-right: 1px solid var(--background-1);
-            padding: 5px 0;
+            padding: 10px 0;
             font-family: var(--title-font);
             font-size: 1em;
             font-weight: 500;
@@ -778,6 +778,7 @@ footer {
                 .products-section-info-discount{
                     position: relative;
                     bottom: 3px;
+                    left: 3px;
                     color: #00a650;
                     font-weight: 500;
                     font-size: 1em;
