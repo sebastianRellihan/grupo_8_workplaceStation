@@ -60,8 +60,8 @@
             </button>
             <div class="mobile-nav-side-bar-content">
                 <p class="mobile-nav-side-bar-content-search-bar">
-                    <input type="text" placeholder="Buscar productos...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-text" placeholder="Buscar productos...">
+                    <button type="submit" class="action-button"><i class="fas fa-search"></i></button>
                 </p>
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -94,14 +94,14 @@
             </h1>
             <form action="" method="GET">
 
-                <input type="text" name="user-name" id="user-name" placeholder="Nombre de usuario" 
+                <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario" 
                     autocomplete="true" required>
-                <input type="password" name="password" id="password" placeholder="Contraseña"
+                <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña"
                     autocomplete="true" required>
 
                 <!-- Mensaje visible sólo en caso de que se hayan ingresado datos inválidos -->
                 <p id="login-alert" class="alert-label">Nombre de usuario ó contraseña incorrecta</p>
-                <button type="submit" class="form-button">Ingresar</button>
+                <button type="submit" class="action-button">Ingresar</button>
 
                 <label class="checkable-container remember-me-container">Recordarme
                     <input type="checkbox" name="remember-me" id="remember-me" value="remember-me">

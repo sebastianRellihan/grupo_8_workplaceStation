@@ -205,25 +205,13 @@ header {
                 .mobile-nav-side-bar-content-search-bar input {
                     height: 50px;
                     padding: 5px 10px;
-                    border-radius: 5px;
-                    border-style: none;
-
-                    box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
-                    background-color: var(--logo-color-4);
-
-                    font-family: var(--text-font);
-                    font-size: 1em;
                 }
                 .mobile-nav-side-bar-content-search-bar button {
                     width: 50px;
                     height: 50px;
                     padding: 5px;
-                    border-style: none;
                     border-radius: 5px;
                     font-size: 18px;
-                    box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
-                    background-color: var(--title-dark-blue);
-                    color: var(--text-light);
                 }
             .mobile-nav-side-bar-content ul{
                 padding: 5px;
@@ -254,18 +242,62 @@ header {
                         border: none;
                         font-size: 16px;
                     }
-
-            /*.mobile-nav-side-bar-content-products {
-                display: none;  
-            } */
 /* MAIN */
 main {
     flex-grow: 1;
     background-color: var(--background-1);
-}
-.main-index {
     display: flex;
     flex-direction: column;
+}
+/* FOOTER */
+footer {
+    padding: 10px;
+    text-align: center;
+    font-family: var(--text-font);
+    color: var(--text-light);
+    background-color: var(--background-2);
+}
+    footer p {
+        margin: 0;
+        color: var(--text-light);
+    }
+
+/* Estilos reutilizables de uso general */
+.action-button{ 
+    /* Botones de acción que no sean flotantes */
+    width: 40%;
+    margin: 15px 0px;
+    padding: 5px;
+
+    cursor: pointer;
+    background-color: var(--background-2);
+    color: var(--text-light);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.35);
+    border-style: none;
+    border-radius: 3px;
+
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+
+.input-text{
+    /* imputs de taxto característicos de la página */
+    background-color: var(--logo-color-4);
+    box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
+    font-family: var(--text-font);
+    font-size: 1em;
+    border-radius: 5px;
+    border-style: none;
+}
+.input-text:focus{
+    background-color: var(--logo-color-3);
+    box-shadow: 1px 1px 5px var(--logo-color-1);
+}
+
+/* INDEX */
+.main-index {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
@@ -350,6 +382,7 @@ main {
             font-family: var(--title-font);
             box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
         }
+            .our-products article button{ width: auto; }
             .our-products-workplace-stations {
                 background-image: url(/img/our-products-workplace-station.jpg);
                 background-size: cover;
@@ -381,11 +414,6 @@ main {
                 .our-products article button {
                     margin: 10px;
                     padding: 5px;
-                    border-radius: 3px;
-                    border: none;
-                    cursor: pointer;
-                    background-color: var(--background-2);
-                    box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
                 }
                     .our-products article button a{
                         color: var(--text-light);
@@ -393,20 +421,6 @@ main {
                         font-weight: 600;
                         font-size: 1rem;
                     }
-/* FOOTER */
-footer {
-    padding: 10px;
-    text-align: center;
-    font-family: var(--text-font);
-    color: var(--text-light);
-    background-color: var(--background-2);
-}
-    footer p {
-        margin: 0;
-        color: var(--text-light);
-    }
-
-
 /* Forms de registro y login */
 .alert-label{
     display: none;
@@ -418,8 +432,6 @@ footer {
 }
 .main-form-container{
     margin: 5vh 0px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
 }
     .form-container{
@@ -446,18 +458,6 @@ footer {
                 width: 80%;
                 margin-bottom: 15px;
                 padding: 5px 10px;
-                border-radius: 5px;
-
-                font-family: var(--text-font);
-                font-size: 1em;
-                
-                border-style: none;
-                box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
-                background-color: var(--logo-color-4);
-            }
-            .form-container form input:focus { /* Cambia el estilo resaltando el input al seleccionarlo */
-                background-color: var(--logo-color-3);
-                box-shadow: 1px 1px 5px var(--logo-color-1);
             }
             .form-container form a{
                 margin-bottom: 5px;
@@ -481,23 +481,6 @@ footer {
             
             #login-alert{ margin-top: 15px; }
 
-            .form-button{
-                width: 40%;
-                margin: 15px 0px;
-                padding: 5px;
-                cursor: pointer;
-
-                background-color: var(--title-dark-blue);
-                color: var(--text-light);
-                box-shadow: 1px 2px 3px rgba(0,0,0,0.7);
-                border-style: none;
-                border-radius: 5px;
-
-                font-family: var(--text-font);
-                font-weight: bold;
-                font-size: 1em;
-                text-align: center;
-            }
 /* Estilos específicos del formulario de registro */
 .input-label{ 
     font-size: 1.2em;
@@ -580,8 +563,6 @@ footer {
 
 /* Carrito de compras */
 .main-cart {
-    display: flex;
-    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     min-height: 85vh;
@@ -785,48 +766,43 @@ footer {
                     font-size: 1em;
                 }
 /* Detalle de producto */
-.main-product-detail {
+#min-width-carousel-pic{ margin-top: 15% !important; }
+.product-template {
     display: flex;
     flex-direction: column;
 }
-    #min-width-carousel-pic{ margin-top: 15% !important; }
-    .product-template {
+    /* .product-template img {
+        width: 100%;
+        box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
+    } */
+    .main-product-detail .carousel {
+        min-height: 425px;
+    }
+    .product-info {
+        padding: 10px;
+        text-align: center;
+    }
+        .product-info p:nth-child(2){
+            color: var(--title-dark-blue);
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+        }
+        .product-info p:nth-child(3){ color: var(--gray-dark); }
+    .product-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 25px 0;
+    }
+        .product-actions button{ width: 80%; }
+
+    .product-more-info {
         display: flex;
         flex-direction: column;
     }
-        /* .product-template img {
+        .card-header h5 button {
             width: 100%;
-            box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
-        } */
-        .main-product-detail .carousel {
-            min-height: 425px;
-        }
-        .product-info {
-            padding: 10px;
+            color: var(--title-dark-blue);
             text-align: center;
-        }
-            .product-info p:nth-child(2){
-                color: var(--title-dark-blue);
-                font-size: 1.5em;
-                font-weight: 700;
-                text-align: center;
-            }
-            .product-info p:nth-child(3){ color: var(--gray-dark); }
-        .product-actions {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 25px 0;
-        }
-            .product-actions .form-button {
-                width: 80%;
-            }
-        .product-more-info {
-            display: flex;
-            flex-direction: column;
-        }
-            .card-header h5 button {
-                width: 100%;
-                color: var(--title-dark-blue);
-                text-align: center;
-            } 
+        } 

@@ -62,8 +62,8 @@
             </button>
             <div class="mobile-nav-side-bar-content">
                 <p class="mobile-nav-side-bar-content-search-bar">
-                    <input type="text" placeholder="Buscar productos...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-text" placeholder="Buscar productos...">
+                    <button type="submit" class="action-button"><i class="fas fa-search"></i></button>
                 </p>
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -95,11 +95,11 @@
 
             <form action="" method="GET">
                 <!-- Información personal -->
-                <input type="text" name="name" id="name" placeholder="Nombre/s (*)" 
+                <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
                     autocomplete="true" required>
-                <input type="text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
+                <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
                     autocomplete="true" required>
-                <input type="email" name="email" id="email" placeholder="Dirección de e-mail (*)" 
+                <input type="email" class="input-text" name="email" id="email" placeholder="Dirección de e-mail (*)" 
                     autocomplete="true" required>
 
                 <div class="gender-radio-container">
@@ -123,31 +123,31 @@
                 </div>
 
                 <label for="birth" class="input-label">Fecha de nacimiento (*)</label>
-                <input type="date" name="birth" id="birth" placeholder="dd/mm/aaaa" required>
+                <input type="date" class="input-text" name="birth" id="birth" placeholder="dd/mm/aaaa" required>
                 <p class="alert-label" id="underage-alert-label">¡Debe ser mayor de edad para poder registrarte!</p>
 
-                <input type="text" name="adress" id="adress" placeholder="Domicilio (*)" 
+                <input type="text" class="input-text" name="adress" id="adress" placeholder="Domicilio (*)" 
                     autocomplete="true" required>
 
-                <input type="tel" name="cellphone-number" id="cellphone-number" placeholder="Número de teléfono celular (*)"
+                <input type="tel" class="input-text" name="cellphone-number" id="cellphone-number" placeholder="Número de teléfono celular (*)"
                 autocomplete="true">
                 <p class="alert-label" id="cellnumber-alert-label">Debe ingresar un número válido</p>
-                <input type="tel" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
+                <input type="tel" class="input-text" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
                     autocomplete="true">
                 <p class="alert-label" id="telnumber-alert-label">Debe ingresar un número válido</p>
 
                 <!-- Información de perfil -->
-                <input type="text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
+                <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
                     autocomplete="true" required>
                 <label for="password" class="input-label">8 caracteres como mínimo.</label>
-                <input type="password" name="password" id="password" placeholder="Contraseña (*)" 
+                <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña (*)" 
                     autocomplete="true" required>
                 <p class="alert-label" id="password-alert-label">Debe ingresar una contraseña válida</p>
-                <input type="password" name="repeat-password" id="repeat-password" placeholder="Repetir contraseña (*)" 
+                <input type="password" class="input-text" name="repeat-password" id="repeat-password" placeholder="Repetir contraseña (*)" 
                     autocomplete="true" required>
                 <p class="alert-label" id="unmatched-password-alert-label">Ambas contraseñas deben coincidir.</p>
 
-                <label class="form-button">
+                <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
                     Foto de perfil
                 </label>
@@ -183,8 +183,8 @@
                     Los campos indicados con (*) son obligatorios.
                 </p>
 
-                <button type="submit" class="form-button">Enviar</button>
-                <button type="reset" class="form-button">Resetear</button>
+                <button type="submit" class="action-button">Enviar</button>
+                <button type="reset" class="action-button">Resetear</button>
 
             </form>
 
