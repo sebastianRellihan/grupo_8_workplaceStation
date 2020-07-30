@@ -792,3 +792,13 @@ footer {
             color: var(--title-dark-blue);
             text-align: center;
         } 
+
+/* MEDIA QUERIES ------------ */
+
+@media (min-width: 768px){ /* Diseño para tablets */
+
+}
+
+@media (min-width: 1024px){ /* Diseño desktop */
+
+}
