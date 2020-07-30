@@ -261,7 +261,6 @@ footer {
         margin: 0;
         color: var(--text-light);
     }
-
 /* Estilos reutilizables de uso general */
 .action-button{ 
     /* Botones de acción que no sean flotantes */
@@ -281,7 +280,6 @@ footer {
     font-size: 1em;
     text-align: center;
 }
-
 .input-text{
     /* imputs de taxto característicos de la página */
     background-color: var(--logo-color-4);
@@ -295,7 +293,6 @@ footer {
     background-color: var(--logo-color-3);
     box-shadow: 1px 1px 5px var(--logo-color-1);
 }
-
 /* INDEX */
 .main-index {
     justify-content: space-around;
@@ -472,15 +469,13 @@ footer {
                 .gender-radio-container .checkable-container{
                     width: 80%;
                 }
-                .form-container form .remember-me-container{ width: auto; }
+                .form-container form .remember-me-container{width: auto;}
                 
                     .form-container form .checkable-container .remember-me-checkable{
                         bottom: calc(var(--checkable-dimension) / 10);
                         left: calc( -1.3 * var(--checkable-dimension));
                     }
-            
-            #login-alert{ margin-top: 15px; }
-
+            #login-alert{margin-top: 15px;}
 /* Estilos específicos del formulario de registro */
 .input-label{ 
     font-size: 1.2em;
@@ -499,7 +494,6 @@ footer {
     width: 50%;
     margin: 20px 0px;
 }
-
     /* Anula el estilo por defecto del input tipo file y usa una 
        etiqueta con el estilo de los botones de formularios */
     #profile-photo{ display: none; }
@@ -560,7 +554,6 @@ footer {
             border-radius: 50%;
             background: white;
         }
-
 /* Carrito de compras */
 .main-cart {
     justify-content: flex-start;
@@ -689,8 +682,7 @@ footer {
                 color: var(--title-dark-blue);
                 background-color: var(--background-3);
             }
-
-/* Estilos de la sección de productos */
+/* Productos */
 .nav-section{
     display: flex;
     flex-direction: column;
@@ -705,7 +697,6 @@ footer {
         .navmap-container span{
             color: var(--background-2);
         }
-
     .product-buttons-container{
         display: flex;
         justify-content: space-around;
@@ -724,7 +715,7 @@ footer {
             font-weight: 500;
             text-align: center;
         }
-/* Sección de tarjetas de productos */
+/* Productos > tarjetas de productos */
 .products-section{
     display: flex;
     flex-direction: column;
@@ -766,15 +757,11 @@ footer {
                     font-size: 1em;
                 }
 /* Detalle de producto */
-#min-width-carousel-pic{ margin-top: 15% !important; }
+#min-width-carousel-pic{margin-top: 15% !important;}
 .product-template {
     display: flex;
     flex-direction: column;
 }
-    /* .product-template img {
-        width: 100%;
-        box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
-    } */
     .main-product-detail .carousel {
         min-height: 425px;
     }
@@ -788,15 +775,14 @@ footer {
             font-weight: 700;
             text-align: center;
         }
-        .product-info p:nth-child(3){ color: var(--gray-dark); }
+        .product-info p:nth-child(3){color: var(--gray-dark);}
     .product-actions {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 25px 0;
     }
-        .product-actions button{ width: 80%; }
-
+        .product-actions button{width: 80%;}
     .product-more-info {
         display: flex;
         flex-direction: column;
