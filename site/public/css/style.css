@@ -948,24 +948,32 @@ footer {
             box-shadow: none;
         }
 
-        /* FOOTER */
-        footer{
-            flex-direction: row;
-            justify-content: space-between;
-            position: relative;
-        }
-            footer .footer-logo{ align-self: center; }
-            footer section:nth-child(2){ margin-top: 0; }
-            footer section{
-                margin-bottom: 25px;
-            }
-            footer .footer-copyright{
-                margin: 0;
-                position: absolute;
-                width: 100%;
-                bottom: 0;
-            }
+    /* FOOTER */
+    footer{
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
     }
+        footer .footer-logo{ align-self: center; }
+        footer section:nth-child(2){ margin-top: 0; }
+        footer section{
+            margin-bottom: 25px;
+        }
+        footer .footer-copyright{
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    /* DETALLE DEL PRODUCTO */
+    .main-product-detail .product-template{
+        width: 80%;
+        align-self: center;
+        margin-top: 3vh;
+    }
+        .product-template .product-info{ margin-top: 3vh; }
+        .product-more-info #accordion .card:first-child{ margin-bottom: 1vh; }
+}
 
 @media (min-width: 1024px){ /* Diseño desktop */
     /*FOOTER*/
