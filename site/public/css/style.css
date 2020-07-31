@@ -840,6 +840,15 @@ footer {
 
 /* MEDIA QUERIES ------------ */
 
+@media (max-width: 768px) and (orientation: landscape){ /* Correcciones de versión móvil en horizontal */
+    /* FOOTER */
+    footer .footer-logo{
+        width: 50%;
+        align-self: center;
+        margin: 15px;
+    }
+}
+
 @media (min-width: 768px){ /* Diseño para tablets */
     /* HEADER */
     .site-header {
@@ -938,8 +947,29 @@ footer {
             margin: 0px 10px 0px 0px;
             box-shadow: 4px 4px 5px var(--background-2);
         }
+
+        /* FOOTER */
+        footer{
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+        }
+            footer .footer-logo{ align-self: center; }
+            footer section:nth-child(2){ margin-top: 0; }
+            footer section{
+                margin-bottom: 25px;
+            }
+            footer .footer-copyright{
+                margin: 0;
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+            }
     }
 
-    @media (min-width: 1024px){ /* Diseño desktop */
-        
+@media (min-width: 1024px){ /* Diseño desktop */
+    /*FOOTER*/
+    footer{ justify-content: space-around; }
+    footer .footer-logo{ width: 25%; }
+    footer section ul{ margin-right: 4vw; }
 }
