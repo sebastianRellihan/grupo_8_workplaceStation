@@ -251,16 +251,36 @@ main {
 }
 /* FOOTER */
 footer {
-    padding: 10px;
+    padding-top: 10px;
     text-align: center;
     font-family: var(--text-font);
     color: var(--text-light);
     background-color: var(--background-2);
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
-    footer p {
-        margin: 0;
-        color: var(--text-light);
-    }
+    .footer-logo img:first-child{ width: 25%; }
+    .footer-logo img:last-child{ width: 50%; }
+
+    footer section:nth-child(2){ margin: 15px 0; }
+        footer section ul{ 
+            list-style: none; 
+            margin-right: 10vw;
+        }
+        footer section ul li a { 
+            text-decoration: none; 
+            color: var(--text-light)
+        }
+        footer section h2{ color: var(--text-light); }
+        footer section p{ 
+            padding: 5px 0;
+            color: var(--text-light);
+            background-color: black;
+            margin-bottom: 0; 
+            font-size: 0.7em;
+        }
 /* Estilos reutilizables de uso general */
 .action-button{ 
     /* Botones de acción que no sean flotantes */
@@ -788,6 +808,15 @@ footer {
 
 /* MEDIA QUERIES ------------ */
 
+@media (max-width: 768px) and (orientation: landscape){ /* Correcciones de versión móvil en horizontal */
+    /* FOOTER */
+    footer .footer-logo{
+        width: 50%;
+        align-self: center;
+        margin: 15px;
+    }
+}
+
 @media (min-width: 768px){ /* Diseño para tablets */
     /* HEADER */
     .site-header {
@@ -889,8 +918,37 @@ footer {
             margin: 0px 10px 0px 0px;
             box-shadow: none;
         }
-    }
 
-    @media (min-width: 1024px){ /* Diseño desktop */
-        
+    /* FOOTER */
+    footer{
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+    }
+        footer .footer-logo{ align-self: center; }
+        footer section:nth-child(2){ margin-top: 0; }
+        footer section{
+            margin-bottom: 25px;
+        }
+        footer .footer-copyright{
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    /* DETALLE DEL PRODUCTO */
+    .main-product-detail .product-template{
+        width: 80%;
+        align-self: center;
+        margin-top: 3vh;
+    }
+        .product-template .product-info{ margin-top: 3vh; }
+        .product-more-info #accordion .card:first-child{ margin-bottom: 1vh; }
+}
+
+@media (min-width: 1024px){ /* Diseño desktop */
+    /*FOOTER*/
+    footer{ justify-content: space-around; }
+    footer .footer-logo{ width: 25%; }
+    footer section ul{ margin-right: 4vw; }
 }
