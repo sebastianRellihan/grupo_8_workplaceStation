@@ -251,16 +251,36 @@ main {
 }
 /* FOOTER */
 footer {
-    padding: 10px;
+    padding-top: 10px;
     text-align: center;
     font-family: var(--text-font);
     color: var(--text-light);
     background-color: var(--background-2);
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
-    footer p {
-        margin: 0;
-        color: var(--text-light);
-    }
+    .footer-logo img:first-child{ width: 25%; }
+    .footer-logo img:last-child{ width: 50%; }
+
+    footer section:nth-child(2){ margin: 15px 0; }
+        footer section ul{ 
+            list-style: none; 
+            margin-right: 10vw;
+        }
+        footer section ul li a { 
+            text-decoration: none; 
+            color: var(--text-light)
+        }
+        footer section h2{ color: var(--text-light); }
+        footer section p{ 
+            padding: 5px 0;
+            color: var(--text-light);
+            background-color: black;
+            margin-bottom: 0; 
+            font-size: 0.7em;
+        }
 /* Estilos reutilizables de uso general */
 .action-button{ 
     /* Botones de acción que no sean flotantes */
