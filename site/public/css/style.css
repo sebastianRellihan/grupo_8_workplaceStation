@@ -308,6 +308,7 @@ footer {
         font-weight: 800;
         padding: 5px;
         margin: 10px;
+        text-align: center;
     }
     .photo-carousel img {
         width: 100%;
@@ -315,13 +316,36 @@ footer {
         overflow: auto;
     }
     .featured-products {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
     }
-        .featured-products div {
-            width: 100vw;
-            height: 400px;
-            background-color: white;
+        .featured-products .products-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-self: center;
+            width: 100%;
         }
+            .featured-products .products-section article {
+                display:flex;
+                flex-direction: column;
+                position: relative;
+            }
+            .featured-products .products-section .start {
+                right: 30px;
+                font-size: 0.6rem;
+                width: 20%;
+            }
+            .featured-products .products-section .center {
+                flex-grow: 2;
+                margin: 10px;
+                font-size: 1rem;
+            }
+            .featured-products .products-section .end {
+                left: 30px;
+                font-size: 0.6rem;
+                width: 20%;
+            }
     .why-us {
         padding: 10px;
         text-align: center;
