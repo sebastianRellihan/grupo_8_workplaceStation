@@ -872,7 +872,6 @@ footer {
                 justify-content: space-between;
                 align-self: center;
                 align-items: center;
-                position: relative;
                 width: 100%;
                 padding: 0;
             }
@@ -947,6 +946,28 @@ footer {
 }
 
 @media (min-width: 1024px){ /* Diseño desktop */
+    /* INDEX */
+    .why-us-container {
+        flex-direction: row;
+        margin: 25px 0px 20px 0px;
+    }
+        .why-us-container article {
+            margin: 20px 10px;
+        }
+    .our-products-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 68vw;
+        margin: 20px 0;
+        flex-wrap: wrap;
+    }
+        .our-products-container article {
+            margin: 40px;
+            width: 25vw;
+            height: 25vw;
+        }
     /*FOOTER*/
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
