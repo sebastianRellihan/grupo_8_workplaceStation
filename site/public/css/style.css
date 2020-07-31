@@ -945,7 +945,7 @@ footer {
             width: 100px;
             position: inherit;
             margin: 0px 10px 0px 0px;
-            box-shadow: 4px 4px 5px var(--background-2);
+            box-shadow: none;
         }
 
         /* FOOTER */
