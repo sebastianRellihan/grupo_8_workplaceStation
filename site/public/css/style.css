@@ -903,7 +903,7 @@ footer {
                     margin: 0px;
                 }
                     .mobile-nav-side-bar-content-search-bar input {
-                        padding: 0;
+                        padding: 10px;
                         margin-right: 10px;
                         width: 25vw;
                         height: 30px;
