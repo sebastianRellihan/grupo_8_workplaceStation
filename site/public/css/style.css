@@ -111,12 +111,12 @@ header {
         right: 5vw;
         z-index: 10000;
 
-        width: 55px;
-        height: 55px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         border-style: none;
         font-size: 24px;
-        background-color: var(--background-2);
+        background-color: var(--logo-color-1);
         box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
     }
         .site-cart i {
@@ -261,19 +261,31 @@ footer {
     flex-direction: column;
     flex-wrap: nowrap;
 }
-    .footer-logo img:first-child{ width: 25%; }
-    .footer-logo img:last-child{ width: 50%; }
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        .footer-logo img:first-child{ width: 15%; }
+        .footer-logo img:last-child{ width: 70%; }
 
     footer section:nth-child(2){ margin: 15px 0; }
         footer section ul{ 
             list-style: none; 
             margin-right: 10vw;
+            text-align: center;
+            width:100%;
+            padding: 0;
         }
         footer section ul li a { 
             text-decoration: none; 
             color: var(--text-light)
         }
-        footer section h2{ color: var(--text-light); }
+        footer section h2{
+            color: var(--text-light); 
+            font-size: 1.2rem;
+        }
         footer section p{ 
             padding: 5px 0;
             color: var(--text-light);
@@ -831,7 +843,6 @@ footer {
 }
 
 @media (min-width: 768px){ /* Diseño para tablets */
-    /* HEADER */
     .site-header {
         justify-content: space-between;
         width: 100%;
@@ -929,19 +940,29 @@ footer {
             position: inherit;
             margin: 0px 10px 0px 0px;
             box-shadow: none;
+            background-color: var(--background-2);
         }
 
     /* FOOTER */
     footer{
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
         position: relative;
     }
-        footer .footer-logo{ align-self: center; }
-        footer section:nth-child(2){ margin-top: 0; }
+        footer section:nth-child(2){ 
+            margin-top: 0; 
+            width: 25%;
+        }
         footer section{
             margin-bottom: 25px;
+            margin-top: 5px;
+            width: 30%;
         }
+            .footer section ul {
+                padding: 0;
+                margin: 0;
+            }
         footer .footer-copyright{
             margin: 0;
             position: absolute;
@@ -1024,9 +1045,11 @@ footer {
             height: 25vw;
         }
     /*FOOTER*/
-    footer{ justify-content: space-around; }
-    footer .footer-logo{ width: 25%; }
-    footer section ul{ margin-right: 4vw; }
+    footer { justify-content: space-around; }
+        footer .footer-logo{ width: 25%; }
+        footer section ul {
+            padding: 0;
+        }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         position: relative;
