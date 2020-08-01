@@ -940,6 +940,12 @@ footer {
             width: 100%;
             bottom: 0;
         }
+    /* FORMULARIOS DE REGISTRO Y LOGIN */
+    .main-form-container{
+        width: 50%;
+        align-self: center;
+    }
+    .register-form-container{ width: 90% !important; }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         width: 80%;
@@ -977,6 +983,9 @@ footer {
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
     footer section ul{ margin-right: 4vw; }
+    /* FORMULARIOS DE REGISTRO Y LOGIN */
+    .main-form-container{ width: 30%; }
+    .register-form-container{ width: 50% !important; }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         position: relative;
