@@ -111,12 +111,12 @@ header {
         right: 5vw;
         z-index: 10000;
 
-        width: 55px;
-        height: 55px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         border-style: none;
         font-size: 24px;
-        background-color: var(--background-2);
+        background-color: var(--logo-color-1);
         box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
     }
         .site-cart i {
@@ -261,19 +261,31 @@ footer {
     flex-direction: column;
     flex-wrap: nowrap;
 }
-    .footer-logo img:first-child{ width: 25%; }
-    .footer-logo img:last-child{ width: 50%; }
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        .footer-logo img:first-child{ width: 15%; }
+        .footer-logo img:last-child{ width: 70%; }
 
     footer section:nth-child(2){ margin: 15px 0; }
         footer section ul{ 
             list-style: none; 
             margin-right: 10vw;
+            text-align: center;
+            width:100%;
+            padding: 0;
         }
         footer section ul li a { 
             text-decoration: none; 
             color: var(--text-light)
         }
-        footer section h2{ color: var(--text-light); }
+        footer section h2{
+            color: var(--text-light); 
+            font-size: 1.2rem;
+        }
         footer section p{ 
             padding: 5px 0;
             color: var(--text-light);
@@ -598,7 +610,7 @@ footer {
         }
             .cart-item {
                 display: flex;
-                justify-content: flex-start;
+                justify-content: center;
                 align-items: center;
                 width: 100%;
                 margin: 20px 0;
@@ -610,7 +622,7 @@ footer {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    width: 60%;
+                    width: 50%;
                     height: 130px;
                 }
                     .cart-item-info h2 {
@@ -629,10 +641,8 @@ footer {
                         display: flex;
                         align-content: center;
                         justify-content: center;
-                        height: 20px;
-                        border-radius: 5px;
+                        width: 50px;
                         text-align: center;
-                        box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
                     }
                         .quantity-selector span{
                             padding: 0 10px;
@@ -648,6 +658,7 @@ footer {
                             color: var(--logo-color-3);
                             font-size: 1rem;
                             font-weight: bolder;
+                            flex-grow: 1;
                         }
         .cart-summary {
             display: flex;
@@ -679,12 +690,21 @@ footer {
                 }
             .cart-summary p {
                 align-self: flex-end;
+                font-weight: bold;
+                position: relative;
+                right: 4vw;
             }
         .cart-actions {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: space-around;
             min-height: 5vh;
         }
+            .cart-container .cart-actions button,
+            .cart-container .cart-actions .action-button {
+                width: 80%;
+            }
             .cart-actions-empty {
                 border: 0;
                 padding: 5px;
@@ -823,7 +843,6 @@ footer {
 }
 
 @media (min-width: 768px){ /* Diseño para tablets */
-    /* HEADER */
     .site-header {
         justify-content: space-between;
         width: 100%;
@@ -915,25 +934,35 @@ footer {
                         position: absolute;
                         background-color: var(--background-1);
                         color: var(--title-dark-blue);
-                        }
+                    }
         .site-cart {
             width: 100px;
             position: inherit;
             margin: 0px 10px 0px 0px;
             box-shadow: none;
+            background-color: var(--background-2);
         }
 
     /* FOOTER */
     footer{
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
         position: relative;
     }
-        footer .footer-logo{ align-self: center; }
-        footer section:nth-child(2){ margin-top: 0; }
+        footer section:nth-child(2){ 
+            margin-top: 0; 
+            width: 25%;
+        }
         footer section{
             margin-bottom: 25px;
+            margin-top: 5px;
+            width: 30%;
         }
+            .footer section ul {
+                padding: 0;
+                margin: 0;
+            }
         footer .footer-copyright{
             margin: 0;
             position: absolute;
@@ -954,8 +983,50 @@ footer {
     }
         .product-template .product-info{ margin-top: 3vh; }
         .product-more-info #accordion .card:first-child{ margin-bottom: 1vh; }
+    /* CARRITO */
+    .cart-container {
+        max-width: 900px;
+        margin-bottom: 50px;
+    }
+        .cart-products {
+            padding: 25px;
+        }
+            .cart-item img {
+                max-width: 200px;
+            }
+            .cart-item-info {
+                margin: 0px 50px;
+                width: 40%;
+                font-size: 1.25rem;
+            }
+                .cart-item-info h2 {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+                .cart-item-info p span,
+                .quantity-selector button,
+                .quantity-selector span {
+                    font-size: 1.2rem;
+                }
+                    .quantity-selector {
+                        width: 100px;
+                    }
+        .cart-summary {
+            width: 100%;
+            margin: 0;
+        }        
+            .cart-summary p {
+                font-size: 1.2rem;
+                right: 100px;
+            }
+            .cart-summary-note-container {
+                width: 80%;
+            }
+            .cart-container .cart-actions button,
+            .cart-container .cart-actions .action-button {
+                height: 50px;
+            } 
 }
-
 @media (min-width: 1024px){ /* Diseño desktop */
     /* INDEX */
     .why-us-container {
