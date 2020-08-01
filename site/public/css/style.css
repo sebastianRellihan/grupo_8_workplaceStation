@@ -991,6 +991,23 @@ footer {
             #carouselExampleIndicators .carousel-inner{
                 height: 500px !important;
             }
+                /* Sustitución de marcadores por imágenes */
+                #carouselExampleIndicators ol li{
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 30px;
+                    background-size: contain;
+                }
+                /* Provisional, muy probablemente haya cambios desde el back-end... */
+                #carouselExampleIndicators ol li:first-child{
+                    background-image: url("/img/our-products-chair.jpg");
+                }
+                #carouselExampleIndicators ol li:nth-child(2){
+                    background-image: url("/img/our-products-desks.jpg");
+                }
+                #carouselExampleIndicators ol li:nth-child(3){
+                    background-image: url("/img/our-products-workplace-station.jpg");
+                }
         .product-info{ width: 50%; }
         .product-actions,
         .product-more-info{ 
