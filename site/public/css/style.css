@@ -823,6 +823,11 @@ footer {
         align-self: center;
         margin: 15px;
     }
+    /* DETALLE DEL PRODUCTO */
+    .main-product-detail{
+        width: 90%;
+        align-self: center;
+    }
 }
 
 @media (min-width: 768px){ /* Diseño para tablets */
@@ -1022,4 +1027,32 @@ footer {
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
     footer section ul{ margin-right: 4vw; }
+    /* DETALLE DEL PRODUCTO */
+    .main-product-detail .product-template{
+        position: relative;
+        width: 90%;
+        flex-direction: row;
+    }
+        #carouselExampleIndicators{
+            width: 45%;
+            margin: 5vh 5% 10vh 0;
+        }
+        /* Alto fijo para el carrusel de imágenes */
+            #carouselExampleIndicators .carousel-inner{
+                height: 500px !important;
+            }
+        .product-info{ width: 50%; }
+        .product-actions,
+        .product-more-info{ 
+            width: 50%;
+            position: absolute; 
+            left: 50%;
+        }
+        .product-actions{
+            top: 30%;
+        }
+        .product-more-info{
+            top: 60%;
+        }
+
 }
