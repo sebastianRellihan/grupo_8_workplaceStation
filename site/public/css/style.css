@@ -730,32 +730,39 @@ footer {
         .navmap-container span{
             color: var(--background-2);
         }
-    .product-buttons-container{
+    .products-buttons-container{
         display: flex;
         justify-content: space-around;
         background-color: var(--background-3);
     }
-        .product-buttons-container button{
+        .products-buttons-container button{
             flex-grow: 1;
             cursor: pointer;
             background-color: inherit;
             color: var(--title-dark-blue);
             border-style: none; /* Pisa el borde por defecto p/botones */
-            border-right: 1px solid var(--background-1);
             padding: 10px 0;
             font-family: var(--title-font);
             font-size: 1em;
             font-weight: 500;
             text-align: center;
         }
+    .products-nav {
+        display: none;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
 /* Productos > tarjetas de productos */
 .products-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100vw;
 }
     .products-section article{
-        width: 90%;
+        width: 80%;
         margin: 20px 0;
         align-self: center;
         
@@ -1026,6 +1033,17 @@ footer {
             .cart-container .cart-actions .action-button {
                 height: 50px;
             } 
+    /* PRODUCTOS */
+    .products-section {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 80vw;
+        margin: 20px auto;
+    }
+        .products-section article {
+            width: 40%;
+        }
 }
 @media (min-width: 1024px){ /* Diseño desktop */
     /* INDEX */
@@ -1101,5 +1119,27 @@ footer {
         .product-more-info{
             top: 60%;
         }
-
+    /* PRODUCTOS */
+    .main-products {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+    }
+        .nav-section {
+            width: 30vw;
+        }
+            .navmap-container {
+                padding: 10px;
+            }
+            .products-buttons-container {
+                display: none;
+            }
+            .products-nav {
+                display: flex;
+            }
+        .products-section {
+            width: 70vw;
+        }
 }
