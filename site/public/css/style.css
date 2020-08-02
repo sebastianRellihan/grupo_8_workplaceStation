@@ -28,6 +28,9 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+a {
+    color: inherit;
+}
 p {
     font-family: var(--text-font);
     font-size: 1rem;
@@ -719,7 +722,7 @@ footer {
 .nav-section{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
     .navmap-container{
         margin: 15px 0px;
@@ -730,32 +733,64 @@ footer {
         .navmap-container span{
             color: var(--background-2);
         }
-    .product-buttons-container{
+    .products-buttons-container{
         display: flex;
         justify-content: space-around;
         background-color: var(--background-3);
     }
-        .product-buttons-container button{
+        .products-buttons-container button{
             flex-grow: 1;
             cursor: pointer;
             background-color: inherit;
             color: var(--title-dark-blue);
             border-style: none; /* Pisa el borde por defecto p/botones */
-            border-right: 1px solid var(--background-1);
             padding: 10px 0;
             font-family: var(--title-font);
             font-size: 1em;
             font-weight: 500;
             text-align: center;
         }
+    .products-nav {
+        display: none;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
+        .view-options {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+        }
+            .order-view {
+                display: flex;
+                flex-direction: column;
+            } 
+                .order-view .views {
+                    order: 1;
+                    padding-bottom: 15px;
+                }
+                .order-view .order {
+                    order: 2;
+                }
+        .filter-groups dd a {
+            padding: 5px;
+        }
+        .filter-groups dl h2 {
+            text-align: center;
+        }
+
 /* Productos > tarjetas de productos */
 .products-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100vw;
 }
     .products-section article{
-        width: 90%;
+        width: 80%;
         margin: 20px 0;
         align-self: center;
         
@@ -1026,6 +1061,20 @@ footer {
             .cart-container .cart-actions .action-button {
                 height: 50px;
             } 
+    /* PRODUCTOS */
+    .nav-section .products-buttons-container {
+        height: 5vh;
+    }
+    .products-section {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 80vw;
+        margin: 20px auto;
+    }
+        .products-section article {
+            width: 40%;
+        }
 }
 @media (min-width: 1024px){ /* Diseño desktop */
     /* INDEX */
@@ -1103,5 +1152,69 @@ footer {
         .product-more-info{
             margin-bottom: 5vh;
         }
-
+    /* PRODUCTOS */
+    .main-products {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 2vw;
+    }
+        .nav-section {
+            width: 30vw;
+            padding-left: 10px;
+        }
+            .products-buttons-container {
+                display: none;
+            }
+            .products-nav {
+                display: flex;
+            }
+                .view-options,
+                .filter-groups {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    width: 80%;
+                    align-items: flex-start;
+                }
+                    .order-view {
+                        flex-direction: row;
+                        width: 100%;
+                        justify-content: flex-start;
+                    }
+                        .order-view .order {
+                            margin-right: 10px;
+                            order: 1;
+                        }
+                        .order-view .views {
+                            order: 2;
+                        }
+                .filter-groups {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 30px;
+                }
+                    .filter-category,
+                    .filter-discount,
+                    .filter-delivery {
+                        margin: 10px 0;
+                    }
+                        .filter-category h2,
+                        .filter-discount h2,
+                        .filter-delivery h2 {
+                            margin: 10px 0;
+                        }
+                        .filter-category h3 {
+                            font-size: 1rem;
+                        }
+                        .filter-groups dl h2 {
+                            text-align: start;
+                        }
+        .products-section {
+            width: 70vw;
+        }
+            .products-section article {
+                width: 30%;
+            }
 }
