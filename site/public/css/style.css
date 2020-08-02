@@ -1061,16 +1061,14 @@ footer {
     .main-product-detail .product-template{
         position: relative;
         width: 90%;
-        flex-direction: row;
+        flex-direction: column;
     }
         #carouselExampleIndicators{
             width: 45%;
-            margin: 5vh 5% 10vh 0;
+            margin: 5vh 5% 5vh 0;
         }
         /* Alto fijo para el carrusel de imágenes */
-            #carouselExampleIndicators .carousel-inner{
-                height: 500px !important;
-            }
+            #carouselExampleIndicators .carousel-inner{ height: 500px !important; }
                 /* Sustitución de marcadores por imágenes */
                 #carouselExampleIndicators ol li{
                     width: 50px;
@@ -1088,9 +1086,13 @@ footer {
                 #carouselExampleIndicators ol li:nth-child(3){
                     background-image: url("/img/our-products-workplace-station.jpg");
                 }
-        .product-info{ width: 50%; }
-        .product-actions,
-        .product-more-info{ 
+        .product-info{ 
+            width: 50%; 
+            position: absolute;
+            top: 5%;
+            left: 50%;
+        }
+        .product-actions{ 
             width: 50%;
             position: absolute; 
             left: 50%;
@@ -1099,7 +1101,7 @@ footer {
             top: 30%;
         }
         .product-more-info{
-            top: 60%;
+            margin-bottom: 5vh;
         }
 
 }
