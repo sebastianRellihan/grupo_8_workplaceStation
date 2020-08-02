@@ -396,7 +396,8 @@ footer {
             color: var(--title-dark-blue);
             font-family: var(--title-font);
         }
-        .our-products article {
+        .our-products article,
+        .about-us-section article {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -407,7 +408,6 @@ footer {
             font-family: var(--title-font);
             box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
         }
-            .our-products article button{ width: auto; }
             .our-products-workplace-stations {
                 background-image: url(/img/our-products-workplace-station.jpg);
                 background-size: cover;
@@ -424,7 +424,13 @@ footer {
                 background-image: url(/img/our-products-accesories.jpg);
                 background-size: cover;
             }
-                .our-products article h3 {
+            .about-us-section article{
+                margin-top: 5vh;
+                background-image: url(/img/imagotipo-workplace-station.jpg);
+                background-size: cover;
+            }
+                .our-products article h3,
+                .about-us-section article h2{
                     padding: 5px;
                     margin: 10px;
 
@@ -436,11 +442,14 @@ footer {
                     background-color: rgba(255, 255, 255, 0.8);
                     box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
                 }
-                .our-products article button {
+                .our-products article button, 
+                .about-us-section article button {
+                    width: auto;
                     margin: 10px;
                     padding: 5px;
                 }
-                    .our-products article button a{
+                    .our-products article button a,
+                    .about-us-section article button a{
                         color: var(--text-light);
                         font-family: var(--title-font);
                         font-weight: 600;
