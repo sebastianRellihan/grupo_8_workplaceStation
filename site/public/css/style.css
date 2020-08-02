@@ -28,6 +28,9 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+a {
+    color: inherit;
+}
 p {
     font-family: var(--text-font);
     font-size: 1rem;
@@ -719,7 +722,7 @@ footer {
 .nav-section{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
     .navmap-container{
         margin: 15px 0px;
@@ -752,7 +755,14 @@ footer {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        width: 100%;
     }
+        .view-optons {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
 
 /* Productos > tarjetas de productos */
 .products-section{
@@ -1034,6 +1044,9 @@ footer {
                 height: 50px;
             } 
     /* PRODUCTOS */
+    .nav-section .products-buttons-container {
+        height: 5vh;
+    }
     .products-section {
         flex-direction: row;
         justify-content: space-around;
@@ -1125,21 +1138,55 @@ footer {
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
-        padding: 40px;
+        padding: 2vw;
     }
         .nav-section {
             width: 30vw;
+            padding-left: 10px;
         }
-            .navmap-container {
-                padding: 10px;
-            }
             .products-buttons-container {
                 display: none;
             }
             .products-nav {
                 display: flex;
             }
+                .view-options,
+                .filter-groups {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    width: 80%;
+                }
+                    .order-view {
+                        display: flex;
+                        width: 100%;
+                        justify-content: flex-start;
+                    }
+                        .order-view .order {
+                            margin-right: 10px;
+                        }
+                .filter-groups {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 30px;
+                }
+                    .filter-category,
+                    .filter-discount,
+                    .filter-delivery {
+                        margin: 10px 0;
+                    }
+                        .filter-category h2,
+                        .filter-discount h2,
+                        .filter-delivery h2 {
+                            margin: 10px 0;
+                        }
+                        .filter-category h3 {
+                            font-size: 1rem;
+                        }
         .products-section {
             width: 70vw;
         }
+            .products-section article {
+                width: 30%;
+            }
 }
