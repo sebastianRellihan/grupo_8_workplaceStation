@@ -3,26 +3,20 @@ const app = express();
 
 // Imports de routers
 const mainRoutes = require("./routes/mainRoutes");
-
-const PORT = 3000;
+const usersRouter = require("./routes/usersRoutes");
 
 // Configuración de express/app
 
 app.use(express.static("public")); // Declaración de carpeta estática
 
+const PORT = 3000;
 app.listen(PORT, () => console.log("Servidor funcionando en el puerto " + PORT));
 
 // Direccionamiento
 
 app.use("/", mainRoutes);
 
-app.get("/register", (req, res) => {
-    res.sendFile(__dirname + "/views/register.html");
-});
-
-app.get("/login", (req, res) => {
-    res.sendFile(__dirname + "/views/login.html");
-});
+app.use("/users", usersRouter);
 
 app.get("/products", (req, res) => {
     res.sendFile(__dirname + "/views/products.html");
