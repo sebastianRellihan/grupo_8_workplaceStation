@@ -23,3 +23,21 @@
     - Apurarse para resolver el sprint sin tener bien claras las ideas.
 
 ### Conclusión: Nos manejamos muy bien entre nosotros para la resolución del primer sprint y tratamos de utilizar las herramientas otorgadas para organizarnos de la mejor forma. Notamos que nos sirvieron, pero que podríamos haber hecho un mejor uso de las mismas. Además, notamos que al reunirnos nos ibamos mucho por las ramas y que tenemos que empezar a priorizar de antemano los temas que vayamos a abordar en cada reunión. 
+
+## Sprint 2 - HTML & CSS
+1. Comenzar a hacer:
+    - Comenzar a hacer los commits más cortos
+    - Comenzar a hacer daily por slack
+    - Modificar los mensajes de los commits de los merge, que son automaticos, y ser más específicos
+2. Hacer más:
+    - Hacer más tarjetas en trello 
+    - Darnos feedbacks entre nosotros sobre lo que hizo cada uno
+3. Continuar haciendo:
+    - Revisar las vistas y ver que podemos mejorar, o ir puliendo, en cuanto a diseño
+    - Dejar las tareas plasmadas en tarjetas de trello
+    - Continuar utilizando Whatsapp como medio de comunicación
+    - Ser flexibles en cuanto al diseño y los cambios
+4. Hacer menos:
+    - Avanzar sin dejar por sentado lo que estamos haciendo en Trello
+5. Dejar de hacer:
+    - Dejar de hacer commits que abarquen muchos cambios
