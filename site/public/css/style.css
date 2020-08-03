@@ -887,6 +887,7 @@ footer {
 }
 
 @media (min-width: 768px){ /* Diseño para tablets */
+    /* HEADER */
     .site-header {
         justify-content: space-between;
         width: 100%;
@@ -1013,6 +1014,12 @@ footer {
             width: 100%;
             bottom: 0;
         }
+    /* INDEX */
+    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 5px;
+        color: var(--text-dark-gray);
+    }
     /* FORMULARIOS DE REGISTRO Y LOGIN */
     .main-form-container{
         width: 50%;
