@@ -1,23 +1,20 @@
 const express = require("express");
 const app = express();
 
-// Imports de routers
-const mainRoutes = require("./routes/mainRoutes");
-const usersRouter = require("./routes/usersRoutes");
-const productsRoutes = require("./routes/productsRoutes");
-
-// Configuración de express/app
-
+// Configuración
 app.use(express.static("public")); // Declaración de carpeta estática
 
-// Direccionamiento
+// Rutas
+const mainRoutes = require("./routes/main");
+const usersRoutes = require("./routes/users");
+const productsRoutes = require("./routes/products");
 
 app.use("/", mainRoutes);
 
-app.use("/users", usersRouter);
+app.use("/users", usersRoutes);
 
 app.use("/products", productsRoutes);
 
-// Puerto en el que se está "escuchando"
+// Servidor
 const PORT = 3000;
 app.listen(PORT, () => console.log("Servidor funcionando en el puerto " + PORT));
