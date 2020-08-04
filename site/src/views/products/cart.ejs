@@ -14,52 +14,22 @@
         <h1>Carrito de compras</h1>
         <section class="cart-container">
             <div class="cart-products">
-                <article class="cart-item">
-                    <img src="/img/our-products-chair.jpg" alt="">
-                    <div class="cart-item-info">
-                        <h2>Titulo de producto</h2>
-                        <p><span>$10.000</span></p>
-                        <div class="cart-item-actions">
-                            <div class="quantity-selector">
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
-                            </div>
-                            <button class="cart-actions-empty">Eliminar</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="cart-item">
-                    <img src="/img/our-products-chair.jpg" alt="">
-                    <div class="cart-item-info">
-                        <h2>Titulo de producto</h2>
-                        <p><span>$10.000</span></p>
-                        <div class="cart-item-actions">
-                            <div class="quantity-selector">
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
-                            </div>
-                            <button class="cart-actions-empty">Eliminar</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="cart-item">
-                    <img src="/img/our-products-chair.jpg" alt="">
-                    <div class="cart-item-info">
-                        <h2>Titulo de producto</h2>
-                        <p><span>$10.000</span></p>
-                        <div class="cart-item-actions">
-                            <div class="quantity-selector">
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
-                            </div>
-                            <button class="cart-actions-empty">Eliminar</button>
-                        </div>
-                    </div>
-                </article>
-            </div>
+
+                <%/*
+                    Cargado de productos a través de sus partials a modo ilustrativo. 
+                    La idea es que en un futuro se provea de un array que contenga todos los 
+                    productos a ser cargados de modo que se recorra este array imprimiendo todos 
+                    sus valores.
+                */%>
+                <%- include("../partials/cart-item", {imageSrc: "/img/our-products-chair.jpg",
+                    productTitle: "Título del producto", price: 10000, productQuantity: 1}) %> 
+
+                <%- include("../partials/cart-item", {imageSrc: "/img/our-products-chair.jpg",
+                productTitle: "Título del producto", price: 10000, productQuantity: 1}) %> 
+
+                <%- include("../partials/cart-item", {imageSrc: "/img/our-products-chair.jpg",
+                productTitle: "Título del producto", price: 10000, productQuantity: 1}) %> 
+                
             <div class="cart-summary">
                 <div class="cart-summary-note-container">
                     <span>Agregar nota de orden:</span>
