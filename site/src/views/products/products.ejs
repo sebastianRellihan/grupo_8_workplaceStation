@@ -125,81 +125,39 @@
         </section>
 
         <section class="products-section">
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$10.000</span>
-                        <span class="products-section-info-discount">50% off</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$8.000</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$5.000</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$10.000</span>
-                        <span class="products-section-info-discount">50% off</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$8.000</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$8.000</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$10.000</span>
-                        <span class="products-section-info-discount">50% off</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
-            <article>
-                <a href="/products/detail">
-                    <img src="/img/our-products-desks.jpg" alt="Imagen ilustrativa de un producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$5.000</span>
-                    </div>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </a>
-            </article>
+
+            <%/*
+                Partials de los productos a modo ilustrativo. En un futu re sa a iterar sobre
+                un array de productos según las necesidades de la búsqueda.
+            */%>
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 10000, hasDiscount: true,
+                discount: 50}) %> 
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 8000, hasDiscount: false}) %>
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 5000, hasDiscount: false}) %>
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 10000, hasDiscount: true,
+                discount: 50}) %>
+            
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 8000, hasDiscount: false}) %>
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 8000, hasDiscount: false}) %>
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 10000, hasDiscount: true,
+                discount: 50}) %>             
+
+            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
+                productTitle: "Título del producto", price: 5000, hasDiscount: false}) %>
+
         </section>
 
     </main>

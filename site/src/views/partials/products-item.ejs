@@ -1,0 +1,23 @@
+<%/*
+    Partial correspondiente a cada artículo a ser mostrado en la sección de productos.
+    Variables necesarias:
+    {string - url} imageSrc - URL de la imagen, teniendo en cuenta que esta comienza dentro de la
+                              carpeta PUBLIC. Por ejemplo: "/img/imagen-del.producto.jpg"
+    {string} productTitle - Título del producto
+    {number >= 0} price - Precio del producto
+    {boolean} hasDiscount - Determina si el producto tiene descuentos vigentes o no
+    {number (>= a 0 y <= a 100), entero} discount - Procentaje del descuento
+*/%>
+
+<article>
+    <a href="/products/detail">
+        <img src="<%= imageSrc %>" alt="Imagen ilustrativa del producto">
+        <div class="products-section-info">
+            <span class="products-section-info-price">$<%= price %></span>
+            <% if(hasDiscount) { %>
+                <span class="products-section-info-discount"><%= discount %>% off</span>
+            <% } %>
+        </div>
+        <h2><%= productTitle %></h2>
+    </a>
+</article>
