@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<!-- Import del HEAD del documento -->
+<%# Import del HEAD del documento %>
 <%- include("../partials/head", {usesBootstrap: true, title: "Workplace Station - Detalle del producto",
     description: "¡En Workplace Station te ofrecemos todo lo necesario para armar tu estación de trabajo! ¡Formá parte de nuestra plataforma y tené acceso a todos nuestros productos!",
     keywords: "Workplace Station, detalle del producto, previsualización"})%>
 
 <body>
-    
+    <%# Import del HADER %>
     <%- include("../partials/header") %>
 
     <main class="main-product-detail">
@@ -104,7 +104,7 @@
         </section>
     </main>
     
-    <!-- Import del footer -->
+    <%# Import del footer %>
     <%- include("../partials/footer") %>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

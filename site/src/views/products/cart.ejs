@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<!-- Import del HEAD del documento -->
+<%# Import del HEAD del documento %>
 <%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Carrito de compras",
     description: "¿Ya encontraste lo que buscabas? ¡El producto se encuentra a un sólo click de distancia!",
     keywords: "Workplace Station, carrito de compras"}) %> 
 
 <body>
-
+    <%# Import del HADER %>
     <%- include("../partials/header") %>
     
     <main class="main-cart">
@@ -74,7 +74,7 @@
         </section>
     </main>
 
-    <!-- Import del footer -->
+    <%# Import del footer %>
     <%- include("../partials/footer") %>
 
 </body>
