@@ -6,16 +6,16 @@
 const path = require("path");
 
 module.exports = {
+    /** Envía la vista principal de todos los productos (products.ejs) */
     index: (req, res) => {
-        let fileDir = path.join(__dirname, "../views/products.html");
-        res.sendFile(fileDir);
+        res.render("products/products");
     },
+    /** Envía la vista del detalle de producto (product-detail.ejs) */
     detail: (req, res) => {
-        let fileDir = path.join(__dirname, "../views/product-detail.html");
-        res.sendFile(fileDir);
+        res.render("products/product-detail");
     },
+    /** Envía la vista del carrito de productos seleccionados (cart.ejs) */
     cart: (req, res) => {
-        let fileDir = path.join(__dirname, "../views/cart.html");
-        res.sendFile(fileDir);
+        res.render("products/cart");
     }
 }

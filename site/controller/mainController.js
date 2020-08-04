@@ -6,16 +6,12 @@
 const path = require("path");
 
 module.exports = {
-
-    /** Retorna la vista principal (index.html) obtenida por el método GET */
+    /** Envía la vista principal (index.ejs) */
     index: (req, res) => {
-        let fileDir = path.join(__dirname, "..", "views", "index.html")
-        res.sendFile(fileDir);
+        res.render("index/index");
     },
-
-    /** Retorna la vista de "sobre nosotros" (about-us.html) obtenida por medio del método GET */
+    /** Envía la vista de "quienes somos" (about-us.ejs) */
     aboutUs: (req, res) => {
         // TODO: Enviar la vista de "about-us" una vez que esté creada
     }
-
 }
