@@ -3,6 +3,7 @@ const app = express();
 
 // Configuración
 app.use(express.static("public")); // Declaración de carpeta estática
+app.set("view engine", "ejs"); // Le indica a express el template engine que se va a utilizar
 
 // Rutas
 const mainRoutes = require("./routes/main");
