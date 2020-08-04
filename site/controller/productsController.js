@@ -12,7 +12,7 @@ module.exports = {
     },
     /** Envía la vista del detalle de producto (product-detail.ejs) */
     detail: (req, res) => {
-        res.render("products/product-detail");
+        res.render("products/detail");
     },
     /** Envía la vista del carrito de productos seleccionados (cart.ejs) */
     cart: (req, res) => {
