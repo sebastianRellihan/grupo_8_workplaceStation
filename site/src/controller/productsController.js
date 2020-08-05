@@ -14,10 +14,17 @@ module.exports = {
     index: (req, res) => {
         res.render("products/products", {products: dataObject});
     },
+
     /** Envía la vista del detalle de producto (product-detail.ejs) */
     detail: (req, res) => {
-        res.render("products/detail");
+        // Busca el producto al cual le corresponda ese id y se lo manda a la vista
+        let product  = dataObject.find(element => {
+            return element.id == req.params.id;
+        });
+
+        res.render("products/detail", {product : product});
     },
+
     /** Envía la vista del carrito de productos seleccionados (cart.ejs) */
     cart: (req, res) => {
         res.render("products/cart");
