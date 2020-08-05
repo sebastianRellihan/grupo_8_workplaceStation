@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "startdev": "nodemon src/app.js -e js,ejs,css"
+    "startdev": "nodemon src/app.js -e js,ejs,css,json"
   },
   "keywords": [
     "WorkPlace",
