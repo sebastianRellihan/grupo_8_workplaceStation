@@ -1,0 +1,58 @@
+[
+    {
+        "id" : 1,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 10000,
+        "discountPercent" : 50
+    },
+    {
+        "id" : 2,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 8000,
+        "discountPercent" : 0
+    },
+    {
+        "id" : 3,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 5000,
+        "discountPercent" : 0
+    },
+    {
+        "id" : 4,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 10000,
+        "discountPercent" : 50
+    },
+    {
+        "id" : 5,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 8000,
+        "discountPercent" : 0
+    },
+    {
+        "id" : 6,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 5000,
+        "discountPercent" : 0
+    },
+    {
+        "id" : 7,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 10000,
+        "discountPercent" : 50
+    },
+    {
+        "id" : 8,
+        "title" : "Título del producto",
+        "imageSrc" : "/img/our-products-desks.jpg",
+        "price" : 8000,
+        "discountPercent" : 0
+    }
+]
