@@ -725,7 +725,6 @@ footer {
             align-items: center;
             justify-content: space-around;
             min-height: 5vh;
-            width: 100%;
         }
             .cart-container .cart-actions button,
             .cart-container .cart-actions .action-button {
