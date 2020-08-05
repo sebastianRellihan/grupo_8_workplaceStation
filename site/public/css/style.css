@@ -350,6 +350,23 @@ footer {
         height: 100%;
         overflow: auto;
     }
+    .about-us-home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 10px;
+    }
+        .about-us-home article {
+            display: inherit;
+            flex-direction: column;
+            justify-content: center;
+            width: 90%;
+        }
+            .about-us-home .action-button {
+                width: 30%;
+                align-self: center;
+            }
     .why-us {
         padding: 10px;
         text-align: center;
@@ -396,8 +413,7 @@ footer {
             color: var(--title-dark-blue);
             font-family: var(--title-font);
         }
-        .our-products article,
-        .about-us-section article {
+        .our-products article {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -424,13 +440,7 @@ footer {
                 background-image: url(/img/our-products-accesories.jpg);
                 background-size: cover;
             }
-            .about-us-section article{
-                margin-top: 5vh;
-                background-image: url(/img/imagotipo-workplace-station.jpg);
-                background-size: cover;
-            }
-                .our-products article h3,
-                .about-us-section article h2{
+                .our-products article h3 {
                     padding: 5px;
                     margin: 10px;
 
@@ -443,13 +453,13 @@ footer {
                     box-shadow: 3px 3px 5px rgba(0,0,0,0.35);
                 }
                 .our-products article button, 
-                .about-us-section article button {
+                .about-us-home article button {
                     width: auto;
                     margin: 10px;
                     padding: 5px;
                 }
                     .our-products article button a,
-                    .about-us-section article button a{
+                    .about-us-home article button a{
                         color: var(--text-light);
                         font-family: var(--title-font);
                         font-weight: 600;
