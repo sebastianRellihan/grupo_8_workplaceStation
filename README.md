@@ -1,4 +1,4 @@
-# Workplace Station  <img src="design\logo\isotipo-workplace-station.png" alt="imagotipo workplace station" width="25" /> 
+# Workplace Station  <img src="project\design\logo\isotipo-workplace-station.png" alt="imagotipo workplace station" width="25" /> 
 
 > _Este repositorio corresponde al proyecto integrador del curso de_ [desarrollo Web Full-Stack en Node](https://www.digitalhouse.com/ar/curso/programacion-web-full-stack) _de la organización educativa_  [Digital House](https://www.digitalhouse.com/ar), **grupo** :8ball:
 
