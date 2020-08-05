@@ -355,8 +355,11 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 30px 10px;
+        padding: 10px 10px 20px 10px;
     }
+        .main-index .about-us-home h2 {
+            margin-bottom: 20px;
+        }
         .about-us-home article {
             display: inherit;
             flex-direction: column;
@@ -722,6 +725,7 @@ footer {
             align-items: center;
             justify-content: space-around;
             min-height: 5vh;
+            width: 100%;
         }
             .cart-container .cart-actions button,
             .cart-container .cart-actions .action-button {
