@@ -1155,16 +1155,6 @@ footer {
                     margin-right: 30px;
                     background-size: contain;
                 }
-                /* Provisional, muy probablemente haya cambios desde el back-end... */
-                #carouselExampleIndicators ol li:first-child{
-                    background-image: url("/img/our-products-chair.jpg");
-                }
-                #carouselExampleIndicators ol li:nth-child(2){
-                    background-image: url("/img/our-products-desks.jpg");
-                }
-                #carouselExampleIndicators ol li:nth-child(3){
-                    background-image: url("/img/our-products-workplace-station.jpg");
-                }
         .product-info{ 
             width: 50%; 
             position: absolute;
