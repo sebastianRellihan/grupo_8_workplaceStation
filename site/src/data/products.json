@@ -3,8 +3,11 @@
         "id" : 1,
         "title" : "Título del producto",
         "imageSrc" : "/img/our-products-desks.jpg",
+        "secondImageSrc" : "/img/our-products-accesories.jpg",
+        "thirdImageSrc" : "/img/our-products-chair.jpg",
         "price" : 10000,
         "discountPercent" : 50,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -12,9 +15,12 @@
     {
         "id" : 2,
         "title" : "Título del producto",
-        "imageSrc" : "/img/our-products-desks.jpg",
+        "imageSrc" : "/img/our-products-chair.jpg",
+        "secondImageSrc" : "/img/our-products-desks.jpg",
+        "thirdImageSrc" : "/img/our-products-workplace-station.jpg",
         "price" : 8000,
         "discountPercent" : 0,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -22,9 +28,12 @@
     {
         "id" : 3,
         "title" : "Título del producto",
-        "imageSrc" : "/img/our-products-desks.jpg",
+        "imageSrc" : "/img/our-products-workplace-station.jpg",
+        "secondImageSrc" : "/img/our-products-accesories.jpg",
+        "thirdImageSrc" : "/img/our-products-chair.jpg",
         "price" : 5000,
         "discountPercent" : 0,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -32,9 +41,12 @@
     {
         "id" : 4,
         "title" : "Título del producto",
-        "imageSrc" : "/img/our-products-desks.jpg",
+        "imageSrc" : "/img/our-products-accesories.jpg",
+        "secondImageSrc" : "/img/our-products-workplace-station.jpg",
+        "thirdImageSrc" : "/img/our-products-desks.jpg",
         "price" : 10000,
         "discountPercent" : 50,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -43,8 +55,11 @@
         "id" : 5,
         "title" : "Título del producto",
         "imageSrc" : "/img/our-products-desks.jpg",
+        "secondImageSrc" : "",
+        "thirdImageSrc" : "",
         "price" : 8000,
         "discountPercent" : 0,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -52,9 +67,12 @@
     {
         "id" : 6,
         "title" : "Título del producto",
-        "imageSrc" : "/img/our-products-desks.jpg",
+        "imageSrc" : "/img/our-products-workplace-station.jpg",
+        "secondImageSrc" : "/img/our-products-desks.jpg",
+        "thirdImageSrc" : "",
         "price" : 5000,
         "discountPercent" : 0,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -63,8 +81,11 @@
         "id" : 7,
         "title" : "Título del producto",
         "imageSrc" : "/img/our-products-desks.jpg",
+        "secondImageSrc" : "/img/our-products-workplace-station.jpg",
+        "thirdImageSrc" : "",
         "price" : 10000,
         "discountPercent" : 50,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -73,8 +94,11 @@
         "id" : 8,
         "title" : "Título del producto",
         "imageSrc" : "/img/our-products-desks.jpg",
+        "secondImageSrc" : "/img/our-products-accesories.jpg",
+        "thirdImageSrc" : "/img/our-products-chair.jpg",
         "price" : 8000,
         "discountPercent" : 0,
+        "cathegory" : "Genérico",
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
