@@ -126,37 +126,27 @@
 
         <section class="products-section">
 
-            <%/*
-                Partials de los productos a modo ilustrativo. En un futu re sa a iterar sobre
-                un array de productos según las necesidades de la búsqueda.
-            */%>
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 10000, hasDiscount: true,
-                discount: 50}) %> 
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 8000, hasDiscount: false}) %>
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 5000, hasDiscount: false}) %>
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 10000, hasDiscount: true,
-                discount: 50}) %>
-            
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 8000, hasDiscount: false}) %>
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 8000, hasDiscount: false}) %>
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 10000, hasDiscount: true,
-                discount: 50}) %>             
-
-            <%- include("../partials/products-item", {imageSrc: "/img/our-products-desks.jpg",
-                productTitle: "Título del producto", price: 5000, hasDiscount: false}) %>
+            <%# Los datos se envía a esta vista dentro de un array de objetos literales llamado "products" %>
+            <% if(products.length != 0) { %>
+                <% products.forEach(product => { %>
+                    
+                    <article>
+                        <a href="/products/detail/:<%= product.id %> ">
+                            <img src="<%= product.imageSrc %>" alt="Imagen ilustrativa del producto">
+                            <div class="products-section-info">
+                                <span class="products-section-info-price">$<%= product.price %></span>
+                                <% if(product.discountPercent > 0) { %>
+                                    <span class="products-section-info-discount"><%= product.discountPercent %>% off</span>
+                                <% } %>
+                            </div>
+                            <h2><%= product.title %></h2>
+                        </a>
+                    </article>
+        
+                <% }); %>
+            <% } else { %> 
+                <h1>¡UPS! ¡No hubo coincidencias!</h1>
+            <% } %> 
 
         </section>
 
