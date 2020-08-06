@@ -27,7 +27,10 @@ module.exports = {
 
     // Envía la vista del carrito de productos seleccionados (cart.ejs) 
     cart: (req, res) => {
-        res.render("products/cart");
+        // La razón por la que se envían todos los productos es para realizar el diseño,
+        // una vez se tenga accesso a la sesión HTTP se podrá enviar los productos que hayan
+        // sido añadidos al carrito por el usuario
+        res.render("products/cart", {products : dataObject});
     }, 
 
     // Envía la vista del formulario de carga de productos
