@@ -512,6 +512,9 @@ footer {
                 text-decoration: none;
                 color: var(--title-dark-blue);
             }
+                .form-container form a:hover {
+                    text-decoration: underline;
+                }
             .form-container form .checkable-container{
                 margin-bottom: 10px;
                 color: var(--title-dark-blue);
