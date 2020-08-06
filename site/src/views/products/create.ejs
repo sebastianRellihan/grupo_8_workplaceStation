@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%# Import del HEAD del documento %>
+<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Creación Productos",
+    description: "Formulario de creación de productos",
+    keywords: "Workplace Station, formulario, creación, productos"}) %>
+
+<body>
+    <%# Import del HADER %>
+    <%- include("../partials/header") %>
+
+    <main class="main-form-container create-form-container">
+        <div class="form-container">
+            <h1> Carga de producto <i class="fas fa-clipboard-list"></i></i></h1>
+            <form action="" method="POST">
+
+                <label for="name" class="input-label">NOMBRE:</label>
+                <input type="text" class="input-text" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
+                    autocomplete="true" required>
+                
+                <label for="briefDescription" class="input-label">DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
+                <input type="text" class="input-text" name="briefDescription" id="briefDescription" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." 
+                    autocomplete="true" required>
+                
+                <label for="price" class="input-label">PRECIO:</label>
+                <input type="number" class="input-text" name="price" id="price" placeholder="$" 
+                autocomplete="true" required>
+
+                <label for="discount" class="input-label">DESCUENTO:</label>
+                <select name="discount" id="discount" class="input-text">
+                    <option value="5">5 %</option>
+                    <option value="10">10 %</option>
+                    <option value="15">15 %</option>
+                    <option value="20">20 %</option>
+                    <option value="25">25 %</option>
+                    <option value="30">30 %</option>
+                    <option value="35">35 %</option>
+                    <option value="40">40 %</option>
+                    <option value="45">45 %</option>
+                    <option value="50">50 %</option>
+                </select>
+
+                <label for="stock" class="input-label">STOCK:</label>
+                <input type="number" class="input-text" name="stock" id="stock" placeholder="Ej: 10" 
+                autocomplete="true" required>
+
+                <label for="color" class="input-label">COLOR:</label>
+                <input type="color" class="input-text" name="color" id="color">
+
+                <label for="category" class="input-label">CATEGORY:</label>
+                <select name="category" id="category" class="input-text">
+                    <option value="ws">Estaciones de trabajo</option>
+                    <option value="desk">Escritorios</option>
+                    <option value="chair">Sillas</option>
+                    <option value="accesories">Accesorios</option>
+                </select>
+
+                <label for="image">CARGAR IMÁGENES:</label>
+                <input type="file" name="image" id="image">
+
+                <label for="description" class="input-label">DESCRIPCIÓN:</label>
+                <input type="text" class="input-text" name="description" id="description" placeholder="Descripción..." 
+                    autocomplete="true" required>
+
+                <label for="aditionalInfo" class="input-label">INFORMACIÓN ADICIONAL:</label>
+                <input type="text" class="input-text" name="aditionalInfo" id="aditionalInfo" placeholder="Información adicional..." 
+                    autocomplete="true">
+            </form>
+        </div>
+    </main>
+</body>
+</html>
