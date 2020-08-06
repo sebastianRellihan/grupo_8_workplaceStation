@@ -15,27 +15,54 @@
         <section class="cart-container">
             <div class="cart-products">
 
-                <%/*
-                    Cargado de productos a través de sus partials a modo ilustrativo. 
-                    La idea es que en un futuro se provea de un array que contenga todos los 
-                    productos a ser cargados de modo que se recorra este array imprimiendo todos 
-                    sus valores.
-                */%>
-                <%- include("../partials/cart-item", {imageSrc: "/img/our-products-chair.jpg",
-                    productTitle: "Título del producto", price: 10000, productQuantity: 1}) %> 
+                <% if(Array.isArray(products) && products.length != 0){ %>
+                    <% products.forEach( product => { %>
 
-                <%- include("../partials/cart-item", {imageSrc: "/img/our-products-chair.jpg",
-                productTitle: "Título del producto", price: 10000, productQuantity: 1}) %> 
+                        <article class="cart-item">
+                            <img src="<%= product.imageSrc %>" alt="<%= product.shortDescription %>">
+                            <div class="cart-item-info">
+                                <h2><%= product.title %></h2>
+                                <p><span>$<%= product.price %></span></p>
+                                <div class="cart-item-actions">
+                                    <div class="quantity-selector">
+                                        <button>-</button>
+                                        <span>1</span>
+                                        <button>+</button>
+                                    </div>
+                                    <button class="cart-actions-empty">Eliminar</button>
+                                </div>
+                            </div>
+                        </article>
 
-                <%- include("../partials/cart-item", {imageSrc: "/img/our-products-chair.jpg",
-                productTitle: "Título del producto", price: 10000, productQuantity: 1}) %> 
+                    <% }); %>
+                <% } else { %>
+                    <h1>Aún no se agregaron productos...</h1>
+                <% } %>
+
             </div>   
             <div class="cart-summary">
                 <div class="cart-summary-note-container">
                     <span>Agregar nota de orden:</span>
                     <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."></textarea>
                 </div>
-                <p>Total: <span>$10.000</span></p>
+                <% 
+                    /* 
+                     * Calcula el valor total de los productos.
+                     * Cuando se pueda acceder a variables definidas por el usuario,
+                     * se va a tener en cuenta el multiplicador de la cantidad que
+                     * se desea comprar.
+                     */
+                    var total = products.reduce((acum, element) => {
+                        
+                        if(element.discountPercent == 0){
+                            return acum + element.price;
+                        } else { // Aplica el descuento si lo hay
+                            return acum + element.price * (element.discountPercent / 100); 
+                        }
+
+                    }, 0); // El 0 es el valor inicial del acumulador
+                %>
+                <p>Total: <span>$<%= total %></span></p>
             </div>
             <div class="cart-actions">
                 <button class="action-button">Comprar</button>
