@@ -13,9 +13,8 @@
     <main class="main-cart">
         <h1>Carrito de compras</h1>
         <section class="cart-container">
-            <div class="cart-products">
-
-                <% if(Array.isArray(products) && products.length != 0){ %>
+            <% if(Array.isArray(products) && products.length != 0){ %>
+                <div class="cart-products">
                     <% products.forEach( product => { %>
 
                         <article class="cart-item">
@@ -35,39 +34,45 @@
                         </article>
 
                     <% }); %>
-                <% } else { %>
-                    <h1>Aún no se agregaron productos...</h1>
-                <% } %>
+                </div>   
+                <div class="cart-summary">
+                    <div class="cart-summary-note-container">
+                        <span>Agregar nota de orden:</span>
+                        <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."></textarea>
+                    </div>
+                    <% 
+                        /* 
+                        * Calcula el valor total de los productos.
+                        * Cuando se pueda acceder a variables definidas por el usuario,
+                        * se va a tener en cuenta el multiplicador de la cantidad que
+                        * se desea comprar.
+                        */
+                        var total = products.reduce((acum, element) => {
+                            
+                            if(element.discountPercent == 0){
+                                return acum + element.price;
+                            } else { // Aplica el descuento si lo hay
+                                return acum + element.price * (element.discountPercent / 100); 
+                            }
 
-            </div>   
-            <div class="cart-summary">
-                <div class="cart-summary-note-container">
-                    <span>Agregar nota de orden:</span>
-                    <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."></textarea>
+                        }, 0); // El 0 es el valor inicial del acumulador
+                    %>
+                    <p>Total: <span>$<%= total %></span></p>
                 </div>
-                <% 
-                    /* 
-                     * Calcula el valor total de los productos.
-                     * Cuando se pueda acceder a variables definidas por el usuario,
-                     * se va a tener en cuenta el multiplicador de la cantidad que
-                     * se desea comprar.
-                     */
-                    var total = products.reduce((acum, element) => {
-                        
-                        if(element.discountPercent == 0){
-                            return acum + element.price;
-                        } else { // Aplica el descuento si lo hay
-                            return acum + element.price * (element.discountPercent / 100); 
-                        }
-
-                    }, 0); // El 0 es el valor inicial del acumulador
-                %>
-                <p>Total: <span>$<%= total %></span></p>
-            </div>
-            <div class="cart-actions">
-                <button class="action-button">Comprar</button>
-                <button class="cart-actions-empty">Vaciar carrito</button>
-            </div>
+                <div class="cart-actions">
+                    <button class="action-button">Comprar</button>
+                    <button class="cart-actions-empty">Vaciar carrito</button>
+                </div>
+            <% } else { %>
+                <div class="empty-cart-section">
+                    <img src="/img/sad-empty-cart.png" alt="Un carrito triste">
+                    <h2>Aún no se agregaron productos...</h2>
+                    <p>
+                        ¡Pero eso tiene solución! ¡Te invitamos a ver nuestros
+                        <a href="/products">productos</a>!
+                    </p>
+                </div>
+            <% } %>
         </section>
     </main>
 
