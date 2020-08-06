@@ -10,12 +10,12 @@ let dataJSON = fs.readFileSync(path.join(__dirname, "..", "data", "products.json
 let dataObject = JSON.parse(dataJSON);
 
 module.exports = {
-    /** Envía la vista principal de todos los productos (products.ejs) */
+    // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
         res.render("products/products", {products: dataObject});
     },
 
-    /** Envía la vista del detalle de producto (product-detail.ejs) */
+    // Envía la vista del detalle de producto (product-detail.ejs)
     detail: (req, res) => {
         // Busca el producto al cual le corresponda ese id y se lo manda a la vista
         let product  = dataObject.find(element => {
@@ -25,8 +25,13 @@ module.exports = {
         res.render("products/detail", {product : product});
     },
 
-    /** Envía la vista del carrito de productos seleccionados (cart.ejs) */
+    // Envía la vista del carrito de productos seleccionados (cart.ejs) 
     cart: (req, res) => {
         res.render("products/cart");
+    }, 
+
+    // Envía la vista del formulario de carga de productos
+    create: (req, res) => {
+        res.render("products/create");
     }
 }
