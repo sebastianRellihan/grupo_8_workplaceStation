@@ -16,7 +16,7 @@ Soy un desarrollador iniciante con algunos conocimientos en diseño web, aplicac
 
 - ### Sebastián Rellihan: 
 
-Soy un joven que se esta iniciando en el mundo del desarrollo web Full-Stack. Tengo conocimiento en desarrollo web front-end y experiencia en diseño.
+Soy un joven curioso y amante de la tecnología que busca formarse como desarrollador. Mi objetivo es desafiarme constantemente y mantener un aprendizaje constante que me permita ampliar mis conocimientos. Cuento con conocimiento previo en desarrollo web front-end, experiencia en diseño y producción audiovisual.
 
 :octocat: [@sebastianRellihan](https://github.com/sebastianRellihan)
 
