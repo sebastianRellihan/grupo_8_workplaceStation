@@ -15,16 +15,16 @@
             <h1> Carga de producto <i class="fas fa-clipboard-list"></i></i></h1>
             <form action="" method="POST">
 
-                <label for="name" class="input-label">* NOMBRE:</label>
+                <label for="name" class="input-label"><span class="asterisk">*</span> NOMBRE:</label>
                 <input type="text" class="input-text" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
                     autocomplete="true" required>
                 
-                <label for="briefDescription" class="input-label">* DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
+                <label for="briefDescription" class="input-label"><span class="asterisk">*</span> DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
                 <textarea name="briefDescription" id="briefDescription" class="input-textarea" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." maxlength="100" required></textarea>
                 
                 <div>
                     <div>
-                        <label for="price" class="input-label">* PRECIO:</label>
+                        <label for="price" class="input-label"><span class="asterisk">*</span> PRECIO:</label>
                         <input type="number" class="input-text" name="price" id="price" placeholder="$" 
                         autocomplete="true" required>
                     </div>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div>
-                        <label for="stock" class="input-label">* STOCK:</label>
+                        <label for="stock" class="input-label"><span class="asterisk">*</span> STOCK:</label>
                         <input type="number" class="input-text" name="stock" id="stock" placeholder="Ej: 10" 
                         autocomplete="true" required>
                     </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 
-                <label for="category" class="input-label">* CATEGORY:</label>
+                <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
                 <select name="category" id="category" class="input-text" required>
                     <option value="ws">Estaciones de trabajo</option>
                     <option value="desk">Escritorios</option>
@@ -66,7 +66,7 @@
                     <option value="accesories">Accesorios</option>
                 </select>
 
-                <label for="image">* CARGAR IMÁGENES:</label>
+                <label for="image" class="input-label"><span class="asterisk">*</span> CARGAR IMÁGENES:</label>
                 <label class="action-button">
                     <input type="file" name="image" id="imagesUpload" multiple required>
                     Seleccionar
@@ -78,7 +78,7 @@
                 <label for="aditionalInfo" class="input-label">INFORMACIÓN ADICIONAL:</label>
                 <textarea name="aditionalInfo" id="aditionalInfo" class="input-textarea" placeholder="Información adicional..." rows="4"></textarea>
 
-                <p class="input-label">Los campos indicados con * son obligatorios.</p>
+                <p class="input-label">Los campos indicados con <span class="asterisk">*</span> son obligatorios.</p>
 
                 <button type="submit" class="action-button">Enviar</button>
                 <button type="reset" class="action-button">Resetear</button>
