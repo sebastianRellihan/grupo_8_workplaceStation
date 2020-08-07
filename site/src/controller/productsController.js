@@ -36,5 +36,10 @@ module.exports = {
     // Envía la vista del formulario de carga de productos
     create: (req, res) => {
         res.render("products/create");
-    }
+    },
+
+    // Envía la vista del formulario de carga de productos
+    edit: (req, res) => {
+        res.render("products/edit");
+    },
 }
