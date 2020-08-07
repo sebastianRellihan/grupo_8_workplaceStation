@@ -102,5 +102,18 @@
         "shortDescription" : "Molestias provident impedit tempore?",
         "detailedDescription" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo" : "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 9,
+        "name": "Prueba",
+        "briefDescription": "probando probando",
+        "price": "1000",
+        "discount": "15",
+        "stock": "10",
+        "color": "¿?",
+        "category": "ws",
+        "image": "¿path/s?",
+        "description": "qwertyuiop qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop qwertyuiop ",
+        "aditionalInfo": "qwertyuiop qwertyuiop qwertyuiop qwertyuiop qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop "
     }
 ]
