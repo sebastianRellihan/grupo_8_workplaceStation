@@ -46,4 +46,25 @@ module.exports = {
         
         res.render("products/edit", {product : product});
     },
+
+    store: (req, res) => {
+        console.log(req.body);
+        let product = {
+            id: dataObject.length + 1,
+            name:req.body.name,
+            briefDescription: req.body.briefDescription,
+            price: req.body.price,
+            discount:req.body.discount,
+            stock: req.body.stock,
+            color:null,
+            category:req.body.category,
+            image: null,
+            description: req.body.description,
+            aditionalInfo: req.body.aditionalInfo
+        }
+        dataObject.push(product);
+        dataObject = JSON.stringify(dataObject, null, " ")
+        fs.writeFileSync(path.join(__dirname, "..", "data", "products.json"), dataObject);
+        res.redirect("/products");
+    }
 }
