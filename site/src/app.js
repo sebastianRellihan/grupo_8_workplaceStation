@@ -6,6 +6,8 @@ const path = require("path");
 app.use(express.static("public")); // Declaración de carpeta estática
 app.set("view engine", "ejs"); // Le indica a express el template engine que se va a utilizar
 app.set("views", path.join(__dirname, '/views')); // Le indicamos a express donde está la carpeta views
+app.use(express.urlencoded({ extended: false })); 
+app.use(express.json()) 
 
 // Rutas
 const mainRoutes = require("./routes/main");
