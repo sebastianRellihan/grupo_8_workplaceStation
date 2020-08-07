@@ -19,41 +19,41 @@
                 <span> / </span>
                 <a href="">Productos</a>
                 <span> / </span>
-                <a href=""><%= product.cathegory %></a>
+                <a href=""><%= product.category %></a>
                 <span> / </span>
-                <a href=""><%= product.title %> </a>
+                <a href=""><%= product.name %> </a>
             </div>
 
             <section class="product-template">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"
-                            style="background-image: url('<%= product.imageSrc %>');"></li>
+                            style="background-image: url('<%= product.image %>');"></li>
                         <%# Sólo se muestran las pestañas en caso de que las imágenes estén disponibles %>
-                        <% if(product.secondImageSrc != "") { %>
+                        <% if(product.secondImage != "") { %>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"
-                                style="background-image: url('<%= product.secondImageSrc %>');"></li>
+                                style="background-image: url('<%= product.secondImage %>');"></li>
                         <% } %>
-                        <% if(product.thirdImageSrc != "") { %>
+                        <% if(product.thirdImage != "") { %>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"
-                                style="background-image: url('<%= product.thirdImageSrc %>');"></li>
+                                style="background-image: url('<%= product.thirdImage %>');"></li>
                         <% } %>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="<%= product.imageSrc %>" class="d-block w-100" 
+                            <img src="<%= product.image %>" class="d-block w-100" 
                             alt="Imagen ilustrativa del producto">
                         </div>
                         <%# Sólo se muestran las imágenes en caso de que estén disponibles %>
-                        <% if(product.secondImageSrc != "") { %>
+                        <% if(product.secondImage != "") { %>
                             <div class="carousel-item">
-                                <img src="<%= product.secondImageSrc %>" class="d-block w-100" 
+                                <img src="<%= product.secondImage %>" class="d-block w-100" 
                                 alt="Imagen ilustrativa del producto">
                             </div>
                         <% } %>
-                        <% if(product.thirdImageSrc != "") { %>
+                        <% if(product.thirdImage != "") { %>
                             <div class="carousel-item">
-                                <img src="<%= product.thirdImageSrc %>" class="d-block w-100" 
+                                <img src="<%= product.thirdImage %>" class="d-block w-100" 
                                 alt="Imagen ilustrativa del producto">
                             </div>
                         <% } %>
@@ -69,9 +69,9 @@
                 </div>
 
                 <div class="product-info">
-                    <h2><%= product.title %></h2>
+                    <h2><%= product.name %></h2>
                     <p>$<%= product.price %></p>
-                    <p><%= product.shortDescription %></p>
+                    <p><%= product.briefDescription %></p>
                 </div>
                 <div class="product-more-info">
                     <!-- Bootstrap collapse acordion -->
@@ -86,7 +86,7 @@
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                 <div class="card-body">
-                                    <%= product.detailedDescription %>
+                                    <%= product.description %>
                                 </div>
                             </div>
                         </div>

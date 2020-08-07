@@ -132,14 +132,14 @@
                     
                     <article>
                         <a href="/products/detail/<%= product.id %>">
-                            <img src="<%= product.imageSrc %>" alt="Imagen ilustrativa del producto">
+                            <img src="<%= product.image %>" alt="Imagen ilustrativa del producto">
                             <div class="products-section-info">
                                 <span class="products-section-info-price">$<%= product.price %></span>
-                                <% if(product.discountPercent > 0) { %>
-                                    <span class="products-section-info-discount"><%= product.discountPercent %>% off</span>
+                                <% if(product.discount > 0) { %>
+                                    <span class="products-section-info-discount"><%= product.discount %>% off</span>
                                 <% } %>
                             </div>
-                            <h2><%= product.title %></h2>
+                            <h2><%= product.name %></h2>
                         </a>
                     </article>
         
