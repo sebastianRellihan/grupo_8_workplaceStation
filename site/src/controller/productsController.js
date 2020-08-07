@@ -40,6 +40,10 @@ module.exports = {
 
     // Envía la vista del formulario de carga de productos
     edit: (req, res) => {
-        res.render("products/edit");
+        let product  = dataObject.find(element => {
+            return element.id == req.params.id;
+        });
+        
+        res.render("products/edit", {product : product});
     },
 }

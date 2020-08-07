@@ -15,6 +15,6 @@ router.get("/cart", controller.cart);
 
 router.get("/create", controller.create);
 
-router.get("/edit", controller.edit);
+router.get("/edit/:id", controller.edit);
 
 module.exports = router;
