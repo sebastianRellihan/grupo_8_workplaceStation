@@ -315,7 +315,8 @@ footer {
     font-size: 1em;
     text-align: center;
 }
-.input-text{
+.input-text,
+.input-textarea {
     /* imputs de taxto característicos de la página */
     background-color: var(--logo-color-4);
     box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
@@ -501,7 +502,9 @@ footer {
             flex-direction: column;
             align-items: center;
         }
-            .form-container form input{
+        .form-container form input,
+        .form-container form textarea,
+        .form-container form select {
                 width: 80%;
                 margin-bottom: 15px;
                 padding: 5px 10px;
@@ -549,7 +552,7 @@ footer {
 }
     /* Anula el estilo por defecto del input tipo file y usa una 
        etiqueta con el estilo de los botones de formularios */
-    #profile-photo{ display: none; }
+    #profile-photo, #imagesUpload{ display: none; }
     /* Anulación del estilo por defecto de radio buttons y 
        checboxes y aplicación de estilo propio */
     .checkable-container{
@@ -902,6 +905,14 @@ footer {
             text-align: center;
         } 
 
+/* FORM CARGA PRODUCTOS */
+
+.product-form-container .form-container form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 /* MEDIA QUERIES ------------ */
 
 @media (max-width: 768px) and (orientation: landscape){ /* Correcciones de versión móvil en horizontal */
@@ -1060,7 +1071,7 @@ footer {
         align-self: center;
     }
     .register-form-container, 
-    .create-form-container { width: 90% !important; }
+    .product-form-container { width: 90% !important; }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         width: 80%;
@@ -1160,7 +1171,7 @@ footer {
     /* FORMULARIOS DE REGISTRO Y LOGIN */
     .main-form-container{ width: 30%; }
     .register-form-container, 
-    .create-form-container{ width: 50% !important; }
+    .product-form-container{ width: 50% !important; }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         position: relative;
@@ -1264,4 +1275,16 @@ footer {
             }
     /* CARRITO */
     .main-cart .empty-cart-section img{ width: 60%; }
+    /* FORM PRODUCT CREATE */
+    .product-form-container .form-container form div {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+    }
+        .product-form-container .form-container form div div {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
 }
