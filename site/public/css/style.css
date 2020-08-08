@@ -929,7 +929,7 @@ footer {
         align-self: center;
         margin: 15px;
     }
-    /* SECCIÖN DE PRODUCTOS */
+    /* SECCIÓN DE PRODUCTOS */
     .products-section{
         flex-direction: row;
         justify-content: space-around;
@@ -1153,6 +1153,7 @@ footer {
         .products-section article {
             width: 40%;
         }
+        .products-section article img{ height: 250px; }
 }
 
 @media (min-width: 1024px){ /* Diseño desktop */
@@ -1286,6 +1287,12 @@ footer {
         }
             .products-section article {
                 width: 30%;
+                transition: box-shadow 0.3s, background-color 0.3s;
+                transition-timing-function: ease-out;
+            }
+            .products-section article:hover{
+                box-shadow: 1px 1px 10px 1px var(--logo-color-1);
+                background-color: var(--logo-color-4);
             }
     /* CARRITO */
     .main-cart .empty-cart-section img{ width: 60%; }
