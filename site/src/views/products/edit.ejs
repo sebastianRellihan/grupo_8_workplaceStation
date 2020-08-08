@@ -33,17 +33,17 @@
                     <div>
                         <label for="discount" class="input-label">DESCUENTO:</label>
                         <select name="discount" id="discount" class="input-text">
-                            <option value="0">NO</option>
-                            <option value="5">5 %</option>
-                            <option value="10">10 %</option>
-                            <option value="15">15 %</option>
-                            <option value="20">20 %</option>
-                            <option value="25">25 %</option>
-                            <option value="30">30 %</option>
-                            <option value="35">35 %</option>
-                            <option value="40">40 %</option>
-                            <option value="45">45 %</option>
-                            <option value="50">50 %</option>
+                            <option value="0" <%= product.discount === 0 ? "selected" : null %>>NO</option>
+                        <option value="5" <%= product.discount === 5 ? "selected" : null %>>5 %</option>
+                            <option value="10" <%= product.discount === 10 ? "selected" : null %>>10 %</option>
+                            <option value="15" <%= product.discount === 15 ? "selected" : null %> >15 %</option>
+                            <option value="20" <%= product.discount === 20 ? "selected" : null %> >20 %</option>
+                            <option value="25" <%= product.discount === 25 ? "selected" : null %> >25 %</option>
+                            <option value="30" <%= product.discount === 30 ? "selected" : null %> >30 %</option>
+                            <option value="35" <%= product.discount === 35 ? "selected" : null %> >35 %</option>
+                            <option value="40" <%= product.discount === 40 ? "selected" : null %> >40 %</option>
+                            <option value="45" <%= product.discount === 45 ? "selected" : null %> >45 %</option>
+                            <option value="50" <%= product.discount === 50 ? "selected" : null %> >50 %</option>
                         </select>
                     </div>
 
@@ -62,10 +62,10 @@
                 <!-- Consultar como hacer para que esté seleccionada la opción correspondiente -->
                 <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
                 <select name="category" id="category" class="input-text" required>
-                    <option value="ws">Estaciones de trabajo</option>
-                    <option value="desk">Escritorios</option>
-                    <option value="chair">Sillas</option>
-                    <option value="accesories">Accesorios</option>
+                    <option value="ws" <%= product.category == "ws" ? "selected" : null %> >Estaciones de trabajo</option>
+                    <option value="desk" <%= product.category == "desk" ? "selected" : null %> >Escritorios</option>
+                    <option value="chair" <%= product.category == "chair" ? "selected" : null %> >Sillas</option>
+                    <option value="accesories" <%= product.category == "accesories" ? "selected" : null %> >Accesorios</option>
                 </select>
 
                 <!-- Consultar como hacer con las imagenes para que estén traidas ya -->
