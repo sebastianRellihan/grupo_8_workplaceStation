@@ -53,9 +53,9 @@ module.exports = {
             id: dataObject.length + 1,
             name:req.body.name,
             briefDescription: req.body.briefDescription,
-            price: req.body.price,
-            discount:req.body.discount,
-            stock: req.body.stock,
+            price: parseFloat(req.body.price),
+            discount:parseFloat(req.body.discount),
+            stock: parseFloat(req.body.stock),
             color:null,
             category:req.body.category,
             image: null,
@@ -65,6 +65,6 @@ module.exports = {
         dataObject.push(product);
         dataObject = JSON.stringify(dataObject, null, " ")
         fs.writeFileSync(path.join(__dirname, "..", "data", "products.json"), dataObject);
-        res.redirect("/products");
+        res.redirect("/products/create");
     }
 }
