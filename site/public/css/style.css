@@ -680,12 +680,15 @@ footer {
             }
                 .cart-item img {
                     width: 40%;
+                    height: 130px;
+                    object-fit: cover;
                 }
                 .cart-item-info {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     width: 50%;
+                    padding-left: 5%;
                     height: 130px;
                 }
                     .cart-item-info h2 {
@@ -704,7 +707,7 @@ footer {
                         display: flex;
                         align-content: center;
                         justify-content: center;
-                        width: 50px;
+                        width: 40%;
                         text-align: center;
                     }
                         .quantity-selector span{
@@ -717,9 +720,10 @@ footer {
                             cursor: pointer;
                             border: none;
                             line-height: initial;
+                            width: 45%;
                             background-color: var(--background-2);
                             color: var(--logo-color-3);
-                            font-size: 1rem;
+                            font-size: 0.7rem;
                             font-weight: bolder;
                             flex-grow: 1;
                         }
@@ -770,6 +774,7 @@ footer {
             }
             .cart-actions-empty {
                 border: 0;
+                width: 40%;
                 padding: 5px;
                 text-decoration: underline;
                 cursor: pointer;
@@ -971,6 +976,7 @@ footer {
         align-self: center;
     }
     /* CARRITO */
+    .cart-item img{ height: 200px; }
     .main-cart .empty-cart-section img{ width: 60%; }
     /* FORMULARIO DE CONTACTO */
     .main-form-container .form-container .map-container iframe{
