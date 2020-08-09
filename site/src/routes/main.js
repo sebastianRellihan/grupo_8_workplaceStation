@@ -12,4 +12,8 @@ router.get("/", controller.index);
 
 router.get("/about-us", controller.aboutUs);
 
+router.get("/contact", controller.contact);
+
+router.post("/contact", controller.sendMail);
+
 module.exports = router;

@@ -7,10 +7,18 @@
 module.exports = {
     /** Envía la vista principal (index.ejs) */
     index: (req, res) => {
-        res.render("index/index");
+        res.render("main/index");
     },
     /** Envía la vista de "quienes somos" (about-us.ejs) */
     aboutUs: (req, res) => {
         // TODO: Enviar la vista de "about-us" una vez que esté creada
+    },
+    /** Envía (por get) la vista del formulario de contacto */
+    contact: (req, res) => {
+        res.render("main/contact");
+    },
+    /** Procesa el formulario de contacto */
+    sendMail: (req, res) => {
+
     }
 }
