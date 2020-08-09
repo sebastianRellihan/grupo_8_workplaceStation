@@ -41,9 +41,11 @@ h1 {
     font-size: 2rem;
     color: var(--title-dark-blue);
 }
-h2 {
+h2,
+h5 {
     font-family: var(--title-font);
     font-size: 1.5rem;
+    font-weight: bold;
     color: var(--title-dark-blue);
 }
 .asterisk {
@@ -359,7 +361,9 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
         padding: 10px 10px 20px 10px;
+        background-color: var(--background-3);
     }
         .main-index .about-us-home h2 {
             margin-bottom: 20px;
@@ -1219,6 +1223,9 @@ footer {
             width: 25vw;
             height: 25vw;
         }
+    .about-us-home article p {
+        text-align: start;
+    }
     /*FOOTER*/
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
@@ -1330,7 +1337,8 @@ footer {
                 transition: box-shadow 0.3s, background-color 0.3s;
                 transition-timing-function: ease-out;
             }
-            .products-section article:hover{
+            .products-section article:hover, 
+            .our-products article:hover{
                 box-shadow: 1px 1px 10px 1px var(--logo-color-1);
                 background-color: var(--logo-color-4);
             }
