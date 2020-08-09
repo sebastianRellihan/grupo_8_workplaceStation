@@ -613,6 +613,31 @@ footer {
             border-radius: 50%;
             background: white;
         }
+/* Formulario de contacto */
+.main-form-container .form-container form textarea{
+    background-color: var(--logo-color-4);
+    box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
+    font-family: var(--text-font);
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+}
+.main-form-container .form-container form textarea:focus{
+    background-color: var(--logo-color-3);
+    box-shadow: 1px 1px 5px var(--logo-color-1);
+}
+.main-form-container .form-container .map-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .main-form-container .form-container .map-container h2{ text-align: center; }
+    .main-form-container .form-container .map-container iframe{
+        width: auto;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
+    }
 /* Carrito de compras */
 .main-cart {
     justify-content: flex-start;
@@ -943,6 +968,13 @@ footer {
     }
     /* CARRITO */
     .main-cart .empty-cart-section img{ width: 60%; }
+    /* FORMULARIO DE CONTACTO */
+    .main-form-container .form-container .map-container iframe{
+        width: 60%;
+        align-self: center;
+        margin-bottom: 20px;
+    }
+        .main-form-container .form-container form textarea{ width: 65%; }
 }
 
 @media (min-width: 768px){ /* Diseño para tablets */
@@ -1079,13 +1111,21 @@ footer {
         border-radius: 5px;
         color: var(--text-dark-gray);
     }
-    /* FORMULARIOS DE REGISTRO Y LOGIN */
+    /* FORMULARIOS (REGISTRO, LOGIN, CONTACTO, ETC...) */
     .main-form-container{
-        width: 50%;
+        width: 80%;
         align-self: center;
     }
+    .contact-form-container{ width: 80% !important; }
+        .contact-form-container .form-container form{ padding: 0 10%; }
+            .contact-form-container .form-container form textarea{ width: 70%; }
     .register-form-container, 
     .product-form-container { width: 90% !important; }
+        .main-form-container .form-container .map-container iframe{
+            width: 90%;
+            align-self: center;
+            margin-bottom: 25px;
+        }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         width: 80%;
