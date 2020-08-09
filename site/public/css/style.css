@@ -1154,6 +1154,7 @@ footer {
         }
             .cart-item img {
                 max-width: 200px;
+                height: 200px;
             }
             .cart-item-info {
                 margin: 0px 50px;
