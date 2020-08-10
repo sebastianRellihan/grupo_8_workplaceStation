@@ -351,7 +351,21 @@ footer {
         margin: 10px;
         text-align: center;
     }
-    .photo-carousel img {
+    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 5px;
+        color: var(--text-dark-gray);
+    }
+        #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{ 
+            display: block !important; 
+        }
+            #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p { 
+                display: none; 
+            }
+            #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
+                font-size: 1em;
+            }
+        .photo-carousel img {
         width: 100%;
         height: 100%;
         overflow: auto;
@@ -966,6 +980,12 @@ footer {
         margin: 15px;
     }
     /* INDEX */
+    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p { 
+        display: block; 
+    }
+    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
+        font-size: 1.5em;
+    }
     .about-us-home article p:nth-child(2){ display: block; }
     /* SECCIÓN DE PRODUCTOS */
     .products-section{
@@ -1120,12 +1140,13 @@ footer {
             bottom: 0;
         }
     /* INDEX */
-    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
-        background-color: rgba(255, 255, 255, 0.4);
-        border-radius: 5px;
-        color: var(--text-dark-gray);
+    .about-us-home article p:nth-child(2){ display: block; }
+    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p { 
+        display: block; 
     }
-        .about-us-home article p:nth-child(2){ display: block; }
+    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
+        font-size: 1.5em;
+    }
     /* FORMULARIOS (REGISTRO, LOGIN, CONTACTO, ETC...) */
     .main-form-container{
         width: 80%;
