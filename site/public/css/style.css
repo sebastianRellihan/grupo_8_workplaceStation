@@ -374,6 +374,8 @@ footer {
             justify-content: center;
             width: 90%;
         }
+            .about-us-home article p{ text-align: center; }
+            .about-us-home article p:nth-child(2){ display: none; }
             .about-us-home .action-button {
                 width: 30%;
                 align-self: center;
@@ -963,6 +965,8 @@ footer {
         align-self: center;
         margin: 15px;
     }
+    /* INDEX */
+    .about-us-home article p:nth-child(2){ display: block; }
     /* SECCIÓN DE PRODUCTOS */
     .products-section{
         flex-direction: row;
@@ -1121,6 +1125,7 @@ footer {
         border-radius: 5px;
         color: var(--text-dark-gray);
     }
+        .about-us-home article p:nth-child(2){ display: block; }
     /* FORMULARIOS (REGISTRO, LOGIN, CONTACTO, ETC...) */
     .main-form-container{
         width: 80%;
@@ -1230,9 +1235,7 @@ footer {
             width: 25vw;
             height: 25vw;
         }
-    .about-us-home article p {
-        text-align: start;
-    }
+        .about-us-home article p:nth-child(2){ display: block; }
     /*FOOTER*/
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
