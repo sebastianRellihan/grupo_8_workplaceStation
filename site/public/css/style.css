@@ -862,7 +862,6 @@ footer {
         .filter-groups dl h2 {
             text-align: center;
         }
-
 /* Productos > tarjetas de productos */
 .products-section{
     display: flex;
@@ -945,15 +944,54 @@ footer {
             color: var(--title-dark-blue);
             text-align: center;
         } 
-
 /* FORM CARGA PRODUCTOS */
-
 .product-form-container .form-container form div {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
+/* SOBRE NOSOTROS */
+.main-about-us {
+    width: 100vw;
+}
+    .about-us-img {
+        width: 100%;
+        height: 30vh;
+        background-image: url('../img/about-us.jpg');
+        background-position: center center;
+        background-size: cover;
+    }
+    .about-us-header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 80vh;
+        background-image: url('../img/about-us-2.jpg');
+        background-position: center center;
+        background-size: cover;
+        color: var(--title-dark-blue);
+    }
+        .main-about-us .about-us-header h1 {
+            width: 100%;
+            margin: 0;
+            padding: 15px 0;
+            align-self: flex-start;
+            text-align: center;
+        }
+        .main-about-us .about-us-header h1,
+        #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 5px; 
+        }
+        .about-us-main,
+        .about-us-history {
+            text-align: center;
+            padding: 20px;
+        }
+        .our-pillars .why-us-container i {
+            color: var(--logo-color-2);
+        }
 /* MEDIA QUERIES ------------ */
 
 @media (max-width: 768px) and (orientation: landscape){ /* Correcciones de versión móvil en horizontal */
@@ -1088,7 +1126,6 @@ footer {
             box-shadow: none;
             background-color: var(--background-2);
         }
-
     /* FOOTER */
     footer{
         flex-direction: row;
@@ -1115,12 +1152,6 @@ footer {
             width: 100%;
             bottom: 0;
         }
-    /* INDEX */
-    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
-        background-color: rgba(255, 255, 255, 0.4);
-        border-radius: 5px;
-        color: var(--text-dark-gray);
-    }
     /* FORMULARIOS (REGISTRO, LOGIN, CONTACTO, ETC...) */
     .main-form-container{
         width: 80%;

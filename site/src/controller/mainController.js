@@ -11,7 +11,7 @@ module.exports = {
     },
     /** Envía la vista de "quienes somos" (about-us.ejs) */
     aboutUs: (req, res) => {
-        // TODO: Enviar la vista de "about-us" una vez que esté creada
+        res.render("main/about-us");
     },
     /** Envía (por get) la vista del formulario de contacto */
     contact: (req, res) => {
