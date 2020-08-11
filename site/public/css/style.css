@@ -512,7 +512,6 @@ footer {
     }
         .form-container h1{
             margin-top: 10px;
-            color: var(--title-dark-blue);
             font-style: italic;
         }
         .form-container form{
@@ -945,8 +944,6 @@ footer {
     }
         .card-header h5 button {
             width: 100%;
-            color: var(--title-dark-blue);
-            text-align: center;
         } 
     #carouselExampleIndicators .carousel-indicators li{ 
         display: none;
@@ -1003,9 +1000,6 @@ footer {
     /* INDEX */
     #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p { 
         display: block; 
-    }
-    #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
-        font-size: 1.5em;
     }
     .about-us-home article p:nth-child(2){ display: block; }
     /* SECCIÓN DE PRODUCTOS */
@@ -1384,9 +1378,6 @@ footer {
                         }
                         .filter-category h3 {
                             font-size: 1rem;
-                        }
-                        .filter-groups dl h2 {
-                            text-align: start;
                         }
         .products-section {
             width: 70vw;
