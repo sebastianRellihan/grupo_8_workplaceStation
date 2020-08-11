@@ -960,6 +960,9 @@ footer {
             color: var(--title-dark-blue);
             text-align: center;
         } 
+    #carouselExampleIndicators .carousel-indicators li{ 
+        display: none;
+     }
 /* FORM CARGA PRODUCTOS */
 .product-form-container .form-container form div {
     display: flex;
@@ -1326,6 +1329,7 @@ footer {
                     height: 50px;
                     margin-right: 30px;
                     background-size: contain;
+                    display: block !important;
                 }
         .product-info{ 
             width: 50%; 
