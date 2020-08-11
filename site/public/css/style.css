@@ -1047,6 +1047,8 @@ footer {
         margin-bottom: 20px;
     }
         .main-form-container .form-container form textarea{ width: 65%; }
+    /* FORMULARIOS DE LOGIN Y REGISTRO */
+    .form-container{ width: 80%; }
 }
 
 @media (min-width: 768px){ /* Diseño para tablets */
@@ -1190,6 +1192,7 @@ footer {
         width: 80%;
         align-self: center;
     }
+        .form-container{ width: 70%; }
     .contact-form-container{ width: 80% !important; }
         .contact-form-container .form-container form{ padding: 0 10%; }
             .contact-form-container .form-container form textarea{ width: 70%; }
@@ -1299,9 +1302,11 @@ footer {
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
     footer section ul{ margin-right: 4vw; }
-    /* FORMULARIOS DE REGISTRO Y LOGIN */
-    .main-form-container{ width: 30%; }
-    .register-form-container, 
+    /* FORMULARIOS DE REGISTRO, LOGIN Y CONTACTO */
+    .form-container{ width: 40%; }
+    .contact-form-container{ width: 70% !important; }
+    .register-form-container{ width: auto; }
+        .register-form-container .form-container{ width: 60%; }
     .product-form-container{ width: 50% !important; }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
