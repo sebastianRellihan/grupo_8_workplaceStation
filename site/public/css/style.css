@@ -1390,11 +1390,14 @@ footer {
                         }
         .products-section {
             width: 70vw;
+            justify-content: flex-start;
         }
             .products-section article {
                 width: 30%;
                 transition: box-shadow 0.3s, background-color 0.3s;
                 transition-timing-function: ease-out;
+                margin-left: calc(10% / 6);
+                margin-right: calc(10% / 6);
             }
             .products-section article:hover, 
             .our-products article:hover{
