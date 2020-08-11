@@ -38,14 +38,17 @@ p {
 }
 h1 {
     font-family: var(--title-font);
+    font-weight: bold;
     font-size: 2rem;
+    text-align: center;
     color: var(--title-dark-blue);
 }
 h2,
 h5 {
     font-family: var(--title-font);
-    font-size: 1.5rem;
     font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
     color: var(--title-dark-blue);
 }
 .asterisk {
@@ -287,7 +290,6 @@ footer {
             padding: 0;
         }
         footer section ul li a { 
-            text-decoration: none; 
             color: var(--text-light)
         }
         footer section h2{
@@ -345,11 +347,8 @@ footer {
         flex-grow: 1;
     }
     .main-index section h2 {
-        font-family: var(--title-font);
-        font-weight: 800;
         padding: 5px;
         margin: 10px;
-        text-align: center;
     }
     #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
         background-color: rgba(255, 255, 255, 0.4);
@@ -437,10 +436,6 @@ footer {
         align-items: center;
         padding: 20px;
     }
-        .our-products h2 {
-            color: var(--title-dark-blue);
-            font-family: var(--title-font);
-        }
         .our-products article {
             display: flex;
             flex-direction: column;
@@ -519,7 +514,6 @@ footer {
             margin-top: 10px;
             color: var(--title-dark-blue);
             font-style: italic;
-            text-align: center;
         }
         .form-container form{
             display: flex;
@@ -652,7 +646,6 @@ footer {
     flex-direction: column;
     justify-content: center;
 }
-    .main-form-container .form-container .map-container h2{ text-align: center; }
     .main-form-container .form-container .map-container iframe{
         width: auto;
         height: auto;
@@ -667,7 +660,6 @@ footer {
 }
     .main-cart h1{
         font-size: 1.8em;
-        color: var(--title-dark-blue);
     }
     .cart-container {
         display: flex;
@@ -811,7 +803,6 @@ footer {
             padding: 10%;
             align-self: center;
         }
-        .main-cart .empty-cart-section h2,
         .main-cart .empty-cart-section p{
             text-align: center;
         }
@@ -876,9 +867,6 @@ footer {
         .filter-groups dd a {
             padding: 5px;
         }
-        .filter-groups dl h2 {
-            text-align: center;
-        }
 /* Productos > tarjetas de productos */
 .products-section{
     display: flex;
@@ -905,7 +893,6 @@ footer {
             color: var(--text-light-gray);
             font-size: 1.2em;
             font-weight: 500;
-            text-align: center;
         }
             .products-section-info{
                 text-align: center;
@@ -990,11 +977,9 @@ footer {
             width: 300px;
             margin: 0;
             padding: 15px 0;
-            text-align: center;
             text-shadow: 3px -3px 8px #FFF;
         }
-        .main-about-us .about-us-header h1,
-        #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption {
+        .main-about-us .about-us-header h1 {
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 5px; 
         }
@@ -1226,10 +1211,6 @@ footer {
                 width: 40%;
                 font-size: 1.25rem;
             }
-                .cart-item-info h2 {
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                }
                 .cart-item-info p span,
                 .quantity-selector button,
                 .quantity-selector span {
