@@ -408,6 +408,7 @@ footer {
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
+            width: 100%;
         }
             .why-us-container article {
             width: 75%;
@@ -968,43 +969,37 @@ footer {
     width: 100%;
 }
 /* SOBRE NOSOTROS */
-.main-about-us {
-    width: 100vw;
+.main-about-us section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
-    .about-us-img {
-        width: 100%;
-        height: 30vh;
-        background-image: url('../img/about-us.jpg');
-        background-position: center center;
-        background-size: cover;
-    }
     .about-us-header {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 80vh;
-        background-image: url('../img/about-us-2.jpg');
+        height: 50vh;
+        background-image: url('../img/about-us.jpg');
         background-position: center center;
         background-size: cover;
         color: var(--title-dark-blue);
     }
         .main-about-us .about-us-header h1 {
-            width: 100%;
+            width: 300px;
             margin: 0;
             padding: 15px 0;
-            align-self: flex-start;
             text-align: center;
+            text-shadow: 3px -3px 8px #FFF;
         }
         .main-about-us .about-us-header h1,
         #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption {
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 5px; 
         }
-        .about-us-main,
-        .about-us-history {
-            text-align: center;
-            padding: 20px;
-        }
+    .about-us-main,
+    .about-us-history {
+        text-align: center;
+        padding: 20px;
+    }
         .our-pillars .why-us-container i {
             color: var(--logo-color-2);
         }
@@ -1269,6 +1264,11 @@ footer {
             width: 40%;
         }
         .products-section article img{ height: 250px; }
+    /* SOBRE NOSOTROS */
+    .about-us-history p, 
+    .about-us-main p {
+        width: 70%;
+    }
 }
 
 @media (min-width: 1024px){ /* Diseño desktop */
