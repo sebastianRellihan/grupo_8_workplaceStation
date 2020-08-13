@@ -10,19 +10,21 @@
     <%# Import del HADER %>
     <%- include("../partials/header") %>
 
-    <main class="main-form-container product-form-container">
-        <div class="form-container">
+    <main class="main-form-container">
+        <div class="form-container create-form-container">
             <h1> Carga de producto <i class="fas fa-clipboard-list"></i></i></h1>
             <form action="/products/create" method="POST">
-
-                <label for="name" class="input-label"><span class="asterisk">*</span> NOMBRE:</label>
-                <input type="text" class="input-text" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
-                    autocomplete="true" required>
-                
-                <label for="briefDescription" class="input-label"><span class="asterisk">*</span> DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
-                <textarea name="briefDescription" id="briefDescription" class="input-textarea" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." maxlength="100" required></textarea>
-                
                 <div>
+                    <label for="name" class="input-label"><span class="asterisk">*</span> NOMBRE:</label>
+                    <input type="text" class="input-text" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
+                        autocomplete="true" required>
+                </div>
+                <div>
+                    <label for="briefDescription" class="input-label"><span class="asterisk">*</span> DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
+                    <textarea name="briefDescription" id="briefDescription" class="input-textarea" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." maxlength="100" required></textarea>
+                </div>
+
+                <div class="create-form-div-container">
                     <div>
                         <label for="price" class="input-label"><span class="asterisk">*</span> PRECIO:</label>
                         <input type="number" class="input-text" name="price" id="price" placeholder="$" 
@@ -58,25 +60,34 @@
                     </div>
                 </div>
                 
-                <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
-                <select name="category" id="category" class="input-text" required>
-                    <option value="ws">Estaciones de trabajo</option>
-                    <option value="desk">Escritorios</option>
-                    <option value="chair">Sillas</option>
-                    <option value="accesories">Accesorios</option>
-                </select>
+                <div>
+                    <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
+                    <select name="category" id="category" class="input-text" required>
+                        <option value="ws">Estaciones de trabajo</option>
+                        <option value="desk">Escritorios</option>
+                        <option value="chair">Sillas</option>
+                        <option value="accesories">Accesorios</option>
+                    </select>
+                </div>
 
-                <label for="image" class="input-label"><span class="asterisk">*</span> CARGAR IMÁGENES:</label>
-                <label class="action-button">
-                    <input type="file" name="image" id="imagesUpload" multiple required>
-                    Seleccionar
-                </label>
+                <div>
+                    <label for="image" class="input-label"><span class="asterisk">*</span> CARGAR IMÁGENES:</label>
+                    <label class="action-button">
+                        <input type="file" name="image" id="imagesUpload" multiple required>
+                        Seleccionar
+                    </label>
+                </div>    
 
-                <label for="description" class="input-label">DESCRIPCIÓN:</label>
-                <textarea name="description" id="description" class="input-textarea" placeholder="Descripción..." rows="4"></textarea>
+                <div>
+                    <label for="description" class="input-label">DESCRIPCIÓN:</label>
+                    <textarea name="description" id="description" class="input-textarea" placeholder="Descripción..." rows="4"></textarea>
+                </div>
 
-                <label for="aditionalInfo" class="input-label">INFORMACIÓN ADICIONAL:</label>
-                <textarea name="aditionalInfo" id="aditionalInfo" class="input-textarea" placeholder="Información adicional..." rows="4"></textarea>
+                <div>
+                    <label for="aditionalInfo" class="input-label">INFORMACIÓN ADICIONAL:</label>
+                    <textarea name="aditionalInfo" id="aditionalInfo" class="input-textarea" placeholder="Información adicional..." rows="4"></textarea>
+                </div>
+
 
                 <p class="input-label">Los campos indicados con <span class="asterisk">*</span> son obligatorios.</p>
 

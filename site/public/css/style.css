@@ -949,12 +949,22 @@ footer {
         display: none;
      }
 /* FORM CARGA PRODUCTOS */
-.product-form-container .form-container form div {
+.create-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    text-align: center;
 }
+    .create-form-container form {
+        width: 100%;
+    }
+        .create-form-container form div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin: 10px 0;
+        }
 /* SOBRE NOSOTROS */
 .main-about-us section {
     display: flex;
@@ -1173,8 +1183,7 @@ footer {
     .contact-form-container{ width: 80% !important; }
         .contact-form-container .form-container form{ padding: 0 10%; }
             .contact-form-container .form-container form textarea{ width: 70%; }
-    .register-form-container, 
-    .product-form-container { width: 90% !important; }
+    .register-form-container { width: 90% !important; }
         .main-form-container .form-container .map-container iframe{
             width: 90%;
             align-self: center;
@@ -1280,12 +1289,21 @@ footer {
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }
     footer section ul{ margin-right: 4vw; }
-    /* FORMULARIOS DE REGISTRO, LOGIN Y CONTACTO */
+    /* FORMULARIOS DE REGISTRO, LOGIN, CONTACTO, CREACIÓN Y EDICIÓN */
     .form-container{ width: 40%; }
+    .create-form-container,
     .contact-form-container{ width: 70% !important; }
+        .create-form-container form .create-form-div-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+            .create-form-container form .create-form-div-container div{
+                width: 40%;
+            }
     .register-form-container{ width: auto; }
         .register-form-container .form-container{ width: 60%; }
-    .product-form-container{ width: 50% !important; }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         position: relative;
@@ -1397,16 +1415,4 @@ footer {
             }
     /* CARRITO */
     .main-cart .empty-cart-section img{ width: 60%; }
-    /* FORM PRODUCT CREATE */
-    .product-form-container .form-container form div {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 80%;
-    }
-        .product-form-container .form-container form div div {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-        }
 }
