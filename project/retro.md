@@ -41,3 +41,17 @@
     - Avanzar sin dejar por sentado lo que estamos haciendo en Trello
 5. Dejar de hacer:
     - Dejar de hacer commits que abarquen muchos cambios
+
+## Sprint 3 - Template Engines
+1. Comenzar a hacer:
+    - Ponerse de acuerdo con la estructura de los datos antes de armar las cosas en base a eso.
+2. Hacer más:
+    - Testear más el sitio para encontrar fallas
+    - Reutilizar código en general y estilos
+3. Continuar haciendo:
+    - Hacer los dailys porque de esta forma queda más claro saber que está haciendo, precisamente, cada integrante del equipo
+    - Repasar los estilos periodicamente en busca de mejoras para realizar
+4. Hacer menos:
+    - 
+5. Dejar de hacer:
+    - Dejar de hacer commits y push's sin antes revisar que todo se encuentr en orden
