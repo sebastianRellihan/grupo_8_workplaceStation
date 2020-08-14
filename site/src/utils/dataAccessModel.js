@@ -74,6 +74,11 @@ let model = function(tableName){
                 }
             }
 
+            // Corrige en caso de que se haya llegado al fin del array de IDs
+            if(id == idArray.length){
+                id++;
+            }
+
             return id;
         },
 
