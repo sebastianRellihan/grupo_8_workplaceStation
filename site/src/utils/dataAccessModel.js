@@ -159,10 +159,23 @@ let model = function(tableName){
          * @param {number} id El ID/clave primaria único que está asociada al registro.
          */
         delete: function(id){
-
+            let data = this.readFile();
+            let index = -1;
+            // determino el índice del elemento
+            for(let i = 0; i < data.length; i++){
+                if(data[i].id == id){
+                    index = i;
+                    break;
+                }
+            }
+            // Si hubo coincidencias se borra el elemento
+            if(index != -1){
+                data.splice(index, 1);
+                this.writeFile(data);
+            }
         }
 
-    }
+    } // fin return
 }
 
 module.exports = model;
