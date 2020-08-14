@@ -5,20 +5,21 @@
 */
 const fs = require("fs");
 const path = require("path");
+const dataAccessModel = require('../utils/dataAccessModel');
+const productsModel = dataAccessModel('products');
 
-let dataJSON = fs.readFileSync(path.join(__dirname, "..", "data", "products.json"));
-let dataObject = JSON.parse(dataJSON);
+let products = productsModel.getAll();
 
 module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
-        res.render("products/products", {products: dataObject});
+        res.render("products/products", {products: products});
     },
 
     // Envía la vista del detalle de producto (product-detail.ejs)
     detail: (req, res) => {
         // Busca el producto al cual le corresponda ese id y se lo manda a la vista
-        let product  = dataObject.find(element => {
+        let product  = products.find(element => {
             return element.id == req.params.id;
         });
 
@@ -30,7 +31,7 @@ module.exports = {
         // La razón por la que se envían todos los productos es para realizar el diseño,
         // una vez se tenga accesso a la sesión HTTP se podrá enviar los productos que hayan
         // sido añadidos al carrito por el usuario
-        res.render("products/cart", {products : dataObject});
+        res.render("products/cart", {products : products});
     }, 
 
     // Envía la vista del formulario de carga de productos
@@ -40,7 +41,7 @@ module.exports = {
 
     // Envía la vista del formulario de carga de productos
     edit: (req, res) => {
-        let product  = dataObject.find(element => {
+        let product  = products.find(element => {
             return element.id == req.params.id;
         });
         
@@ -50,7 +51,7 @@ module.exports = {
     store: (req, res) => {
         console.log(req.body);
         let product = {
-            id: dataObject.length + 1,
+            id: products.length + 1,
             name:req.body.name,
             briefDescription: req.body.briefDescription,
             price: parseFloat(req.body.price),
@@ -62,8 +63,8 @@ module.exports = {
             description: req.body.description,
             aditionalInfo: req.body.aditionalInfo
         }
-        dataObject.push(product);
-        dataObject = JSON.stringify(dataObject, null, " ")
+        products.push(product);
+        products = JSON.stringify(products, null, " ")
         fs.writeFileSync(path.join(__dirname, "..", "data", "products.json"), dataObject);
         res.redirect("/products/create");
     }
