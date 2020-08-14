@@ -11,7 +11,8 @@ const path = require("path");
 
 /**
  * Genera un modelo de datos específico para cada tabla si se declara su nombre.
- * Para obtener el DAO, debe capturarse la variable devuelta al ejecutar la función model(tablename).
+ * Para obtener el DAO, debe capturarse la variable devuelta al ejecutar la función model(tablename),
+ * teniendo en cuenta que "model" es el nombre que se le asignó a la variable en la que se requiere el módulo.
  * @param {string} tableName El nombre de la tabla sobre la que se desée operar.
  * @returns {object} Un Objeto de Acceso a Datos (DAO), que es capaz de realizar operaciones de
  *                   ABM (alta, baja, modificación) en la base de datos.
@@ -51,7 +52,7 @@ let model = function(tableName){
         getValidID: function(){
             let data = this.readFile();
             let idArray = [];
-            let id = 0;
+            let id = 1;
 
             
             // Obtiene un array con todos los ID disponibles
