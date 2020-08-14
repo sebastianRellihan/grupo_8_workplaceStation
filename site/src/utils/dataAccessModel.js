@@ -108,7 +108,11 @@ let model = function(tableName){
          *                  la búsqueda, ó un array vacío en caso de que no haya coincidencias.
          */
         getAllByField: function(field, value){
+            let data = this.readFile();
 
+            return data.filter(element => {
+                return element[field] == value;
+            });
         },
 
         /**
