@@ -23,6 +23,6 @@ router.get("/create", controller.create);
 router.post("/create", controller.store);
 
 // Formulario de edición
-router.get("/edit/:id", controller.edit);
+router.get("/:id/edit", controller.edit);
 
 module.exports = router;
