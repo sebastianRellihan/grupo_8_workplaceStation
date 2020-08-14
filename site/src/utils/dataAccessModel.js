@@ -26,7 +26,7 @@ let model = function(tableName){
          * @returns {Array} Un array con objetos representando todos las entradas en la
          *                  base de datos ó un array vacío en caso de que no hayan datos.
          */
-        readFile() {
+        readFile: function(){
             let fileContent = fs.readFileSync(this.filePath, 'utf-8');
             if (fileContent) {
                 return JSON.parse(fileContent);
@@ -39,7 +39,7 @@ let model = function(tableName){
          * DE USO INTERNO. Parsea a formato JSON y almacena el contenido en la base de datos.
          * @param {object} content El contenido a almacenar en cualquier formato.
          */
-        writeFile: (content) => {
+        writeFile: function(content){
 
         },
 
@@ -48,7 +48,7 @@ let model = function(tableName){
          * @returns {number} Un ID que puede servir como clave primaria para almacenar un
          *                   registro en la base de datos sin que haya conflictos.
          */
-        getValidID: () => {
+        getValidID: function(){
 
         },
 
@@ -57,7 +57,7 @@ let model = function(tableName){
          * @returns {Array} Un array de objetos representando las entradas en la base de datos
          *                  ó un array vacío en caso de que no haya coincidencias.
          */
-        getAll() {
+        getAll: function(){
             return this.readFile();
         },
 
@@ -68,7 +68,7 @@ let model = function(tableName){
          * @returns {object} Un objeto que contiene las mismas características que el registro, ó
          *                   null en caso de qe no haya coincidencias.
          */
-        getByField: (field, value) => {
+        getByField: function(field, value){
 
         },
 
@@ -79,7 +79,7 @@ let model = function(tableName){
          * @returns {Array} Un array de objetos representando todos los registros que coincidan con
          *                  la búsqueda, ó un array vacío en caso de que no haya coincidencias.
          */
-        getAllByField: (field, value) => {
+        getAllByField: function(field, value){
 
         },
 
@@ -87,7 +87,7 @@ let model = function(tableName){
          * Crea un nuevo registro en la base de datos.
          * @param {object} row Un objeto cuyos atributos representen un registro en la base de datos.
          */
-        create: (row) => {
+        create: function(row){
 
         },
 
@@ -97,7 +97,7 @@ let model = function(tableName){
          *                 base de datos. Su ID debe coincidir con uno ya existente. ya que lo que se
          *                 desea realizar es una modificación.
          */
-        update: (row) => {
+        update: function(row){
 
         },
 
@@ -105,7 +105,7 @@ let model = function(tableName){
          * Borra un registro de la base de datos según su clave primaria (ó ID).
          * @param {number} id El ID/clave primaria único que está asociada al registro.
          */
-        delete: (id) => {
+        delete: function(id){
 
         }
 
