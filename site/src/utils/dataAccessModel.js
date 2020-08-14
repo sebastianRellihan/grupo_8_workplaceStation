@@ -93,7 +93,11 @@ let model = function(tableName){
          *                   null en caso de qe no haya coincidencias.
          */
         getByField: function(field, value){
+            let data = this.readFile();
 
+            return data.find(element => {
+                return element[field] == value;
+            });
         },
 
         /**
