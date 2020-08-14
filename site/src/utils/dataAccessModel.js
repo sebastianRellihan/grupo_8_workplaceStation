@@ -40,7 +40,7 @@ let model = function(tableName){
          * @param {object} content El contenido a almacenar en cualquier formato.
          */
         writeFile: function(content){
-
+            fs.writeFileSync(this.filePath, JSON.stringify(content, null, 4));
         },
 
         /**
@@ -49,7 +49,31 @@ let model = function(tableName){
          *                   registro en la base de datos sin que haya conflictos.
          */
         getValidID: function(){
+            let data = this.readFile();
+            let idArray = [];
+            let id = 0;
 
+            
+            // Obtiene un array con todos los ID disponibles
+            data.forEach(element => {
+                idArray.push(element.id);
+            });
+
+            // Ordena el array
+            idArray = idArray.sort((a,b) => {
+                return a - b;
+            });
+
+            // Determina cual es el menor id disponible
+            for(let i = 0; id < idArray.length; i++){
+                if(idArray[i] == id){
+                    id++;
+                } else{
+                    break; // Rompe el ciclo en caso de que se haya determinado el id
+                }
+            }
+
+            return id;
         },
 
         /**
