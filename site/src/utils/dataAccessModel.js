@@ -120,7 +120,12 @@ let model = function(tableName){
          * @param {object} row Un objeto cuyos atributos representen un registro en la base de datos.
          */
         create: function(row){
+            let data = this.readFile();
+            // Asigna un id válido al nuevo elemento
+            row.id = this.getValidID();
 
+            data.push(row);
+            this.writeFile(data);
         },
 
         /**
