@@ -26,8 +26,13 @@ let model = function(tableName){
          * @returns {Array} Un array con objetos representando todos las entradas en la
          *                  base de datos ó un array vacío en caso de que no hayan datos.
          */
-        readFile: () => {
-
+        readFile() {
+            let fileContent = fs.readFileSync(this.filePath, 'utf-8');
+            if (fileContent) {
+                return JSON.parse(fileContent);
+            } else {
+                return [];
+            }
         },
 
         /**
@@ -52,8 +57,8 @@ let model = function(tableName){
          * @returns {Array} Un array de objetos representando las entradas en la base de datos
          *                  ó un array vacío en caso de que no haya coincidencias.
          */
-        getAll: () => {
-
+        getAll() {
+            return this.readFile();
         },
 
         /**
