@@ -135,7 +135,23 @@ let model = function(tableName){
          *                 desea realizar es una modificación.
          */
         update: function(row){
-
+            let data = this.readFile();
+            let id = row.id;
+            index = -1;
+            // Obtengo el objeto original
+            let old = this.getByField("id", id);
+            // Determino su índice en la base de datos
+            for(let i = 0; i < data.length; i++){
+                if(data[i].id == id){
+                    index = i;
+                    break;
+                }
+            }
+            // Si hubo coincidencias se reemplaza el elemento y se actualiza la BD
+            if(index != -1){
+                data.splice(index, 1, row);
+                this.writeFile(data);
+            }
         },
 
         /**
