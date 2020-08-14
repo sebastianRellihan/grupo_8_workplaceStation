@@ -1,0 +1,110 @@
+/**
+ * Función que utiliza el patrón factory method para crear y retornar DAOs (objetos de acceso a datos)
+ * preparados para operar en las tablas que se idiquen al construirlos.
+ * 
+ * Su uso está dirigido a dar soporte a los controladores, ya que en éstos debe implementarse la lógica
+ * de procesamiento de las rutas y delegar el acceso a datos a otros objetos.
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+/**
+ * Genera un modelo de datos específico para cada tabla si se declara su nombre.
+ * Para obtener el DAO, debe capturarse la variable devuelta al ejecutar la función model(tablename).
+ * @param {string} tableName El nombre de la tabla sobre la que se desée operar.
+ * @returns {object} Un Objeto de Acceso a Datos (DAO), que es capaz de realizar operaciones de
+ *                   ABM (alta, baja, modificación) en la base de datos.
+ */
+let model = function(tableName){
+    return {
+
+        filePath: path.join(__dirname, "..", "data", tableName + ".json"),
+        
+        /** 
+         * DE USO INTERNO. Retorna todos los registros de la base de datos.
+         * @returns {Array} Un array con objetos representando todos las entradas en la
+         *                  base de datos ó un array vacío en caso de que no hayan datos.
+         */
+        readFile: () => {
+
+        },
+
+        /**
+         * DE USO INTERNO. Parsea a formato JSON y almacena el contenido en la base de datos.
+         * @param {object} content El contenido a almacenar en cualquier formato.
+         */
+        writeFile: (content) => {
+
+        },
+
+        /**
+         * Analiza la base de datos en busqueda de un ID disponible.
+         * @returns {number} Un ID que puede servir como clave primaria para almacenar un
+         *                   registro en la base de datos sin que haya conflictos.
+         */
+        getValidID: () => {
+
+        },
+
+        /**
+         * Retorna todos los registros de la base de datos.
+         * @returns {Array} Un array de objetos representando las entradas en la base de datos
+         *                  ó un array vacío en caso de que no haya coincidencias.
+         */
+        getAll: () => {
+
+        },
+
+        /**
+         * Retorna la primera coincidencia de una consulta a la base de datos.
+         * @param {string} field El nombre del campo sobre el que se quiere realizar la consulta.
+         * @param {*} value El valor a comparar.
+         * @returns {object} Un objeto que contiene las mismas características que el registro, ó
+         *                   null en caso de qe no haya coincidencias.
+         */
+        getByField: (field, value) => {
+
+        },
+
+        /**
+         * Retorna todas las coincidencias de una consulta a la base de datos.
+         * @param {string} field El nombre del campo sobre el que se quiere realizar la consulta.
+         * @param {*} value El valor a comparar.
+         * @returns {Array} Un array de objetos representando todos los registros que coincidan con
+         *                  la búsqueda, ó un array vacío en caso de que no haya coincidencias.
+         */
+        getAllByField: (field, value) => {
+
+        },
+
+        /**
+         * Crea un nuevo registro en la base de datos.
+         * @param {object} row Un objeto cuyos atributos representen un registro en la base de datos.
+         */
+        create: (row) => {
+
+        },
+
+        /**
+         * Modifica un registro en la base de datos.
+         * @param {object} row Un objeto cuyos atributos representen los campos en un registro de la
+         *                 base de datos. Su ID debe coincidir con uno ya existente. ya que lo que se
+         *                 desea realizar es una modificación.
+         */
+        update: (row) => {
+
+        },
+
+        /**
+         * Borra un registro de la base de datos según su clave primaria (ó ID).
+         * @param {number} id El ID/clave primaria único que está asociada al registro.
+         */
+        delete: (id) => {
+
+        }
+
+    }
+}
+
+module.exports = model;
