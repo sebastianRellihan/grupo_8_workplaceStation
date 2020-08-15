@@ -16,11 +16,11 @@ router.get("/cart", controller.cart);
 // Formulario de creación de producto
 router.get("/create", controller.create);
 
-// Detalle de producto 
-router.get("/:id", controller.detail);
-
 // Procesamiento del formulario de creación 
 router.post("/create", controller.store);
+
+// Detalle de producto 
+router.get("/:id", controller.detail);
 
 // Formulario de edición de producto
 router.get("/:id/edit", controller.edit);
