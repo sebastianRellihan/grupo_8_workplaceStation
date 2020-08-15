@@ -10,19 +10,25 @@ const controller = require("../controller/productsController");
 // Todos los productos
 router.get("/", controller.index);
 
-// Detalle de producto 
-router.get("/detail/:id", controller.detail);
-
 // Carrito de compras
 router.get("/cart", controller.cart);
 
 // Formulario de creación de producto
 router.get("/create", controller.create);
 
+// Detalle de producto 
+router.get("/:id", controller.detail);
+
 // Procesamiento del formulario de creación 
 router.post("/create", controller.store);
 
-// Formulario de edición
+// Formulario de edición de producto
 router.get("/:id/edit", controller.edit);
+
+// Formulario de edición de producto - editar producto
+// router.put("/:id", controller.);
+
+// Formulario de edición de producto - eliminar producto
+// router.delete("/:id", controller.);
 
 module.exports = router;

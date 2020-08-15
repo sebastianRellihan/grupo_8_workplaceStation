@@ -18,11 +18,9 @@ module.exports = {
 
     // Envía la vista del detalle de producto (product-detail.ejs)
     detail: (req, res) => {
-        // Busca el producto al cual le corresponda ese id y se lo manda a la vista
-        let product  = products.find(element => {
-            return element.id == req.params.id;
-        });
-
+        let id = req.params.id;
+        // Se busca el producto al cual le corresponda ese id y se lo manda a la vista
+        let product = productsModel.getByField("id", id);
         res.render("products/detail", {product : product});
     },
 
@@ -49,23 +47,20 @@ module.exports = {
     },
 
     store: (req, res) => {
-        console.log(req.body);
         let product = {
-            id: products.length + 1,
+            id: null,
             name:req.body.name,
             briefDescription: req.body.briefDescription,
             price: parseFloat(req.body.price),
             discount:parseFloat(req.body.discount),
             stock: parseFloat(req.body.stock),
-            color:null,
+            color:req.body.color,
             category:req.body.category,
             image: null,
             description: req.body.description,
             aditionalInfo: req.body.aditionalInfo
         }
-        products.push(product);
-        products = JSON.stringify(products, null, " ")
-        fs.writeFileSync(path.join(__dirname, "..", "data", "products.json"), dataObject);
+        productsModel.create(product);
         res.redirect("/products/create");
     }
 }
