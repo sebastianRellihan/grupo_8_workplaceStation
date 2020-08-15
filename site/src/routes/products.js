@@ -26,9 +26,9 @@ router.post("/create", controller.store);
 router.get("/:id/edit", controller.edit);
 
 // Formulario de edición de producto - editar producto
-// router.put("/:id", controller.);
+router.put("/:id", controller.update);
 
 // Formulario de edición de producto - eliminar producto
-// router.delete("/:id", controller.);
+router.delete("/:id", controller.destroy);
 
 module.exports = router;

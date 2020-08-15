@@ -18,9 +18,8 @@ module.exports = {
 
     // Envía la vista del detalle de producto (product-detail.ejs)
     detail: (req, res) => {
-        let id = req.params.id;
         // Se busca el producto al cual le corresponda ese id y se lo manda a la vista
-        let product = productsModel.getByField("id", id);
+        let product = productsModel.getByField("id", req.params.id);
         res.render("products/detail", {product : product});
     },
 
@@ -39,13 +38,12 @@ module.exports = {
 
     // Envía la vista del formulario de carga de productos
     edit: (req, res) => {
-        let product  = products.find(element => {
-            return element.id == req.params.id;
-        });
-        
+        // Se busca el producto al cual le corresponda ese id y se lo manda a la vista
+        let product = productsModel.getByField("id", req.params.id);
         res.render("products/edit", {product : product});
     },
 
+    // Almacena un nuevo producto
     store: (req, res) => {
         let product = {
             id: null,
@@ -62,5 +60,16 @@ module.exports = {
         }
         productsModel.create(product);
         res.redirect("/products/create");
+    },
+    update: (req,res) => { 
+        let product = req.body;
+        product.id = req.params.id;
+        productsModel.update(product);
+        res.redirect("/products/");
+    },
+    destroy: (req,res) => {
+        let id = req.body.id;
+        productsModel.delete(id);
+        res.redirect("/products");
     }
 }
