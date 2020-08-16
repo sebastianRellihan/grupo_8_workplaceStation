@@ -68,7 +68,7 @@ module.exports = {
         res.redirect("/products/");
     },
     destroy: (req,res) => {
-        let id = req.body.id;
+        let id = req.params.id;
         productsModel.delete(id);
         res.redirect("/products");
     }
