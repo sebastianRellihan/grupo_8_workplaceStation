@@ -8,12 +8,10 @@ const path = require("path");
 const dataAccessModel = require('../utils/dataAccessModel');
 const productsModel = dataAccessModel('products');
 
-let products = productsModel.getAll();
-
 module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
-        res.render("products/products", {products: products});
+        res.render("products/products", {products: productsModel.getAll()});
     },
 
     // Envía la vista del detalle de producto (product-detail.ejs)
@@ -28,7 +26,7 @@ module.exports = {
         // La razón por la que se envían todos los productos es para realizar el diseño,
         // una vez se tenga accesso a la sesión HTTP se podrá enviar los productos que hayan
         // sido añadidos al carrito por el usuario
-        res.render("products/cart", {products : products});
+        res.render("products/cart", {products : productsModel.getAll()});
     }, 
 
     // Envía la vista del formulario de carga de productos
