@@ -28,7 +28,7 @@ let model = function(tableName){
          *                  base de datos ó un array vacío en caso de que no hayan datos.
          */
         readFile: function(){
-            let fileContent = fs.readFileSync(this.filePath, 'utf-8');
+            let fileContent = fs.readFileSync(this.filePath, {encoding: 'utf-8'});
             if (fileContent) {
                 return JSON.parse(fileContent);
             } else {
