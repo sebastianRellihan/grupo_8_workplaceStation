@@ -13,7 +13,7 @@
     <main class="main-form-container">
         <div class="form-container create-form-container">
             <h1> Carga de producto <i class="fas fa-clipboard-list"></i></i></h1>
-            <form action="/products/create" method="POST">
+            <form action="/products/create" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name" class="input-label"><span class="asterisk">*</span> NOMBRE:</label>
                     <input type="text" class="input-text" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
