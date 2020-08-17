@@ -132,32 +132,32 @@ let model = function(tableName){
          *                 desea realizar es una modificación.
          */
         update: function(row){
-            let data = this.readFile();
-            let id = row.id;
-            index = -1;
-            // Obtengo el objeto original
-            let old = this.getByField("id", id);
-            // Determino su índice en la base de datos
-            for(let i = 0; i < data.length; i++){
-                if(data[i].id == id){
-                    index = i;
-                    break;
-                }
-            }
-            // Si hubo coincidencias se reemplaza el elemento y se actualiza la BD
-            if(index != -1){
-                data.splice(index, 1, row);
-                this.writeFile(data);
-            }
-            // let rows = this.readFile();
-            // let updatedRows = rows.map(eachRow => {
-            //     if (eachRow.id == row.id) {
-            //         return row;
+            // let data = this.readFile();
+            // let id = row.id;
+            // index = -1;
+            // // Obtengo el objeto original
+            // let old = this.getByField("id", id);
+            // // Determino su índice en la base de datos
+            // for(let i = 0; i < data.length; i++){
+            //     if(data[i].id == id){
+            //         index = i;
+            //         break;
             //     }
-            //     return eachRow;
-            // }); 
-            // this.writeFile(updatedRows);
-            // return row.id;
+            // }
+            // // Si hubo coincidencias se reemplaza el elemento y se actualiza la BD
+            // if(index != -1){
+            //     data.splice(index, 1, row);
+            //     this.writeFile(data);
+            // }
+            let rows = this.readFile();
+            let updatedRows = rows.map(eachRow => {
+                if (eachRow.id == row.id) {
+                    return row;
+                }
+                return eachRow;
+            }); 
+            this.writeFile(updatedRows);
+            return row.id;
         },
 
         /**
