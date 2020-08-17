@@ -49,8 +49,6 @@ module.exports = {
             img.push("/img/uploaded/" + image.filename);
         });
         // Se crea el objeto product
-        let productoo = req.body;
-        console.log(productoo);
         let product = {
             id: null,
             name:req.body.name,
@@ -72,9 +70,25 @@ module.exports = {
 
     // Edita un producto existente
     update: (req,res) => { 
-        // Se 
-        let product = req.body;
-        console.log(product);
+        // Se crea el array y se completa con las rutas de las imágenes
+        let img = [];
+        req.files.forEach(image => {
+            img.push("/img/uploaded/" + image.filename);
+        });
+        // Se crea el objeto product
+        let product = {
+            id: null,
+            name:req.body.name,
+            briefDescription: req.body.briefDescription,
+            price: parseFloat(req.body.price),
+            discount:parseFloat(req.body.discount),
+            stock: parseFloat(req.body.stock),
+            color:req.body.color,
+            category:req.body.category,
+            images: img,
+            description: req.body.description,
+            aditionalInfo: req.body.aditionalInfo
+        }
         product.id = req.params.id;
         productsModel.update(product);
         res.redirect("/products/");
