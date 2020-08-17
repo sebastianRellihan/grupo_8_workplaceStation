@@ -24,13 +24,13 @@ router.get("/create", controller.create);
 router.post("/create", upload.any(), controller.store);
 
 // Detalle de producto 
-router.get("/:id", upload.any(), controller.detail);
+router.get("/:id", controller.detail);
 
 // Formulario de edición de producto
 router.get("/:id/edit", controller.edit);
 
 // Formulario de edición de producto - editar producto
-router.put("/:id", controller.update);
+router.put("/:id", upload.any(), controller.update);
 
 // Formulario de edición de producto - eliminar producto
 router.delete("/:id", controller.destroy);
