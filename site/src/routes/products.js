@@ -6,7 +6,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const storage = require("../utils/storageVar");
+const storage = require("../utils/diskStorage");
 
 const controller = require("../controller/productsController");
 const upload = multer({storage : storage}); // Motor de subida de archivos
