@@ -5,7 +5,11 @@
 */
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const storage = require("../utils/storageVar");
+
 const controller = require("../controller/productsController");
+const upload = multer({storage : storage}); // Motor de subida de archivos
 
 // Todos los productos
 router.get("/", controller.index);
@@ -17,10 +21,10 @@ router.get("/cart", controller.cart);
 router.get("/create", controller.create);
 
 // Procesamiento del formulario de creación 
-router.post("/create", controller.store);
+router.post("/create", upload.any(), controller.store);
 
 // Detalle de producto 
-router.get("/:id", controller.detail);
+router.get("/:id", upload.any(), controller.detail);
 
 // Formulario de edición de producto
 router.get("/:id/edit", controller.edit);
