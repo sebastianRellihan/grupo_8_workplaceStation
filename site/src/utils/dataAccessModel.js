@@ -132,24 +132,9 @@ let model = function(tableName){
          *                 desea realizar es una modificación.
          */
         update: function(row){
-            // let data = this.readFile();
-            // let id = row.id;
-            // index = -1;
-            // // Obtengo el objeto original
-            // let old = this.getByField("id", id);
-            // // Determino su índice en la base de datos
-            // for(let i = 0; i < data.length; i++){
-            //     if(data[i].id == id){
-            //         index = i;
-            //         break;
-            //     }
-            // }
-            // // Si hubo coincidencias se reemplaza el elemento y se actualiza la BD
-            // if(index != -1){
-            //     data.splice(index, 1, row);
-            //     this.writeFile(data);
-            // }
             let rows = this.readFile();
+            // Se recorre la base y se busca el producto que coincida por el id
+            // Si lo encuentra lo modifica por el objeto que llega por parametro. En caso contrario no se modifica.
             let updatedRows = rows.map(eachRow => {
                 if (eachRow.id == row.id) {
                     return row;
@@ -166,8 +151,17 @@ let model = function(tableName){
          */
         delete: function(id){
             let rows = this.readFile();
-            let updatedRows = rows.filter(eachRow => eachRow.id != id); 
-            this.writeFile(updatedRows);
+            // Obtiene el arreglo con los nombres de las imágenes del producto a borrar
+            let images = this.getByField("id", id).images;
+            // Borra del disco las imágenes asociadas al producto
+            images.forEach(image => {
+                fs.unlinkSync(path.join(__dirname, "..", "..", "public", image));
+            });
+            // Filtra el elemento que tenga ese id
+            rows = rows.filter(eachRow => {
+                return eachRow.id != id;
+            });
+            this.writeFile(rows);
         }
 
     } // fin return
