@@ -167,6 +167,14 @@ let model = function(tableName){
         delete: function(id){
             let data = this.readFile();
 
+            // Obtiene el arreglo con los nombres de las imágenes del producto a borrar
+            let images = this.getByField("id", id).images;
+
+            // Borra del disco las imágenes asociadas al producto
+            images.forEach(image => {
+                fs.unlinkSync(path.join(__dirname, "..", "..", "public", image));
+            });
+
             // Filtra el elemento que tenga ese id
             data = data.filter(product => {
                 return product.id != id;
