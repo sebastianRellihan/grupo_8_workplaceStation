@@ -43,6 +43,13 @@ module.exports = {
 
     // Almacena un nuevo producto
     store: (req, res) => {
+
+        // Obtengo el array con los nombres de las imágenes
+        let img = [];
+        req.files.forEach(image => {
+            img.push("/img/uploaded/" + image.filename);
+        });
+
         let product = {
             id: null,
             name:req.body.name,
@@ -52,10 +59,11 @@ module.exports = {
             stock: parseFloat(req.body.stock),
             color:req.body.color,
             category:req.body.category,
-            image: null,
+            images: img,
             description: req.body.description,
             aditionalInfo: req.body.aditionalInfo
         }
+
         productsModel.create(product);
         res.redirect("/products/create");
     },
