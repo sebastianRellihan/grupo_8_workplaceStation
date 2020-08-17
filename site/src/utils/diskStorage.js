@@ -1,12 +1,12 @@
 /**
- * Objeto "storage" que contiene las confiuraciones necesarias para configurar la subida de archivos.
- * Debe pasarse como parámetro al middleware uplouad = multer({storage})
+ * Objeto "storage" que contiene las configuraciones necesarias para configurar la subida de archivos.
+ * Debe pasarse como parámetro al middleware upload = multer({storage})
  */
 
 const multer = require("multer");
 const path = require("path");
 
-// Ruta en la que se almacenan las imágenes subidos por el usuario
+// Ruta en la que se almacenan las imágenes subidas por el usuario
 const STORAGE_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded");
 
 module.exports = multer.diskStorage({

@@ -43,13 +43,14 @@ module.exports = {
 
     // Almacena un nuevo producto
     store: (req, res) => {
-
-        // Obtengo el array con los nombres de las imágenes
+        // Se crea el array y se completa con las rutas de las imágenes
         let img = [];
         req.files.forEach(image => {
             img.push("/img/uploaded/" + image.filename);
         });
-
+        // Se crea el objeto product
+        let productoo = req.body;
+        console.log(productoo);
         let product = {
             id: null,
             name:req.body.name,
@@ -63,17 +64,25 @@ module.exports = {
             description: req.body.description,
             aditionalInfo: req.body.aditionalInfo
         }
-
+        // Se crea el nuevo registro del producto en la base
         productsModel.create(product);
+        // Se redirige al usuario al form de creación de producto 
         res.redirect("/products/create");
     },
+
+    // Edita un producto existente
     update: (req,res) => { 
+        // Se 
         let product = req.body;
+        console.log(product);
         product.id = req.params.id;
         productsModel.update(product);
         res.redirect("/products/");
     },
+
+    // Elimina un producto
     destroy: (req,res) => {
+        // Se atrapa el id del producto para pasarlo como parametro en el metodo de productsmodel y eliminar el mimso de la base
         let id = req.params.id;
         productsModel.delete(id);
         res.redirect("/products");
