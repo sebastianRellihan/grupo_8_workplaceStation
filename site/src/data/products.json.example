@@ -1,106 +1,115 @@
 [
- {
-  "id": 1,
-  "name": "Silla ergonómica",
-  "briefDescription": "Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola",
-  "price": 20000,
-  "discount": 10,
-  "stock": 8,
-  "color": #000000,
-  "category": 3,
-  "image": "/img/our-products-chair.jpg",
-  "description": "Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola",
-  "aditionalInfo": "Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola"
- },
- {
-  "id": 2,
-  "name": "Escritorio Black & White",
-  "briefDescription": "Escritorio moderno de diseño con gabinete de guardado",
-  "price": 15000,
-  "discount": 0,
-  "stock": 5,
-  "color": null,
-  "category": "2",
-  "image": "/img/our-products-desks.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
-  "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
- },
- {
-  "id": 3,
-  "name": "Kit ordenador escritorio",
-  "briefDescription": "Lapicero, ordenador de carpetas y ordenador de documentos",
-  "price": 800,
-  "discount": 0,
-  "stock": 20,
-  "color": null,
-  "category": "4",
-  "image": "/img/our-products-accesories.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
-  "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
- },
- {
-  "id": 4,
-  "name": "Estación de trabajo Home Office",
-  "briefDescription": "Estación de trabajo completa modelo Home Office",
-  "price": 35000,
-  "discount": 10,
-  "stock": 5,
-  "color": null,
-  "category": "1",
-  "image": "/img/our-products-workplace-station.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
-  "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
- }
- {
-  "id": 5,
-  "name": "Silla ergonómica",
-  "briefDescription": "Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola",
-  "price": 20000,
-  "discount": 10,
-  "stock": 8,
-  "color": #000000,
-  "category": 3,
-  "image": "/img/our-products-chair.jpg",
-  "description": "Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola",
-  "aditionalInfo": "Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola Silla de escritorio ergonómica con regulación en altura, inclinación y rueditas re piola"
- },
- {
-  "id": 6,
-  "name": "Escritorio Black & White",
-  "briefDescription": "Escritorio moderno de diseño con gabinete de guardado",
-  "price": 15000,
-  "discount": 0,
-  "stock": 5,
-  "color": null,
-  "category": "2",
-  "image": "/img/our-products-desks.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
-  "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
- },
- {
-  "id": 7,
-  "name": "Kit ordenador escritorio",
-  "briefDescription": "Lapicero, ordenador de carpetas y ordenador de documentos",
-  "price": 800,
-  "discount": 0,
-  "stock": 20,
-  "color": null,
-  "category": "4",
-  "image": "/img/our-products-accesories.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
-  "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
- },
- {
-  "id": 8,
-  "name": "Estación de trabajo Home Office",
-  "briefDescription": "Estación de trabajo completa modelo Home Office",
-  "price": 35000,
-  "discount": 10,
-  "stock": 5,
-  "color": null,
-  "category": "1",
-  "image": "/img/our-products-workplace-station.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
-  "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
- }
+    {
+        "id": 1,
+        "name": "Título del producto",
+        "briefDescription": "probando breve descripción",
+        "price": 10000,
+        "discount": 50,
+        "stock": 18,
+        "color": null,
+        "category": "ws",
+        "images": [
+            "/img/our-products-accesories.jpg",
+            "/img/our-products-workplace-station.jpg",
+            "/img/our-products-desks.jpg"
+        ],
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
+        "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 2,
+        "name": "Título del producto",
+        "briefDescription": "probando breve descripción",
+        "price": 8000,
+        "discount": 10,
+        "stock": 15,
+        "color": null,
+        "category": "desk",
+        "images": [
+            "/img/our-products-desks.jpg"
+        ],
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
+        "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 3,
+        "name": "Título del producto",
+        "briefDescription": "probando breve descripción",
+        "price": 5000,
+        "discount": 15,
+        "stock": 5,
+        "color": null,
+        "category": "chair",
+        "images": [
+            "/img/our-products-workplace-station.jpg",
+            "/img/our-products-desks.jpg"
+        ],
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
+        "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 4,
+        "name": "Título del producto",
+        "briefDescription": "probando breve descripción",
+        "price": 10000,
+        "discount": 25,
+        "stock": 12,
+        "color": null,
+        "category": "accesories",
+        "images": [
+            "/img/our-products-desks.jpg",
+            "/img/our-products-workplace-station.jpg"
+        ],
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
+        "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 5,
+        "name": "Título del producto",
+        "briefDescription": "Probando breve descripción",
+        "price": 8000,
+        "discount": 0,
+        "stock": 12,
+        "color": null,
+        "category": "ws",
+        "images": [
+            "/img/our-products-desks.jpg",
+            "/img/our-products-accesories.jpg",
+            "/img/our-products-chair.jpg"
+        ],
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
+        "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 6,
+        "name": "Título del producto",
+        "briefDescription": "Probando breve descripción",
+        "price": 8000,
+        "discount": 0,
+        "stock": 12,
+        "color": null,
+        "category": "ws",
+        "images": [
+            "/img/our-products-desks.jpg",
+            "/img/our-products-accesories.jpg",
+            "/img/our-products-chair.jpg"
+        ],
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
+        "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
+    },
+    {
+        "id": 7,
+        "name": "Producto prueba",
+        "briefDescription": "cargando producto desde form",
+        "price": 1233,
+        "discount": 0,
+        "stock": 12,
+        "color": null,
+        "category": "accesories",
+        "images": [
+            "/img/our-products-desks.jpg"
+        ],
+        "description": "cargando producto desde form eeee",
+        "aditionalInfo": "cargando producto desde form eeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
 ]
