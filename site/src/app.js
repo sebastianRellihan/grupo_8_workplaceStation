@@ -8,10 +8,12 @@ app.set("view engine", "ejs"); // Le indica a express el template engine que se 
 app.set("views", path.join(__dirname, '/views')); // Le indicamos a express donde está la carpeta views
 
 // Middlewares a nivel de aplicación
-app.use(express.static("public")); // Declaración de carpeta estática
-app.use(express.urlencoded({ extended: false })); 
-app.use(express.json()) 
-app.use(methodOverride("_method"));
+// Template Engines
+app.use(express.static("public")); // Le indica a express donde se encuentran nuestros recurss estáticos
+// Formularios
+app.use(express.urlencoded({ extended: false })); // Arma el objeto body
+app.use(express.json()) // Reconoce los objetos que vienen por medio del request como objetos JSON
+app.use(methodOverride("_method")); // Verifica si existe _method en el query string
 
 // Rutas
 const mainRoutes = require("./routes/main");

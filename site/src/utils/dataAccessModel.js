@@ -50,21 +50,17 @@ let model = function(tableName){
          *                   registro en la base de datos sin que haya conflictos.
          */
         getValidID: function(){
-            let data = this.readFile();
+            let rows = this.readFile();
             let idArray = [];
-            let id = 1;
-
-            
+            let id = 1;     
             // Obtiene un array con todos los ID disponibles
-            data.forEach(element => {
-                idArray.push(element.id);
+            rows.forEach(row => {
+                idArray.push(row.id);
             });
-
             // Ordena el array
             idArray = idArray.sort((a,b) => {
                 return a - b;
             });
-
             // Determina cual es el menor id disponible
             for(let i = 0; id < idArray.length; i++){
                 if(idArray[i] == id){
@@ -73,12 +69,10 @@ let model = function(tableName){
                     break; // Rompe el ciclo en caso de que se haya determinado el id
                 }
             }
-
             // Corrige en caso de que se haya llegado al fin del array de IDs
             if(id == idArray.length){
                 id++;
             }
-
             return id;
         },
 
@@ -99,10 +93,9 @@ let model = function(tableName){
          *                   null en caso de qe no haya coincidencias.
          */
         getByField: function(field, value){
-            let data = this.readFile();
-
-            return data.find(element => {
-                return element[field] == value;
+            let rows = this.readFile();
+            return rows.find(row => {
+                return row[field] == value;
             });
         },
 
@@ -114,10 +107,9 @@ let model = function(tableName){
          *                  la búsqueda, ó un array vacío en caso de que no haya coincidencias.
          */
         getAllByField: function(field, value){
-            let data = this.readFile();
-
-            return data.filter(element => {
-                return element[field] == value;
+            let rows = this.readFile();
+            return rows.filter(row => {
+                return row[field] == value;
             });
         },
 
@@ -126,12 +118,11 @@ let model = function(tableName){
          * @param {object} row Un objeto cuyos atributos representen un registro en la base de datos.
          */
         create: function(row){
-            let data = this.readFile();
+            let rows = this.readFile();
             // Asigna un id válido al nuevo elemento
             row.id = this.getValidID();
-
-            data.push(row);
-            this.writeFile(data);
+            rows.push(row);
+            this.writeFile(rows);
         },
 
         /**
@@ -158,6 +149,15 @@ let model = function(tableName){
                 data.splice(index, 1, row);
                 this.writeFile(data);
             }
+            // let rows = this.readFile();
+            // let updatedRows = rows.map(eachRow => {
+            //     if (eachRow.id == row.id) {
+            //         return row;
+            //     }
+            //     return eachRow;
+            // }); 
+            // this.writeFile(updatedRows);
+            // return row.id;
         },
 
         /**
@@ -165,20 +165,9 @@ let model = function(tableName){
          * @param {number} id El ID/clave primaria único que está asociada al registro.
          */
         delete: function(id){
-            let data = this.readFile();
-            let index = -1;
-            // determino el índice del elemento
-            for(let i = 0; i < data.length; i++){
-                if(data[i].id == id){
-                    index = i;
-                    break;
-                }
-            }
-            // Si hubo coincidencias se borra el elemento
-            if(index != -1){
-                data.splice(index, 1);
-                this.writeFile(data);
-            }
+            let rows = this.readFile();
+            let updatedRows = rows.filter(eachRow => eachRow.id != id); 
+            this.writeFile(updatedRows);
         }
 
     } // fin return
