@@ -78,27 +78,13 @@
                 
                 <div class="interests-checkbox-container">
                     <label for="interests" class="input-label">Intereses</label>
-
-                    <label class="checkable-container">Estaciones de trabajo
-                        <input type="checkbox" name="interests" id="ws-check" value="1">
-                        <span class="custom-checkable"></span>
-                    </label>
-                    
-                    <label class="checkable-container">Escritorio
-                        <input type="checkbox" name="interests" id="desktop-check" value="2">
-                        <span class="custom-checkable"></span>
-                    </label>
-                    
-                    <label class="checkable-container">Sillas ergonómicas
-                        <input type="checkbox" name="interests" id="sits-check" value="3">
-                        <span class="custom-checkable"></span>
-                    </label>
-
-                    <label class="checkable-container">Accesorios
-                        <input type="checkbox" name="interests" id="accesories-check" value="4">
-                        <span class="custom-checkable"></span>
-                    </label>
-                    
+                    <%# Imprime los checkbox con todas las categorías disponibles %>
+                    <% categories.forEach(category => { %>
+                        <label class="checkable-container"><%= category.name %>
+                            <input type="checkbox" name="interests" value="<%= category.id %>">
+                            <span class="custom-checkable"></span>
+                        </label>
+                    <% }); %>
                 </div>
 
                 <p class="input-label">

@@ -4,6 +4,9 @@
  * Debe ser llamado y usado desde usersRoutes.
 */
 
+const dataAccessModel = require("../utils/dataAccessModel");
+const categoriesModel = dataAccessModel("categories");
+
 module.exports = {
     /** Envía la vista del formulario de login (login.ejs) */
     loginGet: (req, res) => {
@@ -11,6 +14,6 @@ module.exports = {
     },
     /** Envía la vista del formulario de registro (register.ejs) */
     registerGet: (req, res) => {
-        res.render("users/register");
+        res.render("users/register", { categories : categoriesModel.getAll() });
     }
 }
