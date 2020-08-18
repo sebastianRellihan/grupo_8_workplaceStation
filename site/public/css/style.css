@@ -54,6 +54,21 @@ h5 {
 .asterisk {
     color: red;
 }
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.column {
+    flex-direction: column;
+    justify-content: center;
+}
+form {
+    /* width: 100%;
+    text-align: center; */
+}
 /* BODY */
 body {
     display: flex;
@@ -948,6 +963,15 @@ footer {
     #carouselExampleIndicators .carousel-indicators li{ 
         display: none;
      }
+    .main-product-detail .flex form,
+    .main-product-detail .flex a {
+        width: 40%;
+    }
+        .main-product-detail .flex form button,
+        .main-product-detail .flex a button {
+            width: 100%;
+            align-self: center;
+        }
 /* FORM CARGA PRODUCTOS */
 .create-form-container {
     display: flex;

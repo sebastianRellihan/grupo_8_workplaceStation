@@ -108,6 +108,12 @@
         <% } else { %>
             <h1>¡UPS! Nada por aquí...</h1>
         <% } %>
+        <div class="flex column">
+            <a href="/products/<%= product.id %>/edit"><button type="button" class="action-button">Editar</button></a>
+            <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="action-button">Eliminar</button>
+            </form>
+        </div>
     </main>
     
     <%# Import del footer %>
