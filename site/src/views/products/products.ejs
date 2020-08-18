@@ -63,26 +63,13 @@
                         <dt>
                             <h2>Categorías</h2>
                         </dt>
-                        <dd>
-                            <h3>
-                                <a href="#">Estaciones de trabajo</a>
-                            </h3>
-                        </dd>
-                        <dd>
-                            <h3>
-                                <a href="#">Escritorios</a>
-                            </h3>
-                        </dd>
-                        <dd>
-                            <h3>
-                                <a href="#">Sillas ergonómicas</a>
-                            </h3>
-                        </dd>
-                        <dd>
-                            <h3>
-                                <a href="#">Accesorios</a>
-                            </h3>
-                        </dd>
+                        <% categories.forEach(category => { %>
+                            <dd>
+                                <h3>
+                                    <a href="#"><%= category.name %></a>
+                                </h3>
+                            </dd>
+                        <% }); %>
                     </dl>
                     <dl class="filter-discount">
                         <dt>
