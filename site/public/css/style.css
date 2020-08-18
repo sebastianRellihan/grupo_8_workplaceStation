@@ -499,6 +499,20 @@ footer {
                         font-weight: 600;
                         font-size: 1rem;
                     }
+/* ERROR 404 NOT-FOUND */
+.error-container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0;
+}
+    .error-container h2{ margin-top: 0; }
+    .error-container img{ 
+        width: 95%; 
+        border-radius: 5px;
+        align-self: center;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+    }
 /* Forms de registro y login */
 .alert-label{
     display: none;
@@ -1031,6 +1045,8 @@ footer {
     #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p { 
         display: block; 
     }
+    /* ERROR 404 NOT-FOUND */
+    .error-container img{ width: 70%; }
     .about-us-home article p:nth-child(2){ display: block; }
     /* SECCIÓN DE PRODUCTOS */
     .products-section{
@@ -1194,6 +1210,8 @@ footer {
     #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
         font-size: 2em;
     }
+    /* ERROR 404 NOT-FOUND */
+    .error-container img{ width: 80%; }
     /* FORMULARIOS (REGISTRO, LOGIN, CONTACTO, ETC...) */
     .main-form-container{
         width: 80%;
@@ -1305,6 +1323,8 @@ footer {
             height: 25vw;
         }
         .about-us-home article p:nth-child(2){ display: block; }
+    /* ERROR 404 NOT-FOUND */
+    .error-container img{ width: 60%; }
     /*FOOTER*/
     footer{ justify-content: space-around; }
     footer .footer-logo{ width: 25%; }

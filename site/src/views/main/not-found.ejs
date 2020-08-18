@@ -11,8 +11,10 @@
     <%- include("../partials/header") %>
     
     <main>
-        <h2>Error al intentar acceder a <%= path %> </h2>
-        <img src="/img/404.gif" class="404-img" alt="GIF de error 404">
+        <div class="error-container">
+            <h2>Error al intentar acceder a <%= path %> </h2>
+            <img src="/img/404.gif" class="404-img" alt="GIF de error 404">
+        </div>
     </main>
 
     <%# Import del footer %>
