@@ -86,10 +86,7 @@ header {
     background-color: var(--background-2);
 }
     .site-header {
-        display: flex;
-        flex-direction: row;
         justify-content: space-around;
-        align-items: center;
     }
         .site-header-start {
             padding: 0;
@@ -107,11 +104,6 @@ header {
             flex-grow: 1;
             cursor: pointer;
         }
-        .site-header-center {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
             .site-header-center-img-1 {
                 margin-top: 5px;
                 width: 75px;
@@ -125,14 +117,10 @@ header {
                 color: var(--logo-color-3);
             }
     .site-cart {
-        display: flex;
-        justify-content: center;
-        align-self: center;
         position: fixed;
         bottom: 5vw;
         right: 5vw;
         z-index: 10000;
-
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -154,20 +142,15 @@ header {
         position: fixed;
         right: 0;
         top: 0;
-        z-index: 1;
-
+        z-index: 100;
         width: 75vw;
         height: 100vh;
         padding: 10px;
-
         color: var(--title-dark-blue);
         background-color: var(--background-1);
         box-shadow: 0px 0px 10px #666;
     }
         .site-cart-side-bar-close-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: fixed;
             top: 50vh;
             left: 5vw;
@@ -182,24 +165,19 @@ header {
         }
     .mobile-nav-side-bar {
         display: none; /* Alternará entre none y flex */
-        flex-direction: column;
+        justify-content: flex-start;
         position: fixed;
         left: 0;
         top: 0;
-        z-index: 1;
-
+        z-index: 1000;
         width: 75vw;
         height: 100vh;
         padding: 10px;
-
         color: var(--title-dark-blue);
         background-color: var(--background-1);
         box-shadow: 0px 0px 10px #666;
     }
         .mobile-nav-side-bar-close-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: fixed;
             top: 50vh;
             right: 5vw;
@@ -215,7 +193,6 @@ header {
         .mobile-nav-side-bar-content {
             display: flex;
             flex-direction: column;
-
             color: var(--background-2);
         }
             .mobile-nav-side-bar-content-search-bar {
