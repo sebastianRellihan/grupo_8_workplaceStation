@@ -6,12 +6,18 @@
 const fs = require("fs");
 const path = require("path");
 const dataAccessModel = require('../utils/dataAccessModel');
-const productsModel = dataAccessModel('products');
+
+const productsModel = dataAccessModel('products'); // Acceso a modelo de productos
+const categoriesModel = dataAccessModel("categories"); // Acceso a modelo de categorías
 
 module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
-        res.render("products/products", {products: productsModel.getAll()});
+        res.render("products/products", 
+        {
+            products: productsModel.getAll(),
+            categories : categoriesModel.getAll()
+        });
     },
 
     // Envía la vista del detalle de producto (product-detail.ejs)
