@@ -50,7 +50,12 @@ module.exports = {
     edit: (req, res) => {
         // Se busca el producto al cual le corresponda ese id y se lo manda a la vista
         let product = productsModel.getByField("id", req.params.id);
-        res.render("products/edit", {product : product});
+        let categories = categoriesModel.getAll();
+        res.render("products/edit", 
+        {
+            product : product,
+            categories : categories
+        });
     },
 
     // Almacena un nuevo producto

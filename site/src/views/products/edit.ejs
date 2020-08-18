@@ -64,10 +64,12 @@
                 <div>
                     <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
                     <select name="category" id="category" class="input-text" required>
-                        <option value="ws" <%= product.category == "ws" ? "selected" : null %> >Estaciones de trabajo</option>
-                        <option value="desk" <%= product.category == "desk" ? "selected" : null %> >Escritorios</option>
-                        <option value="chair" <%= product.category == "chair" ? "selected" : null %> >Sillas</option>
-                        <option value="accesories" <%= product.category == "accesories" ? "selected" : null %> >Accesorios</option>
+                        <%# Imprime todas las categorías dejando seleccionada la categoría del producto %>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>" <%= product.category == category.id ? "selected" : null %>>
+                                <%= category.name %> 
+                            </option>
+                        <% }); %>
                     </select>
                 </div>
 
