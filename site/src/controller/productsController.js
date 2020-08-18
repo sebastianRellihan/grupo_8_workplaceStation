@@ -87,11 +87,15 @@ module.exports = {
 
     // Edita un producto existente
     update: (req,res) => { 
-        // Se crea el array y se completa con las rutas de las imágenes
-        let img = [];
-        req.files.forEach(image => {
-            img.push("/img/uploaded/" + image.filename);
-        });
+        // Se obtienen las imágenes anteriores
+        let img = productsModel.getByField("id", req.params.id).images;
+
+        if(req.files){
+            req.files.forEach(image => {
+                img.push("/img/uploaded/" + image.filename);
+            });
+        }
+        
         // Se crea el objeto product
         let product = {
             id: null,
