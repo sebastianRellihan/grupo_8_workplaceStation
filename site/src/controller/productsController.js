@@ -82,7 +82,7 @@ module.exports = {
         // Se crea el nuevo registro del producto en la base
         productsModel.create(product);
         // Se redirige al usuario al form de creación de producto 
-        res.redirect("/products/create");
+        res.redirect("/products");
     },
 
     // Edita un producto existente
