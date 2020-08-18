@@ -24,7 +24,12 @@ module.exports = {
     detail: (req, res) => {
         // Se busca el producto al cual le corresponda ese id y se lo manda a la vista
         let product = productsModel.getByField("id", req.params.id);
-        res.render("products/detail", {product : product});
+        let category = categoriesModel.getByField("id", product.category);
+        
+        res.render("products/detail", {
+            product : product,
+            category : category
+        });
     },
 
     // Envía la vista del carrito de productos seleccionados (cart.ejs) 
