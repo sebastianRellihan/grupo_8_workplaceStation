@@ -65,10 +65,6 @@ h5 {
     flex-direction: column;
     justify-content: center;
 }
-form {
-    /* width: 100%;
-    text-align: center; */
-}
 /* BODY */
 body {
     display: flex;
