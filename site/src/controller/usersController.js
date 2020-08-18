@@ -9,11 +9,11 @@ const categoriesModel = dataAccessModel("categories");
 
 module.exports = {
     /** Envía la vista del formulario de login (login.ejs) */
-    loginGet: (req, res) => {
+    login: (req, res) => {
         res.render("users/login");
     },
     /** Envía la vista del formulario de registro (register.ejs) */
-    registerGet: (req, res) => {
+    register: (req, res) => {
         res.render("users/register", { categories : categoriesModel.getAll() });
     }
 }

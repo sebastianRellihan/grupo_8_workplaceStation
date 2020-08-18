@@ -8,8 +8,8 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controller/usersController");
 
-router.get("/login", controller.loginGet);
+router.get("/login", controller.login);
 
-router.get("/register", controller.registerGet);
+router.get("/register", controller.register);
 
 module.exports = router;
