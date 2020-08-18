@@ -25,7 +25,7 @@ module.exports = {
         // Se busca el producto al cual le corresponda ese id y se lo manda a la vista
         let product = productsModel.getByField("id", req.params.id);
         let category = categoriesModel.getByField("id", product.category);
-        
+
         res.render("products/detail", {
             product : product,
             category : category
@@ -42,7 +42,8 @@ module.exports = {
 
     // Envía la vista del formulario de carga de productos
     create: (req, res) => {
-        res.render("products/create");
+        let categories = categoriesModel.getAll();
+        res.render("products/create", {categories : categories});
     },
 
     // Envía la vista del formulario de carga de productos

@@ -63,10 +63,9 @@
                 <div>
                     <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
                     <select name="category" id="category" class="input-text" required>
-                        <option value="ws">Estaciones de trabajo</option>
-                        <option value="desk">Escritorios</option>
-                        <option value="chair">Sillas</option>
-                        <option value="accesories">Accesorios</option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %> </option>
+                        <% }); %>
                     </select>
                 </div>
 
