@@ -15,7 +15,7 @@
         <div class="form-container">
             <h1> Registro <i class="far fa-id-badge"></i></h1>
 
-            <form action="" method="GET">
+            <form class="flex column" action="" method="GET">
                 <!-- Información personal -->
                 <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
                     autocomplete="true" required>
@@ -24,7 +24,7 @@
                 <input type="email" class="input-text" name="email" id="email" placeholder="Dirección de e-mail (*)" 
                     autocomplete="true" required>
 
-                <div class="gender-radio-container">
+                <div class="gender-radio-container flex column">
                     <label for="gender" class="input-label">Género</label>
 
                     <label class="checkable-container" id="masc-radio">
@@ -76,7 +76,7 @@
 
                 <!-- Miscelánea + botones de envío y reseteo -->
                 
-                <div class="interests-checkbox-container">
+                <div class="interests-checkbox-container flex column">
                     <label for="interests" class="input-label">Intereses</label>
                     <%# Imprime los checkbox con todas las categorías disponibles %>
                     <% categories.forEach(category => { %>
