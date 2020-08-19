@@ -73,9 +73,20 @@
                     </select>
                 </div>
 
-                <!-- Consultar como hacer con las imagenes para que estén traídas ya -->
+                <%# Muestra todas las imágenes y da la opción al usuario de seleccionar todas las que desée eliminar %>
+                <label for="image-selector" class="input-label">BORRAR IMÁGENES:</label>
+                <div class="image-selector">
+                    <% product.images.forEach(image => { %>
+                        <img src="/img/uploaded/<%= image %> " alt="Imagen ilustrativa del producto">
+                        <label class="checkable-container">Borrar
+                            <input type="checkbox" name="delete-photo" value="<%= image %>">
+                            <span class="custom-checkable"></span>
+                        </label>
+                    <% }); %>
+                </div>
+
                 <div>
-                    <label for="image" class="input-label"><span class="asterisk">*</span> CARGAR IMÁGENES:</label>
+                    <label for="image" class="input-label"> AÑADIR IMÁGENES:</label>
                     <label class="action-button">
                         <input type="file" name="image" id="imagesUpload" multiple>
                         Seleccionar
