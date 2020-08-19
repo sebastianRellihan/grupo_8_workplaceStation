@@ -45,6 +45,24 @@ let model = function(tableName){
         },
 
         /**
+         * Borra los archivos especificados en la ruta especificada de manera sincrónica.
+         * @param {string} deletePath La ruta absoluta en la que se encuentran los archivos a borrar.
+         * @param  {...string} files Un string, array de strings en la que cada uno contiene el nombre 
+         *                           más la extensión del/los archivo/s a borrar.
+         */
+        deleteFile: function(deletePath, files){
+            
+            if(Array.isArray(files)){
+                files.forEach(file => {
+                    fs.unlinkSync(deletePath + file);
+                });
+            } else {
+                fs.unlinkSync(deletePath + files);
+            }
+
+        },
+
+        /**
          * Analiza la base de datos en busqueda de un ID disponible.
          * @returns {number} Un ID que puede servir como clave primaria para almacenar un
          *                   registro en la base de datos sin que haya conflictos.
