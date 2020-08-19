@@ -51,7 +51,7 @@ let model = function(tableName){
          *                           más la extensión del/los archivo/s a borrar.
          */
         deleteFile: function(deletePath, files){
-            
+
             if(Array.isArray(files)){
                 files.forEach(file => {
                     fs.unlinkSync(deletePath + file);
@@ -169,12 +169,6 @@ let model = function(tableName){
          */
         delete: function(id){
             let rows = this.readFile();
-            // Obtiene el arreglo con los nombres de las imágenes del producto a borrar
-            let images = this.getByField("id", id).images;
-            // Borra del disco las imágenes asociadas al producto
-            images.forEach(image => {
-                fs.unlinkSync(path.join(__dirname, "..", "..", "public", image));
-            });
             // Filtra el elemento que tenga ese id
             rows = rows.filter(eachRow => {
                 return eachRow.id != id;

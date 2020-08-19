@@ -131,8 +131,12 @@ module.exports = {
 
     // Elimina un producto
     destroy: (req,res) => {
-        // Se atrapa el id del producto para pasarlo como parametro en el metodo de productsmodel y eliminar el mimso de la base
+        // Se atrapa el id del producto para borrarlo de la BD
         let id = req.params.id;
+        // Borrado de las imágenes
+        let images = productsModel.getByField("id", id).images;
+        productsModel.deleteFile(IMAGES_PATH, images);
+
         productsModel.delete(id);
         res.redirect("/products");
     }
