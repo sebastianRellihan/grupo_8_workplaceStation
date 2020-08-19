@@ -15,6 +15,6 @@ module.exports = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         //     nombre del archivo  - fecha de subida  .extensión original
-        cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+        cb(null, file.fieldname + file.originalname.slice(0,3) + "-" + Date.now() + path.extname(file.originalname));
     }
   })
