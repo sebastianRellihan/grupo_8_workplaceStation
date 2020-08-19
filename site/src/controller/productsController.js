@@ -63,7 +63,7 @@ module.exports = {
         // Se crea el array y se completa con las rutas de las imágenes
         let img = [];
         req.files.forEach(image => {
-            img.push("/img/uploaded/" + image.filename);
+            img.push(image.filename);
         });
         // Se crea el objeto product
         let product = {
@@ -92,7 +92,7 @@ module.exports = {
 
         if(req.files){
             req.files.forEach(image => {
-                img.push("/img/uploaded/" + image.filename);
+                img.push(image.filename);
             });
         }
         
