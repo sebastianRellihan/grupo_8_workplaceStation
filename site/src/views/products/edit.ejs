@@ -79,7 +79,7 @@
                     <% product.images.forEach(image => { %>
                         <img src="/img/uploaded/<%= image %> " alt="Imagen ilustrativa del producto">
                         <label class="checkable-container">Borrar
-                            <input type="checkbox" name="delete-photo" value="<%= image %>">
+                            <input type="checkbox" name="deleteImages" value="<%= image %>">
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>
