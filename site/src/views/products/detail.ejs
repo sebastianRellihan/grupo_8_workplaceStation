@@ -24,7 +24,7 @@
                 <a href=""><%= product.name %> </a>
             </div>
 
-            <section class="product-template">
+            <section class="product-template flex column">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <%# Carga las pestañas de navegación entre imágenes según las imágenes del producto %>
@@ -58,7 +58,7 @@
                     <p>$<%= product.price %></p>
                     <p><%= product.briefDescription %></p>
                 </div>
-                <div class="product-more-info">
+                <div class="product-more-info flex column">
                     <!-- Bootstrap collapse acordion -->
                     <div id="accordion">
                         <div class="card">
@@ -92,8 +92,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-actions">
-                    <div class="quantity-selector">
+                <div class="product-actions flex column">
+                    <div class="quantity-selector flex">
                         <button>-</button>
                         <span>1</span>
                         <button>+</button>
