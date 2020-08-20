@@ -10,6 +10,9 @@ const dataAccessModel = require('../utils/dataAccessModel');
 const productsModel = dataAccessModel('products'); // Acceso a modelo de productos
 const categoriesModel = dataAccessModel("categories"); // Acceso a modelo de categorías
 
+// Ruta absoluta en donde se almacenan las imágenes
+const IMAGES_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded", "/");
+
 module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
@@ -63,7 +66,7 @@ module.exports = {
         // Se crea el array y se completa con las rutas de las imágenes
         let img = [];
         req.files.forEach(image => {
-            img.push("/img/uploaded/" + image.filename);
+            img.push(image.filename);
         });
         // Se crea el objeto product
         let product = {
@@ -87,13 +90,24 @@ module.exports = {
 
     // Edita un producto existente
     update: (req,res) => { 
+        
         // Se obtienen las imágenes anteriores
         let img = productsModel.getByField("id", req.params.id).images;
-
+        // Añade las imágenes nuevas
         if(req.files){
             req.files.forEach(image => {
-                img.push("/img/uploaded/" + image.filename);
+                img.push(image.filename);
             });
+        }
+        // Se borran las imágenes que se hayan seleccionado
+        if(req.body.deleteImages){
+            let deleteImg = req.body.deleteImages;
+            // Filtra las imágenes a borrar
+            img = img.filter(image => {
+                return !deleteImg.includes(image);
+            });
+            // Borrado de las imágenes del disco
+            productsModel.deleteFile(IMAGES_PATH, deleteImg);
         }
         
         // Se crea el objeto product
@@ -117,8 +131,12 @@ module.exports = {
 
     // Elimina un producto
     destroy: (req,res) => {
-        // Se atrapa el id del producto para pasarlo como parametro en el metodo de productsmodel y eliminar el mimso de la base
+        // Se atrapa el id del producto para borrarlo de la BD
         let id = req.params.id;
+        // Borrado de las imágenes
+        let images = productsModel.getByField("id", id).images;
+        productsModel.deleteFile(IMAGES_PATH, images);
+
         productsModel.delete(id);
         res.redirect("/products");
     }
