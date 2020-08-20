@@ -14,16 +14,16 @@
         <h1>Carrito de compras</h1>
         <section class="cart-container">
             <% if(Array.isArray(products) && products.length != 0){ %>
-                <div class="cart-products">
+                <div class="cart-products flex column">
                     <% products.forEach( product => { %>
 
-                        <article class="cart-item">
+                        <article class="cart-item flex">
                             <img src="<%= product.images[0] %>" alt="<%= product.shortDescription %>">
                             <div class="cart-item-info">
                                 <h2><%= product.name %></h2>
                                 <p><span>$<%= product.price %></span></p>
-                                <div class="cart-item-actions">
-                                    <div class="quantity-selector">
+                                <div class="cart-item-actions flex">
+                                    <div class="quantity-selector flex">
                                         <button>-</button>
                                         <span>1</span>
                                         <button>+</button>
@@ -35,7 +35,7 @@
 
                     <% }); %>
                 </div>   
-                <div class="cart-summary">
+                <div class="cart-summary flex column">
                     <div class="cart-summary-note-container">
                         <span>Agregar nota de orden:</span>
                         <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."></textarea>
@@ -59,12 +59,12 @@
                     %>
                     <p>Total: <span>$<%= total %></span></p>
                 </div>
-                <div class="cart-actions">
+                <div class="cart-actions flex column">
                     <button class="action-button">Comprar</button>
                     <button class="cart-actions-empty">Vaciar carrito</button>
                 </div>
             <% } else { %>
-                <div class="empty-cart-section">
+                <div class="empty-cart-section flex column">
                     <img src="/img/sad-empty-cart.png" alt="Un carrito triste">
                     <h2>Aún no se agregaron productos...</h2>
                     <p>

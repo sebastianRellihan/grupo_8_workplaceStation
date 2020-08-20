@@ -12,14 +12,14 @@
 
     <main class="main-products">
 
-        <section class="nav-section">
-            <div class="navmap-container">
+        <section class="nav-section flex column">
+            <div class="navmap-container flex">
                 <!-- Mapa de navegación dentro de la sección de productos -->
                 <a href="">Inicio</a>
                 <span>/</span>
                 <a href="">Productos</a>
             </div>
-            <div class="products-buttons-container">
+            <div class="products-buttons-container flex">
                 <button class="filter-button">
                     <span> Filtrar</span>
                     <i class="fas fa-filter"></i>
@@ -34,18 +34,10 @@
                 </button>
             </div>
             <aside class="products-nav">
-                <section class="view-options">
+                <section class="view-options flex column">
                     <h2>Ordenar productos</h2>
-                    <div class="order-view">
-                        <div class="order">
-                            <label for="order">Ordenar por:</label>
-                            <select name="order" id="order" class="input-text">
-                                <option value="best-seller">Más vendidos</option>
-                                <option value="lower-price">Menor precio</option>
-                                <option value="higher-price">Mayor precio</option>
-                            </select>
-                        </div>
-                        <div class="views">
+                    <div class="order-view flex column">
+                        <div class="views flex">
                             <button>
                                 <i class="fas fa-th-list"></i>
                             </button>
@@ -55,6 +47,14 @@
                             <button>
                                 <i class="fas fa-th"></i>
                             </button>
+                        </div>
+                        <div class="order flex">
+                            <label for="order">Ordenar por:</label>
+                            <select name="order" id="order" class="input-text">
+                                <option value="best-seller">Más vendidos</option>
+                                <option value="lower-price">Menor precio</option>
+                                <option value="higher-price">Mayor precio</option>
+                            </select>
                         </div>
                     </div>
                 </section>
@@ -111,7 +111,7 @@
             </aside>
         </section>
 
-        <section class="products-section">
+        <section class="products-section flex column">
 
             <%# Los datos se envía a esta vista dentro de un array de objetos literales llamado "products" %>
             <% if(products.length != 0) { %>
