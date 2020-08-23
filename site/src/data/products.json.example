@@ -1,48 +1,45 @@
 [
     {
         "id": 1,
-        "name": "Título del producto",
-        "briefDescription": "probando breve descripción",
-        "price": 10000,
-        "discount": 50,
-        "stock": 18,
-        "color": null,
-        "category": "ws",
+        "name": "Estación de trabajo",
+        "briefDescription": "Conjunto de Escritorio, silla ergonómica accesorios",
+        "price": 50000,
+        "discount": 5,
+        "stock": 5,
+        "color": "#000000",
+        "category": 1,
         "images": [
-            "/img/our-products-accesories.jpg",
-            "/img/our-products-workplace-station.jpg",
-            "/img/our-products-desks.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
     },
     {
         "id": 2,
-        "name": "Título del producto",
-        "briefDescription": "probando breve descripción",
-        "price": 8000,
-        "discount": 10,
+        "name": "Silla ergonómica gamer",
+        "briefDescription": "Silla ergonómica gamer negra y roja",
+        "price": 20000,
+        "discount": 0,
         "stock": 15,
-        "color": null,
-        "category": "desk",
+        "color": "#000000",
+        "category": 3,
         "images": [
-            "/img/our-products-desks.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
     },
     {
         "id": 3,
-        "name": "Título del producto",
-        "briefDescription": "probando breve descripción",
-        "price": 5000,
+        "name": "Kit gamer",
+        "briefDescription": "Teclado, mouse, auriculares, joystick y mousepad",
+        "price": 15000,
         "discount": 15,
-        "stock": 5,
-        "color": null,
-        "category": "chair",
+        "stock": 11,
+        "color": "#000000",
+        "category": 4,
         "images": [
-            "/img/our-products-workplace-station.jpg",
-            "/img/our-products-desks.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -54,11 +51,10 @@
         "price": 10000,
         "discount": 25,
         "stock": 12,
-        "color": null,
-        "category": "accesories",
+        "color": "#000000",
+        "category": 2,
         "images": [
-            "/img/our-products-desks.jpg",
-            "/img/our-products-workplace-station.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -70,29 +66,25 @@
         "price": 8000,
         "discount": 0,
         "stock": 12,
-        "color": null,
-        "category": "ws",
+        "color": "#000000",
+        "category": 1,
         "images": [
-            "/img/our-products-desks.jpg",
-            "/img/our-products-accesories.jpg",
-            "/img/our-products-chair.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
     },
     {
         "id": 6,
-        "name": "Título del producto",
+        "name": "Kit accesorios gamer pro",
         "briefDescription": "Probando breve descripción",
         "price": 8000,
         "discount": 0,
         "stock": 12,
-        "color": null,
-        "category": "ws",
+        "color": "#000000",
+        "category": 3,
         "images": [
-            "/img/our-products-desks.jpg",
-            "/img/our-products-accesories.jpg",
-            "/img/our-products-chair.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur mollitia ipsa culpa deserunt dicta neque sint, at eveniet, dolorem nisi distinctio natus aliquam.",
         "aditionalInfo": "Ab suscipit ipsa repudiandae consectetur nulla harum at quos vitae deserunt officia, fuga dolorum voluptates veniam dolor quo impedit, neque architecto aperiam, corporis nam."
@@ -104,12 +96,27 @@
         "price": 1233,
         "discount": 0,
         "stock": 12,
-        "color": null,
-        "category": "accesories",
+        "color": "#000000",
+        "category": 4,
         "images": [
-            "/img/our-products-desks.jpg"
+            "image1-1-1598154931386.jpg"
         ],
         "description": "cargando producto desde form eeee",
         "aditionalInfo": "cargando producto desde form eeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+        "id": 8,
+        "name": "Silla de oficina ergonómica",
+        "briefDescription": "qwertyuiop",
+        "price": 12000,
+        "discount": 5,
+        "stock": 10,
+        "color": "#000000",
+        "category": 3,
+        "images": [
+            "image1-1-1598154931386.jpg"
+        ],
+        "description": "jtyj",
+        "aditionalInfo": "yjtyj"
     }
 ]

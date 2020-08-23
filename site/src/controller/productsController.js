@@ -77,7 +77,7 @@ module.exports = {
             discount:parseFloat(req.body.discount),
             stock: parseFloat(req.body.stock),
             color:req.body.color,
-            category:req.body.category,
+            category: parseFloat(req.body.category),
             images: img,
             description: req.body.description,
             aditionalInfo: req.body.aditionalInfo
@@ -126,7 +126,7 @@ module.exports = {
         }
         product.id = req.params.id;
         productsModel.update(product);
-        res.redirect("/products/");
+        res.redirect("/products");
     },
 
     // Elimina un producto

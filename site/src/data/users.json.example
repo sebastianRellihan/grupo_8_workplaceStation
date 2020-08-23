@@ -1,0 +1,15 @@
+[
+    {
+        "id" : 1,
+        "name" : "user",
+        "last-name" : "user",
+        "email" : "a@gmail.com",
+        "gender" : 1,
+        "birth" : "1970-1-1",
+        "address" : "Calle Falsa 123",
+        "phone-number" : "154154154", 
+        "user-name" : "User01",
+        "password" : "$2b$15$Hzwz3o1fw4J1/OOI2DwG6u521CBlU/cIUJOppla8OWK3aXvARHAza",
+        "interests" : [1, 2, 3, 4]
+    }
+]
