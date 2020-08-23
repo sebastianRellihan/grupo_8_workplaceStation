@@ -1076,7 +1076,30 @@ footer {
                     }
                         .mobile-nav-side-bar-content ul li a {
                             color: var(--text-light);
+                            position: relative;
                         }
+                        .mobile-nav-side-bar-content ul li a:hover{ text-decoration: none;}
+                        /* Efecto de la barra debajo al hacer hover */
+                        .mobile-nav-side-bar-content ul li a:after {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            right: 0;
+                            width: 0;
+                            bottom: -3px;
+                            background: var(--logo-color-2);
+                            height: 3px;
+                            transition-property: width;
+                            transition-duration: 0.5s;
+                            transition-timing-function: ease-out;
+                          }
+                          .mobile-nav-side-bar-content ul li a:hover:after,
+                          .mobile-nav-side-bar-content ul li a:focus:after,
+                          .mobile-nav-side-bar-content ul li a:active:after {
+                            left: 0;
+                            right: auto;
+                            width: 100%;
+                          }
                     .mobile-nav-side-bar-content-products {
                         display: none !important;
                         flex-direction: column;
