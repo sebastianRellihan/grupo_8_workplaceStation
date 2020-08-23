@@ -63,28 +63,20 @@ module.exports = {
 
     // Almacena un nuevo producto
     store: (req, res) => {
+
         // Se crea el array y se completa con las rutas de las imágenes
         let img = [];
         req.files.forEach(image => {
             img.push(image.filename);
         });
-        // Se crea el objeto product
-        let product = {
-            id: null,
-            name:req.body.name,
-            briefDescription: req.body.briefDescription,
-            price: parseFloat(req.body.price),
-            discount:parseFloat(req.body.discount),
-            stock: parseFloat(req.body.stock),
-            color:req.body.color,
-            category: parseFloat(req.body.category),
-            images: img,
-            description: req.body.description,
-            aditionalInfo: req.body.aditionalInfo
-        }
+
+        // Se crea el objeto product y se añade el arreglo de imágenes
+        let product = req.body;
+        product.images = img; 
+        
         // Se crea el nuevo registro del producto en la base
         productsModel.create(product);
-        // Se redirige al usuario al form de creación de producto 
+        
         res.redirect("/products");
     },
 
@@ -93,12 +85,7 @@ module.exports = {
         
         // Se obtienen las imágenes anteriores
         let img = productsModel.getByField("id", req.params.id).images;
-        // Añade las imágenes nuevas
-        if(req.files){
-            req.files.forEach(image => {
-                img.push(image.filename);
-            });
-        }
+        
         // Se borran las imágenes que se hayan seleccionado
         if(req.body.deleteImages){
             let deleteImg = req.body.deleteImages;
@@ -109,22 +96,19 @@ module.exports = {
             // Borrado de las imágenes del disco
             productsModel.deleteFile(IMAGES_PATH, deleteImg);
         }
-        
-        // Se crea el objeto product
-        let product = {
-            id: null,
-            name:req.body.name,
-            briefDescription: req.body.briefDescription,
-            price: parseFloat(req.body.price),
-            discount:parseFloat(req.body.discount),
-            stock: parseFloat(req.body.stock),
-            color:req.body.color,
-            category:req.body.category,
-            images: img,
-            description: req.body.description,
-            aditionalInfo: req.body.aditionalInfo
+
+        // Añade las imágenes nuevas, si se subieron
+        if(req.files){
+            req.files.forEach(image => {
+                img.push(image.filename);
+            });
         }
+        
+        // Se crea el objeto product con las nuevas características y el mismo ID
+        let product = req.body;
+        product.images = img;
         product.id = req.params.id;
+
         productsModel.update(product);
         res.redirect("/products");
     },
