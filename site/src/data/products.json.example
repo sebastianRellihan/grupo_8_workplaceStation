@@ -6,7 +6,6 @@
         "price": 50000,
         "discount": 5,
         "stock": 5,
-        "color": "#000000",
         "category": 1,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -21,7 +20,6 @@
         "price": 20000,
         "discount": 0,
         "stock": 15,
-        "color": "#000000",
         "category": 3,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -36,7 +34,6 @@
         "price": 15000,
         "discount": 15,
         "stock": 11,
-        "color": "#000000",
         "category": 4,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -51,7 +48,6 @@
         "price": 10000,
         "discount": 25,
         "stock": 12,
-        "color": "#000000",
         "category": 2,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -66,7 +62,6 @@
         "price": 8000,
         "discount": 0,
         "stock": 12,
-        "color": "#000000",
         "category": 1,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -81,7 +76,6 @@
         "price": 8000,
         "discount": 0,
         "stock": 12,
-        "color": "#000000",
         "category": 3,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -96,7 +90,6 @@
         "price": 1233,
         "discount": 0,
         "stock": 12,
-        "color": "#000000",
         "category": 4,
         "images": [
             "image1-1-1598154931386.jpg"
@@ -111,7 +104,6 @@
         "price": 12000,
         "discount": 5,
         "stock": 10,
-        "color": "#000000",
         "category": 3,
         "images": [
             "image1-1-1598154931386.jpg"
