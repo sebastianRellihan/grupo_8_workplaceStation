@@ -6,10 +6,11 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const storage = require("../utils/diskStorage");
 
 const controller = require("../controller/productsController");
-const upload = multer({storage : storage}); // Motor de subida de archivos
+
+const multerConfig = require("../utils/multerConfig");
+const upload = multer(multerConfig); // Middleware de subida de archivos
 
 // Todos los productos
 router.get("/", controller.index);
