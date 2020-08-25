@@ -530,6 +530,10 @@ footer {
     /* Anula el estilo por defecto del input tipo file y usa una 
        etiqueta con el estilo de los botones de formularios */
     #profile-photo, #imagesUpload{ display: none; }
+        .image-format-label{
+            color: red;
+            font-size: 0.7em;
+        }
     /* Anulación del estilo por defecto de radio buttons y 
        checboxes y aplicación de estilo propio */
     .checkable-container{
