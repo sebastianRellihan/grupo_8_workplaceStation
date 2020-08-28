@@ -10,6 +10,7 @@
         "phone-number" : "154154154", 
         "user-name" : "User01",
         "password" : "$2b$15$Hzwz3o1fw4J1/OOI2DwG6u521CBlU/cIUJOppla8OWK3aXvARHAza",
+        "profile-photo": "",
         "interests" : [1, 2, 3, 4]
     }
 ]
