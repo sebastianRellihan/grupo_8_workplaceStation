@@ -3,10 +3,9 @@
  * Como por ejemplo: /products, /products/detail, products/cart, etc...
  * Debe ser llamado desde el enrutador productsRoutes.
 */
-const fs = require("fs");
+
 const path = require("path");
 const dataAccessModel = require('../utils/dataAccessModel');
-
 const productsModel = dataAccessModel('products'); // Acceso a modelo de productos
 const categoriesModel = dataAccessModel("categories"); // Acceso a modelo de categorías
 
