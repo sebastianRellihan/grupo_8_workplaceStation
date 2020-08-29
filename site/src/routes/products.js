@@ -9,8 +9,8 @@ const multer = require("multer");
 
 const controller = require("../controller/productsController");
 
-const multerConfig = require("../utils/multerConfig");
-const upload = multer(multerConfig); // Middleware de subida de archivos
+const multerConfig = require("../config/multerConfig");
+const upload = multer(multerConfig('uploaded')); // Middleware de subida de archivos
 
 // Todos los productos
 router.get("/", controller.index);
