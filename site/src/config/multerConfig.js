@@ -29,7 +29,7 @@ module.exports = function(destinationFolder) {
             },
             filename: function (req, file, cb) {
                 //     nombre del archivo - 3 letras del nombre original  -  fecha de subida - .extensión original
-                cb(null, file.fieldname + file.originalname.slice(0,3) + "-" + Date.now() + path.extname(file.originalname));
+                cb(null, file.fieldname + "-" + file.originalname.slice(0,3) + "-" + Date.now() + path.extname(file.originalname));
             }
         }),
         /*

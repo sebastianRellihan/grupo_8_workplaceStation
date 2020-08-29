@@ -5,10 +5,10 @@
 */
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
 
 const controller = require("../controller/productsController");
 
+const multer = require("multer");
 const multerConfig = require("../config/multerConfig");
 const upload = multer(multerConfig('uploaded')); // Middleware de subida de archivos
 

@@ -15,7 +15,7 @@
         <div class="form-container">
             <h1> Registro <i class="far fa-id-badge"></i></h1>
 
-            <form class="flex column" action="" method="GET">
+            <form class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
                 <!-- Información personal -->
                 <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
                     autocomplete="true" required>
@@ -62,7 +62,7 @@
                 <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña (*)" 
                     autocomplete="true" required>
                 <p class="alert-label" id="password-alert-label">Debe ingresar una contraseña válida</p>
-                <input type="password" class="input-text" name="repeat-password" id="repeat-password" placeholder="Repetir contraseña (*)" 
+                <input type="password" class="input-text" name="password-check" id="repeat-password" placeholder="Repetir contraseña (*)" 
                     autocomplete="true" required>
                 <p class="alert-label" id="unmatched-password-alert-label">Ambas contraseñas deben coincidir.</p>
 
