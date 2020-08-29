@@ -11,6 +11,12 @@ const path = require("path");
 // Tipos de archivos soportados
 const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif"];
 
+/**
+ * Retorna una instancia de un objeto de configuración de multer para subir archivos
+ * de imágenes dentro de subcarpetas de /public/img.
+ * @param {string} destinationFolder El nombre de la carpeta dentro de la carpeta
+ *                 /public/img en donde se deséen almacenar los archivos.
+ */
 module.exports = function(destinationFolder) {
     return {
         /*
@@ -22,7 +28,7 @@ module.exports = function(destinationFolder) {
                 cb(null, path.join(__dirname, "..", "..", "public", "img", destinationFolder));
             },
             filename: function (req, file, cb) {
-                //     nombre del archivo  - fecha de subida  .extensión original
+                //     nombre del archivo - 3 letras del nombre original  -  fecha de subida - .extensión original
                 cb(null, file.fieldname + file.originalname.slice(0,3) + "-" + Date.now() + path.extname(file.originalname));
             }
         }),
