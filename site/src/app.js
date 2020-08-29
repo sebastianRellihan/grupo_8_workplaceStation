@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
+const morgan = require("morgan");
 
 // Configuración
 app.set("view engine", "ejs"); // Le indica a express el template engine que se va a utilizar
 app.set("views", path.join(__dirname, '/views')); // Le indicamos a express donde está la carpeta views
 
 // Middlewares a nivel de aplicación
+app.use(morgan("dev")); // Ofrece información adicional de los request/responses
 // Template Engines
 app.use(express.static("public")); // Le indica a express donde se encuentran nuestros recurss estáticos
 // Formularios
