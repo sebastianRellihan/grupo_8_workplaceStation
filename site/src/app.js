@@ -1,6 +1,7 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const authenticateUser = require("./middlewares/authenticateUser");
 const morgan = require("morgan");
 const path = require("path");
 
@@ -14,7 +15,7 @@ app.set("views", path.join(__dirname, '/views')); // Le indicamos a express dond
 // ***************** Middlewares a nivel de aplicación *****************
 
 app.use(morgan("dev")); // Ofrece información adicional de los request/responses
-app.use(express.static("public")); // Le indica a express donde se encuentran nuestros recurss estáticos
+app.use(express.static("public")); // Le indica a express donde se encuentran nuestros recursos estáticos
 // Formularios
 app.use(express.urlencoded({ extended: false })); // Arma el objeto body
 app.use(express.json()) // Reconoce los objetos que vienen por medio del request como objetos JSON
@@ -25,6 +26,7 @@ app.use(session({
     resave: false, // No vuelve a guardarla si no hay cambios
     saveUninitialized: true // Guarda sesiones aunque todavía no hayan datos
 }));
+app.use(authenticateUser);
 
 // ***************** Rutas *****************
 const mainRoutes = require("./routes/main");
