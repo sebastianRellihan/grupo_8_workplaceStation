@@ -16,15 +16,20 @@
             <h1>
                 Ingresá <i class="fas fa-sign-in-alt"></i>
             </h1>
-            <form class="flex column"action="" method="GET">
+            <form class="flex column" action="/users/login" method="POST">
 
-                <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario" 
-                    autocomplete="true" required>
+                <input type="text" name="user-input" id="user-input" placeholder="Nombre de usuario" 
+                    autocomplete="true" required
+                    class="input-text <%= locals.errors && errors.authenticate ? 'input-alert' : '' %>"
+                    value="<%= locals.userInput ? locals.userInput : '' %>">
                 <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña"
                     autocomplete="true" required>
 
-                <!-- Mensaje visible sólo en caso de que se hayan ingresado datos inválidos -->
-                <p id="login-alert" class="alert-label">Nombre de usuario ó contraseña incorrecta</p>
+                <%# Mensaje visible sólo en caso de que se hayan ingresado datos inválidos %>
+                <p id="login-alert" class="alert-label">
+                    <%= locals.errors && errors.authenticate ? errors.authenticate.msg : '' %>
+                </p>
+                
                 <button type="submit" class="action-button">Ingresar</button>
 
                 <label class="checkable-container remember-me-container">Recordarme
