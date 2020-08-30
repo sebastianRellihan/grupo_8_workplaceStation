@@ -65,6 +65,9 @@ h5 {
     flex-direction: column;
     justify-content: center;
 }
+.input-alert{
+    background-color: rgba(255,0,0,0.1) !important;
+}
 /* BODY */
 body {
     display: flex;
@@ -458,7 +461,6 @@ footer {
     }
 /* Forms de registro y login */
 .alert-label{
-    display: none;
     color: var(--text-alert);
     text-align: center;
     font-weight: bold;
