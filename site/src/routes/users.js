@@ -16,6 +16,9 @@ const upload = multer(multerConfig('usersUploaded')); // Middleware de subida de
 // Vista del formulario de login de usuarios
 router.get("/login", controller.login);
 
+// Procesamiento del login de usuarios
+router.post("/login", controller.authenticate);
+
 // Vista del formulario de registro de usuarios
 router.get("/register", controller.register);
 
