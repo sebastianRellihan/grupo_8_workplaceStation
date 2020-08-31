@@ -25,6 +25,10 @@ module.exports = {
     register: (req, res) => {
         res.render("users/register", { categories : categoriesModel.getAll() });
     },
+    /** Muestra la vista de perfil del usuario en sesiòn */
+    show: (req, res) => {
+        res.render("users/profile");
+    },
     /** Procesa los datos del formulario de regstro y crea una entrada en BD */
     store: (req, res) => {
         let users = req.body;

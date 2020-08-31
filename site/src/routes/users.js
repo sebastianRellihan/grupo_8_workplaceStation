@@ -26,7 +26,7 @@ router.get("/register", controller.register);
 router.post("/register", upload.single('profile-photo'), controller.store);
 
 // Vista del perfil de un usuario
-// router.get("/profile", controller.profile);
+router.get("/profile", controller.show);
 
 // Procesamiento del form de eliminación de un usuario
 // router.delete("/profile", controller.delete);
