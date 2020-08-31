@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%# Import del HEAD del documento %>
+<%- include("../partials/head", {usesBootstrap: false, title: `Workplace Station - ${user["user-name"]}`,
+    description: `Perfil de ${user["user-name"]} en Workplace Station`,
+    keywords: "Workplace Station, perfil de usuario, editar perfil, eliminar perfil"})%>
+
+<body>
+    <%# Import del HADER %>
+    <%- include("../partials/header") %>
+
+    <main>
+        <img src="/img/usersUploaded/<%= users["profile-photo"] %>" alt="Imagen de perfil del usuario">
+        <h1><%= user["user-name"] %></h1>
+        <h2>Información personal</h2>
+        <ol>
+            <li>
+                Nombre completo: <%= user.name + " " + user["last-name"] %>
+            </li>
+            <li>
+                <% let parsedDate = new Date(user.birth) %>
+                Fecha de nacimiento: <%= parsedDate %> 
+            </li>
+            <li>
+                <%
+                    let gender = "";
+                    switch (user.gender) {
+                        case 1:
+                            gender = "M";
+                            break;
+                        case 2:
+                            gender = "F";
+                            break;
+                        case 3:
+                            gender = "Otro";
+                            break;
+                    }
+                %>
+                Género: <%= gender %>
+            </li>
+        </ol>
+    </main>
+
+    <%# Import del footer %>
+    <%- include("../partials/footer") %>
+</body>
+</html>
