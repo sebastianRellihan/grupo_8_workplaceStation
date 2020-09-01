@@ -32,7 +32,7 @@ router.get("/profile", controller.show);
 // router.delete("/profile", controller.delete);
 
 // Vista del formulario de edición de un usuario
-// router.get("/profile/edit", controller.edit);
+router.get("/edit", controller.edit);
 
 // procesamiento del form de edición de un usuario
 // router.put("/profile/edit", usersController.update);
