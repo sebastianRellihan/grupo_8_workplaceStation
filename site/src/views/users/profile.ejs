@@ -2,44 +2,80 @@
 <html lang="es">
 
 <%# Import del HEAD del documento %>
-<%- include("../partials/head", {usesBootstrap: false, title: `Workplace Station - ${user["user-name"]}`,
-    description: `Perfil de ${user["user-name"]} en Workplace Station`,
-    keywords: "Workplace Station, perfil de usuario, editar perfil, eliminar perfil"})%>
+<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - " + user["user-name"],
+    description: "Perfil de " + user["user-name"] + " en Workplace Station",
+    keywords: "Workplace Station, perfil de usuario, editar perfil, eliminar perfil"}) %>
 
 <body>
     <%# Import del HADER %>
     <%- include("../partials/header") %>
 
     <main>
-        <img src="/img/usersUploaded/<%= users["profile-photo"] %>" alt="Imagen de perfil del usuario">
-        <h1><%= user["user-name"] %></h1>
-        <h2>Información personal</h2>
-        <ol>
-            <li>
-                Nombre completo: <%= user.name + " " + user["last-name"] %>
-            </li>
-            <li>
-                <% let parsedDate = new Date(user.birth) %>
-                Fecha de nacimiento: <%= parsedDate %> 
-            </li>
-            <li>
-                <%
-                    let gender = "";
-                    switch (user.gender) {
-                        case 1:
-                            gender = "M";
-                            break;
-                        case 2:
-                            gender = "F";
-                            break;
-                        case 3:
-                            gender = "Otro";
-                            break;
-                    }
-                %>
-                Género: <%= gender %>
-            </li>
-        </ol>
+        <div class="profile-container">
+            <div>
+                <h1><%= user["user-name"] %></h1>
+                <img src="/img/usersUploaded/<%= user["profile-photo"] %>" alt="Imagen de perfil del usuario">
+            </div>
+            
+            <div>
+                <h2>Información personal</h2>
+                <ul><!-- Información personal del usuario -->
+                    <li>
+                        Nombre/s: <%= user.name %>
+                    </li>
+                    <li>
+                        Apellido/s: <%= user["last-name"] %>
+                    </li>
+                    <li>
+                        <%# Determina el género según su código %>
+                        Género: <%= user.gender == 1 ? "M" : (user.gender == 2 ? "F" : "M") %>
+                    </li>
+                    <li>
+                        <%# Parsea la fecha para poder imprimirla en formato DD/MM/AAAA %>
+                        <% var birth = new Date(user.birth); %>
+                        Fecha de nacimiento: <%= birth.getDate() + '/' + (birth.getMonth() + 1) + '/' + birth.getFullYear() %> 
+                    </li>
+                </ul><!--/ Información personal del usuario -->
+            </div>
+
+            <div>
+                <h2>Información de contacto</h2>
+                <ul><!-- Información de contacto -->
+                    <li>
+                        Correo electrónico: <%= user.email %>
+                    </li>
+                    <% if(user["phone-number"]){ %>
+                        <li>
+                            Número de teléfono: <%= user["phone-number"] %> 
+                        </li>
+                    <% } %>
+                    <li>
+                        Domicilio: <%= user.address %>
+                    </li>
+                </ul><!--/ Información de contacto -->
+            </div>
+
+
+            <% if(user.interests && user.interests.length != 0){ %>
+                <div>
+                    <h2>Intereses</h2>
+                    <ul>
+                        <% for(let i = 0; i < user.interests.length; i++){ %>
+                            <li><%= categories[i].name %></li>
+                        <% } %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <div>
+                <form action="/users/edit?_method=PUT" method="POST">
+                    <button type="submit" class="action-button">Editar perfil</button>
+                </form>
+                <form action="/users/profile?_method=DELETE" method="POST">
+                    <button type="submit" class="action-button">Borrar perfil</button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <%# Import del footer %>
