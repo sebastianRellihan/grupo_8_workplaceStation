@@ -27,7 +27,7 @@ module.exports = {
     },
     /** Muestra la vista de perfil del usuario en sesiòn */
     show: (req, res) => {
-        res.render("users/profile");
+        res.render("users/profile", {categories: categoriesModel.getAll()});
     },
     /** Procesa los datos del formulario de regstro y crea una entrada en BD */
     store: (req, res) => {
