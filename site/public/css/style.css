@@ -1348,6 +1348,14 @@ footer {
         width: 35%;
         font-size: 1.3em;
     }
+    /* VISTA DEL PERFIL DEL USUARIO */
+    .profile-container div{ width: 60%; }
+    .profile-container div:first-child,
+    .profile-container div:last-child{ width: 40%; }
+        .profile-container div img{
+            width: 15vw;
+            height: 15vw;
+        }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         position: relative;
