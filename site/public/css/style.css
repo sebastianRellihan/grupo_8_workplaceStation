@@ -606,7 +606,6 @@ footer {
         align-items: center;
     }
     .profile-container div:last-child{ margin-bottom: 5vh; }
-        .profile-container div ul{ list-style: none; }
         .profile-container div form{
             display: flex;
             justify-content: center;
@@ -618,6 +617,8 @@ footer {
             border-radius: 50%;
             box-shadow: 0px 6px 5px rgba(0,0,0,0.3);
         }
+        .profile-container div ul{ list-style: none; }
+            .profile-container div ul li{ color: var(--title-dark-blue); }
 /* Formulario de contacto */
 .main-form-container .form-container form textarea{
     background-color: var(--logo-color-4);
