@@ -70,6 +70,17 @@ module.exports = {
                 errors : { authenticate : { msg : "Usuario ó contraseña incorrecta" } }
             });
         }
+    },
+    /** Borra el perfil de usuario de la base de datos */
+    destroy: (req, res) => {
+        delete res.locals.user;
+        // Borrado de BD
+        usersModel.delete(req.session.user.id);
+        // Borrado de la imagen de perfil
+        usersModel.deleteFile(IMAGE_PATH, req.session.user["profile-photo"]);
+        // Destrucción de la sesión
+        req.session.destroy();
 
+        res.redirect("/");
     }
 }

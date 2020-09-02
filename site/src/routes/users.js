@@ -29,7 +29,7 @@ router.post("/register", upload.single('profile-photo'), controller.store);
 router.get("/profile", controller.show);
 
 // Procesamiento del form de eliminación de un usuario
-// router.delete("/profile", controller.delete);
+router.delete("/profile", controller.destroy);
 
 // Vista del formulario de edición de un usuario
 router.get("/edit", controller.edit);
