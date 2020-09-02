@@ -1207,6 +1207,25 @@ footer {
             align-self: center;
             margin-bottom: 25px;
         }
+    /* VISTA DEL PERFIL DE USUARIO */
+    .profile-container{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: end;
+    }
+        .profile-container div:first-child,
+        .profile-container div:nth-child(2),
+        .profile-container div:last-child{ order: -1; }
+        .profile-container div:last-child{ margin-bottom: 0; }
+        .profile-container div:nth-last-child(2){ margin-bottom: 5vh; }
+        .profile-container div{
+            width: 50%;
+        }
+            .profile-container div img{
+                width: 25vw;
+                height: 25vw;
+            }
     /* DETALLE DEL PRODUCTO */
     .main-product-detail .product-template{
         width: 80%;
