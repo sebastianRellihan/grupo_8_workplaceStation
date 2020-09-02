@@ -2,9 +2,9 @@
 <html lang="es">
 
 <%# Import del HEAD del documento %>
-<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Registrate",
+<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - user edit",
     description: "¿Querés formar parte de nuestra plataforma? ¡Tené acceso ilimitado a todos nuestros servicios!",
-    keywords: "Workplace Station, formulario, registro, crear cuenta"})%>
+    keywords: "Workplace Station, formulario, edición, edición usuario, editar cuenta"})%>
 
 <body>
     <%# Import del HADER %>
@@ -13,76 +13,58 @@
     <main class="main-form-container register-form-container">
 
         <div class="form-container">
-            <h1> Registro <i class="far fa-id-badge"></i></h1>
+            <h1> Edición de perfil <i class="far fa-id-badge"></i></h1>
 
             <form class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
                 <!-- Información personal -->
                 <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
-                    autocomplete="true" required>
+                    autocomplete="true" value="<%= user.name %>" required>
                 <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
-                    autocomplete="true" required>
-                <input type="email" class="input-text" name="email" id="email" placeholder="Dirección de e-mail (*)" 
-                    autocomplete="true" required>
+                    autocomplete="true" value="<%= user["last-name"] %>" required> 
 
                 <div class="gender-radio-container flex column">
                     <label for="gender" class="input-label">Género</label>
 
                     <label class="checkable-container" id="masc-radio">
                         <span>Masculino</span>
-                        <input type="radio" name="gender" value="1">
+                        <input type="radio" name="gender" value="1" <%= user.gender == 1 ? "checked" : null %>>
                         <span class="custom-checkable"></span>
                     </label>
 
                     <label class="checkable-container" id="fem-radio">Femenino
-                        <input type="radio" name="gender" value="2">
+                        <input type="radio" name="gender" value="2" <%= user.gender == 2 ? "checked" : null %>>
                         <span class="custom-checkable"></span>
                     </label>
 
                     <label class="checkable-container" id="other-radio">Otro
-                        <input type="radio" name="gender" value="3" checked>
+                        <input type="radio" name="gender" value="3" <%= user.gender == 3 ? "checked" : null %>>
                         <span class="custom-checkable"></span>
                     </label>
                 </div>
 
                 <label for="birth" class="input-label">Fecha de nacimiento (*)</label>
-                <input type="date" class="input-text" name="birth" id="birth" placeholder="dd/mm/aaaa" required>
+                <input type="date" class="input-text" name="birth" id="birth" placeholder="dd/mm/aaaa" value="<%= user.birth %>" required>
                 <!--<p class="alert-label" id="underage-alert-label">¡Debe ser mayor de edad para poder registrarte!</p>-->
 
                 <input type="text" class="input-text" name="address" id="address" placeholder="Domicilio (*)" 
-                    autocomplete="true" required>
+                    autocomplete="true" value="<%= user.address %>" required>
 
                 <input type="tel" class="input-text" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
-                    autocomplete="true" required>
+                    autocomplete="true" value="<%= user["phone-number"] %>">
                 <!--<p class="alert-label" id="telnumber-alert-label">Debe ingresar un número válido</p>-->
 
                 <!-- Información de perfil -->
                 <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
-                    autocomplete="true" required>
-                <label for="password" class="input-label">8 caracteres como mínimo.</label>
-                <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña (*)" 
-                    autocomplete="true" required>
-                <!--<p class="alert-label" id="password-alert-label">Debe ingresar una contraseña válida</p>-->
-                <input type="password" class="input-text" name="password-check" id="repeat-password" placeholder="Repetir contraseña (*)" 
-                    autocomplete="true" required>
-                <!--<p class="alert-label" id="unmatched-password-alert-label">Ambas contraseñas deben coincidir.</p>-->
+                    autocomplete="true" value="<%= user["user-name"] %>" required>
 
                 <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
                     Foto de perfil
                 </label>
 
-                <!-- Miscelánea + botones de envío y reseteo -->
-                
-                <div class="interests-checkbox-container flex column">
-                    <label for="interests" class="input-label">Intereses</label>
-                    <%# Imprime los checkbox con todas las categorías disponibles %>
-                    <% categories.forEach(category => { %>
-                        <label class="checkable-container"><%= category.name %>
-                            <input type="checkbox" name="interests" value="<%= category.id %>">
-                            <span class="custom-checkable"></span>
-                        </label>
-                    <% }); %>
-                </div>
+                <p class="input-label">
+                    En caso de no querer modificar la foto de perfil no seleccionar ninguna y se mantendrá la original
+                </p>
 
                 <p class="input-label">
                     Los campos indicados con (<span class="asterisk">*</span>) son obligatorios.

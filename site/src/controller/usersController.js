@@ -17,19 +17,23 @@ const categoriesModel = dataAccessModel("categories");
 const IMAGE_PATH = path.join(__dirname, "..", "..", "public", "img", "usersUploaded", "/");
 
 module.exports = {
-    /** Envía la vista del formulario de login (login.ejs) */
+    /** Muestra la vista del formulario de login (login.ejs) */
     login: (req, res) => {
         res.render("users/login");
     },
-    /** Envía la vista del formulario de registro (register.ejs) */
+    /** Muestra la vista del formulario de registro (register.ejs) */
     register: (req, res) => {
-        res.render("users/register", { categories : categoriesModel.getAll() });
+        res.render("users/register", { categories: categoriesModel.getAll() });
     },
     /** Muestra la vista de perfil del usuario en sesiòn */
     show: (req, res) => {
-        res.render("users/profile", {categories: categoriesModel.getAll()});
+        res.render("users/profile", { categories: categoriesModel.getAll() });
     },
-    /** Procesa los datos del formulario de regstro y crea una entrada en BD */
+    /** Muestra la vista de edición de del usuario en sesiòn */
+    edit: (req, res) => {
+        res.render("users/edit", { categories: categoriesModel.getAll() });
+    },
+    /** Procesa los datos del formulario de registro y crea una entrada en BD */
     store: (req, res) => {
         let users = req.body;
         users['profile-photo']  = req.file.filename;
