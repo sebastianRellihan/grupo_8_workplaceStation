@@ -71,6 +71,13 @@ module.exports = {
             });
         }
     },
+    /** Procesa el logout de usuario */
+    logout: (req, res) => {
+        req.session.destroy();
+        // En un futuro, cuando implementemos cookies, acá habría que destruir todos (ó uno)
+        // de los tokens del usuario
+        res.redirect("/");
+    },
     /** Borra el perfil de usuario de la base de datos */
     destroy: (req, res) => {
         delete res.locals.user;

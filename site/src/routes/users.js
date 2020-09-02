@@ -19,6 +19,9 @@ router.get("/login", controller.login);
 // Procesamiento del login de usuarios
 router.post("/login", controller.authenticate);
 
+// Procesamiento del logout de usuario
+router.get("/logout", controller.logout);
+
 // Vista del formulario de registro de usuarios
 router.get("/register", controller.register);
 
