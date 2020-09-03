@@ -15,7 +15,7 @@
         <div class="form-container">
             <h1> Edición de perfil <i class="far fa-id-badge"></i></h1>
 
-            <form class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
+            <form class="flex column" action="/users/edit?_method=PUT" method="POST" enctype="multipart/form-data">
                 <!-- Información personal -->
                 <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
                     autocomplete="true" value="<%= user.name %>" required>
