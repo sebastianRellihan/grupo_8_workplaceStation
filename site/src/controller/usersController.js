@@ -35,12 +35,17 @@ module.exports = {
     },
     /** Procesa los datos del formulario de registro y crea una entrada en BD */
     store: (req, res) => {
+        // Se almacena en users lo que llega por post del form
         let users = req.body;
-        users['profile-photo']  = req.file.filename;
-        if (users.password == users['password-check']) {
+        // Se reemplaza el nombre original de la imagen por el que le otorga la configuración de multer
+        users['profile-photo'] = req.file.filename;
+
+        if (users.password == users['password-check']) { // Se corrobora que la pass sea la misma en pass y check
+            // Se encripta la pass, se reemplaza y se elimina la que ingresó para corroborar
             let hash = bcrypt.hashSync(users.password, 10);
             users.password = hash;
             delete users['password-check'];
+            // Se almacena el usuario en la base y se redirige la vista al index
             usersModel.create(users);
             res.redirect("/");
         } else {
