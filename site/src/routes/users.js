@@ -38,6 +38,6 @@ router.delete("/profile", controller.destroy);
 router.get("/edit", controller.edit);
 
 // procesamiento del form de edición de un usuario
-// router.put("/profile/edit", usersController.update);
+router.put("/edit", upload.single('profile-photo'), controller.update);
 
 module.exports = router;

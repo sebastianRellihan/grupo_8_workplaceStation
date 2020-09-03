@@ -39,7 +39,7 @@ module.exports = {
         let users = req.body;
         // Se reemplaza el nombre original de la imagen por el que le otorga la configuración de multer
         users['profile-photo'] = req.file.filename;
-
+        
         if (users.password == users['password-check']) { // Se corrobora que la pass sea la misma en pass y check
             // Se encripta la pass, se reemplaza y se elimina la que ingresó para corroborar
             let hash = bcrypt.hashSync(users.password, 10);
@@ -94,5 +94,30 @@ module.exports = {
         req.session.destroy();
 
         res.redirect("/");
+    },
+    // Edita un usuario existente
+    update: (req, res) => {
+        // Se almacenan los datos del usuario que se encuentra en sesión para acceder a sus propiedades facilmente
+        let sessionUser = req.session.user;
+        // Se almacenan los datos que llegan del form
+        let user = req.body;
+        // Se completan los datos restantes que no se encuentran incluídos en ese form
+        user.email = sessionUser.email;
+        user.password = sessionUser.password;
+        user.interests = sessionUser.interests;
+        user.id = sessionUser.id;
+        
+        if(req.file){ // Si se sube una nueva foto de perfil...
+            // Se elimina la anterior y se reemplaza por la nueva
+            usersModel.deleteFile(IMAGE_PATH, sessionUser['profile-photo']);
+            user['profile-photo'] = req.file.filename;
+        } else { // Si no se sube una nueva foto se utiliza la que estaba
+            user['profile-photo'] = sessionUser['profile-photo'];
+        }
+
+        // Se reemplazan los datos de la base, y de la sesión, con los nuevos y se redirecciona a la vista del perfil que se encuentra en sesión
+        usersModel.update(user);
+        req.session.user = user;
+        res.redirect("/users/profile");
     }
 }
