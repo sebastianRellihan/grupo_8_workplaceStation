@@ -4,6 +4,7 @@ const session = require("express-session");
 const authenticateUser = require("./middlewares/authenticateUser");
 const morgan = require("morgan");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 // ***************** APP *****************
 const app = express();
@@ -26,6 +27,7 @@ app.use(session({
     resave: false, // No vuelve a guardarla si no hay cambios
     saveUninitialized: true // Guarda sesiones aunque todavía no hayan datos
 }));
+app.use(cookieParser());
 app.use(authenticateUser);
 
 // ***************** Rutas *****************
