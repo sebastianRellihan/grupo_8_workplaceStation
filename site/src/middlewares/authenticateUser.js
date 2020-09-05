@@ -33,7 +33,7 @@ module.exports = function(req, res, next){
                 res.locals.user = user;
             }
         } else {
-            res.clearCookie('uTwSm');
+            res.clearCookie('uTwS');
         }
     }
     next();
