@@ -47,6 +47,9 @@ module.exports = {
             delete users['password-check'];
             // Se almacena el usuario en la base y se redirige la vista al index
             usersModel.create(users);
+
+            // Se auto-loguea al usuario después de haber creado su cuenta
+            req.session.user = user;
             res.redirect("/");
         } else {
             // Hacer que se muestre el error bien a futuro
