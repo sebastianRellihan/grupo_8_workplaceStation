@@ -6,12 +6,15 @@
 
 const path = require("path");
 const bcrypt = require('bcryptjs');
+const crypto = require("crypto");
 const dataAccessModel = require("../utils/dataAccessModel");
 
 // Acceso a modelo de usuarios
 const usersModel = dataAccessModel('users'); 
 // Acceso a modelo de categorías
 const categoriesModel = dataAccessModel("categories");
+// Acceso a modelo de tokens
+const tokensModel = dataAccessModel("tokens");
 
 // Ruta absoluta en donde se almacena la imágen de perfil
 const IMAGE_PATH = path.join(__dirname, "..", "..", "public", "img", "usersUploaded", "/");
@@ -61,14 +64,31 @@ module.exports = {
 
         // Obtengo el usuario por medio de su email ó nombre de usuario
         let user = usersModel.getByField("email", req.body["user-input"]);
-        if(!user){ // En caso de que se haya ingresado el user name
+
+        // En caso de que se haya ingresado el user name
+        if(!user){
             user = usersModel.getByField("user-name", req.body["user-input"]);
         }
 
-        if(user && bcrypt.compareSync(req.body.password, user.password)){
+        // Si el usuario existe en nuestra base e ingresa la contraseña correcta
+        if(user && bcrypt.compareSync(req.body.password, user.password)){            
+            
+            // Si el usuario marcó "recordarme" le envíamos una cookie
+            if(req.body["remember-me"]){
+                
+                // Se genera un token seguro y aleatorio para la cookie
+                const token = crypto.randomBytes(48).toString("base64");
+                
+                // Se almacena el token en tokens.json con el ID del usuario para vincularlo al mimso a futuro
+                tokensModel.create({ userId: user.id, token: token});
+                
+                // Almacena el Token en la cookie por un mes
+                res.cookie("uTwS", token, {maxAge : 1000 * 60 * 60 * 24 * 30});
+            }
 
-            // Inserto la información del usuario en la sesión
+            // Se guarda al usuario en session
             req.session.user = user;
+
             res.redirect("/");
 
         } else {
@@ -81,9 +101,14 @@ module.exports = {
     },
     /** Procesa el logout de usuario */
     logout: (req, res) => {
+
+        // Se destruyen todas las cookies de la base que le pertenezcan a un mismo usuario 
+        tokensModel.deleteAllByField("userId", req.session.user.id);
+        // Se destruye la cookie del navegador
+        res.clearCookie("uTwS");
+        // Se destruye al usuario en session
         req.session.destroy();
-        // En un futuro, cuando implementemos cookies, acá habría que destruir todos (ó uno)
-        // de los tokens del usuario
+
         res.redirect("/");
     },
     /** Borra el perfil de usuario de la base de datos */

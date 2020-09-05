@@ -174,6 +174,19 @@ let model = function(tableName){
                 return eachRow.id != id;
             });
             this.writeFile(rows);
+        },
+
+        /**
+         * Borra todos los registros de la base según un valor específico.
+         * @param {string} field El nombre del campo sobre el que se quiere realizar la consulta.
+         * @param {*} value El valor a comparar.
+        */
+        deleteAllByField: function(field, value){
+            let rows = this.readFile();
+            rows = rows.filter(eachRow => {
+                return eachRow[field] != value;
+            });
+            this.writeFile(rows);
         }
 
     } // fin return
