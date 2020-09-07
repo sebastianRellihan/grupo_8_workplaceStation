@@ -114,10 +114,20 @@ header {
             .site-header-center-img-2 {
                 width: 270px;
             }
+            .site-header-end a {
+                text-align: center;
+                display: inline-block;
+                width: 100%;
+                height: 133px;
+            }
             .site-header-start i,
             .site-header-end i {
                 font-size: 24px;
                 color: var(--logo-color-3);
+            }
+            .site-header-end i {
+                position: relative;
+                top: 40%;
             }
     .site-cart {
         position: fixed;
@@ -446,6 +456,8 @@ footer {
                         font-family: var(--title-font);
                         font-weight: 600;
                         font-size: 1rem;
+                        width: 100%;
+                        display: inline-block;
                     }
 /* ERROR 404 NOT-FOUND */
 .error-container{
