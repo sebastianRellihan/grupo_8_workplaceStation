@@ -90,6 +90,7 @@ header {
     font-family: var(--title-font);
     color: var(--text-light);
     background-color: var(--background-2);
+    z-index: 1000;
 }
     .site-header {
         justify-content: space-around;
@@ -868,6 +869,7 @@ footer {
                     .order-view .views button {
                         border: none;
                         background-color: var(--background-1);
+                        cursor: pointer;
                     }
                         .order-view .views button i {
                             color: var(--title-dark-blue);
@@ -1192,13 +1194,13 @@ footer {
                             right: auto;
                             width: 100%;
                           }
-                    .mobile-nav-side-bar-content-products {
-                        display: none !important;
-                        flex-direction: column;
-                        position: absolute;
-                        background-color: var(--background-1);
-                        color: var(--title-dark-blue);
-                    }
+                        .mobile-nav-side-bar-content ul li .mobile-nav-side-bar-content-products {
+                            display: none;
+                            flex-direction: column;
+                            position: absolute;
+                            background-color: var(--background-2);
+                            color: var(--title-dark-blue);
+                        }
         .site-cart {
             width: 100px;
             position: inherit;
