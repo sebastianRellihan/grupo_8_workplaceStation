@@ -55,8 +55,14 @@ module.exports = {
             req.session.user = user;
             res.redirect("/");
         } else {
-            // Hacer que se muestre el error bien a futuro
-            res.send('La contra no coincide che');
+            // Borro la imagen subida por el usuario
+            usersModel.deleteFile(IMAGE_PATH, req.file.filename);
+
+            res.render("users/register", {
+                categories: categoriesModel.getAll(),
+                userInput: req.body,
+                errors : { confirm : { msg : "Ambas contraseñas deben coincidir" } }
+            })
         }
     },
     /** Procesa la autenticación y logueo de usuarios */

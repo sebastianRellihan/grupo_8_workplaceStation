@@ -17,54 +17,63 @@
 
             <form class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
                 <!-- Información personal -->
-                <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
-                    autocomplete="true" required>
-                <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
-                    autocomplete="true" required>
-                <input type="email" class="input-text" name="email" id="email" placeholder="Dirección de e-mail (*)" 
-                    autocomplete="true" required>
+                <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" autocomplete="true" 
+                value="<%= locals.userInput && locals.userInput.name ? locals.userInput.name : '' %>" required>
+
+                <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Apellido/s (*)" autocomplete="true" 
+                value="<%= locals.userInput && locals.userInput['last-name'] ? locals.userInput['last-name'] : '' %>" required>
+
+                <input type="email" class="input-text" name="email" id="email" placeholder="Dirección de e-mail (*)" autocomplete="true" 
+                value="<%= locals.userInput && locals.userInput.email ? locals.userInput.email : '' %>" required>
 
                 <div class="gender-radio-container flex column">
                     <label for="gender" class="input-label">Género</label>
 
                     <label class="checkable-container" id="masc-radio">
                         <span>Masculino</span>
-                        <input type="radio" name="gender" value="1">
+                        <input type="radio" name="gender" value="1" <%= locals.userInput && locals.userInput.gender == 1 ? "checked" : "" %>>
                         <span class="custom-checkable"></span>
                     </label>
 
                     <label class="checkable-container" id="fem-radio">Femenino
-                        <input type="radio" name="gender" value="2">
+                        <input type="radio" name="gender" value="2" <%= locals.userInput && locals.userInput.gender == 2 ? "checked" : "" %>>
                         <span class="custom-checkable"></span>
                     </label>
 
                     <label class="checkable-container" id="other-radio">Otro
-                        <input type="radio" name="gender" value="3" checked>
+                        <input type="radio" name="gender" value="3" 
+                        <%= (locals.userInput && locals.userInput.gender == 3) || !locals.userInput ? "checked" : "" %>>
                         <span class="custom-checkable"></span>
                     </label>
                 </div>
 
                 <label for="birth" class="input-label">Fecha de nacimiento (*)</label>
-                <input type="date" class="input-text" name="birth" id="birth" placeholder="dd/mm/aaaa" required>
+                <input type="date" class="input-text" name="birth" id="birth" placeholder="dd/mm/aaaa" required
+                value="<%= locals.userInput && locals.userInput.birth ? locals.userInput.birth : '' %>">
                 <!--<p class="alert-label" id="underage-alert-label">¡Debe ser mayor de edad para poder registrarte!</p>-->
 
-                <input type="text" class="input-text" name="address" id="address" placeholder="Domicilio (*)" 
-                    autocomplete="true" required>
+                <input type="text" class="input-text" name="address" id="address" placeholder="Domicilio (*)" autocomplete="true" 
+                value="<%= locals.userInput && locals.userInput.address ? locals.userInput.address : '' %>" required>
 
-                <input type="tel" class="input-text" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
-                    autocomplete="true" required>
+                <input type="tel" class="input-text" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)" required
+                autocomplete="true" value="<%= locals.userInput && locals.userInput['phone-number'] ? locals.userInput['phone-number'] : '' %>">
                 <!--<p class="alert-label" id="telnumber-alert-label">Debe ingresar un número válido</p>-->
 
                 <!-- Información de perfil -->
-                <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
-                    autocomplete="true" required>
+                <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" autocomplete="true" 
+                value="<%= locals.userInput && locals.userInput['user-name'] ? locals.userInput['user-name'] : '' %>" required>
+
                 <label for="password" class="input-label">8 caracteres como mínimo.</label>
-                <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña (*)" 
-                    autocomplete="true" required>
+                <input type="password" name="password" id="password" placeholder="Contraseña (*)" autocomplete="true" 
+                class="input-text <%= locals.errors && errors.confirm ? 'input-alert' : '' %>" required>
+
                 <!--<p class="alert-label" id="password-alert-label">Debe ingresar una contraseña válida</p>-->
-                <input type="password" class="input-text" name="password-check" id="repeat-password" placeholder="Repetir contraseña (*)" 
-                    autocomplete="true" required>
-                <!--<p class="alert-label" id="unmatched-password-alert-label">Ambas contraseñas deben coincidir.</p>-->
+                <input type="password" name="password-check" id="repeat-password" placeholder="Repetir contraseña (*)" autocomplete="true" 
+                class="input-text <%= locals.errors && errors.confirm ? 'input-alert' : '' %>" required>
+                
+                <p id="login-alert" class="alert-label">
+                    <%= locals.errors && errors.confirm ? errors.confirm.msg : '' %>
+                </p>
 
                 <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
@@ -78,7 +87,8 @@
                     <%# Imprime los checkbox con todas las categorías disponibles %>
                     <% categories.forEach(category => { %>
                         <label class="checkable-container"><%= category.name %>
-                            <input type="checkbox" name="interests" value="<%= category.id %>">
+                            <input type="checkbox" name="interests" value="<%= category.id %>"
+                                <%= userInput.interests && userInput.interests.includes(category.id.toString()) ? "checked" : "" %>>
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>
