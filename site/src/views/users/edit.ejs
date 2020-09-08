@@ -66,6 +66,18 @@
                     En caso de no querer modificar la foto de perfil no seleccionar ninguna y se mantendrá la original
                 </p>
 
+                <div class="interests-checkbox-container flex column">
+                    <label for="interests" class="input-label">Intereses</label>
+                    <%# Imprime los checkbox con todas las categorías disponibles %>
+                    <% categories.forEach(category => { %>
+                        <label class="checkable-container"><%= category.name %>
+                            <input type="checkbox" name="interests" value="<%= category.id %>"
+                                <%= user.interests && user.interests.includes(category.id.toString()) ? "checked" : "" %>>
+                            <span class="custom-checkable"></span>
+                        </label>
+                    <% }); %>
+                </div>
+
                 <p class="input-label">
                     Los campos indicados con (<span class="asterisk">*</span>) son obligatorios.
                 </p>
