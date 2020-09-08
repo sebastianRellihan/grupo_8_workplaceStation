@@ -28,7 +28,9 @@
                                         <span>1</span>
                                         <button>+</button>
                                     </div>
-                                    <button class="cart-actions-empty"><i class="fas fa-trash-alt"></i></button>
+                                    <form action="/products/cart/<%= product.id %>?_method=DELETE" method="POST">
+                                        <button class="cart-actions-empty" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
                                 </div>
                             </div>
                         </article>

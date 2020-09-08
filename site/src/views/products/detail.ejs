@@ -98,7 +98,10 @@
                         <span>1</span>
                         <button>+</button>
                     </div>
-                    <button class="action-button">Agregar al carrito</button>
+                    <form action="/products/cart" method="POST">
+                        <input type="hidden" value="<%= product.id %>" name="productId">
+                        <button class="action-button" type="submit">Agregar al carrito</button>
+                    </form>
                     <button class="action-button">Comprar ahora</button>
                 </div>
             </section>
