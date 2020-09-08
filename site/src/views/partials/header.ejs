@@ -14,11 +14,27 @@
                     alt="Logotipo y Eslogan Workplace Station">
             </a>
         </div>
-        <button class="site-header-end">
-            <a href="/users/login">
-                <i class="far fa-user"></i>
-            </a>
-        </button>
+        <div class="site-header-end flex">
+            <button class="site-header-end-button">
+                <% if(locals.user) { %>
+                    <a href="/users/profile" class="flex column">
+                        <i class="far fa-user"></i>
+                        <p> <%= locals.user["user-name"] %> </p>
+                    </a>
+                <% } else { %> 
+                    <a href="/users/login">
+                        <i class="far fa-user"></i>
+                    </a>
+                <% } %> 
+            </button>
+            <% if (locals.user) { %>
+                <button class="site-header-logout">
+                    <a href="/users/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </button>
+            <% } %> 
+        </div>
     </div>
 
     <div class="nav-bar flex">
@@ -45,7 +61,9 @@
                     </li>
                     <li><a href="/about-us">Sobre nosotros</a></li>
                     <li><a href="/contact">Contacto</a></li>
-                    <li><a href="/products/create">Vender</a></li>
+                    <% if(locals.user && locals.user.isAdmin) { %> 
+                        <li><a href="/products/create">Vender</a></li>
+                    <% } else {} %> 
                 </ul>
             </div>
         </nav>
