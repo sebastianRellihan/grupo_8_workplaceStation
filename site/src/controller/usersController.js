@@ -132,7 +132,6 @@ module.exports = {
         // Se completan los datos restantes que no se encuentran incluídos en ese form
         user.email = sessionUser.email;
         user.password = sessionUser.password;
-        user.interests = sessionUser.interests;
         user.id = sessionUser.id;
         
         if(req.file){ // Si se sube una nueva foto de perfil...
