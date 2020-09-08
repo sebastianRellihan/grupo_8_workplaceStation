@@ -55,3 +55,29 @@
     - 
 5. Dejar de hacer:
     - Dejar de hacer commits y push's sin antes revisar que todo se encuentr en orden
+
+## Sprint 4 - JSON + métodos HTTP
+1. Comenzar a hacer:
+    - Pensar bien la estructura de datos pensando lo que queremos hacer con los mismos a futuro
+2. Hacer más:
+    - Seguir leyendo la documentación de los módulos que pensamos utilizar para ver que otras cosas se pueden hacer con los mismos
+    - Seguir desglozando las tareas en trello
+3. Continuar haciendo:
+    - Seguir factorizando el código y que sea reutilizable
+4. Hacer menos:
+    - Mandarse a hacer cosas sin antes ponernos de acuerdo
+5. Dejar de hacer:
+    - Commits sin revisar antes
+
+
+## Sprint 5 - Middlewares + Auth
+1. Comenzar a hacer:
+    - Pensar cada uno por su cuenta como piensa encarar las consignas del sprint antes de la primer reunion para poder entrar más en detalle
+2. Hacer más:
+    - Conversar las ideas que tengamos por el grupo de wpp
+3. Continuar haciendo:
+    - Commits claros y cortos para comprender facilmente lo que hizo el otro compañero
+    - Tarjetas desglozadas y bien detalladas en trello
+4. Hacer menos:
+    - Cambios a último minuto
+5. Dejar de hacer:
