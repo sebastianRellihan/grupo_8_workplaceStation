@@ -23,7 +23,7 @@ router.get("/login", guestRoute, controller.login);
 router.post("/login", guestRoute, controller.authenticate);
 
 // Procesamiento del logout de usuario
-router.get("/logout", userRoute, controller.logout);
+router.post("/logout", userRoute, controller.logout);
 
 // Vista del formulario de registro de usuarios
 router.get("/register", guestRoute, controller.register);

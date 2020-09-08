@@ -28,7 +28,7 @@
                 <% } %> 
             </button>
             <% if (locals.user) { %>
-                <form action="/users/logout" class="flex column">
+                <form action="/users/logout" method="POST" class="flex column">
                     <button type="submit" class="site-header-logout"><i class="fas fa-sign-out-alt"></i></button>
                 </form>
             <% } %> 
