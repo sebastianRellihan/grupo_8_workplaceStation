@@ -36,11 +36,40 @@ module.exports = {
 
     // Envía la vista del carrito de productos seleccionados (cart.ejs) 
     cart: (req, res) => {
-        // La razón por la que se envían todos los productos es para realizar el diseño,
-        // una vez se tenga accesso a la sesión HTTP se podrá enviar los productos que hayan
-        // sido añadidos al carrito por el usuario
-        res.render("products/cart", {products : productsModel.getAll()});
+        let products = [];
+
+        if(req.session.cart && req.session.cart.length != 0){
+            // Obtengo todos los productos lamacenados en el carrito de la sesión
+            req.session.cart.forEach(index => {
+                products.push(productsModel.getByField("id",index));
+            });
+        }
+        
+        res.render("products/cart", { products });
     }, 
+
+    /** Añade un producto al carrito de la sesión */
+    addToCart: (req, res) => {
+        if(!req.session.cart){ // Crea la instancia en caso de que no exista
+            req.session.cart = [];
+        }
+        // Añade el producto sólo si este no ha sido añadido anteriormente
+        if(!req.session.cart.includes(req.body.productId)){
+            req.session.cart.push(req.body.productId);
+        }
+        res.redirect("/products/cart");
+    },
+
+    /** Remueve un producto del carrito de la sesión */
+    removeFromCart: (req, res) => {
+        if(req.session.cart && req.session.cart.length != 0){
+            // Filtra el producto por su ID
+            req.session.cart = req.session.cart.filter(productId => {
+                return productId != req.params.id;
+            });
+        }
+        res.redirect("/products/cart");
+    },
 
     // Envía la vista del formulario de carga de productos
     create: (req, res) => {

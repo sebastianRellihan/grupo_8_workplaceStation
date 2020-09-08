@@ -20,6 +20,12 @@ router.get("/", controller.index);
 // Carrito de compras
 router.get("/cart", controller.cart);
 
+// Adición de productos al carrito de compras
+router.post("/cart", controller.addToCart);
+
+// Borrado de productos del carrito
+router.delete("/cart/:id", controller.removeFromCart);
+
 // Formulario de creación de producto
 router.get("/create", adminRoute, controller.create);
 
