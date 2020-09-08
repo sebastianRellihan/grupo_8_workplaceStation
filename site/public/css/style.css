@@ -31,6 +31,9 @@
 a {
     color: inherit;
 }
+a:hover {
+    color: var(--logo-color-1);
+}
 p {
     font-family: var(--text-font);
     font-size: 1rem;
@@ -100,11 +103,15 @@ header {
             cursor: pointer;
         }
         .site-header-end {
+            align-self: stretch;
+            flex-grow: 1;
+            justify-content: end;
+        }
+        .site-header-end-button {
+            width: 100%;
             padding: 0;
             background-color: var(--background-2);
             border-style: none;
-            align-self: stretch;
-            flex-grow: 1;
             cursor: pointer;
         }
             .site-header-center-img-1 {
@@ -114,20 +121,32 @@ header {
             .site-header-center-img-2 {
                 width: 270px;
             }
-            .site-header-end a {
+            .site-header-end-button a {
                 text-align: center;
-                display: inline-block;
                 width: 100%;
                 height: 133px;
             }
             .site-header-start i,
-            .site-header-end i {
+            .site-header-end-button i,
+            .site-header-logout i {
                 font-size: 24px;
                 color: var(--logo-color-3);
             }
-            .site-header-end i {
+            .site-header-end-button i {
                 position: relative;
-                top: 40%;
+            }
+            .site-header-logout {
+                display: none;
+                border: none;
+                background-color: var(--background-2);
+                height: 100px;
+                width: 80px;
+            }
+            .site-header-end-button p {
+                display: none;
+                color: var(--logo-color-3);
+                margin: 0;
+                padding-top: 5px;
             }
     .site-cart {
         position: fixed;
@@ -277,7 +296,8 @@ footer {
             width:100%;
             padding: 0;
         }
-        footer section ul li a { 
+        footer section ul li a,
+        .footer-logout { 
             color: var(--text-light)
         }
         footer section h2{
@@ -290,6 +310,14 @@ footer {
             background-color: black;
             margin-bottom: 0; 
             font-size: 0.7em;
+        }
+        .footer-logout {
+            background-color: var(--background-2);
+            border: none;
+        }
+        .footer-logout:hover {
+            text-decoration: underline;
+            color: var(--logo-color-1);
         }
 /* Estilos reutilizables de uso general */
 .action-button{ 
@@ -1068,10 +1096,20 @@ footer {
                     position: relative;
                     top: 10px;
                 }
-                .site-header-end {
+                .site-header-end-button {
                     flex-grow: 0;
-                width: 100px;
-            }
+                    width: 100px;
+                    height: 100px;
+                }
+                .site-header-logout {
+                    display: block;
+                }
+                    .site-header-end-button p {
+                        display: inline-block;
+                    }
+                    .site-header-end-button a  {
+                        height: 100px;
+                    }
     .nav-bar {
         flex-wrap: nowrap;
         max-width: 1280px;
