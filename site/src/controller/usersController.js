@@ -39,24 +39,30 @@ module.exports = {
     /** Procesa los datos del formulario de registro y crea una entrada en BD */
     store: (req, res) => {
         // Se almacena en users lo que llega por post del form
-        let users = req.body;
+        let user = req.body;
         // Se reemplaza el nombre original de la imagen por el que le otorga la configuración de multer
-        users['profile-photo'] = req.file.filename;
+        user['profile-photo'] = req.file.filename;
         
-        if (users.password == users['password-check']) { // Se corrobora que la pass sea la misma en pass y check
+        if (user.password == user['password-check']) { // Se corrobora que la pass sea la misma en pass y check
             // Se encripta la pass, se reemplaza y se elimina la que ingresó para corroborar
-            let hash = bcrypt.hashSync(users.password, 10);
-            users.password = hash;
-            delete users['password-check'];
+            let hash = bcrypt.hashSync(user.password, 10);
+            user.password = hash;
+            delete user['password-check'];
             // Se almacena el usuario en la base y se redirige la vista al index
-            usersModel.create(users);
+            usersModel.create(user);
 
             // Se auto-loguea al usuario después de haber creado su cuenta
             req.session.user = user;
             res.redirect("/");
         } else {
-            // Hacer que se muestre el error bien a futuro
-            res.send('La contra no coincide che');
+            // Borro la imagen subida por el usuario
+            usersModel.deleteFile(IMAGE_PATH, req.file.filename);
+
+            res.render("users/register", {
+                categories: categoriesModel.getAll(),
+                userInput: req.body,
+                errors : { confirm : { msg : "Ambas contraseñas deben coincidir" } }
+            })
         }
     },
     /** Procesa la autenticación y logueo de usuarios */
@@ -69,7 +75,6 @@ module.exports = {
         if(!user){
             user = usersModel.getByField("user-name", req.body["user-input"]);
         }
-
         // Si el usuario existe en nuestra base e ingresa la contraseña correcta
         if(user && bcrypt.compareSync(req.body.password, user.password)){            
             
