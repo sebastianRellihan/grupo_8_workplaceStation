@@ -22,17 +22,15 @@
                         <p> <%= locals.user["user-name"] %> </p>
                     </a>
                 <% } else { %> 
-                    <a href="/users/login">
+                    <a href="/users/login" class="flex column">
                         <i class="far fa-user"></i>
                     </a>
                 <% } %> 
             </button>
             <% if (locals.user) { %>
-                <button class="site-header-logout">
-                    <a href="/users/logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </a>
-                </button>
+                <form action="/users/logout" class="flex column">
+                    <button type="submit" class="site-header-logout"><i class="fas fa-sign-out-alt"></i></button>
+                </form>
             <% } %> 
         </div>
     </div>

@@ -26,14 +26,27 @@
                 <a href="/products">Productos</a>
             </li>
             <li>
-                <a href="/users/login">Ingresar</a>
-            </li>
-            <li>
-                <a href="/users/register">Registrarse</a>
-            </li>
-            <li>
                 <a href="/contact">Contacto</a>
             </li>
+            <% if(locals.user && locals.user.isAdmin) { %>
+                <li>
+                    <a href="/products/create">Vender Producto</a>
+                </li>
+            <% } %>  
+            <% if(!locals.user) { %>
+                <li>
+                    <a href="/users/login">Ingresar</a>
+                </li>
+                <li>
+                    <a href="/users/register">Registrarse</a>
+                </li>
+            <% } else { %>
+                <li>
+                    <form action="/users/logout" method="GET">
+                        <button type="submit" class="footer-logout">Cerrar Sesión</button>
+                    </form>
+                </li>
+            <% } %>  
         </ul>
     </section>
 
