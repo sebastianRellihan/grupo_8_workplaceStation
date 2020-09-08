@@ -25,7 +25,6 @@ module.exports = function(req, res, next){
         if (token) {
             // Se busca al usuario con el userid de la token
             let user = usersModel.getByField("id", token.userId);
-            delete user.password;
 
             if (user) {
                 // Se almacenan los datos del usuario en session y en locals
