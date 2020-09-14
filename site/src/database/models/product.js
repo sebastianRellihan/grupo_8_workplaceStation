@@ -1,30 +1,55 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class product extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  product.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    brief_description: DataTypes.STRING,
-    aditional_info: DataTypes.STRING,
-    price: DataTypes.DECIMAL,
-    discount: DataTypes.TINYINT,
-    stock: DataTypes.INTEGER,
-    category_id: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'product',
-  });
-  return product;
+    class product extends Model {
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+            // define association here
+        }
+    };
+    product.init({
+        name: {
+            type: DataTypes.STRING(100),
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.STRING(500),
+            allowNull: false
+        },
+        briefDescription: {
+            type: DataTypes.STRING(100),
+            allowNull: false,
+            field: "brief_description"
+        },
+        aditionalInfo: {
+            type: DataTypes.STRING(500),
+            allowNull: false,
+            field: "aditional_info"
+        },
+        price: {
+            type: DataTypes.DECIMAL(2, 10).UNSIGNED,
+            defaultValue: 0
+        },
+        discount: {
+            type: DataTypes.TINYINT.UNSIGNED,
+            defaultValue: 0
+        },
+        stock: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            defaultValue: 0
+        },
+        category: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            allowNull: false,
+            field: "category_id"
+        }
+    }, {
+        sequelize,
+        modelName: 'product',
+    });
+    return product;
 };
