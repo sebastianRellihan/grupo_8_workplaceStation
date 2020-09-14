@@ -946,7 +946,9 @@ footer {
     .product-actions {
         margin: 25px 0;
     }
-        .product-actions button{width: 80%;}
+        .product-actions button,
+        .product-actions form {width: 80%!important;}
+            .product-actions form button.action-button {width: 100% !important;}
     .product-more-info {
         align-items: inherit;
     }

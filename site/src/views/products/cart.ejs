@@ -54,7 +54,7 @@
                             if(element.discount == 0){
                                 return acum + element.price;
                             } else { // Aplica el descuento si lo hay
-                                return acum + element.price * (element.discount / 100); 
+                                return element.price - (acum + element.price * (element.discount / 100)); 
                             }
 
                         }, 0); // El 0 es el valor inicial del acumulador
