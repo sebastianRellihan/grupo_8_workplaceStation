@@ -4,7 +4,7 @@
   "description": "E-commerse Workplace Station, proyecto integrador del curso de Desarrollo Web Full-Stack de Digital House",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "start": "node src/app.js",
     "startdev": "nodemon src/app.js -e js,ejs,css,json"
   },
@@ -30,6 +30,7 @@
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
+    "jasmine": "^3.6.1",
     "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0"
   }
