@@ -50,9 +50,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATEONLY,
             allowNull: false
         },
-        phone_number: {
+        ["phone-number"]: {
             type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: true
+            allowNull: true,
+            field : "phone_number"
         },
         gender: {
             type: DataTypes.TINYINT.UNSIGNED,
@@ -65,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        modelName: 'users',
+        modelName: 'user',
     });
     return users;
 };
