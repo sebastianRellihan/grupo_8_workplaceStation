@@ -9,7 +9,7 @@ const multer = require("multer");
 const path = require("path");
 
 // Tipos de archivos soportados
-const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif"];
+const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"];
 
 /**
  * Retorna una instancia de un objeto de configuración de multer para subir archivos
