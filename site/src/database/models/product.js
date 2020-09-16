@@ -44,10 +44,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER.UNSIGNED,
             defaultValue: 0
         },
-        category: {
+        category_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
-            field: "category_id"
         }
     }, {
         sequelize,
