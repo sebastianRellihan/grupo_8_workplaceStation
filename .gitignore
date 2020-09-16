@@ -8,6 +8,6 @@
 
 /site/src/test/
 
-/site/public/img/uploaded/
+# /site/public/img/uploaded/
 
-/site/public/img/usersUploaded/
+# /site/public/img/usersUploaded/
