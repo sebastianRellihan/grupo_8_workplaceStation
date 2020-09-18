@@ -19,12 +19,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             field: "first_name"
         },
-        ["last-name"]: {
+        lastName: {
             type: DataTypes.STRING(255),
             allowNull: false,
             field: "last_name"
         },
-        ["user-name"]: {
+        userName: {
             type: DataTypes.STRING(255),
             allowNull: false,
             unique: true,
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255),
             allowNull: false
         },
-        ["profile-photo"]: {
+        image: {
             type: DataTypes.STRING(50),
             unique: true,
             field: "profile_photo"
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATEONLY,
             allowNull: false
         },
-        ["phone-number"]: {
+        phoneNumber: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: true,
             field : "phone_number"

@@ -2,8 +2,8 @@
 <html lang="es">
 
 <%# Import del HEAD del documento %>
-<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - " + user["user-name"],
-    description: "Perfil de " + user["user-name"] + " en Workplace Station",
+<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - " + user.userName,
+    description: "Perfil de " + user.userName + " en Workplace Station",
     keywords: "Workplace Station, perfil de usuario, editar perfil, eliminar perfil"}) %>
 
 <body>
@@ -13,8 +13,8 @@
     <main>
         <div class="profile-container">
             <div>
-                <h1><%= user["user-name"] %></h1>
-                <img src="/img/usersUploaded/<%= user["profile-photo"] %>" alt="Imagen de perfil del usuario">
+                <h1><%= user.userName %></h1>
+                <img src="/img/usersUploaded/<%= user.image %>" alt="Imagen de perfil del usuario">
             </div>
             
             <div>
@@ -24,7 +24,7 @@
                         Nombre/s: <%= user.name %>
                     </li>
                     <li>
-                        Apellido/s: <%= user["last-name"] %>
+                        Apellido/s: <%= user.lastName %>
                     </li>
                     <li>
                         <%# Determina el género según su código %>
@@ -44,9 +44,9 @@
                     <li>
                         Correo electrónico: <%= user.email %>
                     </li>
-                    <% if(user["phone-number"]){ %>
+                    <% if(user.phoneNumber){ %>
                         <li>
-                            Número de teléfono: <%= user["phone-number"] %> 
+                            Número de teléfono: <%= user.phoneNumber %> 
                         </li>
                     <% } %>
                     <li>

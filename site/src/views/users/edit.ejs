@@ -20,7 +20,7 @@
                 <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
                     autocomplete="true" value="<%= user.name %>" required>
                 <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
-                    autocomplete="true" value="<%= user["last-name"] %>" required> 
+                    autocomplete="true" value="<%= user.lastName %>" required> 
 
                 <div class="gender-radio-container flex column">
                     <label for="gender" class="input-label">Género</label>
@@ -50,12 +50,12 @@
                     autocomplete="true" value="<%= user.address %>" required>
 
                 <input type="tel" class="input-text" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
-                    autocomplete="true" value="<%= user["phone-number"] %>">
+                    autocomplete="true" value="<%= user.phoneNumber %>">
                 <!--<p class="alert-label" id="telnumber-alert-label">Debe ingresar un número válido</p>-->
 
                 <!-- Información de perfil -->
                 <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
-                    autocomplete="true" value="<%= user["user-name"] %>" required>
+                    autocomplete="true" value="<%= user.userName %>" required>
 
                 <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
