@@ -16,6 +16,10 @@ const categoriesModel = dataAccessModel("categories");
 // Acceso a modelo de tokens
 const tokensModel = dataAccessModel("tokens");
 
+const { user, category } = require("../../src/database/models");
+const fileDeleter = require("../utils/fileDeleter");
+
+
 // Ruta absoluta en donde se almacena la imágen de perfil
 const IMAGE_PATH = path.join(__dirname, "..", "..", "public", "img", "usersUploaded", "/");
 
@@ -26,42 +30,67 @@ module.exports = {
     },
     /** Muestra la vista del formulario de registro (register.ejs) */
     register: (req, res) => {
-        res.render("users/register", { categories: categoriesModel.getAll() });
+        category.findAll()
+            .then(categories => {
+                return res.render("users/register", { categories });
+            })
     },
     /** Muestra la vista de perfil del usuario en sesiòn */
     show: (req, res) => {
-        res.render("users/profile", { categories: categoriesModel.getAll() });
+        category.findAll()
+        .then(categories => {
+            return res.render("users/profile", { categories });
+        })
     },
     /** Muestra la vista de edición de del usuario en sesiòn */
     edit: (req, res) => {
-        res.render("users/edit", { categories: categoriesModel.getAll() });
+        category.findAll()
+        .then(categories => {
+            return res.render("users/edit", { categories });
+        })
     },
     /** Procesa los datos del formulario de registro y crea una entrada en BD */
     store: (req, res) => {
-        // Se almacena en users lo que llega por post del form
-        let user = req.body;
-        // Se reemplaza el nombre original de la imagen por el que le otorga la configuración de multer
-        user['profile-photo'] = req.file.filename;
+
+        // Se almacena en userObj lo que llega por post del form
+        let userObj = {
+            name: req.body.name,
+            lastName: req.body["last-name"],
+            userName: req.body["user-name"],
+            email: req.body.email,
+            password: req.body.password,
+            passwordCheck: req.body["password-check"],
+            image: req.file.filename,
+            address: req.body.address,
+            birth: req.body.birth,
+            phoneNumber: req.body["phone-number"],
+            gender: req.body.gender,
+            isAdmin: false
+        }
         
-        if (user.password == user['password-check']) { // Se corrobora que la pass sea la misma en pass y check
+        if (userObj.password == userObj.passwordCheck) { // Se corrobora que la pass sea la misma en pass y check
             // Se encripta la pass, se reemplaza y se elimina la que ingresó para corroborar
-            let hash = bcrypt.hashSync(user.password, 10);
-            user.password = hash;
-            delete user['password-check'];
+            let hash = bcrypt.hashSync(userObj.password, 10);
+            userObj.password = hash;
+            delete userObj.passwordCheck;
+
             // Se almacena el usuario en la base y se redirige la vista al index
-            usersModel.create(user);
+            user.create(userObj)    
 
             // Se auto-loguea al usuario después de haber creado su cuenta
-            req.session.user = user;
+            req.session.user = userObj;
             res.redirect("/");
         } else {
             // Borro la imagen subida por el usuario
-            usersModel.deleteFile(IMAGE_PATH, req.file.filename);
+            fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
 
-            res.render("users/register", {
-                categories: categoriesModel.getAll(),
-                userInput: req.body,
-                errors : { confirm : { msg : "Ambas contraseñas deben coincidir" } }
+            category.findAll()
+            .then(categories => {
+                return res.render("users/register", {
+                    categories,
+                    userInput: req.body,
+                    errors : { confirm : { msg : "Ambas contraseñas deben coincidir" } }
+                })
             })
         }
     },
