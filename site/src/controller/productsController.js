@@ -4,12 +4,12 @@
  * Debe ser llamado desde el enrutador productsRoutes.
 */
 
-// Ruta absoluta en donde se almacenan las imágenes
-const IMAGES_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded");
 // ************ requires ************
 const path = require("path");
 const fileDeleter = require("../utils/fileDeleter"); // Factory de borrado de archivos
 const { product, category, image } = require("../database/models");
+// Ruta absoluta en donde se almacenan las imágenes
+const IMAGES_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded");
 const imageDeleter = fileDeleter(IMAGES_PATH); // Borrado de imágenes
 
 module.exports = {
