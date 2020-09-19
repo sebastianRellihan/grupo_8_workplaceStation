@@ -4,36 +4,42 @@
  * "locals", la cual es accesible al renderizar las vistas y dentro del servidor.
 */
 
-const dataAccessModel = require("../utils/dataAccessModel");
-// Acceso a modelo de usuarios
-const usersModel = dataAccessModel('users'); 
-// Acceso a modelo de tokens
-const tokensModel = dataAccessModel("tokens");
+const { user, token } = require("../../src/database/models");
 
 module.exports = function(req, res, next){
 
     // Si hay un usuario en sesión
     if(req.session.user){
-
         // Se le pasa a la vista
         res.locals.user = req.session.user;
-
+    // Si hay una cookie nuestra en el navegador
     } else if (req.cookies.uTwS) {
         // Se buscan los datos de la token que haya en la base
-        let token = tokensModel.getByField("token", req.cookies.uTwS);
-
-        if (token) {
-            // Se busca al usuario con el userid de la token
-            let user = usersModel.getByField("id", token.userId);
-
-            if (user) {
-                // Se almacenan los datos del usuario en session y en locals
-                req.session.user = user;
-                res.locals.user = user;
+        token.findOne({
+            where: {
+                token: req.cookies.uTwS
             }
-        } else {
-            res.clearCookie('uTwS');
-        }
+        })
+            .then(foundToken => {
+                // Se busca al usuario con el userid de la token
+                // let userObj = usersModel.getByField("id", token.userId);
+                user.findByPk(foundToken.userId)
+                    .then(foundUser => {
+
+                        // Se almacenan los datos del usuario en session y en locals
+                        req.session.user = foundUser;
+                        res.locals.user = foundUser;
+
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            })
+            .catch(error => {
+                res.clearCookie('uTwS');
+                console.log(error);
+            })
+
     }
     next();
 }
