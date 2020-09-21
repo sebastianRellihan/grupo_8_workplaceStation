@@ -35,11 +35,13 @@ module.exports = function(req, res, next){
                         })
                         .catch(error => {
                             console.log(error);
+                            next();
                         });
                 })
                 .catch(error => {
                     res.clearCookie('uTwS');
                     console.log(error);
+                    next();
                 })
     
         } else {
