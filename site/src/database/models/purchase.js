@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             field: "user_id"
+        },
+        comment : {
+            type : DataTypes.STRING(500),
+            allowNull : true
         }
     }, {
         sequelize,
