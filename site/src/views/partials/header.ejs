@@ -41,10 +41,10 @@
                 <i class="fas fa-times"></i>
             </button>
             <div class="mobile-nav-side-bar-content flex column">
-                <p class="mobile-nav-side-bar-content-search-bar flex">
-                    <input type="text" class="input-text" placeholder="Buscar productos...">
+                <form action="/products" method="GET" class="mobile-nav-side-bar-content-search-bar flex">
+                    <input type="text" class="input-text" name="search" placeholder="Buscar productos...">
                     <button type="submit" class="action-button"><i class="fas fa-search"></i></button>
-                </p>
+                </form>
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li>
