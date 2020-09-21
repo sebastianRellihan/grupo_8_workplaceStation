@@ -34,5 +34,11 @@ Sitio | Elegido en base a:
 [DellaCasa](https://dellacasaonline.com/home-office) | Por la distribución de los productos ofrecidos y la funcionalidad para intercambiar entre vistas de tipo "lista" y tipo "grilla".
 [Woodmarket](https://woodmarket.com.ar/) | Por su estética y diseño, por las transiciones que tiene, por diseño y presentación del carrito de compras.
 
+## Estructura de la base de datos
+Este sitio opera con una base de datos relacional MySQL, todos los detalles se encuentran en la carpeta [database-model](https://github.com/sebastianRellihan/grupo_8_workplaceStation/tree/master/project/database-model), que contiene:
+- El [DER](https://github.com/sebastianRellihan/grupo_8_workplaceStation/blob/master/project/database-model/DER_Workplace_Station.pdf) (diagrama entidad-relación) de su estructura en formato **PDF**.
+- Un [script sql](https://github.com/sebastianRellihan/grupo_8_workplaceStation/blob/master/project/database-model/structure.sql) para poder generarla.
+- Otro [script sql](https://github.com/sebastianRellihan/grupo_8_workplaceStation/blob/master/project/database-model/data.sql) para poder poblarla con datos coherentes.
+
 ## ¿Querés seguir nuestro proyecto?
 [Tablero de trello](https://trello.com/b/IjkYT0Zy/grupo8)
