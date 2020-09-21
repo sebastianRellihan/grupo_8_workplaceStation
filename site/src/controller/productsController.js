@@ -7,7 +7,8 @@
 // ************ requires ************
 const path = require("path");
 const fileDeleter = require("../utils/fileDeleter"); // Factory de borrado de archivos
-const { product, category, image } = require("../database/models");
+const { product, category, image, sequelize } = require("../database/models");
+const { Op } = require("sequelize");
 // Ruta absoluta en donde se almacenan las imágenes
 const IMAGES_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded");
 const imageDeleter = fileDeleter(IMAGES_PATH); // Borrado de imágenes
@@ -15,9 +16,27 @@ const imageDeleter = fileDeleter(IMAGES_PATH); // Borrado de imágenes
 module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
-        let allProducts = product.findAll({
-            include : image
-        });
+
+        let allProducts;
+
+        if(req.query.search){
+
+            let likeParam = `%${req.query.search}%`
+            // Búsqueda por nombre del producto
+            allProducts = product.findAll({
+                include : image,
+                where : {
+                    name : {
+                        [Op.like] : likeParam
+                    }
+                }
+            });
+        } else {
+            allProducts = product.findAll({
+                include : image
+            });
+        }
+
         let allCategories = category.findAll();
 
         Promise.all([allProducts, allCategories])
@@ -30,6 +49,7 @@ module.exports = {
             })
             .catch(error => {
                 // Error 500 "Internal server error"
+                console.log(error);
                 res.status(500).redirect("/");
             });
 
