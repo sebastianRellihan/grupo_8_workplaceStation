@@ -18,7 +18,7 @@
                     <% products.forEach( product => { %>
 
                         <article class="cart-item flex">
-                            <img src="/img/uploaded/<%= product.images[0] %>" alt="<%= product.shortDescription %>">
+                            <img src="/img/uploaded/<%= product.images[0].url %>" alt="<%= product.shortDescription %>">
                             <div class="cart-item-info">
                                 <h2><%= product.name %></h2>
                                 <p><span>$<%= product.price %></span></p>

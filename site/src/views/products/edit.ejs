@@ -22,7 +22,7 @@
                 
                 <div class="flex column">
                     <label for="briefDescription" class="input-label"><span class="asterisk">*</span> DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
-                    <textarea name="briefDescription" id="briefDescription" class="input-textarea" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." maxlength="100" required><%= product.briefDescription %></textarea>
+                    <textarea name="brief-description" id="briefDescription" class="input-textarea" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." maxlength="100" required><%= product.briefDescription %></textarea>
                 </div>
 
                 <div class="create-form-div-container flex column">
@@ -61,7 +61,7 @@
                     <select name="category" id="category" class="input-text" required>
                         <%# Imprime todas las categorías dejando seleccionada la categoría del producto %>
                         <% categories.forEach(category => { %>
-                            <option value="<%= category.id %>" <%= product.category == category.id ? "selected" : null %>>
+                            <option value="<%= category.id %>" <%= product.categoryId == category.id ? "selected" : null %>>
                                 <%= category.name %> 
                             </option>
                         <% }); %>
@@ -72,9 +72,9 @@
                 <label for="image-selector" class="input-label">BORRAR IMÁGENES:</label>
                 <div class="image-selector flex">
                     <% product.images.forEach(image => { %>
-                        <img src="/img/uploaded/<%= image %> " alt="Imagen ilustrativa del producto">
+                        <img src="/img/uploaded/<%= image.url %> " alt="Imagen ilustrativa del producto">
                         <label class="checkable-container">Borrar
-                            <input type="checkbox" name="deleteImages" value="<%= image %>">
+                            <input type="checkbox" name="delete-images" value="<%= image.url %>">
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>
@@ -83,7 +83,7 @@
                 <div class="flex column">
                     <label for="image" class="input-label"> AÑADIR IMÁGENES:
                         <br>
-                        <span class="image-format-label">formatos soportados: jpg, jpeg, png, gif</span>
+                        <span class="image-format-label">formatos soportados: jpg, jpeg, png, gif, webp</span>
                     </label>
                     <label class="action-button">
                         <input type="file" name="image" id="imagesUpload" multiple>
@@ -98,7 +98,7 @@
 
                 <div class="flex column">
                     <label for="aditionalInfo" class="input-label">INFORMACIÓN ADICIONAL:</label>
-                    <textarea name="aditionalInfo" id="aditionalInfo" class="input-textarea" placeholder="Información adicional..." rows="4"><%= product.aditionalInfo %></textarea>
+                    <textarea name="aditional-info" id="aditionalInfo" class="input-textarea" placeholder="Información adicional..." rows="4"><%= product.aditionalInfo %></textarea>
                 </div>
 
                 <p class="input-label">Los campos indicados con <span class="asterisk">*</span> son obligatorios.</p>
