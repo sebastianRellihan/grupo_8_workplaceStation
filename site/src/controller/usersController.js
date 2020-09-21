@@ -162,11 +162,11 @@ module.exports = {
         // Borrado de BD
         user.destroy({
             where: {
-                id: req.session.userId
+                id: req.session.user.id
             }
         })
         // Borrado de la imagen de perfil
-        fileDeleter(IMAGE_PATH).deleteFile(req.session.user["profile-photo"]);
+        fileDeleter(IMAGE_PATH).deleteFile(req.session.user.image);
 
         // Destrucción de la sesión
         req.session.destroy()
@@ -195,10 +195,10 @@ module.exports = {
         
         if(req.file){ // Si se sube una nueva foto de perfil...
             // Se elimina la anterior y se reemplaza por la nueva
-            fileDeleter(IMAGE_PATH).deleteFile(sessionUser['profile-photo']);
+            fileDeleter(IMAGE_PATH).deleteFile(sessionUser.image);
             userObj.image = req.file.filename;
         } else { // Si no se sube una nueva foto se utiliza la que estaba
-            userObj.image = sessionUser['profile-photo'];
+            userObj.image = sessionUser.image;
         }
 
         // Se reemplazan los datos de la base, y de la sesión, con los nuevos y se redirecciona a la vista del perfil que se encuentra en sesión
