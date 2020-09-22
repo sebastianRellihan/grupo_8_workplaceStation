@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const categoryuser = require('./categoryUser');
 module.exports = (sequelize, DataTypes) => {
     class users extends Model {
         /**
@@ -10,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             this.hasMany(models.token);
             this.hasMany(models.purchase);
-            this.belongsToMany(models.category, { through: 'categories_users' });
+            this.belongsToMany(models.category, { through: models.categoryUser });
         }
     };
     users.init({
