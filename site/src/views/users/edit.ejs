@@ -71,8 +71,11 @@
                     <%# Imprime los checkbox con todas las categorías disponibles %>
                     <% categories.forEach(category => { %>
                         <label class="checkable-container"><%= category.name %>
-                            <input type="checkbox" name="interests" value="<%= category.id %>"
-                                <%= user.interests && user.interests.includes(category.id.toString()) ? "checked" : "" %>>
+                            <input type="checkbox" name="interests" value="<%= category.id %>" 
+                                <% interests.forEach(interest => { %>
+                                    <%= interest && interest.categoryId == category.id ? "checked" : "" %>
+                                <% }) %> 
+                            >
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>

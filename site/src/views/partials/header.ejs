@@ -19,7 +19,7 @@
                 <% if(locals.user) { %>
                     <a href="/users/profile" class="flex column">
                         <i class="far fa-user"></i>
-                        <p> <%= locals.user["user-name"] %> </p>
+                        <p> <%= locals.user.name %> </p>
                     </a>
                 <% } else { %> 
                     <a href="/users/login" class="flex column">
