@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
 
 // Acceso a modelos de usuarios, categorías y tokens
-const { user, category, token } = require("../../src/database/models");
+const { user, category, token, categoryUser } = require("../../src/database/models");
 
 // Acceso al objeto que nso permite eliminar archivos de una ruta
 const fileDeleter = require("../utils/fileDeleter");
@@ -41,13 +41,34 @@ module.exports = {
         .then(categories => {
             return res.render("users/profile", { categories });
         })
-    },
-    /** Muestra la vista de edición de del usuario en sesión */
-    edit: (req, res) => {
-        category.findAll()
-        .then(categories => {
-            return res.render("users/edit", { categories });
+        .catch(error => {
+            console.log(error);
         })
+    },
+    /** Muestra la vista de edición del usuario en sesión */
+    edit: (req, res) => {
+        let allCategories = category.findAll();
+        let categoriesInterests = categoryUser.findAll({
+            where: {
+                userId: req.session.user.id
+            }
+        });
+
+        Promise.all([allCategories, categoriesInterests])
+            .then(results => {
+                console.log(results[1]);
+
+                res.render("users/edit", {
+                    categories: results[0],
+                    interests: results[1]
+                });
+            })
+            // .then(categories => {
+            //     return res.render("users/edit", { categories });
+            // })
+            .catch(error => {
+                console.log(error);
+            })
     },
     /** Procesa los datos del formulario de registro y crea una entrada en BD */
     store: (req, res) => {
@@ -68,18 +89,38 @@ module.exports = {
             isAdmin: false
         }
         
-        if (userObj.password == userObj.passwordCheck) { // Se corrobora que la pass sea la misma en pass y check
+        // Se corrobora que la pass sea la misma en pass y check
+        if (userObj.password == userObj.passwordCheck) {
             // Se encripta la pass, se reemplaza y se elimina la que ingresó para corroborar
             let hash = bcrypt.hashSync(userObj.password, 10);
             userObj.password = hash;
             delete userObj.passwordCheck;
+            
+            // Se almacena el usuario en la base
+            user.create(userObj)
+                .then(created => {
+                    let promises = [];
+                    // Si el usuario seleccionó intereses se almacenan en la base
+                    if(req.body.interests) {
+                        req.body.interests.forEach(interest => {
+                            promises.push(categoryUser.create({
+                                categoryId : Number(interest),
+                                userId : created.id
+                            }));
+                        });
+                    }
+                    Promise.all(promises);
+                })
+                // Se redirige la vista al index
+                .then(() => {
+                    // Se auto-loguea al usuario después de haber creado su cuenta
+                    req.session.user = userObj;
+                    res.redirect("/");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
 
-            // Se almacena el usuario en la base y se redirige la vista al index
-            user.create(userObj)    
-
-            // Se auto-loguea al usuario después de haber creado su cuenta
-            req.session.user = userObj;
-            res.redirect("/");
         } else {
             // Borro la imagen subida por el usuario
             fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
@@ -91,6 +132,9 @@ module.exports = {
                         userInput: req.body,
                         errors : { confirm : { msg : "Ambas contraseñas deben coincidir" } }
                     })
+                })
+                .catch(error => {
+                    console.log(error);
                 })
         }
     },
@@ -138,6 +182,13 @@ module.exports = {
                 }
 
             })
+            .catch(() => {
+                // Creo un error y se lo envío a la vista
+                res.render("users/login", {
+                    userInput: req.body["user-input"],
+                    errors : { authenticate : { msg : "Usuario ó contraseña incorrecta" } }
+                });
+            })
 
     },
     /** Procesa el logout de usuario */
@@ -158,20 +209,38 @@ module.exports = {
     },
     /** Borra el perfil de usuario de la base de datos */
     destroy: (req, res) => {
+
+        // Se eliminan los datos del usuario que se encuentra en locals
         delete res.locals.user;
+
+        // Borra los intereses del usuario 
+        categoryUser.destroy({
+            where: {
+                user_id: req.session.user.id
+            }
+        })
+
         // Borrado de BD
         user.destroy({
             where: {
                 id: req.session.user.id
             }
         })
-        // Borrado de la imagen de perfil
-        fileDeleter(IMAGE_PATH).deleteFile(req.session.user.image);
-
-        // Destrucción de la sesión
-        req.session.destroy()
-
-        res.redirect("/");
+            .then(() => {
+                // Borrado de la imagen de perfil
+                fileDeleter(IMAGE_PATH).deleteFile(req.session.user.image);
+            })
+            .then(() => {
+                // Destrucción de la sesión
+                req.session.destroy()
+        
+                res.redirect("/");
+            })
+            .catch(error => {
+                console.log(error);
+                // Error 500 "Internal server error"
+                res.status(500).redirect("/");
+            })
     },
     // Edita un usuario existente
     update: (req, res) => {
@@ -193,23 +262,51 @@ module.exports = {
         userObj.password = sessionUser.password;
         userObj.id = sessionUser.id;
         
-        if(req.file){ // Si se sube una nueva foto de perfil...
+        // Si se sube una nueva foto de perfil...
+        if(req.file){
             // Se elimina la anterior y se reemplaza por la nueva
             fileDeleter(IMAGE_PATH).deleteFile(sessionUser.image);
             userObj.image = req.file.filename;
-        } else { // Si no se sube una nueva foto se utiliza la que estaba
+        // Si no se sube una nueva foto se utiliza la que estaba
+        } else {
             userObj.image = sessionUser.image;
         }
 
-        // Se reemplazan los datos de la base, y de la sesión, con los nuevos y se redirecciona a la vista del perfil que se encuentra en sesión
-        user.update(userObj, {
+        // Array de promesas
+        let promises = [];
+
+        // Se eliminan los intereses que tenía previamente cargados en la base
+        promises.push(categoryUser.destroy({
+            where: {
+                userId: userObj.id
+            }
+        }));
+
+        // Si el usuario seleccionó intereses se almacenan en la base
+        if(req.body.interests) {
+            req.body.interests.forEach(interest => {
+                promises.push(categoryUser.create({
+                    categoryId : Number(interest),
+                    userId : userObj.id
+                }));
+            });
+        }
+
+        // Se reemplazan los datos de la base
+        promises.push(user.update(userObj, {
             where: {
                 id: sessionUser.id
             }
-        })
+        }));
+
+        Promise.all(promises)
+            // Se actualizan los datos de la sesión y se redirecciona a la vista del perfil que se encuentra en sesión
             .then(() => {
                 req.session.user = userObj;
                 res.redirect("/users/profile");
+            })
+            .catch(error => {
+                console.log(error);
             })
     }
 }
