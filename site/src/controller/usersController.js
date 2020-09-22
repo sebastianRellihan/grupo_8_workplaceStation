@@ -284,12 +284,20 @@ module.exports = {
 
         // Si el usuario seleccionó intereses se almacenan en la base
         if(req.body.interests) {
-            req.body.interests.forEach(interest => {
+            console.log(req.body.interests);
+            if (req.body.interests.length > 1) {
+                req.body.interests.forEach(interest => {
+                    promises.push(categoryUser.create({
+                        categoryId : Number(interest),
+                        userId : userObj.id
+                    }));
+                });
+            } else {
                 promises.push(categoryUser.create({
-                    categoryId : Number(interest),
+                    categoryId : Number(req.body.interests),
                     userId : userObj.id
                 }));
-            });
+            }
         }
 
         // Se reemplazan los datos de la base
@@ -301,7 +309,7 @@ module.exports = {
 
         Promise.all(promises)
             // Se actualizan los datos de la sesión y se redirecciona a la vista del perfil que se encuentra en sesión
-            .then(() => {
+            .then(results => {
                 req.session.user = userObj;
                 res.redirect("/users/profile");
             })
