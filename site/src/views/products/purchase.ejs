@@ -55,12 +55,23 @@
                     %>
                     <p>Total: <span>$<%= total %></span></p>
                 </div>
+                <!-- Sección de formulario -->
                 <div class="cart-actions flex column">
                     <form action="/products/purchase" method="POST" class="flex column">
                         <div class="flex column">
                             <label for="address" class="input-label"><span class="asterisk">*</span> Dirección de envío:</label>
                             <input type="text" class="input-text" name="address" id="address" placeholder="Ej: Calle Falsa 123..." 
                             value="<%= locals.user && locals.user.address ? locals.user.address : '' %>" autocomplete="true" required>
+                        </div>
+                        <div class="flex column"><!-- Select de métodos de envío -->
+                            <label for="shipping" class="input-label">
+                                <span class="asterisk">*</span> Método de envío
+                            </label>
+                            <select name="shipping" id="shipping" class="input-text">
+                                <%locals.shippings.forEach(shipping => { %>
+                                    <option value="<%= shipping.id %>"><%= shipping.name %></option>
+                                <% }); %>
+                            </select>
                         </div>
                         <div class="cart-summary-note-container">
                             <span>Agregar nota de orden:</span>
