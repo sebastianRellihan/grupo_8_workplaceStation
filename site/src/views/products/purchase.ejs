@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%# Import del HEAD del documento %>
+<%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Finalizar compra",
+    description: "¡Finalizá tu compra!",
+    keywords: "Workplace Station, finalizar compra"}) %> 
+
+<body>
+    <%# Import del HADER %>
+    <%- include("../partials/header") %>
+    
+    <main class="main-cart">
+        <h1>Finalizar compra</h1>
+        <section class="cart-container">
+            <% if(Array.isArray(products) && products.length != 0){ %>
+                <div class="cart-products flex column">
+                    <!-- Cabecera -->
+                    <article class="cart-item flex">
+                        <div class="cart-item-info purchase-item flex">
+                            <h2>Producto</h2>
+                            <p><span>Precio</span></p>
+                            <p>Cant.</p>
+                        </div>
+                    </article>
+                    <% products.forEach( product => { %>
+
+                        <article class="cart-item flex">
+                            <div class="cart-item-info purchase-item flex">
+                                <h2><%= product.name %></h2>
+                                <p><span>$<%= product.price %></span></p>
+                                <p>1</p>
+                            </div>
+                        </article>
+
+                    <% }); %>
+                </div>   
+                <div class="cart-summary flex column">
+                    <% 
+                        /* 
+                        * Calcula el valor total de los productos.
+                        * Cuando se pueda acceder a variables definidas por el usuario,
+                        * se va a tener en cuenta el multiplicador de la cantidad que
+                        * se desea comprar.
+                        */
+                        var total = products.reduce((acum, element) => {
+                            
+                            if(element.discount == 0){
+                                return acum + Number(element.price);
+                            } else { // Aplica el descuento si lo hay
+                                return Number(element.price) - (acum + Number(element.price) * (Number(element.discount) / 100)); 
+                            }
+
+                        }, 0); // El 0 es el valor inicial del acumulador
+                    %>
+                    <p>Total: <span>$<%= total %></span></p>
+                </div>
+                <div class="cart-actions flex column">
+                    <form action="/products/purchase" method="POST" class="flex column">
+                        <div class="flex column">
+                            <label for="address" class="input-label"><span class="asterisk">*</span> Dirección de envío:</label>
+                            <input type="text" class="input-text" name="address" id="address" placeholder="Ej: Calle Falsa 123..." 
+                            value="<%= locals.user && locals.user.address ? locals.user.address : '' %>" autocomplete="true" required>
+                        </div>
+                        <div class="cart-summary-note-container">
+                            <span>Agregar nota de orden:</span>
+                            <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
+                             class="input-textarea"></textarea>
+                        </div>
+                        <!-- Input oculto para enviar el total en el formulario -->
+                        <input type="hidden" value="<%= total %>">
+                        <button type="submit" class="action-button">Finalizar compra</button>
+                    </form>
+                    <a href="/products/cart" class="cart-actions-empty">Volver</a>
+                </div>
+            <% } else { %>
+                <div class="empty-cart-section flex column">
+                    <img src="/img/sad-empty-cart.png" alt="Un carrito triste">
+                    <h2>Aún no se agregaron productos...</h2>
+                    <p>
+                        ¡Pero eso tiene solución! ¡Te invitamos a ver nuestros
+                        <a href="/products">productos</a>!
+                    </p>
+                </div>
+            <% } %>
+        </section>
+    </main>
+
+    <%# Import del footer %>
+    <%- include("../partials/footer") %>
+
+</body>
+
+</html>

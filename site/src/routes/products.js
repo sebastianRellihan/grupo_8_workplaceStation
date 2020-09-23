@@ -7,8 +7,10 @@ const express = require("express");
 const router = express.Router();
 
 const controller = require("../controller/productsController");
+const purchaseController = require("../controller/purchaseController");
 // Middleware de control de permisos de admin
 const adminRoute = require("../middlewares/adminRoute");
+const userRoute = require("../middlewares/userRoute");
 
 const multer = require("multer");
 const multerConfig = require("../config/multerConfig");
@@ -32,6 +34,9 @@ router.get("/create", adminRoute, controller.create);
 // Procesamiento del formulario de creación 
 router.post("/create", adminRoute, upload.any(), controller.store);
 
+// Ruta para acceder a la confirmación de la compra
+router.get("/purchase", userRoute, purchaseController.show);
+
 // Detalle de producto 
 router.get("/:id", controller.detail);
 
@@ -43,5 +48,6 @@ router.put("/:id", adminRoute, upload.any(), controller.update);
 
 // Formulario de edición de producto - eliminar producto
 router.delete("/:id", adminRoute, controller.destroy);
+
 
 module.exports = router;

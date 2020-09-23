@@ -343,6 +343,7 @@ footer {
     background-color: var(--logo-color-4);
     box-shadow: 2px 4px 3px rgba(0,0,0,0.35);
     font-family: var(--text-font);
+    padding: 5px 10px;
     font-size: 1em;
     border-radius: 5px;
     border-style: none;
@@ -802,6 +803,7 @@ footer {
                 width: 40%;
                 padding: 5px;
                 text-decoration: underline;
+                text-align: center;
                 cursor: pointer;
                 font-family: var(--text-font);
                 font-size: 1em;
@@ -818,6 +820,18 @@ footer {
         text-align: center;
     }
     .main-cart .empty-cart-section p a{ text-decoration: underline; }
+/* Confirmación de compra */
+.purchase-item{
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    flex-wrap: nowrap;
+}
+    .purchase-item h2{ width: 40%; }
+    .purchase-item p:first-of-type{ width: 35%; }
+    .purchase-item p:last-of-type{ width: 10%; }
+        .purchase-item p span{ color: green; }
 /* Productos */
 .nav-section{
     align-items: unset;
@@ -1325,12 +1339,14 @@ footer {
             .cart-summary-note-container {
                 width: 80%;
             }
-            .cart-container .cart-actions button,
-            .cart-container .cart-actions .action-button {
+            .cart-container .cart-actions button {
                 height: 50px;
             } 
         /* CARRITO VACíO */
         .main-cart .empty-cart-section img{ width: 80%; }
+    /* FINALIZAR COMPRA */
+    .purchase-item,
+    .cart-actions form{ width: 100%; }
     /* PRODUCTOS */
     .nav-section .products-buttons-container {
         height: 5vh;
@@ -1522,4 +1538,6 @@ footer {
             }
     /* CARRITO */
     .main-cart .empty-cart-section img{ width: 60%; }
+    /* FINALIZAR COMPRA */
+    .cart-container .cart-actions .action-button{ width: 50%; }
 }
