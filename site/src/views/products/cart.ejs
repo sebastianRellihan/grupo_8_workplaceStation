@@ -38,10 +38,6 @@
                     <% }); %>
                 </div>   
                 <div class="cart-summary flex column">
-                    <div class="cart-summary-note-container">
-                        <span>Agregar nota de orden:</span>
-                        <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."></textarea>
-                    </div>
                     <% 
                         /* 
                         * Calcula el valor total de los productos.
@@ -52,9 +48,9 @@
                         var total = products.reduce((acum, element) => {
                             
                             if(element.discount == 0){
-                                return acum + element.price;
+                                return acum + Number(element.price);
                             } else { // Aplica el descuento si lo hay
-                                return element.price - (acum + element.price * (element.discount / 100)); 
+                                return Number(element.price) - (acum + Number(element.price) * (Number(element.discount) / 100)); 
                             }
 
                         }, 0); // El 0 es el valor inicial del acumulador
@@ -62,7 +58,7 @@
                     <p>Total: <span>$<%= total %></span></p>
                 </div>
                 <div class="cart-actions flex column">
-                    <button class="action-button">Comprar</button>
+                    <a href="/products/purchase" class="action-button">Comprar</a>
                     <button class="cart-actions-empty">Vaciar carrito</button>
                 </div>
             <% } else { %>
