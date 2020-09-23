@@ -58,3 +58,7 @@ INSERT INTO images VALUES (DEFAULT, 9, "image-acc-1600037564624.webp");
 INSERT INTO images VALUES (DEFAULT, 9, "image-acc-1600037640628.webp");
 INSERT INTO images VALUES (DEFAULT, 9, "image-acc-1600037640629.webp");
 INSERT INTO images VALUES (DEFAULT, 9, "image-acc-1600037640630.webp");
+
+-- Insert de métodos de envíos (shippings)--
+INSERT INTO shippings VALUES (DEFAULT, "Retiro por sucursal");
+INSERT INTO shippings VALUES (DEFAULT, "Envío por correo");
