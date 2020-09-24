@@ -62,3 +62,11 @@ INSERT INTO images VALUES (DEFAULT, 9, "image-acc-1600037640630.webp");
 -- Insert de métodos de envíos (shippings)--
 INSERT INTO shippings VALUES (DEFAULT, "Retiro por sucursal");
 INSERT INTO shippings VALUES (DEFAULT, "Envío por correo");
+
+-- Insert de compras registradas (purchases) --
+INSERT INTO purchases VALUES (DEFAULT, '2020-09-23 22:10:15', '125750.00', 'Calle Falsa 123', 2, 2, 'Cuidado con el perro.');
+
+-- Insert de relaciones compras-productos registradas (products_purchases) --
+INSERT INTO products_purchases VALUES (DEFAULT, 1, 1, 1);
+INSERT INTO products_purchases VALUES (DEFAULT, 1, 8, 1);
+INSERT INTO products_purchases VALUES (DEFAULT, 1, 7, 1);
