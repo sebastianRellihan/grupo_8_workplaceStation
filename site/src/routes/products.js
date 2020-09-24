@@ -37,6 +37,9 @@ router.post("/create", adminRoute, upload.any(), controller.store);
 // Ruta para acceder a la confirmación de la compra
 router.get("/purchase", userRoute, purchaseController.show);
 
+// Ruta para procesar las compras
+router.post("/purchase", userRoute, purchaseController.process);
+
 // Detalle de producto 
 router.get("/:id", controller.detail);
 
