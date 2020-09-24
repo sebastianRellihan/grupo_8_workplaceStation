@@ -48,7 +48,8 @@
                             if(element.discount == 0){
                                 return acum + Number(element.price);
                             } else { // Aplica el descuento si lo hay
-                                return Number(element.price) - (acum + Number(element.price) * (Number(element.discount) / 100)); 
+                                let applied = Number(element.price) - Number(element.price) * (Number(element.discount) / 100);
+                                return acum + applied; 
                             }
 
                         }, 0); // El 0 es el valor inicial del acumulador
@@ -74,12 +75,12 @@
                             </select>
                         </div>
                         <div class="cart-summary-note-container">
-                            <span>Agregar nota de orden:</span>
-                            <textarea name="note" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
+                            <label for="comment" class="input-label">Agregar nota de orden:</label>
+                            <textarea name="comment" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
                              class="input-textarea"></textarea>
                         </div>
                         <!-- Input oculto para enviar el total en el formulario -->
-                        <input type="hidden" value="<%= total %>">
+                        <input type="hidden" name="total" value="<%= total %>">
                         <button type="submit" class="action-button">Finalizar compra</button>
                     </form>
                     <a href="/products/cart" class="cart-actions-empty">Volver</a>

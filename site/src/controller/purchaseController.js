@@ -1,9 +1,10 @@
 /**
  * Controlador para el proceso de la vista y acciones realizadas al terminar una compra.
  */
-const { product, image, shipping } = require("../database/models");
+const { product, shipping, purchase, productPurchase } = require("../database/models");
 
 module.exports = {
+    /** Renderiza la vista de confirmación de compra */
     show : function(req, res) {
         let promises = []; // Array de promesas
 
@@ -36,5 +37,73 @@ module.exports = {
             // Carrito vacío
             res.render("products/cart", { products : []});
         }
+    },
+    /** Procesa la compra actual y realiza todos los cambios asociados en BD */
+    process : function(req, res){
+
+        // Obtengo la fecha y hora con el formato DATETIME de MySQL ('YYYY-MM-DD hh:mm:ss')
+        // https://dev.mysql.com/doc/refman/8.0/en/datetime.html (doxumentación)
+        let now = new Date();
+
+        let currentMonth = now.getMonth() + 1; // getMonth retorna un valor entre 0 - 11
+        if(currentMonth < 10){
+            // En caso de que el mes sea menor a 10, se completa el strinc con un 0
+            currentMonth = "0" + currentMonth.toString();
+        }
+
+        let date = `'${now.getFullYear()}-${currentMonth}-${now.getDate()}`;
+        date += ` ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}'`;
+
+        let newPurchase = { // Nueva compra
+            totalValue : req.body.total,
+            shippingAddress : req.body.address,
+            shippingId : req.body.shipping,
+            comment : req.body.comment,
+            userId : req.session.user.id,
+            purchasedAt : date
+        }
+
+        purchase.create(newPurchase)
+            .then(created => {
+
+                // Array con las promesas para crear los registros en la tabla intermedia
+                let associations = [];
+
+                req.session.cart.forEach(element => {
+                    // Por defecto, la propiedad "quantity" es uno, ya que todavía no
+                    // está implementada la compra de múltiples productos del mismo tipo
+                    associations.push(productPurchase.create({
+                        productId : element,
+                        purchaseId : created.id
+                    }));
+                });
+
+                return Promise.all(associations); // Creación de asociaciones en la tabla intermedia
+            })
+            .then(results => {
+
+                let stockDecrease = [];
+
+                // Decrementa los valores del sto de lo producos comprados
+                results.forEach(element => {
+                    stockDecrease.push(product.decrement("stock", {
+                        by : 1,
+                        where : {
+                            id : element.productId
+                        }
+                    }));
+                });
+
+                return Promise.all(stockDecrease);
+            })
+            .then(() => {
+                res.redirect("/");
+            })
+            .catch(error => {
+                // Error 500 "Internal server error"
+                console.log(error);
+                res.status(500).redirect("/");
+            });
+
     }
 }
