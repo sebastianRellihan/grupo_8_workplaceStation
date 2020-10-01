@@ -17,6 +17,9 @@ const fileDeleter = require("../utils/fileDeleter");
 // Operadores que provee sequelize
 const { Op } = require("sequelize");
 
+// Validaciones
+const { validationResult } = require("express-validator");
+
 // Ruta absoluta en donde se almacena la imágen de perfil
 const IMAGE_PATH = path.join(__dirname, "..", "..", "public", "img", "usersUploaded", "/");
 
@@ -73,24 +76,26 @@ module.exports = {
     /** Procesa los datos del formulario de registro y crea una entrada en BD */
     store: (req, res) => {
 
-        // Se almacena en userObj lo que llega por post del form
-        let userObj = {
-            name: req.body.name,
-            lastName: req.body["last-name"],
-            userName: req.body["user-name"],
-            email: req.body.email,
-            password: req.body.password,
-            passwordCheck: req.body["password-check"],
-            image: req.file.filename,
-            address: req.body.address,
-            birth: req.body.birth,
-            phoneNumber: req.body["phone-number"],
-            gender: req.body.gender,
-            isAdmin: false
-        }
+        let errors = validationResult(req);
         
-        // Se corrobora que la pass sea la misma en pass y check
-        if (userObj.password == userObj.passwordCheck) {
+        if (errors.isEmpty()) {
+
+            // Se almacena en userObj lo que llega por post del form
+            let userObj = {
+                name: req.body.name,
+                lastName: req.body["last-name"],
+                userName: req.body["user-name"],
+                email: req.body.email,
+                password: req.body.password,
+                passwordCheck: req.body["password-check"],
+                image: req.file.filename,
+                address: req.body.address,
+                birth: req.body.birth,
+                phoneNumber: req.body["phone-number"],
+                gender: req.body.gender,
+                isAdmin: false
+            }
+
             // Se encripta la pass, se reemplaza y se elimina la que ingresó para corroborar
             let hash = bcrypt.hashSync(userObj.password, 10);
             userObj.password = hash;
@@ -123,14 +128,17 @@ module.exports = {
 
         } else {
             // Borro la imagen subida por el usuario
-            fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            if(req.file && req.file.filename){
+                fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            }
+            console.log(errors.mapped());
 
             category.findAll()
                 .then(categories => {
                     return res.render("users/register", {
                         categories,
                         userInput: req.body,
-                        errors : { confirm : { msg : "Ambas contraseñas deben coincidir" } }
+                        errors : errors.mapped()
                     })
                 })
                 .catch(error => {

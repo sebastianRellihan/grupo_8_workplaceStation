@@ -8,6 +8,7 @@ const express = require("express");
 const router = express.Router();
 
 const controller = require("../controller/usersController");
+const validator = require("../validators/users");
 // Middlewares de control de autenticación
 const guestRoute = require("../middlewares/guestRoute");
 const userRoute = require("../middlewares/userRoute");
@@ -29,7 +30,7 @@ router.post("/logout", userRoute, controller.logout);
 router.get("/register", guestRoute, controller.register);
 
 // Procesamiento del formulario de registro 
-router.post("/register", guestRoute, upload.single('profile-photo'), controller.store);
+router.post("/register", guestRoute, upload.single('profile-photo'), validator.register, controller.store);
 
 // Vista del perfil de un usuario
 router.get("/profile", userRoute, controller.show);
