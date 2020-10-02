@@ -148,55 +148,66 @@ module.exports = {
     },
     /** Procesa la autenticación y logueo de usuarios */
     authenticate: (req, res) => {
+        
+        let errors = validationResult(req);
+        
+        if(errors.isEmpty()) {
 
-        // Obtengo el usuario por medio de su email ó nombre de usuario
-        user.findOne({
-            where: {
-                [Op.or]: [
-                  { email: req.body["user-input"] },
-                  { userName: req.body["user-input"] }
-                ]
-            }
-        })
-            .then(userObj => {
+            // Obtengo el usuario por medio de su email ó nombre de usuario
+            user.findOne({
+                where: {
+                    [Op.or]: [
+                    { email: req.body["user-input"] },
+                    { userName: req.body["user-input"] }
+                    ]
+                }
+            })
+                .then(userObj => {
 
-                // Si el usuario ingresa la contraseña correcta
-                if(bcrypt.compareSync(req.body.password, userObj.password)){   
+                    // Si el usuario ingresa la contraseña correcta
+                    if(bcrypt.compareSync(req.body.password, userObj.password)){   
 
-                    // Si el usuario marcó "recordarme" le envíamos una cookie
-                    if(req.body["remember-me"]){
-                        
-                        // Se genera un token seguro y aleatorio para la cookie
-                        const generatedToken = crypto.randomBytes(48).toString("base64");
-                        
-                        // Se almacena el token en la base de datos con el ID del usuario para vincularlo al mimso a futuro
-                        token.create({ userId: userObj.id, token: generatedToken})
-                        
-                        // Almacena el Token en la cookie por un mes
-                        res.cookie("uTwS", generatedToken, {maxAge : 1000 * 60 * 60 * 24 * 30});
+                        // Si el usuario marcó "recordarme" le envíamos una cookie
+                        if(req.body["remember-me"]){
+                            
+                            // Se genera un token seguro y aleatorio para la cookie
+                            const generatedToken = crypto.randomBytes(48).toString("base64");
+                            
+                            // Se almacena el token en la base de datos con el ID del usuario para vincularlo al mimso a futuro
+                            token.create({ userId: userObj.id, token: generatedToken})
+                            
+                            // Almacena el Token en la cookie por un mes
+                            res.cookie("uTwS", generatedToken, {maxAge : 1000 * 60 * 60 * 24 * 30});
+                        }
+            
+                        // Se guarda al usuario en session
+                        req.session.user = userObj;
+            
+                        res.redirect("/");
+            
+                    } else {
+                        // Creo un error y se lo envío a la vista
+                        res.render("users/login", {
+                            userInput: req.body["user-input"],
+                            errors : { authenticate : { msg : "Usuario ó contraseña incorrecta" } }
+                        });
                     }
-        
-                    // Se guarda al usuario en session
-                    req.session.user = userObj;
-        
-                    res.redirect("/");
-        
-                } else {
+
+                })
+                .catch(() => {
                     // Creo un error y se lo envío a la vista
                     res.render("users/login", {
                         userInput: req.body["user-input"],
                         errors : { authenticate : { msg : "Usuario ó contraseña incorrecta" } }
                     });
-                }
-
-            })
-            .catch(() => {
-                // Creo un error y se lo envío a la vista
-                res.render("users/login", {
-                    userInput: req.body["user-input"],
-                    errors : { authenticate : { msg : "Usuario ó contraseña incorrecta" } }
-                });
-            })
+                })
+        } else {
+            // Se envía el error a la vista
+            res.render("users/login", {
+                userInput: req.body["user-input"],
+                errors : errors.mapped()
+            });
+        }
 
     },
     /** Procesa el logout de usuario */
