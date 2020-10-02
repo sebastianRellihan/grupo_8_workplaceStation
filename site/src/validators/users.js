@@ -1,5 +1,8 @@
+const bcrypt = require("bcryptjs");
 const { check, body } = require('express-validator');
 const { user, category } = require("../database/models");
+// Operadores que provee sequelize
+const { Op } = require("sequelize");
 
 // Se crea una propiedad por cada formulario que se vaya a validar
 module.exports = {
@@ -83,6 +86,32 @@ module.exports = {
         
     ],
     login: [
-
+        
+        check('user-input')
+        .notEmpty().withMessage('Debes completar el campo de email o nombre de usuario').bail()
+        .isEmail().withMessage('Debes ingresar un email válido').bail(),
+        // .custom((value, { req }) => {
+        //     return user.findOne({
+        //         where: {
+        //         [Op.or]: [
+        //                 { email: value },
+        //                 { userName: value }
+        //             ]
+        //         }
+        //     })
+        //         .then(user => {
+        //                 if(bcrypt.compareSync(req.body.password, user.password)) {
+        //                     return Promise.resolve()
+        //                 } else {
+        //                         return Promise.reject()
+        //                     }
+        //         })
+        //         .catch(error => {
+        //             return Promise.reject();
+        //         })
+        // }).withMessage("Usuario ó contraseña incorrecta").bail(),
+        
+        check('password')
+        .notEmpty().withMessage('Debes completar el campo de contraseña').bail()
     ]
 }
