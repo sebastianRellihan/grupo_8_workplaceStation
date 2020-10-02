@@ -18,16 +18,27 @@
             </h1>
             <form class="flex column" action="/users/login" method="POST">
 
-                <input type="text" name="user-input" id="user-input" placeholder="Nombre de usuario" 
-                    autocomplete="true" required
-                    class="input-text <%= locals.errors && errors.authenticate ? 'input-alert' : '' %>"
+                <input type="text" name="user-input" id="user-input" placeholder="Email o Nombre de Usuario" 
+                    autocomplete="true"
+                    class="input-text <%= locals.errors && errors["user-input"] ? 'input-alert' : '' %>"
                     value="<%= locals.userInput ? locals.userInput : '' %>">
-                <input type="password" class="input-text" name="password" id="password" placeholder="Contraseña"
-                    autocomplete="true" required>
+                <input type="password" class="input-text <%= locals.errors && errors["password"] ? 'input-alert' : '' %>" name="password" id="password" placeholder="Contraseña"
+                    autocomplete="true">
 
                 <%# Mensaje visible sólo en caso de que se hayan ingresado datos inválidos %>
                 <p id="login-alert" class="alert-label">
-                    <%= locals.errors && errors.authenticate ? errors.authenticate.msg : '' %>
+                    <% if (locals.errors && errors) { %>
+                        <% if(errors["user-input"] && errors["password"]) { %> 
+                            <%= errors["user-input"].msg %> <br>
+                            <%= errors["password"].msg %>
+                        <% } else if(errors["user-input"]) { %> 
+                            <%= errors["user-input"].msg %> 
+                        <% } else if(errors["password"]) { %> 
+                            <%= errors["password"].msg %>
+                        <% } else { %> 
+                            <%= errors.authenticate.msg %>
+                        <% } %> 
+                    <% } else {''} %> 
                 </p>
                 
                 <button type="submit" class="action-button">Ingresar</button>

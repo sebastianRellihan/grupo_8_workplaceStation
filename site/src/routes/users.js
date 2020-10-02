@@ -21,7 +21,7 @@ const upload = multer(multerConfig('usersUploaded')); // Middleware de subida de
 router.get("/login", guestRoute, controller.login);
 
 // Procesamiento del login de usuarios
-router.post("/login", guestRoute, controller.authenticate);
+router.post("/login", guestRoute, validator.login, controller.authenticate);
 
 // Procesamiento del logout de usuario
 router.post("/logout", userRoute, controller.logout);
