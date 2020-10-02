@@ -5,6 +5,7 @@
 <%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Registrate",
     description: "¿Querés formar parte de nuestra plataforma? ¡Tené acceso ilimitado a todos nuestros servicios!",
     keywords: "Workplace Station, formulario, registro, crear cuenta"})%>
+<script src="/js/userValidator.js"></script>
 
 <body>
     <%# Import del HADER %>
@@ -15,7 +16,7 @@
         <div class="form-container">
             <h1> Registro <i class="far fa-id-badge"></i></h1>
 
-            <form class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
+            <form id="user-form" class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
                 <!-- Información personal -->
                 <label for="name"><span class="asterisk">*</span> Nombre/s:</label>
                 <input type="text" name="name" id="name" placeholder="John" autocomplete="true" 
@@ -114,10 +115,14 @@
                 </p>
 
                 <!-- Información de perfil -->
+                <p class="image-format-label">Formatos soportados: jpg, jpeg, png, gif, webp</p>
                 <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
                     Foto de perfil
                 </label>
+                <p class="alert-label <%= locals.errors && errors["profile-photo"] ? 'input-alert' : '' %>">
+                    <%= locals.errors && errors["profile-photo"] ? errors["profile-photo"].msg : '' %>
+                </p>
 
                 <!-- Miscelánea + botones de envío y reseteo -->
                 
