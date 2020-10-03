@@ -202,10 +202,35 @@ module.exports = {
                     });
                 })
         } else {
+            function errorMsg(error) {
+                if (error["user-input"] && error.password) {
+                    return {
+                        authenticate : {
+                            msg : "Campos obligatorios",
+                            alert: "both"
+                        }
+                    }
+                } else if(error["user-input"]) {
+                    return {
+                        authenticate : {
+                            msg : error["user-input"].msg,
+                            alert: "user-input"
+                        }
+                    }
+                } else {
+                    return {
+                        authenticate : {
+                            msg : error.password.msg,
+                            alert: "password" 
+                        }
+                    }
+                }
+            }
+            console.log(errorMsg(errors.mapped()))
             // Se envía el error a la vista
             res.render("users/login", {
                 userInput: req.body["user-input"],
-                errors : errors.mapped()
+                errors : errorMsg(errors.mapped())
             });
         }
 
