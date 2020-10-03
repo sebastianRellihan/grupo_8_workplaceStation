@@ -87,7 +87,7 @@ module.exports = {
     ],
     login: [
         
-        check('user-input')
+        check('user-input').trim()
         .notEmpty().withMessage('Debes completar el campo de email o nombre de usuario').bail(),
         
         check('password')

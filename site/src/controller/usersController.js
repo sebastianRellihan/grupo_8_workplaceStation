@@ -205,23 +205,20 @@ module.exports = {
             function errorMsg(error) {
                 if (error["user-input"] && error.password) {
                     return {
-                        authenticate : {
-                            msg : "Campos obligatorios",
-                            alert: "both"
+                        both : {
+                            msg : "Campo obligatorio"
                         }
                     }
                 } else if(error["user-input"]) {
                     return {
-                        authenticate : {
-                            msg : error["user-input"].msg,
-                            alert: "user-input"
+                        userInput : {
+                            msg : error["user-input"].msg
                         }
                     }
                 } else {
                     return {
-                        authenticate : {
-                            msg : error.password.msg,
-                            alert: "password" 
+                        password : {
+                            msg : error.password.msg 
                         }
                     }
                 }
