@@ -131,12 +131,14 @@
                     <%# Imprime los checkbox con todas las categorías disponibles %>
                     <% categories.forEach(category => { %>
                         <label class="checkable-container"><%= category.name %>
-                            <input type="checkbox" name="interests" value="<%= category.id %>"
-                                <%= locals.userInput && userInput.interests && userInput.interests.includes(category.id.toString()) ? "checked" : "" %>>
+                            <input type="checkbox" name="interests" value="<%= category.id %>">
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.interests ? errors.interests.msg : '' %>
+                </p>
 
                 <p class="input-label">
                     Los campos indicados con (<span class="asterisk">*</span>) son obligatorios.
