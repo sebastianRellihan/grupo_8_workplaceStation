@@ -202,10 +202,32 @@ module.exports = {
                     });
                 })
         } else {
+            function errorMsg(error) {
+                if (error["user-input"] && error.password) {
+                    return {
+                        both : {
+                            msg : "Campo obligatorio"
+                        }
+                    }
+                } else if(error["user-input"]) {
+                    return {
+                        userInput : {
+                            msg : error["user-input"].msg
+                        }
+                    }
+                } else {
+                    return {
+                        password : {
+                            msg : error.password.msg 
+                        }
+                    }
+                }
+            }
+            console.log(errorMsg(errors.mapped()))
             // Se envía el error a la vista
             res.render("users/login", {
                 userInput: req.body["user-input"],
-                errors : errors.mapped()
+                errors : errorMsg(errors.mapped())
             });
         }
 
