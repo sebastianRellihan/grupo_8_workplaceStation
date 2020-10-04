@@ -285,77 +285,99 @@ module.exports = {
     },
     // Edita un usuario existente
     update: (req, res) => {
-        // Se almacenan los datos del usuario que se encuentra en sesión para acceder a sus propiedades facilmente
-        let sessionUser = req.session.user;
-        // Se almacena en userObj los datos que llega del form
-        let userObj = {
-            name: req.body.name,
-            lastName: req.body["last-name"],
-            userName: req.body["user-name"],
-            address: req.body.address,
-            birth: req.body.birth,
-            phoneNumber: req.body["phone-number"],
-            gender: req.body.gender,
-            isAdmin: false
-        }
-        // Se completan los datos restantes que no se encuentran incluídos en ese form
-        userObj.email = sessionUser.email;
-        userObj.password = sessionUser.password;
-        userObj.id = sessionUser.id;
-        
-        // Si se sube una nueva foto de perfil...
-        if(req.file){
-            // Se elimina la anterior y se reemplaza por la nueva
-            fileDeleter(IMAGE_PATH).deleteFile(sessionUser.image);
-            userObj.image = req.file.filename;
-        // Si no se sube una nueva foto se utiliza la que estaba
-        } else {
-            userObj.image = sessionUser.image;
-        }
 
-        // Array de promesas
-        let promises = [];
+        let errors = validationResult(req);
 
-        // Se eliminan los intereses que tenía previamente cargados en la base
-        promises.push(categoryUser.destroy({
-            where: {
-                userId: userObj.id
+        if(errors.isEmpty()){
+
+            // Se almacenan los datos del usuario que se encuentra en sesión para acceder a sus propiedades facilmente
+            let sessionUser = req.session.user;
+            // Se almacena en userObj los datos que llega del form
+            let userObj = {
+                name: req.body.name,
+                lastName: req.body["last-name"],
+                userName: req.body["user-name"],
+                address: req.body.address,
+                birth: req.body.birth,
+                phoneNumber: req.body["phone-number"],
+                gender: req.body.gender,
+                isAdmin: false
             }
-        }));
-
-        // Si el usuario seleccionó intereses se almacenan en la base
-        if(req.body.interests) {
-            console.log(req.body.interests);
-            if (req.body.interests.length > 1) {
-                req.body.interests.forEach(interest => {
+            // Se completan los datos restantes que no se encuentran incluídos en ese form
+            userObj.email = sessionUser.email;
+            userObj.password = sessionUser.password;
+            userObj.id = sessionUser.id;
+            
+            // Si se sube una nueva foto de perfil...
+            if(req.file){
+                // Se elimina la anterior y se reemplaza por la nueva
+                fileDeleter(IMAGE_PATH).deleteFile(sessionUser.image);
+                userObj.image = req.file.filename;
+            // Si no se sube una nueva foto se utiliza la que estaba
+            } else {
+                userObj.image = sessionUser.image;
+            }
+    
+            // Array de promesas
+            let promises = [];
+    
+            // Se eliminan los intereses que tenía previamente cargados en la base
+            promises.push(categoryUser.destroy({
+                where: {
+                    userId: userObj.id
+                }
+            }));
+    
+            // Si el usuario seleccionó intereses se almacenan en la base
+            if(req.body.interests) {
+                
+                if (req.body.interests.length > 1) {
+                    req.body.interests.forEach(interest => {
+                        promises.push(categoryUser.create({
+                            categoryId : Number(interest),
+                            userId : userObj.id
+                        }));
+                    });
+                } else {
                     promises.push(categoryUser.create({
-                        categoryId : Number(interest),
+                        categoryId : Number(req.body.interests),
                         userId : userObj.id
                     }));
-                });
-            } else {
-                promises.push(categoryUser.create({
-                    categoryId : Number(req.body.interests),
-                    userId : userObj.id
-                }));
+                }
             }
+    
+            // Se reemplazan los datos de la base
+            promises.push(user.update(userObj, {
+                where: {
+                    id: sessionUser.id
+                }
+            }));
+    
+            Promise.all(promises)
+                // Se actualizan los datos de la sesión y se redirecciona a la vista del perfil que se encuentra en sesión
+                .then(results => {
+                    req.session.user = userObj;
+                    res.redirect("/users/profile");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+        } else {
+            // Borro la imagen subida por el usuario
+            if(req.file && req.file.filename){
+                fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            }
+
+            category.findAll()
+                .then(categories => {
+                    return res.render("users/edit", {
+                        categories,
+                        userInput: req.body,
+                        errors : errors.mapped()
+                    });
+                })
+                .catch(error => console.log(error));
         }
-
-        // Se reemplazan los datos de la base
-        promises.push(user.update(userObj, {
-            where: {
-                id: sessionUser.id
-            }
-        }));
-
-        Promise.all(promises)
-            // Se actualizan los datos de la sesión y se redirecciona a la vista del perfil que se encuentra en sesión
-            .then(results => {
-                req.session.user = userObj;
-                res.redirect("/users/profile");
-            })
-            .catch(error => {
-                console.log(error);
-            })
     }
 }
