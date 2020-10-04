@@ -147,25 +147,27 @@ window.addEventListener("load", function(){
     // ************* Suscripción a eventos *************
     name.addEventListener("blur", validateName);
     lastName.addEventListener("blur", validateLastName);
-    email.addEventListener("blur", validateEmail);
     userName.addEventListener("blur", validateUserName);
-    password.addEventListener("blur", validatePassword);
-    passwordCheck.addEventListener("blur", validatePasswordCheck);
     address.addEventListener("blur", validateAddress);
     birth.addEventListener("blur", validateBirth);
     profilePhoto.addEventListener("change", validateProfilePhoto);
+    // Campos específicos del formulario de registro que no existen en el de edición de perfil
+    if(email) email.addEventListener("blur", validateEmail);
+    if(password) password.addEventListener("blur", validatePassword);
+    if(passwordCheck) passwordCheck.addEventListener("blur", validatePasswordCheck);
 
     form.addEventListener("submit", function(event){
         // Ataja el caso en que se intente enviar el formulario sin haber interactuado con los campos
         validateName();
         validateLastName();
-        validateEmail();
         validateUserName();
-        validatePassword();
-        validatePasswordCheck();
         validateAddress();
         validateBirth();
         validateProfilePhoto();
+
+        if(email) validateEmail();
+        if(password) validatePassword();
+        if(passwordCheck) validatePasswordCheck();
 
         if(Object.keys(errors).length){
             event.preventDefault();
