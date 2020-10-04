@@ -92,7 +92,7 @@ CREATE TABLE `purchases` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `purchased_at` datetime NOT NULL,
   `total_value` decimal(9,2) unsigned NOT NULL,
-  `shipping_address` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `shipping_address` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `shipping_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `comment` varchar(500) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
