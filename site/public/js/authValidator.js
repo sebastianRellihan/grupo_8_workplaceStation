@@ -7,6 +7,7 @@ let password = document.getElementById("password");
 let userInputAlert = document.getElementById("user-input-alert");
 let passwordAlert = document.getElementById("password-alert");
 
+let form = document.getElementById("login-form");
 
 // ************* Validaciones *************
 
@@ -58,6 +59,7 @@ password.addEventListener("blur", validatePassword);
 form.addEventListener("submit", function(event){
     // Ataja el caso en que se intente enviar el formulario sin haber interactuado con los campos
     validateUserInput();
+    validatePassword();
 
     if(Object.keys(errors).length){
         event.preventDefault();
