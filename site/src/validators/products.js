@@ -27,7 +27,7 @@ module.exports = {
             .notEmpty().withMessage("Debes seleccionar una categoría").bail()
             .custom(async value => {
                 let result = await category.findByPk(value);
-                if(result == null) {
+                if(result !== null) {
                     return Promise.resolve();
                 } else {
                     return Promise.reject();
