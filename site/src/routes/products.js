@@ -6,6 +6,7 @@
 const express = require("express");
 const router = express.Router();
 
+const validator = require("../validators/products");
 const controller = require("../controller/productsController");
 const purchaseController = require("../controller/purchaseController");
 // Middleware de control de permisos de admin
@@ -32,7 +33,7 @@ router.delete("/cart/:id", controller.removeFromCart);
 router.get("/create", adminRoute, controller.create);
 
 // Procesamiento del formulario de creación 
-router.post("/create", adminRoute, upload.any(), controller.store);
+router.post("/create", adminRoute, upload.any(), validator.create, controller.store);
 
 // Ruta para acceder a la confirmación de la compra
 router.get("/purchase", userRoute, purchaseController.show);
