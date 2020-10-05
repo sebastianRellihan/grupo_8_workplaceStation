@@ -9,6 +9,10 @@ const path = require("path");
 const fileDeleter = require("../utils/fileDeleter"); // Factory de borrado de archivos
 const { product, category, image, sequelize } = require("../database/models");
 const { Op } = require("sequelize");
+
+// Validaciones
+const { validationResult } = require("express-validator");
+
 // Ruta absoluta en donde se almacenan las imágenes
 const IMAGES_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded");
 const imageDeleter = fileDeleter(IMAGES_PATH); // Borrado de imágenes
@@ -127,13 +131,13 @@ module.exports = {
     // Envía la vista del formulario de carga de productos
     create: (req, res) => {
         category.findAll()
-        .then(categories => {
-            res.render("products/create", { categories });
-        })
-        .catch(error => {
-            // Error 500 "Internal server error"
-            res.status(500).redirect("/");
-        });
+            .then(categories => {
+                res.render("products/create", { categories });
+            })
+            .catch(error => {
+                // Error 500 "Internal server error"
+                res.status(500).redirect("/");
+            });
     },
 
     // Envía la vista del formulario de carga de productos
@@ -162,34 +166,60 @@ module.exports = {
     // Almacena un nuevo producto
     store: (req, res) => {
 
-        // Se crea el array y se completa con objetos "image"
-        let img = [];
-        req.files.forEach(image => {
-            img.push({ url : image.filename});
-        });
+        let errors = validationResult(req);
 
-        // Se crea el objeto product y se añade el arreglo de imágenes
-        let newProduct = {
-            name : req.body.name,
-            description: req.body.description,
-            briefDescription : req.body["brief-description"],
-            price : Number(req.body.price),
-            discount : Number(req.body.discount),
-            stock : Number(req.body.stock),
-            categoryId : Number(req.body.category),
-            images : img,
-            aditionalInfo : req.body["aditional-info"]
-        }
-        
-        // Se crea el nuevo registro del producto en la base
-        product.create(newProduct, { include : image })
-            .then(() => {
-                res.redirect("/products");
-            })
-            .catch(error => {
-                // Error 500 "Internal server error"
-                res.status(500).redirect("/");
+        if (errors.isEmpty()) {
+            
+            // Se crea el array y se completa con objetos "image"
+            let img = [];
+            req.files.forEach(image => {
+                img.push({ url : image.filename});
             });
+    
+            // Se crea el objeto product y se añade el arreglo de imágenes
+            let newProduct = {
+                name : req.body.name,
+                description: req.body.description,
+                briefDescription : req.body["brief-description"],
+                price : Number(req.body.price),
+                discount : Number(req.body.discount),
+                stock : Number(req.body.stock),
+                categoryId : Number(req.body.category),
+                images : img,
+                aditionalInfo : req.body["aditional-info"]
+            }
+            
+            // Se crea el nuevo registro del producto en la base
+            product.create(newProduct, { include : image })
+                .then(() => {
+                    res.redirect("/products");
+                })
+                .catch(error => {
+                    // Error 500 "Internal server error"
+                    res.status(500).redirect("/");
+                });
+
+        } else {
+            
+            if(req.files){
+                req.files.forEach(image => {
+                    imageDeleter.deleteFile(image.filename);
+                });
+            }
+
+            category.findAll()
+                .then(categories => {
+                    res.render("products/create", {
+                        categories,
+                        userInput: req.body,
+                        errors: errors.mapped()
+                    });
+                })
+                .catch(error => {
+                    // Error 500 "Internal server error"
+                    res.status(500).redirect("/");
+                });
+        }
         
     },
 
