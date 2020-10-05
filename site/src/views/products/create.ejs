@@ -15,25 +15,35 @@
             <h1> Carga de producto <i class="fas fa-clipboard-list"></i></i></h1>
             <form action="/products/create" method="POST" enctype="multipart/form-data">
                 <div class="flex column">
-                    <label for="name" class="input-label"><span class="asterisk">*</span> NOMBRE:</label>
-                    <input type="text" class="input-text" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
-                        autocomplete="true" required>
+                    <label for="name" class="input-label"><span class="asterisk">*</span> Nombre:</label>
+                    <input type="text" class="input-text <%= locals.errors && errors.name ? 'input-alert' : '' %>" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
+                        autocomplete="true" value="<%= locals.userInput && userInput.name ? userInput.name : '' %>">
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.name ? errors.name.msg : '' %>
+                </p>
+
                 <div class="flex column">
-                    <label for="brief-description" class="input-label"><span class="asterisk">*</span> DESCRIPCIÓN BREVE (máximo 100 caracteres):</label>
-                    <textarea name="brief-description" id="briefDescription" class="input-textarea" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." maxlength="100" required></textarea>
+                    <label for="brief-description" class="input-label"><span class="asterisk">*</span> Descripción breve (máximo 100 caracteres):</label>
+                    <textarea name="brief-description" id="briefDescription" class="input-textarea <%= locals.errors && errors["brief-description"] ? 'input-alert' : '' %>" placeholder="Ej: Silla ergonómica gamer con soporte lumbar regulable..." ><%= locals.userInput && userInput["brief-description"] ? userInput["brief-description"] : '' %></textarea>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors["brief-description"] ? errors["brief-description"].msg : '' %>
+                </p>
 
                 <div class="create-form-div-container">
                     <div class="flex column">
-                        <label for="price" class="input-label"><span class="asterisk">*</span> PRECIO:</label>
-                        <input type="number" class="input-text" name="price" id="price" placeholder="$" 
-                        autocomplete="true" required>
+                        <label for="price" class="input-label"><span class="asterisk">*</span> Precio:</label>
+                        <input type="number" class="input-text <%= locals.errors && errors.price ? 'input-alert' : '' %>" name="price" id="price" placeholder="$" 
+                        autocomplete="true" step="0.01" value="<%= locals.userInput && userInput.price ? userInput.price : '' %>">
+                        <p class="alert-label">
+                            <%= locals.errors && errors.price ? errors.price.msg : '' %>
+                        </p>
                     </div>
 
                     <div class="flex column">
-                        <label for="discount" class="input-label">DESCUENTO:</label>
-                        <select name="discount" id="discount" class="input-text">
+                        <label for="discount" class="input-label">Descuento:</label>
+                        <select name="discount" id="discount" class="input-text <%= locals.errors && errors.discount ? 'input-alert' : '' %>" value="<%= locals.userInput && userInput.discount ? userInput.discount : '' %>">
                             <option value="0" selected>NO</option>
                             <option value="5">5 %</option>
                             <option value="10">10 %</option>
@@ -46,26 +56,35 @@
                             <option value="45">45 %</option>
                             <option value="50">50 %</option>
                         </select>
+                        <p class="alert-label">
+                            <%= locals.errors && errors.discount ? errors.discount.msg : '' %>
+                        </p>
                     </div>
 
                     <div class="flex column">
-                        <label for="stock" class="input-label"><span class="asterisk">*</span> STOCK:</label>
-                        <input type="number" class="input-text" name="stock" id="stock" placeholder="Ej: 10" 
-                        autocomplete="true" required>
+                        <label for="stock" class="input-label"><span class="asterisk">*</span> Stock:</label>
+                        <input type="number" class="input-text <%= locals.errors && errors.stock ? 'input-alert' : '' %>" name="stock" id="stock" placeholder="Ej: 10" 
+                        autocomplete="true" value="<%= locals.userInput && userInput.stock ? userInput.stock : '' %>">
+                        <p class="alert-label">
+                            <%= locals.errors && errors.stock ? errors.stock.msg : '' %>
+                        </p>
                     </div>
                 </div>
                 
                 <div class="flex column">
-                    <label for="category" class="input-label"><span class="asterisk">*</span> CATEGORY:</label>
-                    <select name="category" id="category" class="input-text" required>
+                    <label for="category" class="input-label"><span class="asterisk">*</span> Categoría:</label>
+                    <select name="category" id="category" class="input-text <%= locals.errors && errors.category ? 'input-alert' : '' %>" value="<%= locals.userInput && userInput.category ? userInput.category : '' %>">
                         <% categories.forEach(category => { %>
                             <option value="<%= category.id %>"><%= category.name %> </option>
                         <% }); %>
                     </select>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.category ? errors.category.msg : '' %>
+                </p>
 
                 <div class="flex column">
-                    <label for="image" class="input-label"><span class="asterisk">*</span> CARGAR IMÁGENES:
+                    <label for="image" class="input-label"><span class="asterisk">*</span> Cargar imágenes:
                         <br>
                         <span class="image-format-label">formatos soportados: jpg, jpeg, png, gif, webp</span>
                     </label>
@@ -74,16 +93,25 @@
                         Seleccionar
                     </label>
                 </div>    
+                <p class="alert-label">
+                    <%= locals.errors && errors.image ? errors.image.msg : '' %>
+                </p>
 
                 <div class="flex column">
-                    <label for="description" class="input-label">DESCRIPCIÓN:</label>
-                    <textarea name="description" id="description" class="input-textarea" placeholder="Descripción..." rows="4"></textarea>
+                    <label for="description" class="input-label"><span class="asterisk">*</span> Descripción:</label>
+                    <textarea name="description" id="description" class="input-textarea <%= locals.errors && errors.description ? 'input-alert' : '' %>" placeholder="Descripción..." rows="4" ><%= locals.userInput && userInput.description ? userInput.description : '' %></textarea>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.description ? errors.description.msg : '' %>
+                </p>
 
                 <div class="flex column">
-                    <label for="aditional-info" class="input-label">INFORMACIÓN ADICIONAL:</label>
-                    <textarea name="aditional-info" id="aditionalInfo" class="input-textarea" placeholder="Información adicional..." rows="4"></textarea>
+                    <label for="aditional-info" class="input-label">Información adicional:</label>
+                    <textarea name="aditional-info" id="aditionalInfo" class="input-textarea <%= locals.errors && errors["aditional-info"] ? 'input-alert' : '' %>" placeholder="Información adicional..." rows="4" ><%= locals.userInput && userInput["aditional-info"] ? userInput["aditional-info"] : '' %></textarea>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors["aditional-info"] ? errors["aditional-info"].msg : '' %>
+                </p>
 
 
                 <p class="input-label">Los campos indicados con <span class="asterisk">*</span> son obligatorios.</p>
