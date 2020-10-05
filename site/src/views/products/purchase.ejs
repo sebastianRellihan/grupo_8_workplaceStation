@@ -5,6 +5,7 @@
 <%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Finalizar compra",
     description: "¡Finalizá tu compra!",
     keywords: "Workplace Station, finalizar compra"}) %> 
+<script src="/js/purchaseValidator.js"></script>
 
 <body>
     <%# Import del HADER %>
@@ -87,7 +88,7 @@
 
                         <div class="cart-summary-note-container">
                             <label for="comment" class="input-label">Agregar nota de orden:</label>
-                            <textarea name="comment" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
+                            <textarea name="comment" id="comment" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
                              class="input-textarea <%= locals.errors && errors.comment ? 'input-alert' : '' %>"></textarea>
                              <p class="alert-label">
                                 <%= locals.errors && errors.comment ? errors.comment.msg : '' %>
