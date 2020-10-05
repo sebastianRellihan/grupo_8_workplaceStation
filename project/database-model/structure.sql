@@ -43,7 +43,7 @@ CREATE TABLE `products` (
   `name` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `description` varchar(500) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `brief_description` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `aditional_info` varchar(500) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `aditional_info` varchar(500) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `price` decimal(9,2) unsigned DEFAULT 0.00,
   `discount` tinyint(3) unsigned DEFAULT 0,
   `stock` int(10) unsigned DEFAULT 0,
