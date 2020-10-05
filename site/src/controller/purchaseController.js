@@ -54,16 +54,35 @@ module.exports = {
         let date = `'${now.getFullYear()}-${currentMonth}-${now.getDate()}`;
         date += ` ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}'`;
 
-        let newPurchase = { // Nueva compra
-            totalValue : req.body.total,
-            shippingAddress : req.body.address,
-            shippingId : req.body.shipping,
-            comment : req.body.comment,
-            userId : req.session.user.id,
-            purchasedAt : date
-        }
+        // Array para el cálculo del precio total
+        let promises = [];
+        req.session.cart.forEach(productId => {
+            promises.push(product.findByPk(productId));
+        });
 
-        purchase.create(newPurchase)
+        Promise.all(promises)
+            .then(results => {
+
+                let total = results.reduce((acum, element) => {
+                    if(element.discount == 0){
+                        return acum + Number(element.price);
+                    } else { // Aplica el descuento si lo hay
+                        let applied = Number(element.price) - Number(element.price) * (Number(element.discount) / 100);
+                        return acum + applied; 
+                    }
+                }, 0); // El 0 es el valor inicial del acumulador
+
+                let newPurchase = { // Nueva compra
+                    totalValue : total,
+                    shippingAddress : req.body.address,
+                    shippingId : req.body.shipping,
+                    comment : req.body.comment,
+                    userId : req.session.user.id,
+                    purchasedAt : date
+                }
+        
+                return purchase.create(newPurchase);
+            })
             .then(created => {
 
                 // Array con las promesas para crear los registros en la tabla intermedia

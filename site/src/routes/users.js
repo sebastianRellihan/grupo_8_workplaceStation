@@ -42,6 +42,6 @@ router.delete("/profile", userRoute, controller.destroy);
 router.get("/edit", userRoute, controller.edit);
 
 // procesamiento del form de edición de un usuario
-router.put("/edit", userRoute, upload.single('profile-photo'), controller.update);
+router.put("/edit", userRoute, upload.single('profile-photo'), validator.edit, controller.update);
 
 module.exports = router;

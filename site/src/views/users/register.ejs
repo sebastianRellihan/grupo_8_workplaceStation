@@ -17,7 +17,7 @@
             <h1> Registro <i class="far fa-id-badge"></i></h1>
 
             <form id="user-form" class="flex column" action="/users/register" method="POST" enctype="multipart/form-data">
-                <!-- Información personal -->
+                <!-- Nombre -->
                 <label for="name"><span class="asterisk">*</span> Nombre/s:</label>
                 <input type="text" name="name" id="name" placeholder="John" autocomplete="true" 
                 value="<%= locals.userInput && userInput.name ? userInput.name : '' %>" required
@@ -26,6 +26,7 @@
                     <%= locals.errors && errors.name ? errors.name.msg : '' %>
                 </p>
 
+                <!-- Apellido -->
                 <label for="last-name"><span class="asterisk">*</span> Apellido/s:</label>
                 <input type="text" name="last-name" id="last-name" placeholder="Wick" autocomplete="true" 
                 value="<%= locals.userInput && userInput['last-name'] ? userInput['last-name'] : '' %>" required
@@ -34,6 +35,7 @@
                     <%= locals.errors && errors["last-name"] ? errors["last-name"].msg : '' %>
                 </p>
 
+                <!-- Email -->
                 <label for="email"><span class="asterisk">*</span> Dirección de e-mail:</label>
                 <input type="email" name="email" id="email" placeholder="jwick@gmail.com" autocomplete="true" 
                 value="<%= locals.userInput && userInput.email ? userInput.email : '' %>" required
@@ -42,6 +44,7 @@
                     <%= locals.errors && errors.email ? errors.email.msg : '' %>
                 </p>
 
+                <!-- Nombre de usuario -->
                 <label for="user-name"><span class="asterisk">*</span> Nombre de usuario:</label>
                 <input type="text" name="user-name" id="user-name" placeholder="boogeyman" autocomplete="true" 
                 value="<%= locals.userInput && userInput['user-name'] ? userInput['user-name'] : '' %>" required
@@ -50,6 +53,7 @@
                     <%= locals.errors && errors["user-name"] ? errors["user-name"].msg : '' %>
                 </p>
 
+                <!-- Contraseña -->
                 <label for="password"><span class="asterisk">*</span> Contraseña (mínimo 8 caracteres):</label>
                 <input type="password" name="password" id="password" placeholder="********" autocomplete="true" 
                 class="input-text <%= locals.errors && errors.password ? 'input-alert' : '' %>" required>
@@ -57,8 +61,7 @@
                     <%= locals.errors && errors.password ? errors.password.msg : '' %>
                 </p>
 
-
-                <!--<p class="alert-label" id="password-alert-label">Debe ingresar una contraseña válida</p>-->
+                <!-- Confirmación -->
                 <label for="password-check"><span class="asterisk">*</span> Repetir contraseña:</label>
                 <input type="password" name="password-check" id="password-check" placeholder="********" autocomplete="true" 
                 class="input-text <%= locals.errors && errors["password-check"] ? 'input-alert' : '' %>" required>
@@ -66,6 +69,7 @@
                     <%= locals.errors && errors["password-check"] ? errors["password-check"].msg : '' %>
                 </p>
                 
+                <!-- Género -->
                 <div class="gender-radio-container flex column">
                     <label for="gender" class="input-label">Género</label>
 
@@ -90,32 +94,35 @@
                     <%= locals.errors && errors.gender ? errors.gender.msg : '' %>
                 </p>
 
-                <label for="birth">Fecha de nacimiento:</label>
-                <input type="date" name="birth" id="birth" placeholder="dd/mm/aaaa"
+                <!-- Fecha de nacimiento -->
+                <label for="birth"><span class="asterisk">*</span>Fecha de nacimiento:</label>
+                <input type="date" name="birth" id="birth" placeholder="dd/mm/aaaa" required
                 value="<%= locals.userInput && userInput.birth ? userInput.birth : '' %>"
-                class="input-text">
+                class="input-text <%= locals.errors && errors.birth ? 'input-alert' : '' %>">
                 <p class="alert-label <%= locals.errors && errors.birth ? 'input-alert' : '' %>">
                     <%= locals.errors && errors.birth ? errors.birth.msg : '' %>
                 </p>
 
-                <label for="address">Domicilio:</label>
+                <!-- Domicilio -->
+                <label for="address"><span class="asterisk">*</span> Domicilio:</label>
                 <input type="text" name="address" id="address" placeholder="Calle falsa 123, CABA" autocomplete="true" 
-                value="<%= locals.userInput && userInput.address ? userInput.address : '' %>"
+                value="<%= locals.userInput && userInput.address ? userInput.address : '' %>" required
                 class="input-text <%= locals.errors && errors.address ? 'input-alert' : '' %>">
                 <p class="alert-label">
                     <%= locals.errors && errors.address ? errors.address.msg : '' %>
                 </p>
 
+                <!-- Teléfono -->
                 <label for="phone-number">Número de teléfono:</label>
                 <input type="tel" name="phone-number" id="phone-number" placeholder="+54 9 11 52637400"
                 autocomplete="true" value="<%= locals.userInput && userInput['phone-number'] ? userInput['phone-number'] : '' %>"
-                class="input-text">
+                class="input-text <%= locals.errors && errors["phone-number"] ? 'input-alert' : '' %>">
                 <p class="alert-label <%= locals.errors && errors["phone-number"] ? 'input-alert' : '' %>">
                     <%= locals.errors && errors["phone-number"] ? errors["phone-number"].msg : '' %>
                 </p>
 
-                <!-- Información de perfil -->
-                <p class="image-format-label">Formatos soportados: jpg, jpeg, png, gif, webp</p>
+                <!-- Foto de perfil -->
+                <p class="image-format-label">* Formatos soportados: jpg, jpeg, png, gif, webp</p>
                 <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
                     Foto de perfil
@@ -124,19 +131,20 @@
                     <%= locals.errors && errors["profile-photo"] ? errors["profile-photo"].msg : '' %>
                 </p>
 
-                <!-- Miscelánea + botones de envío y reseteo -->
-                
+                <!-- Checkbox de intereses -->
                 <div class="interests-checkbox-container flex column">
                     <label for="interests" class="input-label">Intereses</label>
                     <%# Imprime los checkbox con todas las categorías disponibles %>
                     <% categories.forEach(category => { %>
                         <label class="checkable-container"><%= category.name %>
-                            <input type="checkbox" name="interests" value="<%= category.id %>"
-                                <%= locals.userInput && userInput.interests && userInput.interests.includes(category.id.toString()) ? "checked" : "" %>>
+                            <input type="checkbox" name="interests" value="<%= category.id %>">
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.interests ? errors.interests.msg : '' %>
+                </p>
 
                 <p class="input-label">
                     Los campos indicados con (<span class="asterisk">*</span>) son obligatorios.

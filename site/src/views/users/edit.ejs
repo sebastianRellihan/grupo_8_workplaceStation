@@ -5,6 +5,7 @@
 <%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - user edit",
     description: "¿Querés formar parte de nuestra plataforma? ¡Tené acceso ilimitado a todos nuestros servicios!",
     keywords: "Workplace Station, formulario, edición, edición usuario, editar cuenta"})%>
+<script src="/js/userValidator.js"></script>
 
 <body>
     <%# Import del HADER %>
@@ -15,13 +16,34 @@
         <div class="form-container">
             <h1> Edición de perfil <i class="far fa-id-badge"></i></h1>
 
-            <form class="flex column" action="/users/edit?_method=PUT" method="POST" enctype="multipart/form-data">
-                <!-- Información personal -->
-                <input type="text" class="input-text" name="name" id="name" placeholder="Nombre/s (*)" 
-                    autocomplete="true" value="<%= user.name %>" required>
-                <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Apellido/s (*)" 
-                    autocomplete="true" value="<%= user.lastName %>" required> 
+            <form id="user-form" class="flex column" action="/users/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+                <!-- Nombre -->
+                <label for="name"><span class="asterisk">*</span> Nombre/s:</label>
+                <input type="text" name="name" id="name" placeholder="John" autocomplete="true" value="<%= user.name %>" required
+                class="input-text <%= locals.errors && errors.name ? 'input-alert' : '' %>">
+                <p class="alert-label">
+                    <%= locals.errors && errors.name ? errors.name.msg : '' %>
+                </p>
 
+                <!-- Apellido -->
+                <label for="last-name"><span class="asterisk">*</span> Apellido/s:</label>
+                <input type="text" name="last-name" id="last-name" placeholder="Wick" autocomplete="true" value="<%= user.lastName %>" required
+                class="input-text <%= locals.errors && errors['last-name'] ? 'input-alert' : '' %>"> 
+                <p class="alert-label">
+                    <%= locals.errors && errors["last-name"] ? errors["last-name"].msg : '' %>
+                </p>
+
+                
+                <!-- Nombre de usuario -->
+                <label for="user-name"><span class="asterisk">*</span> Nombre de usuario:</label>
+                <input type="text" name="user-name" id="user-name" placeholder="boogeyman" 
+                autocomplete="true" value="<%= user.userName %>" required
+                class="input-text <%= locals.errors && errors["user-name"] ? 'input-alert' : '' %>">
+                <p class="alert-label">
+                    <%= locals.errors && errors["user-name"] ? errors["user-name"].msg : '' %>
+                </p>
+
+                <!-- Género -->
                 <div class="gender-radio-container flex column">
                     <label for="gender" class="input-label">Género</label>
 
@@ -41,45 +63,66 @@
                         <span class="custom-checkable"></span>
                     </label>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.gender ? errors.gender.msg : '' %>
+                </p>
 
-                <label for="birth" class="input-label">Fecha de nacimiento (*)</label>
-                <input type="date" class="input-text" name="birth" id="birth" placeholder="dd/mm/aaaa" value="<%= user.birth %>" required>
-                <!--<p class="alert-label" id="underage-alert-label">¡Debe ser mayor de edad para poder registrarte!</p>-->
+                <!-- Fecha de nacimiento -->
+                <label for="birth" class="input-label"><span class="asterisk">*</span>Fecha de nacimiento:</label>
+                <input type="date" name="birth" id="birth" placeholder="dd/mm/aaaa" value="<%= user.birth %>" required
+                class="input-text <%= locals.errors && errors.birth ? 'input-alert' : '' %>">
+                <p class="alert-label">
+                    <%= locals.errors && errors.birth ? errors.birth.msg : '' %>
+                </p>
 
-                <input type="text" class="input-text" name="address" id="address" placeholder="Domicilio (*)" 
-                    autocomplete="true" value="<%= user.address %>" required>
+                <!-- Domicilio -->
+                <label for="address"><span class="asterisk">*</span> Domicilio:</label>
+                <input type="text" name="address" id="address" placeholder="Calle Falsa 123" 
+                autocomplete="true" value="<%= user.address %>" required
+                class="input-text <%= locals.errors && errors.address ? 'input-alert' : '' %>">
+                <p class="alert-label">
+                    <%= locals.errors && errors.address ? errors.address.msg : '' %>
+                </p>
 
-                <input type="tel" class="input-text" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
-                    autocomplete="true" value="<%= user.phoneNumber %>">
-                <!--<p class="alert-label" id="telnumber-alert-label">Debe ingresar un número válido</p>-->
+                <!-- Teléfono -->
+                <label for="phone-number">Número de teléfono:</label>
+                <input type="tel" name="phone-number" id="phone-number" placeholder="Número de teléfono (*)"
+                autocomplete="true" value="<%= user.phoneNumber %>"
+                class="input-text <%= locals.errors && errors["phone-number"] ? 'input-alert' : '' %>">
+                <p class="alert-label">
+                    <%= locals.errors && errors["phone-number"] ? errors["phone-number"].msg : '' %>
+                </p>
 
-                <!-- Información de perfil -->
-                <input type="text" class="input-text" name="user-name" id="user-name" placeholder="Nombre de usuario (*)" 
-                    autocomplete="true" value="<%= user.userName %>" required>
-
+                <!-- Foto de perfil -->
+                <p class="image-format-label">* Formatos soportados: jpg, jpeg, png, gif, webp</p>
                 <label class="action-button">
                     <input type="file" name="profile-photo" id="profile-photo">
                     Foto de perfil
                 </label>
+                <p class="alert-label">
+                    <%= locals.errors && errors["profile-photo"] ? errors["profile-photo"].msg : '' %>
+                </p>
 
                 <p class="input-label">
                     En caso de no querer modificar la foto de perfil no seleccionar ninguna y se mantendrá la original
                 </p>
 
+                <!-- Checkbox de intereses -->
                 <div class="interests-checkbox-container flex column">
                     <label for="interests" class="input-label">Intereses</label>
                     <%# Imprime los checkbox con todas las categorías disponibles %>
                     <% categories.forEach(category => { %>
                         <label class="checkable-container"><%= category.name %>
                             <input type="checkbox" name="interests" value="<%= category.id %>" 
-                                <% interests.forEach(interest => { %>
-                                    <%= interest && interest.categoryId == category.id ? "checked" : "" %>
-                                <% }) %> 
+                                <%= user.interests && user.interests.incudes(category.id) ? 'checked' : '' %>
                             >
                             <span class="custom-checkable"></span>
                         </label>
                     <% }); %>
                 </div>
+                <p class="alert-label">
+                    <%= locals.errors && errors.interests ? errors.interests.msg : '' %>
+                </p>
 
                 <p class="input-label">
                     Los campos indicados con (<span class="asterisk">*</span>) son obligatorios.
