@@ -95,7 +95,7 @@
 
                 <!-- Foto de perfil -->
                 <p class="image-format-label">* Formatos soportados: jpg, jpeg, png, gif, webp</p>
-                <label class="action-button">
+                <label class="action-button <%= locals.errors && errors["profile-photo"] ? 'input-alert' : '' %>">
                     <input type="file" name="profile-photo" id="profile-photo">
                     Foto de perfil
                 </label>
