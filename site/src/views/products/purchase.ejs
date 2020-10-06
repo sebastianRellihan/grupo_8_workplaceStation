@@ -5,6 +5,7 @@
 <%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Finalizar compra",
     description: "¡Finalizá tu compra!",
     keywords: "Workplace Station, finalizar compra"}) %> 
+<script src="/js/purchaseValidator.js"></script>
 
 <body>
     <%# Import del HADER %>
@@ -62,28 +63,38 @@
                         
                         <div class="flex column">
                             <label for="address" class="input-label"><span class="asterisk">*</span> Dirección de envío:</label>
-                            <input type="text" class="input-text" name="address" id="address" placeholder="Ej: Calle Falsa 123..." 
-                            value="<%= locals.user && locals.user.address ? locals.user.address : '' %>" autocomplete="true" required>
-                            
+                            <input type="text" name="address" id="address" placeholder="Ej: Calle Falsa 123..." autocomplete="true"
+                            value="<%= locals.user && locals.user.address ? locals.user.address : '' %>" required
+                            class="input-text <%= locals.errors && errors.address ? 'input-alert' : '' %>">
+                            <p class="alert-label">
+                                <%= locals.errors && errors.address ? errors.address.msg : '' %>
+                            </p>
                         </div>
 
                         <div class="flex column"><!-- Select de métodos de envío -->
                             <label for="shipping" class="input-label">
                                 <span class="asterisk">*</span> Método de envío
                             </label>
-                            <select name="shipping" id="shipping" class="input-text">
+                            <select name="shipping" id="shipping" 
+                            class="input-text <%= locals.errors && errors.shipping ? 'input-alert' : '' %>">
                                 <%locals.shippings.forEach(shipping => { %>
                                     <option value="<%= shipping.id %>"><%= shipping.name %></option>
                                 <% }); %>
                             </select>
+                            <p class="alert-label">
+                                <%= locals.errors && errors.shipping ? errors.shipping.msg : '' %>
+                            </p>
                         </div>
 
                         <div class="cart-summary-note-container">
                             <label for="comment" class="input-label">Agregar nota de orden:</label>
-                            <textarea name="comment" id="" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
-                             class="input-textarea"></textarea>
+                            <textarea name="comment" id="comment" cols="30" rows="4" placeholder="¿Podemos ayudarte? Dejá cualquier comentario que consideres necesario..."
+                             class="input-textarea <%= locals.errors && errors.comment ? 'input-alert' : '' %>"></textarea>
+                             <p class="alert-label">
+                                <%= locals.errors && errors.comment ? errors.comment.msg : '' %>
+                            </p>
                         </div>
-                        
+
                         <button type="submit" class="action-button">Finalizar compra</button>
 
                     </form>
