@@ -78,6 +78,21 @@ module.exports = {
 
         let errors = validationResult(req);
         
+        // Validación sobre las imágenes de perfil
+        if(!(req.file && req.file.filename)){
+            /**
+             * Multer filtra las imágenes inválidas, esto quiere decir que
+             * en caso de que no lleguen imágenes, podría darse el caso de que
+             * la imagen no haya pasado el filtro, se hayan subido varias imágenes ó
+             * que se haya salteado las validaciones front.
+             */
+            errors.errors.push({ 
+                msg : "Formato no soportado",
+                param : "profile-photo",
+                location : "file"
+            });
+        }
+
         if (errors.isEmpty()) {
 
             // Se almacena en userObj lo que llega por post del form
