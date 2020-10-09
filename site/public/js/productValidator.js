@@ -9,7 +9,7 @@ let stock = document.getElementById("stock");
 let description = document.getElementById("description");
 let aditionalInfo = document.getElementById("aditionalInfo");
 
-let form = document.getElementById("product-create-form");
+let form = document.getElementById("product-form");
 
 /**
  * Función que se encarga de dar un feedback visual al usuario. Esta toma el elemento
