@@ -49,7 +49,7 @@ router.get("/:id", controller.detail);
 router.get("/:id/edit", adminRoute, controller.edit);
 
 // Formulario de edición de producto - editar producto
-router.put("/:id", adminRoute, upload.any(), controller.update);
+router.put("/:id", adminRoute, upload.any(), productsValidator.edit, controller.update);
 
 // Formulario de edición de producto - eliminar producto
 router.delete("/:id", adminRoute, controller.destroy);

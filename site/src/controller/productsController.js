@@ -226,53 +226,86 @@ module.exports = {
     // Edita un producto existente
     update: (req,res) => { 
 
-        // TODO: investigar el uso de transacciones, para asegurar que si alguna de las
-        // operaciones en BD falla, se pueda volver al estado original en todas las tablas
-        console.log(req.body["delete-images"][0].url);
-        let promises = []; // Promesas para las operaciones en BD
+        let errors = validationResult(req);
 
-        // Promesas para el borrado de imágenes seleccionadas
-        if(req.body["delete-images"]){
+        if (errors.isEmpty()) {
 
-            req.body["delete-images"].forEach(element => {
-                promises.push(image.destroy({ where : { url : String(element) } }));
-            });
-        }
+            // TODO: investigar el uso de transacciones, para asegurar que si alguna de las
+            // operaciones en BD falla, se pueda volver al estado original en todas las tablas
+            console.log(req.body["delete-images"][0].url);
+            let promises = []; // Promesas para las operaciones en BD
 
-        // Promesas para la creación de las nuevas imágenes en BD
-        if(req.files){
-            req.files.forEach(element => {
-                promises.push(image.create({ url : element.filename, productId: req.params.id}));
-            });
-        }
+            // Promesas para el borrado de imágenes seleccionadas
+            if(req.body["delete-images"]){
 
-        // Actualización del producto
-        let updProduct = {
-            name : req.body.name,
-            description: req.body.description,
-            briefDescription : req.body["brief-description"],
-            price : Number(req.body.price),
-            discount : Number(req.body.discount),
-            stock : Number(req.body.stock),
-            categoryId : Number(req.body.category),
-            aditionalInfo : req.body["aditional-info"]
-        }
+                req.body["delete-images"].forEach(element => {
+                    promises.push(image.destroy({ where : { url : String(element) } }));
+                });
+            }
 
-        // Promesa para la actualización en BD
-        promises.push(product.update(updProduct, { where : { id : req.params.id }}));
+            // Promesas para la creación de las nuevas imágenes en BD
+            if(req.files){
+                req.files.forEach(element => {
+                    promises.push(image.create({ url : element.filename, productId: req.params.id}));
+                });
+            }
 
-        Promise.all(promises)
-            .then(results => {
+            // Actualización del producto
+            let updProduct = {
+                name : req.body.name,
+                description: req.body.description,
+                briefDescription : req.body["brief-description"],
+                price : Number(req.body.price),
+                discount : Number(req.body.discount),
+                stock : Number(req.body.stock),
+                categoryId : Number(req.body.category),
+                aditionalInfo : req.body["aditional-info"]
+            }
 
-                // Borrado de imágenes en disco
-                imageDeleter.deleteFile(req.body["delete-images"]);
+            // Promesa para la actualización en BD
+            promises.push(product.update(updProduct, { where : { id : req.params.id }}));
 
-                res.redirect("/products/" + req.params.id);
-            })
-            .catch(error => {
-                // Error 500 "Internal server error"
-                res.status(500).redirect("/");
-            });
+            Promise.all(promises)
+                .then(results => {
+
+                    // Borrado de imágenes en disco
+                    imageDeleter.deleteFile(req.body["delete-images"]);
+
+                    res.redirect("/products/" + req.params.id);
+                })
+                .catch(error => {
+                    // Error 500 "Internal server error"
+                    res.status(500).redirect("/");
+                });
+        } else {
+
+            if(req.files){
+                req.files.forEach(image => {
+                    imageDeleter.deleteFile(image.filename);
+                });
+            }
+
+            let productImages = image.findAll({where: { productId: req.params.id }});
+            
+            let categories = category.findAll();
+
+            Promise.all([productImages, categories])
+                .then(results => {
+                    res.render("products/edit", {
+                        product: {
+                            id: req.params.id,
+                            images: results[0]
+                        },
+                        categories: results[1],
+                        userInput: req.body,
+                        errors: errors.mapped()
+                    });
+                })
+                .catch(error => {
+                    // Error 500 "Internal server error"
+                    res.status(500).redirect("/");
+                });
+        }        
     },
 
     // Elimina un producto
