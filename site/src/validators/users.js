@@ -42,9 +42,8 @@ module.exports = {
             .notEmpty().withMessage("Campo obligatório").bail()
             .isDate({ format : "YYYY-MM-DD" }).withMessage("Debe ingresar una fecha válida"),
 
-        check("address").trim()
-            .notEmpty().withMessage("Campo obligatório").bail()
-            .isLength({ min : 2, max : 255 }).withMessage("Debe tener entre 2 y 255 caracteres"),
+        check("address").optional().trim()
+            .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
 
        check("interests", "Debe seleccionar una opción válida").optional()
             // Valida que los valores enviados sean numéricos
@@ -159,9 +158,8 @@ module.exports = {
             .notEmpty().withMessage("Campo obligatório").bail()
             .isDate({ format : "YYYY-MM-DD" }).withMessage("Debe ingresar una fecha válida"),
 
-        check("address").trim()
-            .notEmpty().withMessage("Campo obligatório").bail()
-            .isLength({ min : 2, max : 255 }).withMessage("Debe tener entre 2 y 255 caracteres"),
+        check("address").optional().trim()
+            .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
 
         check("interests", "Debe seleccionar una opción válida").optional()
             // Valida que los valores enviados sean numéricos

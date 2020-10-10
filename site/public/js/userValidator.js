@@ -117,8 +117,7 @@ window.addEventListener("load", function(){
         address.value = address.value.trim();
         let feedback;
 
-        if(address.value == "") feedback = "Campo obligatório";
-        else if(address.value.length < 2 || address.value.length > 255 ) feedback = "Debe tener entre 2 y 255 caracteres";
+        if(address.value.length > 255 ) feedback = "No puede tener más de 255 caracteres";
 
         handleFeedback(address, feedback);
     }
