@@ -30,7 +30,7 @@ router.post("/logout", userRoute, controller.logout);
 router.get("/register", guestRoute, controller.register);
 
 // Procesamiento del formulario de registro 
-router.post("/register", guestRoute, upload.single('profile-photo'), validator.register, controller.store);
+router.post("/register", guestRoute, upload.any('profile-photo'), validator.register, controller.store);
 
 // Vista del perfil de un usuario
 router.get("/profile", userRoute, controller.show);
@@ -42,6 +42,6 @@ router.delete("/profile", userRoute, controller.destroy);
 router.get("/edit", userRoute, controller.edit);
 
 // procesamiento del form de edición de un usuario
-router.put("/edit", userRoute, upload.single('profile-photo'), validator.edit, controller.update);
+router.put("/edit", userRoute, upload.any('profile-photo'), validator.edit, controller.update);
 
 module.exports = router;
