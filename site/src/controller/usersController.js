@@ -308,8 +308,6 @@ module.exports = {
 
         let errors = validationResult(req);
 
-        let errors = validationResult(req);
-
         // Validación sobre las imágenes de perfil
         let imgError = { 
             param : "profile-photo",
