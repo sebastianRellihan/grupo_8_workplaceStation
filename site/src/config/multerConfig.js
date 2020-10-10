@@ -8,9 +8,6 @@
 const multer = require("multer");
 const path = require("path");
 
-// Tipos de archivos soportados
-const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"];
-
 /**
  * Retorna una instancia de un objeto de configuración de multer para subir archivos
  * de imágenes dentro de subcarpetas de /public/img.
@@ -32,16 +29,5 @@ module.exports = function(destinationFolder) {
                 cb(null, file.fieldname + "-" + file.originalname.slice(0,3) + "-" + Date.now() + path.extname(file.originalname));
             }
         }),
-        /*
-        * Define el filtrado de los archivos. No arroja errores al insertarse archivos
-        * que no pasen el filtro, simplemente omite su subida.
-        */
-        fileFilter : function(req, file, cb){
-            if(ALLOWED_MIME_TYPES.includes(file.mimetype)){
-                cb(null, true); // Permite la subida
-            } else {
-                cb(null, false) // Omite la subida
-            }
-        }
     }
 };
