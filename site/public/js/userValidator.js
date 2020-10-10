@@ -150,7 +150,7 @@ window.addEventListener("load", function(){
     userName.addEventListener("blur", validateUserName);
     address.addEventListener("blur", validateAddress);
     birth.addEventListener("blur", validateBirth);
-    profilePhoto.addEventListener("change", validateProfilePhoto);
+    //profilePhoto.addEventListener("change", validateProfilePhoto);
     // Campos específicos del formulario de registro que no existen en el de edición de perfil
     if(email) email.addEventListener("blur", validateEmail);
     if(password) password.addEventListener("blur", validatePassword);
@@ -163,7 +163,7 @@ window.addEventListener("load", function(){
         validateUserName();
         validateAddress();
         validateBirth();
-        validateProfilePhoto();
+        //validateProfilePhoto();
 
         if(email) validateEmail();
         if(password) validatePassword();
