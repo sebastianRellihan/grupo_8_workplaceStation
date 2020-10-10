@@ -148,10 +148,12 @@ module.exports = {
 
         } else {
             // Borro la imagen subida por el usuario
-            if(req.file && req.file.filename){
-                fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            if(req.files){
+                fileDeleter(IMAGE_PATH)
+                .deleteFile(
+                    req.files.map(element => element.filename)
+                    );
             }
-            console.log(errors.mapped());
 
             category.findAll()
                 .then(categories => {
@@ -401,9 +403,12 @@ module.exports = {
                 })
 
         } else {
-            // Borro la imagen subida por el usuario
-            if(req.file && req.file.filename){
-                fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            // Borra la imagen subida por el usuario
+            if(req.files){
+                fileDeleter(IMAGE_PATH)
+                .deleteFile(
+                    req.files.map(element => element.filename)
+                    );
             }
 
             category.findAll()
