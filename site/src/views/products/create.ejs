@@ -13,7 +13,7 @@
     <main class="main-form-container flex column">
         <div class="form-container create-form-container">
             <h1> Carga de producto <i class="fas fa-clipboard-list"></i></i></h1>
-            <form action="/products/create" id="product-create-form" method="POST" enctype="multipart/form-data">
+            <form action="/products/create" id="product-form" method="POST" enctype="multipart/form-data">
                 <div class="flex column">
                     <label for="name" class="input-label"><span class="asterisk">*</span> Nombre:</label>
                     <input type="text" class="input-text <%= locals.errors && errors.name ? 'input-alert' : '' %>" name="name" id="name" placeholder="Ej: Silla ergonómica gamer..." 
@@ -43,19 +43,6 @@
 
                     <div class="flex column">
                         <label for="discount" class="input-label">Descuento:</label>
-                        <!-- <select name="discount" id="discount" class="input-text <%= locals.errors && errors.discount ? 'input-alert' : '' %>" value="<%= locals.userInput && userInput.discount ? userInput.discount : '' %>">
-                            <option value="0" selected>NO</option>
-                            <option value="5">5 %</option>
-                            <option value="10">10 %</option>
-                            <option value="15">15 %</option>
-                            <option value="20">20 %</option>
-                            <option value="25">25 %</option>
-                            <option value="30">30 %</option>
-                            <option value="35">35 %</option>
-                            <option value="40">40 %</option>
-                            <option value="45">45 %</option>
-                            <option value="50">50 %</option>
-                        </select> -->
                         <input type="number" name="discount" id="discount" class="input-text <%= locals.errors && errors.discount ? 'input-alert' : '' %>" value="<%= locals.userInput && userInput.discount ? userInput.discount : 0 %>">
                         <p class="alert-label">
                             <%= locals.errors && errors.discount ? errors.discount.msg : '' %>
