@@ -19,9 +19,12 @@ const { Op } = require("sequelize");
 
 // Validaciones
 const { validationResult } = require("express-validator");
+const { ALL } = require("dns");
 
 // Ruta absoluta en donde se almacena la imágen de perfil
 const IMAGE_PATH = path.join(__dirname, "..", "..", "public", "img", "usersUploaded", "/");
+// Tipos de archivos soportados
+const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"];
 
 module.exports = {
     /** Muestra la vista del formulario de login (login.ejs) */
@@ -77,20 +80,22 @@ module.exports = {
     store: (req, res) => {
 
         let errors = validationResult(req);
-        
+
         // Validación sobre las imágenes de perfil
-        if(!(req.file && req.file.filename)){
-            /**
-             * Multer filtra las imágenes inválidas, esto quiere decir que
-             * en caso de que no lleguen imágenes, podría darse el caso de que
-             * la imagen no haya pasado el filtro, se hayan subido varias imágenes ó
-             * que se haya salteado las validaciones front.
-             */
-            errors.errors.push({ 
-                msg : "Formato no soportado",
-                param : "profile-photo",
-                location : "file"
-            });
+        let imgError = { 
+            param : "profile-photo",
+            location : "file"
+        }
+
+        if(req.files.length == 0){
+            imgError.msg = "Debe subir una imagen de perfil";
+            errors.errors.push(imgError);
+        } else if (req.files.length > 1){
+            imgError.msg = "Sólo puede subir una imagen";
+            errors.errors.push(imgError);
+        } else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)){
+            imgError.msg = "Formato no soportado";
+            errors.errors.push(imgError);
         }
 
         if (errors.isEmpty()) {
@@ -143,10 +148,12 @@ module.exports = {
 
         } else {
             // Borro la imagen subida por el usuario
-            if(req.file && req.file.filename){
-                fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            if(req.files){
+                fileDeleter(IMAGE_PATH)
+                .deleteFile(
+                    req.files.map(element => element.filename)
+                    );
             }
-            console.log(errors.mapped());
 
             category.findAll()
                 .then(categories => {
@@ -303,6 +310,23 @@ module.exports = {
 
         let errors = validationResult(req);
 
+        // Validación sobre las imágenes de perfil
+        let imgError = { 
+            param : "profile-photo",
+            location : "file"
+        }
+
+        if(req.files.length == 0){
+            imgError.msg = "Debe subir una imagen de perfil";
+            errors.errors.push(imgError);
+        } else if (req.files.length > 1){
+            imgError.msg = "Sólo puede subir una imagen";
+            errors.errors.push(imgError);
+        } else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)){
+            imgError.msg = "Formato no soportado";
+            errors.errors.push(imgError);
+        }
+
         if(errors.isEmpty()){
 
             // Se almacenan los datos del usuario que se encuentra en sesión para acceder a sus propiedades facilmente
@@ -379,9 +403,12 @@ module.exports = {
                 })
 
         } else {
-            // Borro la imagen subida por el usuario
-            if(req.file && req.file.filename){
-                fileDeleter(IMAGE_PATH).deleteFile(req.file.filename);
+            // Borra la imagen subida por el usuario
+            if(req.files){
+                fileDeleter(IMAGE_PATH)
+                .deleteFile(
+                    req.files.map(element => element.filename)
+                    );
             }
 
             category.findAll()

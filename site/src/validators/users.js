@@ -42,13 +42,24 @@ module.exports = {
             .notEmpty().withMessage("Campo obligatório").bail()
             .isDate({ format : "YYYY-MM-DD" }).withMessage("Debe ingresar una fecha válida"),
 
-        check("address").trim()
-            .notEmpty().withMessage("Campo obligatório").bail()
-            .isLength({ min : 2, max : 255 }).withMessage("Debe tener entre 2 y 255 caracteres"),
+        check("address").optional().trim()
+            .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
 
-       /* check("interests", "Debe seleccionar una opción válida").trim().optional()
-            .notEmpty().withMessage("Está vacío").bail()
-            .isNumeric().withMessage("Debe ser un número").bail()
+       check("interests", "Debe seleccionar una opción válida").optional()
+            // Valida que los valores enviados sean numéricos
+            .custom(value => {
+
+                if(Array.isArray(value)){
+                    for(let i = 0; i < value.length; i++){
+                        if(Number.parseInt(value[i]) == "NaN") return false;
+                    }
+                    return true;
+                } else {
+                    return Number.parseInt(value) != "NaN";
+                }
+
+            }).bail()
+            // Valida que los intereses elegidos se correspondan con categorías existentes
             .custom( async value => {
                 let categories = await category.findAll();
                 // Se opera validando sólo con los IDs de la categoría
@@ -58,16 +69,16 @@ module.exports = {
                 
                 if(Array.isArray(value)){
                     for(let i = 0; i < value.length; i++){
-                        if(!categories.includes(value[i])){
+                        if(!categories.includes(Number.parseInt(value[i]))){
                             return Promise.reject();
                         }
                     }
                     return Promise.resolve();
                 } else {
-                    return categories.includes(value) ? Promise.reject() : Promise.resolve();
+                    return categories.includes(Number.parseInt(value)) ? Promise.resolve() : Promise.reject();
                 }
 
-            }),*/
+            }),
             
         check("email").trim()
             .notEmpty().withMessage("Campo obligatório").bail()
@@ -147,9 +158,43 @@ module.exports = {
             .notEmpty().withMessage("Campo obligatório").bail()
             .isDate({ format : "YYYY-MM-DD" }).withMessage("Debe ingresar una fecha válida"),
 
-        check("address").trim()
-            .notEmpty().withMessage("Campo obligatório").bail()
-            .isLength({ min : 2, max : 255 }).withMessage("Debe tener entre 2 y 255 caracteres")
+        check("address").optional().trim()
+            .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
+
+        check("interests", "Debe seleccionar una opción válida").optional()
+            // Valida que los valores enviados sean numéricos
+            .custom(value => {
+
+                if(Array.isArray(value)){
+                    for(let i = 0; i < value.length; i++){
+                        if(Number.parseInt(value[i]) == "NaN") return false;
+                    }
+                    return true;
+                } else {
+                    return Number.parseInt(value) != "NaN";
+                }
+
+            }).bail()
+            // Valida que los intereses elegidos se correspondan con categorías existentes
+            .custom( async value => {
+                let categories = await category.findAll();
+                // Se opera validando sólo con los IDs de la categoría
+                categories = categories.map(element => {
+                    return element.id;
+                });
+                
+                if(Array.isArray(value)){
+                    for(let i = 0; i < value.length; i++){
+                        if(!categories.includes(Number.parseInt(value[i]))){
+                            return Promise.reject();
+                        }
+                    }
+                    return Promise.resolve();
+                } else {
+                    return categories.includes(Number.parseInt(value)) ? Promise.resolve() : Promise.reject();
+                }
+
+            })
     ],
     
     login: [

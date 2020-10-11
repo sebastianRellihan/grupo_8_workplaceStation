@@ -78,7 +78,7 @@
                 <!-- Domicilio -->
                 <label for="address"><span class="asterisk">*</span> Domicilio:</label>
                 <input type="text" name="address" id="address" placeholder="Calle Falsa 123" 
-                autocomplete="true" value="<%= user.address %>" required
+                autocomplete="true" value="<%= user.address %>"
                 class="input-text <%= locals.errors && errors.address ? 'input-alert' : '' %>">
                 <p class="alert-label">
                     <%= locals.errors && errors.address ? errors.address.msg : '' %>

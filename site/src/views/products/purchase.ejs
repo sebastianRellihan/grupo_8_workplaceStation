@@ -64,7 +64,7 @@
                         <div class="flex column">
                             <label for="address" class="input-label"><span class="asterisk">*</span> Dirección de envío:</label>
                             <input type="text" name="address" id="address" placeholder="Ej: Calle Falsa 123..." autocomplete="true"
-                            value="<%= locals.user && locals.user.address ? locals.user.address : '' %>" required
+                            value="<%= locals.user && locals.user.address ? locals.user.address : '' %>"
                             class="input-text <%= locals.errors && errors.address ? 'input-alert' : '' %>">
                             <p class="alert-label">
                                 <%= locals.errors && errors.address ? errors.address.msg : '' %>

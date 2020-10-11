@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
 
     let errors = {}; // Contenedor global de errores
-    const ALLOWED_IMAGES_EXT = ["jpg", "jpeg", "png", "gif", "webp"];
+    const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"];
 
     // ************* Elementos *************
     let name = document.getElementById("name");
@@ -117,8 +117,7 @@ window.addEventListener("load", function(){
         address.value = address.value.trim();
         let feedback;
 
-        if(address.value == "") feedback = "Campo obligatório";
-        else if(address.value.length < 2 || address.value.length > 255 ) feedback = "Debe tener entre 2 y 255 caracteres";
+        if(address.value.length > 255 ) feedback = "No puede tener más de 255 caracteres";
 
         handleFeedback(address, feedback);
     }
@@ -134,10 +133,10 @@ window.addEventListener("load", function(){
     function validateProfilePhoto(){
         
         let feedback;
-        let ext = profilePhoto.value.split(".")[1]; // Extensión
+        let file = profilePhoto.files[0];
 
-        if(profilePhoto.value == "") feedback = "Campo obligatório";
-        if(!ALLOWED_IMAGES_EXT.includes(ext)) feedback = "Imagen de formato inválido";
+        if(!file) feedback = "Campo obligatório";
+        if(!ALLOWED_MIME_TYPES.includes(file.type)) feedback = "Imagen de formato inválido";
 
         // Por la estructura del documento, la etiqueta de feedback es relativa al contenedor
         // del input (el elemento padre)
