@@ -17,6 +17,9 @@ const { validationResult } = require("express-validator");
 const IMAGES_PATH = path.join(__dirname, "..", "..", "public", "img", "uploaded");
 const imageDeleter = fileDeleter(IMAGES_PATH); // Borrado de imágenes
 
+// Tipos de archivos soportados
+const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"];
+
 module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
@@ -165,9 +168,37 @@ module.exports = {
 
     // Almacena un nuevo producto
     store: (req, res) => {
-
+        
         let errors = validationResult(req);
 
+        if (req.files.length == 0) {
+            // Si no se sube una imagen se crea el error
+            errors.errors.push({ 
+                msg : "Debes cargar por lo menos 1 imagen",
+                param : "image",
+                location : "files"
+            });
+        } else if (req.files.length > 5) {
+            // Si se suben más de 5 imágenes se crea el error
+            errors.errors.push({ 
+                msg : "No puedes cargar más de 5 imágenes",
+                param : "image",
+                location : "files"
+            });
+        } else {
+            // Si se sube la cantidad correcta de imágenes se recorre el array y se verifica el tipo de archivo que se quiere subir
+            req.files.forEach(image => {
+                if (!(ALLOWED_MIME_TYPES.includes(image.mimetype))) {
+                    errors.errors.push({ 
+                        msg : "Formato de archivo no soportado",
+                        param : "image",
+                        location : "files"
+                    });
+                }
+            })
+        }
+
+        // Si no hay errores...
         if (errors.isEmpty()) {
             
             // Se crea el array y se completa con objetos "image"
@@ -199,14 +230,17 @@ module.exports = {
                     res.status(500).redirect("/");
                 });
 
+        // Si hay errores
         } else {
             
+            // Se eliminan las imágenes que se hayan subido
             if(req.files){
                 req.files.forEach(image => {
                     imageDeleter.deleteFile(image.filename);
                 });
             }
 
+            // Se traen las categorías de la base y se renderiza la vista enviándole las categorías, los valores de los campos y los errores
             category.findAll()
                 .then(categories => {
                     res.render("products/create", {
@@ -224,23 +258,76 @@ module.exports = {
     },
 
     // Edita un producto existente
-    update: (req,res) => { 
+    update: async (req,res) => { 
 
         let errors = validationResult(req);
 
+        // Se consulta a la base la cantidad de imágenes que tiene el producto cargadas 
+        let count = await image.count({
+            where: {
+                productId: req.params.id
+            }
+        })
+
+        // Si se seleccionan imágenes, se almacena la cantidad de imágenes seleccionadas
+        let selectedImages;
+
+        if (req.body["delete-images"]) {
+            if (Array.isArray(req.body["delete-images"])) {
+                selectedImages = req.body["delete-images"].length;
+            } else {
+                selectedImages = 1;
+            }
+        }
+
+        // Si se seleccionaron imágenes, se le resta la cantidad de imágenes que tiene el producto (porque se van a eliminar más adelante)
+        if (selectedImages) {
+            count = count - selectedImages;
+            console.log(count);
+        }
+
+        // Si se seleccionaron todas las imágenes para borrarse y no se subió ninguna crear el error de que se debe cargar por 
+        if(req.body["delete-images"] && req.body["delete-images"].length == count && req.files.length == 0 || req.body["delete-images"] && count == 0 && req.files.length == 0){
+            errors.errors.push({ 
+                msg : "Debes haber por lo menos 1 imagen",
+                param : "image",
+                location : "files"
+            });
+        // Si la cantidad de imágenes que se quieren subir + el total de imágenes que tiene el producto cargados previamente es mayor a 5 crear el error de que no puede haber más de 5 imágenes
+        } else if (req.files && req.files.length + count > 5) {
+            errors.errors.push({ 
+                msg : "No puede haber más de 5 imágenes",
+                param : "image",
+                location : "files"
+            });
+        // Si lo anterior está bien se verifica el tipo de archivo que se quiere subir
+        } else {
+            req.files.forEach(image => {
+                if (!(ALLOWED_MIME_TYPES.includes(image.mimetype))) {
+                    errors.errors.push({ 
+                        msg : "Formato de archivo no soportado",
+                        param : "image",
+                        location : "files"
+                    });
+                }
+            })
+        }
+
+        // Si no hay errores...
         if (errors.isEmpty()) {
 
-            // TODO: investigar el uso de transacciones, para asegurar que si alguna de las
-            // operaciones en BD falla, se pueda volver al estado original en todas las tablas
-            console.log(req.body["delete-images"][0].url);
-            let promises = []; // Promesas para las operaciones en BD
+            // Promesas para las operaciones en BD
+            let promises = []; 
 
             // Promesas para el borrado de imágenes seleccionadas
             if(req.body["delete-images"]){
-
-                req.body["delete-images"].forEach(element => {
-                    promises.push(image.destroy({ where : { url : String(element) } }));
-                });
+                if (Array.isArray(req.body["delete-images"])) {
+                    req.body["delete-images"].forEach(element => {
+                        promises.push(image.destroy({ where : { url : String(element) } }));
+                    });
+                } else {
+                    promises.push(image.destroy({ where : { url : String(req.body["delete-images"]) } }));
+                }
             }
 
             // Promesas para la creación de las nuevas imágenes en BD
@@ -279,16 +366,20 @@ module.exports = {
                 });
         } else {
 
+            // Se eliminan las imágenes que se subieron
             if(req.files){
                 req.files.forEach(image => {
                     imageDeleter.deleteFile(image.filename);
                 });
             }
 
+            // Se buscan todas las imágenes en la base
             let productImages = image.findAll({where: { productId: req.params.id }});
-            
+
+            // Se buscan las categorías en la base
             let categories = category.findAll();
 
+            // Se ejecutan ambas promesas de forma asincronico 
             Promise.all([productImages, categories])
                 .then(results => {
                     res.render("products/edit", {

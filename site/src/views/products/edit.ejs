@@ -33,7 +33,7 @@
 
                 <div class="create-form-div-container flex column">
                     <div class="flex column">
-                        <label for="price" class="input-label <%= locals.errors && errors.price ? 'input-alert' : '' %>"><span class="asterisk">*</span> Precio:</label>
+                        <label for="price" class="input-label"><span class="asterisk">*</span> Precio:</label>
                         <input type="number" class="input-text <%= locals.errors && errors.price ? 'input-alert' : '' %>" name="price" id="price" placeholder="$" 
                         autocomplete="true" value="<%= locals.userInput && userInput.price ? userInput.price : product.price %>">
                         <p class="alert-label">
