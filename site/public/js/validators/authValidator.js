@@ -21,7 +21,7 @@ window.addEventListener("load", function(){
 
         if(userInput.value == "") {
             feedback = "Campo obligatório";
-        } else if(userInput.value.length < 2 || name.value.length > 255 ) feedback = "Debe tener entre 2 y 255 caracteres";
+        } else if(userInput.value.length < 2 || userInput.value.length > 255 ) feedback = "Debe tener entre 2 y 255 caracteres";
 
         if (feedback) {
             userInput.classList.add("input-alert");
