@@ -197,10 +197,10 @@ header {
             box-shadow: 4px 4px 5px rgba(0,0,0,0.45);
         }
     .mobile-nav-side-bar {
-        display: none; /* Alternará entre none y flex */
+        display: flex;
         justify-content: flex-start;
         position: fixed;
-        left: 0;
+        left: -80vw;
         top: 0;
         z-index: 1000;
         width: 75vw;
@@ -213,7 +213,8 @@ header {
         .mobile-nav-side-bar-close-button {
             position: fixed;
             top: 50vh;
-            right: 5vw;
+            /* right: 5vw; */
+            left: -20vw;
             width: 55px;
             height: 55px;
             border-radius: 50%;
@@ -234,6 +235,7 @@ header {
                 .mobile-nav-side-bar-content-search-bar input {
                     height: 50px;
                     padding: 5px 10px;
+                    width: 75%;
                 }
                 .mobile-nav-side-bar-content-search-bar button {
                     width: 50px;
