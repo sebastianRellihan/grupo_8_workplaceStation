@@ -66,7 +66,8 @@ window.addEventListener("load", function(){
         let feedback;
 
         if(price.value == "") feedback = "Campo obligatorio";
-        else if(price.value < 0 || price.value > 9999999.99 ) feedback = "El precio no puede ser negativo ni mayor a 9999999.99";
+        else if(price.value < 0 ) price.value = 0 ;
+        else if(price.value > 9999999.99) price.value = 9999999.99;
 
         handleFeedback(price, feedback);
     }
@@ -76,7 +77,8 @@ window.addEventListener("load", function(){
         let feedback;
 
         if(discount.value == "") feedback = "Campo obligatorio";
-        else if(discount.value < 0 || discount.value > 100 ) feedback = "El descuento no puede ser negativo ni mayor a 100";
+        else if(discount.value < 0) discount.value = 0;
+        else if(discount.value > 100 ) discount.value = 100;
 
         handleFeedback(discount, feedback);
     }
@@ -86,27 +88,26 @@ window.addEventListener("load", function(){
         let feedback;
 
         if(stock.value == "") feedback = "Campo obligatorio";
-        else if(stock.value < 0 || stock.value > 4294967295 ) feedback = "El stock no puede ser negativo ni mayor a 4294967295";
+        else if(stock.value < 0) stock.value = 0;
+        else if(stock.value > 4294967295 ) stock.value = 4294967295;
 
         handleFeedback(stock, feedback);
     }
 
     function validateImages(){
 
-    let files = images.files;
-            
-    let feedback;
+        let files = images.files;
+        let feedback;
 
-    if(!files) feedback = "Campo obligatório";
+        if(!files) feedback = "Campo obligatório";
 
-    for (let i = 0; i < files.length; i++) {
-        if(!ALLOWED_MIME_TYPES.includes(files[i].type)) {
-            feedback = "Imagen de formato inválido";
+        for (let i = 0; i < files.length; i++) {
+            if(!ALLOWED_MIME_TYPES.includes(files[i].type)) {
+                feedback = "Imagen/es de formato inválido";
+                break;
+            }
         }
-    }
 
-        // Por la estructura del documento, la etiqueta de feedback es relativa al contenedor
-        // del input (el elemento padre)
         handleFeedback(images.parentElement, feedback);
     }
 
