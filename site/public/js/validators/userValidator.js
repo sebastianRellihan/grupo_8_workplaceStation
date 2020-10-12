@@ -160,6 +160,7 @@ window.addEventListener("load", function(){
     lastName.addEventListener("blur", validateLastName);
     userName.addEventListener("blur", validateUserName);
     address.addEventListener("blur", validateAddress);
+    phoneNumer.addEventListener("blur", validatePhoneNumber);
     birth.addEventListener("blur", validateBirth);
     profilePhoto.addEventListener("change", validateProfilePhoto);
     // Campos específicos del formulario de registro que no existen en el de edición de perfil
@@ -173,6 +174,7 @@ window.addEventListener("load", function(){
         validateLastName();
         validateUserName();
         validateAddress();
+        validatePhoneNumber();
         validateBirth();
         validateProfilePhoto();
 
