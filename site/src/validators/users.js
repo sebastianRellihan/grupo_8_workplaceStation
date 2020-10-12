@@ -1,5 +1,4 @@
-const bcrypt = require("bcryptjs");
-const { check, body } = require('express-validator');
+const { check } = require('express-validator');
 const { user, category } = require("../database/models");
 // Operadores que provee sequelize
 const { Op } = require("sequelize");
@@ -43,6 +42,9 @@ module.exports = {
             .isDate({ format : "YYYY-MM-DD" }).withMessage("Debe ingresar una fecha válida"),
 
         check("address").optional().trim()
+            .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
+
+        check("phone-number").optional().trim()
             .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
 
        check("interests", "Debe seleccionar una opción válida").optional()
@@ -159,6 +161,9 @@ module.exports = {
             .isDate({ format : "YYYY-MM-DD" }).withMessage("Debe ingresar una fecha válida"),
 
         check("address").optional().trim()
+            .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
+
+        check("phone-number").optional().trim()
             .isLength({ max : 255 }).withMessage("No puede tener más de 255 caracteres"),
 
         check("interests", "Debe seleccionar una opción válida").optional()

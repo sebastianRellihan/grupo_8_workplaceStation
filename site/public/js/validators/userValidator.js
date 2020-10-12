@@ -12,6 +12,7 @@ window.addEventListener("load", function(){
     let passwordCheck = document.getElementById("password-check");
     let birth = document.getElementById("birth");
     let address = document.getElementById("address");
+    let phoneNumer = document.getElementById("phone-number");
     let profilePhoto = document.getElementById("profile-photo");
 
     let form = document.getElementById("user-form");
@@ -81,6 +82,7 @@ window.addEventListener("load", function(){
         let feedback;
 
         if(userName.value == "") feedback = "Campo obligatório";
+        else if(userName.value.length < 2 || userName.value.length > 255 ) feedback = "Debe tener entre 2 y 255 caracteres";
         else if(/\s/.test(userName.value)) feedback = "No puede contener espacios intermedios";
         
         handleFeedback(userName, feedback);
@@ -130,6 +132,16 @@ window.addEventListener("load", function(){
         handleFeedback(birth, feedback);
     }
 
+    function validatePhoneNumber(){
+
+        phoneNumer.value = phoneNumer.value.trim();
+        let feedback;
+
+        if(phoneNumer.value.length > 255) feedback = "No puede tener más de 255 caracteres";
+
+        handleFeedback(phoneNumer, feedback);
+    }
+    
     function validateProfilePhoto(){
         
         let feedback;

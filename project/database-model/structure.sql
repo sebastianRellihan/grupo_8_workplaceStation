@@ -21,7 +21,7 @@ CREATE TABLE `users` (
   `profile_photo` varchar(50) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `birth` date DEFAULT NULL,
-  `phone_number` int(10) unsigned DEFAULT NULL,
+  `phone_number` VARCHAR(255) DEFAULT NULL,
   `gender` tinyint(3) unsigned DEFAULT 3,
   `admin` tinyint(3) unsigned DEFAULT 0,
   PRIMARY KEY (`id`),
