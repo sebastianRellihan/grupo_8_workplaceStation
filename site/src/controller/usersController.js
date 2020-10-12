@@ -87,19 +87,14 @@ module.exports = {
             location : "file"
         }
 
-        if(req.files.length == 0){
-            imgError.msg = "Debe subir una imagen de perfil";
-            errors.errors.push(imgError);
-        } else if (req.files.length > 1){
-            imgError.msg = "Sólo puede subir una imagen";
-            errors.errors.push(imgError);
-        } else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)){
-            imgError.msg = "Formato no soportado";
-            errors.errors.push(imgError);
-        }
+        // Comprobaciones sobre la imgen
+        if(req.files.length == 0) imgError.msg = "Debe subir una imagen de perfil";
+        else if (req.files.length > 1) imgError.msg = "Sólo puede subir una imagen";
+        else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)) imgError.msg = "Formato no soportado";
+
+        if(imgError.msg) errors.errors.push(imgError);
 
         if (errors.isEmpty()) {
-
             // Se almacena en userObj lo que llega por post del form
             let userObj = {
                 name: req.body.name,
@@ -316,16 +311,11 @@ module.exports = {
             location : "file"
         }
 
-        if(req.files.length == 0){
-            imgError.msg = "Debe subir una imagen de perfil";
-            errors.errors.push(imgError);
-        } else if (req.files.length > 1){
-            imgError.msg = "Sólo puede subir una imagen";
-            errors.errors.push(imgError);
-        } else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)){
-            imgError.msg = "Formato no soportado";
-            errors.errors.push(imgError);
-        }
+        // Comprobaciones sobre la imgen
+        if (req.files.length > 1) imgError.msg = "Sólo puede subir una imagen";
+        else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)) imgError.msg = "Formato no soportado";
+
+        if(imgError.msg) errors.errors.push(imgError);
 
         if(errors.isEmpty()){
 
@@ -348,10 +338,10 @@ module.exports = {
             userObj.id = sessionUser.id;
             
             // Si se sube una nueva foto de perfil...
-            if(req.file){
+            if(req.files){
                 // Se elimina la anterior y se reemplaza por la nueva
                 fileDeleter(IMAGE_PATH).deleteFile(sessionUser.image);
-                userObj.image = req.file.filename;
+                userObj.image = req.files[0].filename;
             // Si no se sube una nueva foto se utiliza la que estaba
             } else {
                 userObj.image = sessionUser.image;
@@ -406,8 +396,8 @@ module.exports = {
             // Borra la imagen subida por el usuario
             if(req.files){
                 fileDeleter(IMAGE_PATH)
-                .deleteFile(
-                    req.files.map(element => element.filename)
+                    .deleteFile(
+                        req.files.map(element => element.filename)
                     );
             }
 
@@ -421,5 +411,5 @@ module.exports = {
                 })
                 .catch(error => console.log(error));
         }
-    }
+    } // fin update
 }
