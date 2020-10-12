@@ -1,4 +1,7 @@
-let errors = {}; // Contenedor global de errores
+// Contenedor global de errores
+let errors = {};
+
+const ALLOWED_MIME_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"];
 
 // ************* Elementos *************
 let name = document.getElementById("name");
@@ -6,6 +9,7 @@ let briefDescription = document.getElementById("briefDescription");
 let price = document.getElementById("price");
 let discount = document.getElementById("discount");
 let stock = document.getElementById("stock");
+let images = document.getElementById("imagesUpload");
 let description = document.getElementById("description");
 let aditionalInfo = document.getElementById("aditionalInfo");
 
@@ -86,6 +90,25 @@ function validateStock(){
     handleFeedback(stock, feedback);
 }
 
+function validateImages(){
+
+let files = images.files;
+        
+let feedback;
+
+if(!files) feedback = "Campo obligatório";
+
+for (let i = 0; i < files.length; i++) {
+    if(!ALLOWED_MIME_TYPES.includes(files[i].type)) {
+        feedback = "Imagen de formato inválido";
+    }
+}
+
+    // Por la estructura del documento, la etiqueta de feedback es relativa al contenedor
+    // del input (el elemento padre)
+    handleFeedback(images.parentElement, feedback);
+}
+
 function validateDescription(){
     description.value = description.value.trim();
     let feedback;
@@ -111,10 +134,10 @@ briefDescription.addEventListener("blur", validateBriefDescription);
 price.addEventListener("blur", validatePrice);
 discount.addEventListener("blur", validateDiscount);
 stock.addEventListener("blur", validateStock);
+images.addEventListener("change", validateImages);
 description.addEventListener("blur", validateDescription);
 aditionalInfo.addEventListener("blur", validateAditionalInfo);
 
-console.log(form);
 form.addEventListener("submit", function(event){
     // Ataja el caso en que se intente enviar el formulario sin haber interactuado con los campos
     validateName();
@@ -122,6 +145,7 @@ form.addEventListener("submit", function(event){
     validatePrice();
     validateDiscount();
     validateStock();
+    validateImages();
     validateDescription()
     validateAditionalInfo()
 
