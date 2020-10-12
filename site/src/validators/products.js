@@ -26,6 +26,7 @@ module.exports = {
 
         check("category").trim()
             .notEmpty().withMessage("Campo obligatorio").bail()
+            .isInt().withMessage("Valor inválido").bail()
             .custom(async value => {
                 let result = await category.findByPk(value);
                 if(result !== null) {
@@ -42,9 +43,10 @@ module.exports = {
             .notEmpty().withMessage("Campo obligatorio").bail()
             .isLength({ min:20, max:500 }).withMessage("La descripción debe tener entre 20 y 500 caracteres").bail(),
 
-        check("aditional-info").trim()
+        check("aditional-info").optional().trim()
             .isLength({ max:500 }).withMessage("La información adicional no puede tener más de 500 caracteres").bail()
     ],
+
     edit: [
         check("name").trim()
             .notEmpty().withMessage("Campo obligatorio").bail()
@@ -69,6 +71,7 @@ module.exports = {
 
         check("category").trim()
             .notEmpty().withMessage("Campo obligatorio").bail()
+            .isInt().withMessage("Valor inválido").bail()
             .custom(async value => {
                 let result = await category.findByPk(value);
                 if(result !== null) {
@@ -78,13 +81,11 @@ module.exports = {
                 }
             }).withMessage("Debes seleccionar una categoría valida"),
 
-        // check("image")
-
         check("description").trim()
             .notEmpty().withMessage("Campo obligatorio").bail()
             .isLength({ min:20, max:500 }).withMessage("La descripción debe tener entre 20 y 500 caracteres").bail(),
 
-        check("aditional-info").trim()
+        check("aditional-info").optional().trim()
             .isLength({ max:500 }).withMessage("La información adicional no puede tener más de 500 caracteres").bail()
     ]
 }
