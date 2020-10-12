@@ -313,7 +313,8 @@ module.exports = {
 
         // Comprobaciones sobre la imgen
         if (req.files.length > 1) imgError.msg = "Sólo puede subir una imagen";
-        else if(!ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)) imgError.msg = "Formato no soportado";
+        else if(req.files[0] && !ALLOWED_MIME_TYPES.includes(req.files[0].mimetype)) 
+            imgError.msg = "Formato no soportado";
 
         if(imgError.msg) errors.errors.push(imgError);
 
@@ -322,6 +323,7 @@ module.exports = {
             // Se almacenan los datos del usuario que se encuentra en sesión para acceder a sus propiedades facilmente
             let sessionUser = req.session.user;
             // Se almacena en userObj los datos que llega del form
+
             let userObj = {
                 name: req.body.name,
                 lastName: req.body["last-name"],
@@ -330,7 +332,7 @@ module.exports = {
                 birth: req.body.birth,
                 phoneNumber: req.body["phone-number"],
                 gender: req.body.gender,
-                isAdmin: false
+                isAdmin: sessionUser.isAdmin
             }
             // Se completan los datos restantes que no se encuentran incluídos en ese form
             userObj.email = sessionUser.email;
@@ -338,12 +340,11 @@ module.exports = {
             userObj.id = sessionUser.id;
             
             // Si se sube una nueva foto de perfil...
-            if(req.files){
+            if(req.files[0]){
                 // Se elimina la anterior y se reemplaza por la nueva
                 fileDeleter(IMAGE_PATH).deleteFile(sessionUser.image);
                 userObj.image = req.files[0].filename;
-            // Si no se sube una nueva foto se utiliza la que estaba
-            } else {
+            } else { // Si no se sube una nueva foto se utiliza la que estaba
                 userObj.image = sessionUser.image;
             }
     
