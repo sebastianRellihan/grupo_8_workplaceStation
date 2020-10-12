@@ -104,7 +104,7 @@
                 </p>
 
                 <!-- Domicilio -->
-                <label for="address"><span class="asterisk">*</span> Domicilio:</label>
+                <label for="address">Domicilio:</label>
                 <input type="text" name="address" id="address" placeholder="Calle falsa 123, CABA" autocomplete="true" 
                 value="<%= locals.userInput && userInput.address ? userInput.address : '' %>"
                 class="input-text <%= locals.errors && errors.address ? 'input-alert' : '' %>">
