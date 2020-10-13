@@ -7,7 +7,7 @@
 // ************ requires ************
 const path = require("path");
 const fileDeleter = require("../utils/fileDeleter"); // Factory de borrado de archivos
-const { product, category, image } = require("../database/models");
+const { product, category, image, productPurchase } = require("../database/models");
 const { Op } = require("sequelize");
 
 // Validaciones
@@ -278,7 +278,6 @@ module.exports = {
                 count--;
             }
         }
-        console.log("Resta", count);
 
         if(req.files){ // Suma de imágenes subidas
             count += req.files.length;
@@ -288,8 +287,6 @@ module.exports = {
             param : "image",
             location : "files"
         }
-
-        console.log("Conteo", count);
 
         if( count < 1){ imgError.msg = "Debe quedar por lo menos una imagen restante";
         // Cantidad máxima de imágenes por producto 5
@@ -405,6 +402,9 @@ module.exports = {
                 });
                 // Borrado en BD
                 return image.destroy({where : { productId : id }});
+            })
+            .then(() => {
+                return productPurchase.destroy({ where : { productId : id } })
             })
             .then(() => {
                 return product.destroy({ where : { id : id } }); // Borrado del producto
