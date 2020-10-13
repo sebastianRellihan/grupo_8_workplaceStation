@@ -7,7 +7,7 @@
 // ************ requires ************
 const path = require("path");
 const fileDeleter = require("../utils/fileDeleter"); // Factory de borrado de archivos
-const { product, category, image, sequelize } = require("../database/models");
+const { product, category, image } = require("../database/models");
 const { Op } = require("sequelize");
 
 // Validaciones
@@ -262,56 +262,49 @@ module.exports = {
 
         let errors = validationResult(req);
 
-        // Se consulta a la base la cantidad de imágenes que tiene el producto cargadas 
+        // Un producto no se puede quedar sin imágenes, por lo que
+        // se debe cumplir: img totales - borradas + subidas > 0
         let count = await image.count({
             where: {
                 productId: req.params.id
             }
         })
 
-        // Si se seleccionan imágenes, se almacena la cantidad de imágenes seleccionadas
-        let selectedImages;
-
-        if (req.body["delete-images"]) {
+        console.log(req.body["delete-images"]);
+        if (req.body["delete-images"]) { // Resta de la cantidad de imágenes a borrar
             if (Array.isArray(req.body["delete-images"])) {
-                selectedImages = req.body["delete-images"].length;
+                count -= req.body["delete-images"].length;
             } else {
-                selectedImages = 1;
+                count--;
+            }
+        }
+        console.log("Resta", count);
+
+        if(req.files){ // Suma de imágenes subidas
+            count += req.files.length;
+        }
+
+        let imgError = {
+            param : "image",
+            location : "files"
+        }
+
+        console.log("Conteo", count);
+
+        if( count < 1){ imgError.msg = "Debe quedar por lo menos una imagen restante";
+        // Cantidad máxima de imágenes por producto 5
+        } else if (count > 5) imgError.msg = "No puede haber más de 5 imágenes";
+        // Si lo anterior está bien se verifica el tipo de archivo que se quiere subir
+        else if(req.files.length) {
+            for(let i = 0; i < req.files.length; i++){
+                if (!(ALLOWED_MIME_TYPES.includes(req.files[i].mimetype))) {
+                    imgError.msg = "Formato de archivo/s no soportado"
+                    break; // Corte del ciclo
+                }
             }
         }
 
-        // Si se seleccionaron imágenes, se le resta la cantidad de imágenes que tiene el producto (porque se van a eliminar más adelante)
-        if (selectedImages) {
-            count = count - selectedImages;
-            console.log(count);
-        }
-
-        // Si se seleccionaron todas las imágenes para borrarse y no se subió ninguna crear el error de que se debe cargar por 
-        if(req.body["delete-images"] && req.body["delete-images"].length == count && req.files.length == 0 || req.body["delete-images"] && count == 0 && req.files.length == 0){
-            errors.errors.push({ 
-                msg : "Debes haber por lo menos 1 imagen",
-                param : "image",
-                location : "files"
-            });
-        // Si la cantidad de imágenes que se quieren subir + el total de imágenes que tiene el producto cargados previamente es mayor a 5 crear el error de que no puede haber más de 5 imágenes
-        } else if (req.files && req.files.length + count > 5) {
-            errors.errors.push({ 
-                msg : "No puede haber más de 5 imágenes",
-                param : "image",
-                location : "files"
-            });
-        // Si lo anterior está bien se verifica el tipo de archivo que se quiere subir
-        } else {
-            req.files.forEach(image => {
-                if (!(ALLOWED_MIME_TYPES.includes(image.mimetype))) {
-                    errors.errors.push({ 
-                        msg : "Formato de archivo no soportado",
-                        param : "image",
-                        location : "files"
-                    });
-                }
-            })
-        }
+        if(imgError.msg) errors.errors.push(imgError);
 
         // Si no hay errores...
         if (errors.isEmpty()) {
