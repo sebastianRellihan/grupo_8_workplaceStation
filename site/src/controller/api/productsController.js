@@ -51,7 +51,7 @@ module.exports = {
 
                 });
 
-                res.json(response);
+                res.status(200).json(response);
             })
             .catch(error => {
                 res.status(500).json({
@@ -65,6 +65,39 @@ module.exports = {
     },
 
     detail: (req, res) => {
+        product.findByPk(req.params.id, {
+            include : image
+        })
+            .then(product => {
 
+                let response = {
+                    meta: {
+                        status: 200,
+                        statusMsg: "OK"
+                    },
+                    data: {
+                        id: product.id,
+                        name: product.name,
+                        description: product.description,
+                        briefDescription: product.briefDescription, 
+                        aditionalInfo: product.aditionalInfo, 
+                        price : product.price, 
+                        discount : product.discount, 
+                        stock : product.stock, 
+                        images: product.images
+                    }
+                }
+
+                res.status(200).json(product)
+            })
+            .catch(error => {
+                res.status(500).json({
+                    meta : {
+                        status : 500,
+                        statusMsg : "Internal server error"
+                    },
+                    data : []
+                });
+            })
     }
 }
