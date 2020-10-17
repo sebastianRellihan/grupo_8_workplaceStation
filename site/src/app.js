@@ -37,6 +37,7 @@ const productsRoutes = require("./routes/products");
 
 // ***************** Rutas de APIs *****************
 const usersRoutesAPI = require("./routes/api/users");
+const productsRoutesAPI = require("./routes/api/products");
 
 app.use("/", mainRoutes);
 
@@ -45,6 +46,8 @@ app.use("/users", usersRoutes);
 app.use("/products", productsRoutes);
 
 app.use("/api/users", usersRoutesAPI);
+
+app.use("/api/products", productsRoutesAPI);
 
 app.use((req, res, next) => {
     res.status(404).render('main/not-found', { path: req.path });
