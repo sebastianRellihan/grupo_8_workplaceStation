@@ -5,6 +5,7 @@ const authenticateUser = require("./middlewares/authenticateUser");
 const morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const cors = require('cors');
 
 // ***************** APP *****************
 const app = express();
@@ -29,6 +30,7 @@ app.use(session({
 }));
 app.use(cookieParser());
 app.use(authenticateUser);
+app.use(cors());
 
 // ***************** Rutas *****************
 const mainRoutes = require("./routes/main");
