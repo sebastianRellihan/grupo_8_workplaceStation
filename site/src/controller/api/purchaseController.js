@@ -35,7 +35,7 @@ module.exports = {
                         price : prod.price,
                         url : `/api/products/${prod.id}`
                     }
-                })
+                });
 
                 response.data.push({
                     id : element.id,
@@ -63,7 +63,63 @@ module.exports = {
 
     },
 
+    /** Retorna información de una compra realizada y los productos asociados */
     detail : (req, res) => {
+
+        purchase.findByPk(req.params.id, { include : 
+            [ product, shipping ] 
+        })
+            .then(result => {
+                
+                if(result){
+                    // Products asociados a la compra
+                    let associatedProducts = result.products.map(prod => {
+                        return {
+                            id : prod.id,
+                            name : prod.name,
+                            price : prod.price,
+                            url : `/api/products/${prod.id}`
+                        }
+                    });
+                    
+                    let response = {
+                        meta : {
+                            status : 200,
+                            statusMsg : "Ok"
+                        },
+                        data : {
+                            id : result.id,
+                            purchasedAt : result.purchasedAt,
+                            total : result.totalValue,
+                            shippingAddress : result.shippingAddress,
+                            comment : result.comment,
+                            shippingMethod : result.shipping.name,
+                            products : associatedProducts
+                        }
+                    }
+
+                    return res.status(200).json(response);
+
+                } else {
+                    return res.status(404).json({
+                        meta : {
+                            status : 404,
+                            statusMsg : "No purchases found"
+                        },
+                        data : []
+                    });
+                }
+
+            })
+            .catch(error => {
+                return res.status(500).json({
+                    meta : {
+                        status : 500,
+                        statusMsg : "Internal server error"
+                    },
+                    data : []
+                });
+            });
 
     }
 }
