@@ -2,30 +2,35 @@
  * Controlador que provee servicios a través de la APi en formato JSON sobre las compras realizadas
  * y los productos asociados.
  */
-const { purchase, product, shipping } = require("../../database/models");
+const { purchase, product, shipping, productPurchase } = require("../../database/models");
 
 module.exports = {
     /** Retorna información de todas las compras y los products asociados */
     all : (req, res) => {
         
     purchase.findAll({ include : 
-        [ product, shipping ] 
+        [ product, shipping, productPurchase ] 
     })
         .then(results => {
-
+            
             let response = {
                 meta : {
                     status : 200,
                     statusMsg : "Ok",
                     count : results.length,
-                    total : 0,
+                    totalRevenue : 0,
+                    totalSales : 0
                 },
                 data : []
             }
 
             // Datos de cada compra
             results.forEach(element => {
-                response.meta.total += Number.parseFloat(element.totalValue);
+                response.meta.totalRevenue += Number.parseFloat(element.totalValue);
+                // Stock total vendido
+                response.meta.totalSales += element.productPurchases.reduce((acum, sale) => {
+                    return  acum + sale.quantity;
+                }, 0);
 
                 // Products asociados a la compra
                 let associatedProducts = element.products.map(prod => {
@@ -52,6 +57,7 @@ module.exports = {
 
         })
         .catch(error => {
+            console.log(error);
             return res.status(500).json({
                 meta : {
                     status : 500,
