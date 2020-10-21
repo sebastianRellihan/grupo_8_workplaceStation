@@ -5,28 +5,36 @@ const { product, category, image } = require("../../database/models");
 
 module.exports = {
     all: (req, res) => {
-        product.findAll({
-            include : image
-        })
-            .then(products => {
 
+        let categories;
+
+        category.findAll()
+            .then(results => {
+                categories = results;
+                
+                return product.findAll({
+                    include : image
+                })
+            })
+            .then(products => {
                 function categoryCount(category) {
                     return products.filter(product => {
                         return product.categoryId == category;
                     }).length;
                 }
- 
+
                 let response = {
                     meta: {
                         status: 200,
                         statusMsg: "OK",
                         count: products.length,
-                        countByCategory: {
-                            EstacionesDeTrabajo: categoryCount(1),
-                            Escritorios: categoryCount(2),
-                            SillasErgonomicas: categoryCount(3),
-                            Accesorios: categoryCount(4)
-                        }
+                        categories : categories.map(value => {
+                            return {
+                                id : value.id,
+                                name : value.name,
+                                productsAmount : categoryCount(value.id)
+                            }
+                        })
                     },
                     data: []
                 }
