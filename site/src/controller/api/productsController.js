@@ -22,7 +22,7 @@ module.exports = {
                         return product.categoryId == category;
                     }).length;
                 }
-
+                
                 let response = {
                     meta: {
                         status: 200,
@@ -39,6 +39,8 @@ module.exports = {
                     data: []
                 }
 
+                let lastProduct;
+
                 products.forEach(product => {
                     let data = {
                         id: product.id,
@@ -51,13 +53,20 @@ module.exports = {
                     product.images.forEach(image => {
                         data.images.push({
                             id: image.id,
-                            url: image.url
+                            url: "/img/uploaded/" + image.url
                         })
                     });
+
+                    lastProduct = data;
 
                     response.data.push(data);
 
                 });
+
+                response.meta.lastProduct = {
+                    product: lastProduct,
+                    location: `/products/${lastProduct.id}`
+                }
 
                 res.status(200).json(response);
             })
