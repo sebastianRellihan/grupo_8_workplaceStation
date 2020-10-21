@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
          * Asociaciones
          */
         static associate(models) {
-            // Asociaciones inferidas por Sequelize a través de otras tablas
+            this.belongsTo(models.purchase);
         }
     };
     productPurchase.init({
