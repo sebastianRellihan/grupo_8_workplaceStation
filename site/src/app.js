@@ -5,10 +5,13 @@ const authenticateUser = require("./middlewares/authenticateUser");
 const morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
 const cors = require('cors');
 
 // ***************** APP *****************
 const app = express();
+// ***************** Parseo de variables de entorno *****************
+dotenv.config({path : path.join(__dirname, "..", "..", ".env")});
 
 // ***************** Configuración *****************
 app.set("view engine", "ejs"); // Le indica a express el template engine que se va a utilizar
@@ -60,5 +63,5 @@ app.use((req, res, next) => {
 })
 
 // ***************** Puesta en marcha del servidor *****************
-const PORT = 3000;
-app.listen(PORT, () => console.log("Servidor funcionando en el puerto " + PORT));
+app.listen(process.env.APP_PORT, 
+    () => console.log("Servidor funcionando en el puerto " + process.env.APP_PORT));
