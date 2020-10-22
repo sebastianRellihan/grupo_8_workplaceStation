@@ -11,3 +11,5 @@
 /site/public/img/uploaded/
 
 /site/public/img/usersUploaded/
+
+.env
