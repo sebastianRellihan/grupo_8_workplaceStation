@@ -1,9 +1,13 @@
+const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config({path : path.join(__dirname, "..", "..", "..", "..", ".env")});
+
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "workplace_station",
-    "host": "127.0.0.1",
+    "username": process.env.DB_USERNAME,
+    "password": process.env.DB_PASS || null,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
     "dialect": "mysql",
     "define" : {
         "underscored" : true,
