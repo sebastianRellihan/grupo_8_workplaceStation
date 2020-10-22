@@ -8,7 +8,11 @@ module.exports = {
 
         let categories;
 
-        category.findAll()
+        category.findAll({
+            order: [
+                ['id', 'ASC']
+            ]
+        })
             .then(results => {
                 categories = results;
                 
@@ -46,6 +50,10 @@ module.exports = {
                         id: product.id,
                         name: product.name,
                         description: product.description,
+                        briefDescription: product.briefDescription,
+                        price: product.price,
+                        stock: product.stock,
+                        discount: product.discount,
                         images: [],
                         detail: `/api/products/${product.id}`
                     }
