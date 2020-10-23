@@ -1104,7 +1104,7 @@ footer {
     .site-header {
         justify-content: space-between;
         width: 100%;
-        max-width: 1280px;
+        max-width: 1440px;
             margin: 0.1px auto;
         }
         .site-header-start {
@@ -1139,14 +1139,22 @@ footer {
                     }
     .nav-bar {
         flex-wrap: nowrap;
-        max-width: 1280px;
+        max-width: 1440px;
         width: 100%;
         margin: 0.1px auto;
+        background-color: var(--background-2);
     }
+        .sticky {
+            position: fixed;
+            max-width: none;
+            top: 0;
+            width: 100%;
+            box-shadow: 1px 1px 2px var(--logo-color-1);
+        }
         .mobile-nav-side-bar {
             display: flex;
             flex-direction: row;
-            position: inherit;
+            position: static;
             z-index: 0;
             width: 100vw;
             height: 7vh;
@@ -1228,8 +1236,8 @@ footer {
                         }
         .site-cart {
             width: 100px;
-            position: inherit;
-            margin: 0px 10px 0px 0px;
+            position: static;
+            margin-right: 10px;
             box-shadow: none;
             background-color: var(--background-2);
         }
