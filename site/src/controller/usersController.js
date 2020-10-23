@@ -103,7 +103,7 @@ module.exports = {
                 email: req.body.email,
                 password: req.body.password,
                 passwordCheck: req.body["password-check"],
-                image: req.file.filename,
+                image: req.files[0].filename,
                 address: req.body.address,
                 birth: req.body.birth,
                 phoneNumber: req.body["phone-number"],
