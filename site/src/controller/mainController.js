@@ -17,6 +17,10 @@ module.exports = {
     contact: (req, res) => {
         res.render("main/contact");
     },
+    /** Muestra el dashboard de administración */
+    dashboard: (req, res) => {
+        res.render("main/dashboard");
+    },
     /** Procesa el formulario de contacto */
     sendMail: (req, res) => {
 

@@ -7,10 +7,13 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controller/mainController");
+const adminRoute = require("../middlewares/adminRoute");
 
 router.get("/", controller.index);
 
 router.get("/about-us", controller.aboutUs);
+
+router.get("/dashboard", adminRoute, controller.dashboard);
 
 router.get("/contact", controller.contact);
 
