@@ -865,13 +865,14 @@ footer {
             text-align: center;
         }
     .products-nav {
-        display: none;
+        display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         width: 100%;
     }
         .view-options {
+            display: none;
             justify-content: flex-start;
             text-align: center;
         }
@@ -895,9 +896,15 @@ footer {
                     width: 75%;
                     justify-content: space-around;
                 }
-        .filter-groups dd a {
-            padding: 5px;
+        .categories-groups {
+            display: none;
         }
+        .filter-groups {
+            display: none;
+        }
+            .filter-groups dd a {
+                padding: 5px;
+            }
 /* Productos > tarjetas de productos */
 .products-section{
     width: 100vw;
@@ -1485,7 +1492,8 @@ footer {
                 display: flex;
             }
                 .view-options,
-                .filter-groups {
+                .filter-groups,
+                .categories-groups {
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;

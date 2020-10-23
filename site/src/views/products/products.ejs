@@ -20,21 +20,21 @@
                 <a href="">Productos</a>
             </div>
             <div class="products-buttons-container flex">
-                <button class="filter-button">
+                <button class="filter-button" id="filter-button">
                     <span> Filtrar</span>
                     <i class="fas fa-filter"></i>
                 </button>
-                <button class="category-button">
+                <button class="category-button" id="category-button">
                     <span> Categorías </span>
                     <i class="fas fa-list"></i>
                 </button>
-                <button class="order-button">
+                <button class="order-button" id="order-button">
                     <span> Ordenar </span>
                     <i class="fas fa-sort"></i>
                 </button>
             </div>
             <aside class="products-nav">
-                <section class="view-options flex column">
+                <section class="view-options flex column" id="order-products">
                     <h2>Ordenar productos</h2>
                     <div class="order-view flex column">
                         <div class="views flex">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="filter-groups">
+                <section class="categories-groups" id="categories-products">
                     <dl class="filter-category">
                         <dt>
                             <h2>Categorías</h2>
@@ -71,6 +71,8 @@
                             </dd>
                         <% }); %>
                     </dl>
+                </section>
+                <section class="filter-groups" id="filter-products">
                     <dl class="filter-discount">
                         <dt>
                             <h2>Descuentos</h2>
@@ -141,6 +143,8 @@
 
     <%# Import del footer %>
     <%- include("../partials/footer") %>
+
+    <script src="/js/interactive/products.js"></script>
 
 </body>
 

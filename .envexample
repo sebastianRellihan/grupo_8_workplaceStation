@@ -1,6 +1,0 @@
-APP_PORT = 3000
-
-DB_USERNAME = 
-DB_PASS = 
-DB_NAME = 
-DB_HOST = 
