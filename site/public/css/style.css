@@ -83,6 +83,9 @@ body {
     color: var(--text-dark-gray);
     background-color: var(--background-1);
 }
+    .prevent-scroll {
+        overflow: hidden;
+    }
 /* HEADER */
 header {
     display: flex;
@@ -259,6 +262,9 @@ header {
                 }
                     .mobile-nav-side-bar-content ul li a {
                         color: var(--title-dark-blue);
+                    }
+                    .mobile-nav-side-bar-content ul li ul {
+                        display: none;
                     }
                     .mobile-nav-side-bar-content ul li ul li {
                         padding: 5px;
@@ -1230,7 +1236,7 @@ footer {
                             width: 100%;
                           }
                         .mobile-nav-side-bar-content ul li .mobile-nav-side-bar-content-products {
-                            display: none;
+                            /* display: none; */
                             flex-direction: column;
                             justify-content: end;
                             position: absolute;
