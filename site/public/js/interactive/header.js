@@ -1,4 +1,5 @@
 window.addEventListener("load", () => {
+    let body = document.body;
     let openButton = document.getElementById("side-bar-open-button");
     let sideBar = document.getElementById("mobile-nav-side-bar");
     let closeButton = document.getElementById("side-bar-close-button");
@@ -8,8 +9,12 @@ window.addEventListener("load", () => {
     let w = window.innerWidth;
     let products = document.getElementById("nav-bar-products");
     let productsList = products.children[1];
-    let productsAnchor = products.children[0];
-    let body = document.body;
+    let productsAnchor = document.getElementById("nav-bar-products-a");
+    let aboutAnchor = document.getElementById("nav-bar-about-a");
+    let contactAnchor = document.getElementById("nav-bar-contact-a");
+    let createAnchor = document.getElementById("nav-bar-create-a");
+    let homeAnchor = document.getElementById("nav-bar-home-a");
+    
 
     // Para la vista Desktop
     if (w >= 768) {
@@ -40,6 +45,18 @@ window.addEventListener("load", () => {
         products.addEventListener("mouseout", () => {
             productsList.style.display = "none";
         })
+
+        if (document.URL.includes("products")) {
+            productsAnchor.classList.add("active-nav");
+        } else if (document.URL.includes("about")) {
+            aboutAnchor.classList.add("active-nav");
+        } else if (document.URL.includes("contact")) {
+            contactAnchor.classList.add("active-nav");
+        } else if (document.URL.includes("create")) {
+            createAnchor.classList.add("active-nav");
+        } else {
+            homeAnchor.classList.add("active-nav");
+        }
     } else {
         // Para la vista Mobile o Tablet
 

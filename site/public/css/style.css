@@ -1209,6 +1209,9 @@ footer {
                         padding: 0 10px;
                         border-bottom: 0;
                     }
+                        .active-nav {
+                            border-bottom: 3px var(--logo-color-2) solid !important;                            
+                        }
                         .mobile-nav-side-bar-content ul li a {
                             color: var(--text-light);
                             position: relative;
@@ -1224,7 +1227,6 @@ footer {
                             bottom: -3px;
                             background: var(--logo-color-2);
                             height: 3px;
-                            transition-property: width;
                             transition-duration: 0.5s;
                             transition-timing-function: ease-out;
                           }
@@ -1236,7 +1238,6 @@ footer {
                             width: 100%;
                           }
                         .mobile-nav-side-bar-content ul li .mobile-nav-side-bar-content-products {
-                            /* display: none; */
                             flex-direction: column;
                             justify-content: end;
                             position: absolute;

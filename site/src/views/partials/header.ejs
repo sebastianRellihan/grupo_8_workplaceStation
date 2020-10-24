@@ -47,9 +47,9 @@
                     <button type="submit" class="action-button"><i class="fas fa-search"></i></button>
                 </form>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/" id="nav-bar-home-a">Home</a></li>
                     <li id="nav-bar-products">
-                        <a href="/products">Productos</a>
+                        <a href="/products" id="nav-bar-products-a">Productos</a>
                         <ul class="mobile-nav-side-bar-content-products">
                             <li><a href="/products">Todos</a></li>
                             <li><a href="/products">Estaciones de trabajo</a></li>
@@ -58,10 +58,10 @@
                             <li><a href="/products">Accesorios</a></li>
                         </ul>
                     </li>
-                    <li><a href="/about-us">Sobre nosotros</a></li>
-                    <li><a href="/contact">Contacto</a></li>
+                    <li><a href="/about-us" id="nav-bar-about-a">Sobre nosotros</a></li>
+                    <li><a href="/contact" id="nav-bar-contact-a">Contacto</a></li>
                     <% if(locals.user && locals.user.isAdmin) { %> 
-                        <li><a href="/products/create">Vender</a></li>
+                        <li><a href="/products/create" id="nav-bar-create-a">Crear</a></li>
                     <% } else {} %> 
                 </ul>
             </div>
