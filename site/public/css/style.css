@@ -251,6 +251,7 @@ header {
                 list-style: none;
                 font-weight: bold;
                 font-size: 18px;
+                align-items: flex-start;
             }
                 .mobile-nav-side-bar-content ul li {
                     padding: 10px;
@@ -1168,6 +1169,7 @@ footer {
                 display: none;
             }
             .mobile-nav-side-bar-content {
+                position: relative;
                 flex-direction: row-reverse;
                 justify-content: space-between;
                 align-self: center;
@@ -1230,10 +1232,19 @@ footer {
                         .mobile-nav-side-bar-content ul li .mobile-nav-side-bar-content-products {
                             display: none;
                             flex-direction: column;
+                            justify-content: end;
                             position: absolute;
+                            top: 30px;
+                            left: 70px;
+                            width: 200px;
+                            height: 180px;
+                            padding: 5px;
                             background-color: var(--background-2);
                             color: var(--title-dark-blue);
                         }
+                            .mobile-nav-side-bar-content ul li .mobile-nav-side-bar-content-products li {
+                                font-size: 0.9rem;
+                            }
         .site-cart {
             width: 100px;
             position: static;

@@ -6,10 +6,12 @@ window.addEventListener("load", () => {
     let siteCart = document.getElementById("site-cart");
     let sticky = navbar.offsetTop;
     let w = window.innerWidth;
+    let products = document.getElementById("nav-bar-products");
+    let productsList = products.children[1];
+    let productsAnchor = products.children[0];
 
     if (w >= 768) {
         window.addEventListener("scroll", function() {
-            console.log(w);
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("sticky");
                 if (w > 1500) {
@@ -24,7 +26,20 @@ window.addEventListener("load", () => {
                 navbar.classList.remove("sticky");
             }
         })
+
+        products.addEventListener("mouseover", () => {
+            productsList.style.display = "flex";
+        })
+    
+        productsAnchor.addEventListener("click", (e) => {
+            e.preventDefault();
+        })
+
+        products.addEventListener("mouseout", () => {
+            productsList.style.display = "none";
+        })
     }
+
 
     openButton.addEventListener("click", () => {
         sideBar.style.left = "0vw";
