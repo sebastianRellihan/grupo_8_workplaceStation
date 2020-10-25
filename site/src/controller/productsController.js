@@ -38,6 +38,17 @@ module.exports = {
                     }
                 }
             });
+        } else if (req.query.category) {
+
+            let likeParam = req.query.category;
+            // Búsqueda por categoría del producto
+            allProducts = product.findAll({
+                include : image,
+                where : {
+                    categoryId : likeParam
+                }
+            });
+
         } else {
             allProducts = product.findAll({
                 include : image

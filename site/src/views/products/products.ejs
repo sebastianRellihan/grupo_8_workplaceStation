@@ -57,20 +57,37 @@
                             </select>
                         </div>
                     </div>
-                </section>
-                <section class="categories-groups" id="categories-products">
+                </section> 
+                
+                <!-- <section class="categories-groups" id="categories-products">
                     <dl class="filter-category">
                         <dt>
                             <h2>Categorías</h2>
                         </dt>
-                        <% categories.forEach(category => { %>
+                        <%# categories.forEach(category => { %>
                             <dd>
                                 <h3>
-                                    <a href="#"><%= category.name %></a>
+                                    <a href="#"><%#= category.name %></a>
                                 </h3>
                             </dd>
-                        <% }); %>
+                        <%# }); %>
                     </dl>
+                </section>   -->
+                
+                <section class="categories-groups" id="categories-products">
+
+                    <form action="/products" method="GET">
+          
+                        <h2>Categorías</h2>
+                        <%# Imprime los checkbox con todas las categorías disponibles %>
+                        <% categories.forEach(category => { %>
+                            <input type="checkbox" name="category" value="<%= category.id %>" id="<%= category.name %>">
+                            <label for="<%= category.name %>"><%= category.name %></label><br>
+                        <% }); %>
+    
+                        <button type="submit" class="action-button">Aplicar</button>
+                    </form>
+
                 </section>
                 <section class="filter-groups" id="filter-products">
                     <dl class="filter-discount">
