@@ -375,6 +375,30 @@ footer {
         padding: 5px;
         margin: 10px;
     }
+    .main-header {
+        height: 50vh;
+        position: relative;
+        background-position: center center;
+        background-size: cover;
+        text-align: center;
+        color: whitesmoke;
+    }
+
+        .main-index .main-header div {
+            width: 100%;
+            margin: 0;
+            padding: 5px;
+            /* text-shadow: 3px -3px 8px #FFF; */
+            background-color: rgba(0, 0, 0, 0.6);
+            /* border-radius: 5px;  */
+            position: absolute;
+            bottom: 0;
+            height: 20vh;
+        }
+            .main-index .main-header div p {
+                color: whitesmoke;
+                text-align: center;
+            }   
     #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
         background-color: rgba(255, 255, 255, 0.4);
         border-radius: 5px;
@@ -912,6 +936,9 @@ footer {
             .filter-groups dd a {
                 padding: 5px;
             }
+            #filter-form-sub-btn {
+                display: none;
+            }
 /* Productos > tarjetas de productos */
 .products-section{
     width: 100vw;
@@ -1291,6 +1318,12 @@ footer {
         display: block; 
         font-size: 1.3em;
     }
+    .main-index .main-header div {
+        width: 20%;
+        bottom: 0;
+        left: 0;
+        height: 50vh;
+    }
     #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
         font-size: 2em;
     }
@@ -1558,6 +1591,9 @@ footer {
                         }
                         .filter-category h3 {
                             font-size: 1rem;
+                        }
+                        #filter-form-sub-btn {
+                            display: block;
                         }
         .products-section {
             width: 70vw;

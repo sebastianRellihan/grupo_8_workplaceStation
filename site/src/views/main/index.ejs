@@ -11,116 +11,12 @@
     <%- include("../partials/header") %>
     
     <main class="main-index">
-        <section class="photo-carousel">
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/img/carousel-1.jpg" class="d-block w-100" alt="Foto de un escritorio de de oficina">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Workplace Station</h5>
-                            <p>Marca líder en ergonomía y armado de estaciones de trabajo.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/carousel-2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Armá tu estación de trabajo</h5>
-                            <p>
-                                Te ofrecemos una amplia cantidad de productos para un armado flexible
-                                y personalizado.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/carousel-3.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Modelos prearmados</h5>
-                            <p>
-                                ¿No sabés por dónde empezar? Te ofrecemos modelos prearmados y
-                                completamente personalizables.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/carousel-4.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Amplia selección de asientos</h5>
-                            <p>
-                                Sabemos que tu postura y salud son importantes, por eso te ofrecemos
-                                una amplia selección de asientos con altos estándares de calidad.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/carousel-5.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Transformá tu hogar en tu oficina</h5>
-                            <p>
-                                En Workplace Stations conocemos las necesidades del ambiente de
-                                trabajo moderno, podés encontrar todo lo que necesites y te lo llevamos
-                                a tu casa.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+        <section class="main-header flex column" id="img-slider">
+            <div class="flex column">
+                <h4 id="img-slider-title"></h4>
+                <p id="img-slider-caption"></p>
             </div>
         </section>
-        <section class="about-us-home flex column">
-            <h2>¿Quiénes somos?</h2>
-            <article>
-                <p>
-                    Workplace Station nace en el contexto de un mundo cambiante, en el que los profesionales
-                    de hoy en día tienen la necesidad de tener su espacio de trabajo de manera cómoda, 
-                    accesible en la comodidad de su hogar.
-                </p>
-                <p>
-                    Somos una empresa que, de la mano de profesionales expertos en ergonomía y con conocimiento
-                    del mercado laboral de hoy en día, intentamos ofrecerte de una forma sencilla e intuitiva
-                    todas las herramientas para que puedas armar tu espacio de trabajo hecho a medida, aunque no
-                    limitándonos sólo a eso y ofreciéndote un equipo a medida en el que puedas llevar a cabo
-                    todos tus hobbies.
-                </p>
-                <button class="action-button">
-                    <a href="/about-us">Ver más</a>
-                </button>
-            </article>
-        </section>
-        <section class="why-us">
-            <h2>¿Por qué elegirnos?</h2>
-            <div class="why-us-container flex column">
-                <article class="why-us-container-start">
-                    <i class="fas fa-medal"></i>
-                    <h3>5 años de garantía</h3>
-                    <p>Todos nuestros productos cuentan con cobertura de 5 años.</p>
-                </article>
-                <article class="why-us-container-center">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h3>Tiempo de entrega</h3>
-                    <p>Orgullosos de realizar el 95% de nuestras entregas en menos de días a todo el país.</p>
-                </article>
-                <article class="why-us-container-end">
-                    <i class="fas fa-award"></i>
-                    <h3>Más de 20 años de experiencia</h3>
-                    <p>Desde 1995 innovando en muebles ergonómicos para el trabajo.</p>
-                </article>
-            </div>
-        </section>
-
         <section class="our-products flex column">
             <h2>Nuestros productos</h2>
             <div class="our-products-container">
@@ -146,6 +42,47 @@
                 </a>
             </div>
         </section>
+        <section class="why-us">
+            <h2>¿Por qué elegirnos?</h2>
+            <div class="why-us-container flex column">
+                <article class="why-us-container-start">
+                    <i class="fas fa-medal"></i>
+                    <h3>5 años de garantía</h3>
+                    <p>Todos nuestros productos cuentan con cobertura de 5 años.</p>
+                </article>
+                <article class="why-us-container-center">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Tiempo de entrega</h3>
+                    <p>Orgullosos de realizar el 95% de nuestras entregas en menos de días a todo el país.</p>
+                </article>
+                <article class="why-us-container-end">
+                    <i class="fas fa-award"></i>
+                    <h3>Más de 20 años de experiencia</h3>
+                    <p>Desde 1995 innovando en muebles ergonómicos para el trabajo.</p>
+                </article>
+            </div>
+        </section>
+        <section class="about-us-home flex column">
+            <h2>¿Quiénes somos?</h2>
+            <article>
+                <p>
+                    Workplace Station nace en el contexto de un mundo cambiante, en el que los profesionales
+                    de hoy en día tienen la necesidad de tener su espacio de trabajo de manera cómoda, 
+                    accesible en la comodidad de su hogar.
+                </p>
+                <p>
+                    Somos una empresa que, de la mano de profesionales expertos en ergonomía y con conocimiento
+                    del mercado laboral de hoy en día, intentamos ofrecerte de una forma sencilla e intuitiva
+                    todas las herramientas para que puedas armar tu espacio de trabajo hecho a medida, aunque no
+                    limitándonos sólo a eso y ofreciéndote un equipo a medida en el que puedas llevar a cabo
+                    todos tus hobbies.
+                </p>
+                <button class="action-button">
+                    <a href="/about-us">Ver más</a>
+                </button>
+            </article>
+        </section>
+        
     </main>
 
     <%# Import del footer %>
@@ -157,9 +94,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
+    </script> -->
+    <script src="/js/interactive/main.js"></script>
 </body>
 
 </html>
