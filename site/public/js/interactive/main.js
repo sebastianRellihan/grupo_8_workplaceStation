@@ -21,12 +21,12 @@ window.addEventListener("load", () => {
         {
             img: "../img/carousel-5.jpg",
             title: "Transformá tu hogar en tu oficina",
-            caption: "En Workplace Stations conocemos las necesidades del ambiente de trabajo moderno, podés encontrar todo lo que necesites y te lo llevamos a tu casa"
+            caption: "Conocemos las necesidades del ambiente de trabajo moderno"
         },
         {
             img: "../img/carousel-2.jpg",
             title: "Amplia selección de asientos",
-            caption: "Sabemos que tu postura y salud son importantes, por eso te ofrecemos una amplia selección de asientos con altos estándares de calidad"
+            caption: "Sabemos que tu postura y salud son importantes, por eso ofrecemos una amplia selección de asientos ergonómicos"
         }
     ];
 
@@ -37,7 +37,7 @@ window.addEventListener("load", () => {
                 imgSlider.style.transition = "2s";
                 imgSliderTitle.innerText = slide.title;
                 imgSliderCaption.innerText = slide.caption;
-            }, i * 6000);
+            }, i * 5000);
         });
         setTimeout(slide, 5000 * slides.length)
     }
