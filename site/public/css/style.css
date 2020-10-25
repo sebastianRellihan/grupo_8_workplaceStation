@@ -1517,6 +1517,10 @@ footer {
             .products-nav {
                 display: flex;
             }
+                .products-nav form {
+                    width: 100%;
+                    margin-left: 5vw;
+                }
                 .view-options,
                 .filter-groups,
                 .categories-groups {
@@ -1541,7 +1545,6 @@ footer {
                 .filter-groups {
                     display: flex;
                     flex-direction: column;
-                    margin-top: 30px;
                 }
                     .filter-category,
                     .filter-discount,

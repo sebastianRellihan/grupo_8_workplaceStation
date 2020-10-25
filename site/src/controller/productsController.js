@@ -26,29 +26,44 @@ module.exports = {
 
         let allProducts;
 
-        if(req.query.search){
+        console.log(Object.keys(req.query).length);
 
-            let likeParam = `%${req.query.search}%`
-            // Búsqueda por nombre del producto
-            allProducts = product.findAll({
-                include : image,
-                where : {
-                    name : {
-                        [Op.like] : likeParam
+        if(Object.keys(req.query).length != 0){
+            if (req.query.search) {
+                let likeParam = `%${req.query.search}%`
+                // Búsqueda por nombre del producto
+                allProducts = product.findAll({
+                    include : image,
+                    where : {
+                        name : {
+                            [Op.like] : likeParam
+                        }
                     }
-                }
-            });
-        } else if (req.query.category) {
+                });
+            } else {
+                let category = req.query.category;
+                let discount = req.query.discount || 0;
+                let order;
+                let minimum;
+                let maximum;
 
-            let likeParam = req.query.category;
-            // Búsqueda por categoría del producto
-            allProducts = product.findAll({
-                include : image,
-                where : {
-                    categoryId : likeParam
-                }
-            });
-
+                // Búsqueda de productos por criterios de filtrado seleccionados
+                allProducts = product.findAll({
+                    include : image,
+                    where : {
+                        categoryId : category,
+                        order: [
+                            ['price', order],
+                        ],
+                        price: {
+                            [Op.between]: [minimum, maximum],
+                        },
+                        discount: {
+                            [Op.gte]: discount,
+                        }
+                    }
+                });
+            }
         } else {
             allProducts = product.findAll({
                 include : image

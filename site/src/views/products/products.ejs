@@ -34,99 +34,114 @@
                 </button>
             </div>
             <aside class="products-nav">
-                <section class="view-options flex column" id="order-products">
-                    <h2>Ordenar productos</h2>
-                    <div class="order-view flex column">
-                        <div class="views flex">
-                            <button>
-                                <i class="fas fa-th-list"></i>
-                            </button>
-                            <button>
-                                <i class="fas fa-th-large"></i>
-                            </button>
-                            <button>
-                                <i class="fas fa-th"></i>
-                            </button>
+                <form action="/products" method="GET">
+                    <section class="view-options flex column" id="order-products">
+                        <h2>Ordenar productos</h2>
+                        <div class="order-view flex column">
+                            <div class="views flex">
+                                <button>
+                                    <i class="fas fa-th-list"></i>
+                                </button>
+                                <button>
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button>
+                                    <i class="fas fa-th"></i>
+                                </button>
+                            </div>
+                            <div class="order flex">
+                                <label for="order">Ordenar por:</label>
+                                <select name="order" id="order" class="input-text">
+                                    <option value="0">Más vendidos</option>
+                                    <option value="DESC">Menor precio</option>
+                                    <option value="ASC">Mayor precio</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="order flex">
-                            <label for="order">Ordenar por:</label>
-                            <select name="order" id="order" class="input-text">
-                                <option value="best-seller">Más vendidos</option>
-                                <option value="lower-price">Menor precio</option>
-                                <option value="higher-price">Mayor precio</option>
-                            </select>
-                        </div>
-                    </div>
-                </section> 
-                
-                <!-- <section class="categories-groups" id="categories-products">
-                    <dl class="filter-category">
-                        <dt>
-                            <h2>Categorías</h2>
-                        </dt>
-                        <%# categories.forEach(category => { %>
-                            <dd>
-                                <h3>
-                                    <a href="#"><%#= category.name %></a>
-                                </h3>
-                            </dd>
-                        <%# }); %>
-                    </dl>
-                </section>   -->
-                
-                <section class="categories-groups" id="categories-products">
+                    </section> 
+                    
+                    <!-- <section class="categories-groups" id="categories-products">
+                        <dl class="filter-category">
+                            <dt>
+                                <h2>Categorías</h2>
+                            </dt>
+                            <%# categories.forEach(category => { %>
+                                <dd>
+                                    <h3>
+                                        <a href="#"><%#= category.name %></a>
+                                    </h3>
+                                </dd>
+                            <%# }); %>
+                        </dl>
+                    </section>   -->
 
-                    <form action="/products" method="GET">
-          
+                    <section class="categories-groups" id="categories-products">
+
                         <h2>Categorías</h2>
                         <%# Imprime los checkbox con todas las categorías disponibles %>
                         <% categories.forEach(category => { %>
-                            <input type="checkbox" name="category" value="<%= category.id %>" id="<%= category.name %>">
-                            <label for="<%= category.name %>"><%= category.name %></label><br>
+                            <div>
+                                <input type="checkbox" name="category" value="<%= category.id %>" id="<%= category.name %>">
+                                <label for="<%= category.name %>"><%= category.name %></label><br>
+                            </div>
                         <% }); %>
-    
-                        <button type="submit" class="action-button">Aplicar</button>
-                    </form>
 
-                </section>
-                <section class="filter-groups" id="filter-products">
-                    <dl class="filter-discount">
-                        <dt>
-                            <h2>Descuentos</h2>
-                        </dt>
-                        <dd>
-                            <a href="#">
-                                <span>Desde 10% off</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="#">
-                                <span>Desde 20% off</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="#">
-                                <span>Desde 30% off</span>
-                            </a>
-                        </dd>
-                    </dl>
-                    <dl class="filter-delivery">
-                        <dt>
-                            <h2>Tipo de entrega</h2>
-                        </dt>
-                        <dd>
-                            <a href="#">
-                                <span>Retiro por sucursal</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="#">
-                                <span>Con envío</span>
-                            </a>
-                        </dd>
-                    </dl>
-                    <!-- Seguir agregando más tipos de filtrados -->
-                </section>
+                    </section>
+                    <section class="filter-groups" id="filter-products">
+                        <h2>Descuento</h2>
+                        <div>
+                            <input type="radio" id="with" name="discount" value="1">
+                            <label for="with">Con descuento</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="without" name="discount" value="0">
+                            <label for="without">Sin descuento</label>
+                        </div>
+
+
+                        <h2>Precio</h2>
+                        <input type="number" name="minimum" placeholder="Mínimo" rows="1" maxlength="120">
+                        <input type="number" name="maximum" placeholder="Máximo" rows="1" maxlength="120">
+                        <!-- <dl class="filter-discount">
+                            <dt>
+                                <h2>Descuentos</h2>
+                            </dt>
+                            <dd>
+                                <a href="#">
+                                    <span>Desde 10% off</span>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#">
+                                    <span>Desde 20% off</span>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#">
+                                    <span>Desde 30% off</span>
+                                </a>
+                            </dd>
+                        </dl>
+                        <dl class="filter-delivery">
+                            <dt>
+                                <h2>Tipo de entrega</h2>
+                            </dt>
+                            <dd>
+                                <a href="#">
+                                    <span>Retiro por sucursal</span>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#">
+                                    <span>Con envío</span>
+                                </a>
+                            </dd>
+                        </dl>
+                        Seguir agregando más tipos de filtrados -->
+                    </section>
+
+                    <button type="submit" class="action-button">Aplicar</button>
+                </form>
             </aside>
         </section>
 
