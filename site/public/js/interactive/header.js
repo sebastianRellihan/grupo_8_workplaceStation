@@ -37,10 +37,6 @@ window.addEventListener("load", () => {
         products.addEventListener("mouseover", () => {
             productsList.style.display = "flex";
         })
-    
-        productsAnchor.addEventListener("click", (e) => {
-            e.preventDefault();
-        })
 
         products.addEventListener("mouseout", () => {
             productsList.style.display = "none";
@@ -60,7 +56,7 @@ window.addEventListener("load", () => {
     } else {
         // Para la vista Mobile o Tablet
 
-        products.addEventListener("click", (e) => {
+        productsAnchor.addEventListener("click", (e) => {
             e.preventDefault();
             if (productsList.style.display == "none") {
                 productsList.style.display = "block";

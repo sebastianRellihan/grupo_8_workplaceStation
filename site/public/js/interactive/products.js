@@ -6,12 +6,15 @@ window.addEventListener("load", () => {
         let orderOptions = document.getElementById("order-products");
         let categoriesOptions = document.getElementById("categories-products");
         let filterOptions = document.getElementById("filter-products");
+        let formButton = document.getElementById("filter-form-sub-btn");
     
         filterButton.addEventListener("click", () => {
             if (filterOptions.style.display == "none") {
                 filterOptions.style.display = "block";
+                formButton.style.display = "block";
             } else {
                 filterOptions.style.display = "none";
+                formButton.style.display = "none";
             }
         })
     
