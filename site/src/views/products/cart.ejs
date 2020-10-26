@@ -22,11 +22,18 @@
                             <div class="cart-item-info">
                                 <h2><%= product.name %></h2>
                                 <p><span>$<%= product.price %></span></p>
+                                <% if (product.discount != 0) { %>
+                                    <p>
+                                        <span class="products-section-info-discount">
+                                            <%= product.discount != 0 ? product.discount : "" %>% Off
+                                        </span>
+                                    </p>
+                                <% } %>
                                 <div class="cart-item-actions flex">
                                     <div class="quantity-selector flex">
-                                        <button>-</button>
-                                        <span>1</span>
-                                        <button>+</button>
+                                        <!-- <button type="button">-</button> -->
+                                        <input type="number" name="quantity" value="<%= product.quantity %>">
+                                        <!-- <button type="button">+</button> -->
                                     </div>
                                     <form action="/products/cart/<%= product.id %>?_method=DELETE" method="POST">
                                         <button class="cart-actions-empty" type="submit"><i class="fas fa-trash-alt"></i></button>
@@ -40,22 +47,29 @@
                 <div class="cart-summary flex column">
                     <% 
                         /* 
-                        * Calcula el valor total de los productos.
-                        * Cuando se pueda acceder a variables definidas por el usuario,
-                        * se va a tener en cuenta el multiplicador de la cantidad que
-                        * se desea comprar.
+                        * Calcula el valor total y el descuento acumulado de los productos 
                         */
-                        var total = products.reduce((acum, element) => {
+                        let total = products.reduce((acum, element) => {
                             
                             if(element.discount == 0){
-                                return acum + Number(element.price);
+                                return acum + Number(element.price * element.quantity);
                             } else { // Aplica el descuento si lo hay
-                                let applied = Number(element.price) - Number(element.price) * (Number(element.discount) / 100);
+                                let applied = Number(element.price * element.quantity) - Number(element.price * element.quantity) * (Number(element.discount) / 100);
                                 return acum + applied; 
                             }
 
                         }, 0); // El 0 es el valor inicial del acumulador
+
+                        let withoutDiscount = products.reduce((acum, element) => {
+
+                            return acum + Number(element.price * element.quantity);
+
+                        }, 0);
+
+                        let totalDiscount = withoutDiscount - total;
+
                     %>
+                    <p>Descuento: <span>$<%= totalDiscount %></span></p>
                     <p>Total: <span>$<%= total %></span></p>
                 </div>
                 <div class="cart-actions flex column">
