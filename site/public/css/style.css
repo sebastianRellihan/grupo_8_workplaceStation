@@ -1246,6 +1246,9 @@ footer {
                             position: relative;
                         }
                         .mobile-nav-side-bar-content ul li a:hover{ text-decoration: none;}
+                        .mobile-nav-side-bar-content ul li ul li a:hover {
+                            color: var(--logo-color-1);
+                        }
                         /* Efecto de la barra debajo al hacer hover */
                         .mobile-nav-side-bar-content ul li a:after {
                             content: "";
@@ -1268,7 +1271,7 @@ footer {
                           }
                         .mobile-nav-side-bar-content ul li .mobile-nav-side-bar-content-products {
                             flex-direction: column;
-                            justify-content: end;
+                            justify-content: flex-end;
                             position: absolute;
                             top: 30px;
                             left: 70px;

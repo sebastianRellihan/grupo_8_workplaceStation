@@ -42,14 +42,14 @@ window.addEventListener("load", () => {
             productsList.style.display = "none";
         })
 
-        if (document.URL.includes("products")) {
-            productsAnchor.classList.add("active-nav");
+        if (document.URL.includes("create")) {
+            createAnchor.classList.add("active-nav");
         } else if (document.URL.includes("about")) {
             aboutAnchor.classList.add("active-nav");
         } else if (document.URL.includes("contact")) {
             contactAnchor.classList.add("active-nav");
-        } else if (document.URL.includes("create")) {
-            createAnchor.classList.add("active-nav");
+        } else if (document.URL.includes("products")) {
+            productsAnchor.classList.add("active-nav");
         } else {
             homeAnchor.classList.add("active-nav");
         }
