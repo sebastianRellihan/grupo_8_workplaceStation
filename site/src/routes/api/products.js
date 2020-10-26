@@ -8,6 +8,7 @@ const router = express.Router();
 const controller = require('../../controller/api/productsController');
 
 router.get('/', controller.all);
+router.get("/filter", controller.filter);
 router.get('/:id', controller.detail);
 
 module.exports = router;

@@ -2,6 +2,7 @@
  * Controlador que exporta métodos para ser utilizados en el enrutador de productos, enviando datos en formato JSON.
  */
 const { product, category, image } = require("../../database/models");
+const { Op } = require("sequelize");
 
 module.exports = {
     all: (req, res) => {
@@ -123,6 +124,72 @@ module.exports = {
                     },
                     data : []
                 });
+            });
+    },
+
+    /** Endpoint para implementar el sistema de filtrado de productos. */
+    filter : (req, res) => {
+
+        let where = {} // Cláusula where
+        let order = req.query.order; // Orden de elementos
+
+        // Filtros
+        if(req.query.min || req.query.min){ // Precio
+            where.price = {};
+
+            if(req.query.min) where.price[Op.gte] = req.query.min;
+            if(req.query.max) where.price[Op.lte] = req.query.max;
+        }
+
+        if(req.query.discount){ // Descuento
+            if(req.query.discount == 0) where.discount = 0;
+            else where.discount = { [Op.gt] :  0};
+        }
+
+        if(req.query.categories){ // Categorías
+            let catArray = req.query.categories.split(",");
+            where.categoryId = { [Op.in] :  catArray};
+        }
+
+        product.findAll({ 
+            where : where,
+            order : [
+                ["price" , order]
+            ],
+            include : image
+        })
+            .then(results => {
+
+                let response = {
+                    meta : {
+                        status : 200,
+                        statusMsg : "Ok",
+                        count : results.length
+                    },
+                    data : []
+                }
+
+                results.forEach(result => {
+                    response.data.push({
+                        id : result.id,
+                        image : `/img/uploaded/${result.images[0].url}`,
+                        price : result.price,
+                        discount : result.discount,
+                        name : result.name
+                    });
+                });
+
+                res.json(response);
+
             })
+            .catch(error => {
+                res.status(500).json({
+                    meta : {
+                        status : 500,
+                        statusMsg : "Internal server error"
+                    },
+                    data : []
+                });
+            });
     }
 }
