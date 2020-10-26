@@ -66,7 +66,8 @@
                     <div id="category-container">
                         <% categories.forEach(category => { %>
                         <div>
-                            <input type="checkbox" name="category" value="<%= category.id %>" id="<%= category.name %>">
+                            <input type="checkbox" name="category" value="<%= category.id %>" 
+                            id="<%= category.id %>">
                             <label for="<%= category.name %>"><%= category.name %></label><br>
                         </div>
                         <% }); %>
@@ -98,9 +99,6 @@
         </section>
 
         <section class="products-section flex column" id="productsSection">
-
-            
-
         </section>
 
     </main>

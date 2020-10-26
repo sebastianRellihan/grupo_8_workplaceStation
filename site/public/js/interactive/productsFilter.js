@@ -161,6 +161,12 @@ window.addEventListener("load", function(){
     if(searchParams.get("search")) // Filtra por la barra de búsqueda
         queryState.search = searchParams.get("search");
 
+    if(searchParams.get("categories")){
+        queryState.categories.push(searchParams.get("categories"));
+        // Se ha cambia el estado del check que ya venga filtrado
+        document.getElementById(searchParams.get("categories")).checked = true;
+    }
+
     apiCall();
 
 });
