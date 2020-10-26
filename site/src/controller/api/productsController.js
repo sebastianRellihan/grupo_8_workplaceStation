@@ -196,5 +196,35 @@ module.exports = {
                     data : []
                 });
             });
+    },
+
+    /** Retorna todas las categorías, pensada para el uso en el header */
+    categories : (req, res) => {
+
+        category.findAll()
+            .then(results => {
+
+                let response = {
+                    meta : {
+                        status : 200,
+                        statsMsg : "Ok",
+                        count : results.length
+                    },
+                    data : results
+                }
+
+                res.json(response);
+
+            })
+            .catch(error => {
+                res.status(500).json({
+                    meta : {
+                        status : 500,
+                        statusMsg : "Internal server error"
+                    },
+                    data : []
+                });
+            });
+
     }
 }
