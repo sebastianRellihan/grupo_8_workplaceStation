@@ -21,6 +21,7 @@
                         <div class="cart-item-info purchase-item flex">
                             <h2>Producto</h2>
                             <p><span>Precio</span></p>
+                            <p><span>Descuento</span></p>
                             <p>Cant.</p>
                         </div>
                     </article>
@@ -30,7 +31,8 @@
                             <div class="cart-item-info purchase-item flex">
                                 <h2><%= product.name %></h2>
                                 <p><span>$<%= product.price %></span></p>
-                                <p>1</p>
+                                <p><span>$<%= product.discount %></span></p>
+                                <p><%= product.quantity %></p>
                             </div>
                         </article>
 
@@ -39,22 +41,28 @@
                 <div class="cart-summary flex column">
                     <% 
                         /* 
-                        * Calcula el valor total de los productos.
-                        * Cuando se pueda acceder a variables definidas por el usuario,
-                        * se va a tener en cuenta el multiplicador de la cantidad que
-                        * se desea comprar.
+                        * Calcula el valor total y el descuento acumulado de los productos 
                         */
                         var total = products.reduce((acum, element) => {
                             
                             if(element.discount == 0){
-                                return acum + Number(element.price);
+                                return acum + Number(element.price * element.quantity);
                             } else { // Aplica el descuento si lo hay
-                                let applied = Number(element.price) - Number(element.price) * (Number(element.discount) / 100);
+                                let applied = Number(element.price * element.quantity) - Number(element.price * element.quantity) * (Number(element.discount) / 100);
                                 return acum + applied; 
                             }
 
                         }, 0); // El 0 es el valor inicial del acumulador
+
+                        let withoutDiscount = products.reduce((acum, element) => {
+
+                            return acum + Number(element.price * element.quantity);
+
+                        }, 0);
+
+                        let totalDiscount = withoutDiscount - total;
                     %>
+                    <p>Descuento: <span>$<%= totalDiscount %></span></p>
                     <p>Total: <span>$<%= total %></span></p>
                 </div>
                 <!-- Sección de formulario -->
