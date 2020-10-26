@@ -14,6 +14,7 @@ window.addEventListener("load", () => {
     let contactAnchor = document.getElementById("nav-bar-contact-a");
     let createAnchor = document.getElementById("nav-bar-create-a");
     let homeAnchor = document.getElementById("nav-bar-home-a");
+    let productsNav = document.getElementById("products-nav");
     
 
     // Para la vista Desktop
@@ -78,5 +79,19 @@ window.addEventListener("load", () => {
         })
 
     }
+
+    // *********** Armado de la barra de categorías de productos ***********
+
+    fetch("/api/products/categories")
+        .then(response => {
+            return response.json();
+        })
+        .then(results => {
+
+            results.data.forEach(element => {
+                productsNav.innerHTML += `<li><a href="/products?categories=${element.id}">${element.name}</a></li>`;
+            });
+
+        });
 
 })
