@@ -5,6 +5,7 @@
 <%- include("../partials/head", {usesBootstrap: false, title: "Workplace Station - Productos",
     description: "¡Te invitamos a ver nuestra amplia selección de productos!",
     keywords: "Workplace Station, productos, oferta de productos"})%>
+<script src="/js/interactive/productsFilter.js"></script>
 
 <body>
     <%# Import del HADER %>
@@ -34,149 +35,98 @@
                 </button>
             </div>
             <aside class="products-nav">
-                <form action="/products" method="GET">
-                    <section class="view-options flex column" id="order-products">
-                        <h2>Ordenar productos</h2>
-                        <div class="order-view flex column">
-                            <div class="views flex">
-                                <button>
-                                    <i class="fas fa-th-list"></i>
-                                </button>
-                                <button>
-                                    <i class="fas fa-th-large"></i>
-                                </button>
-                                <button>
-                                    <i class="fas fa-th"></i>
-                                </button>
-                            </div>
-                            <div class="order flex">
-                                <label for="order">Ordenar por:</label>
-                                <select name="order" id="order" class="input-text">
-                                    <option value="0">Más vendidos</option>
-                                    <option value="DESC">Menor precio</option>
-                                    <option value="ASC">Mayor precio</option>
-                                </select>
-                            </div>
+                <section class="view-options flex column" id="order-products">
+                    <h2>Ordenar productos</h2>
+                    <div class="order-view flex column">
+                        <div class="views flex">
+                            <button>
+                                <i class="fas fa-th-list"></i>
+                            </button>
+                            <button>
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <button>
+                                <i class="fas fa-th"></i>
+                            </button>
                         </div>
-                    </section> 
-                    
-                    <!-- <section class="categories-groups" id="categories-products">
-                        <dl class="filter-category">
-                            <dt>
-                                <h2>Categorías</h2>
-                            </dt>
-                            <%# categories.forEach(category => { %>
-                                <dd>
-                                    <h3>
-                                        <a href="#"><%#= category.name %></a>
-                                    </h3>
-                                </dd>
-                            <%# }); %>
-                        </dl>
-                    </section>   -->
+                        <div class="order flex">
+                            <label for="order">Ordenar por:</label>
+                            <select name="order" id="order" class="input-text">
+                                <option value="ASC">Menor precio</option>
+                                <option value="DESC">Mayor precio</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
 
-                    <section class="categories-groups" id="categories-products">
+                <section class="categories-groups" id="categories-products">
 
-                        <h2>Categorías</h2>
-                        <%# Imprime los checkbox con todas las categorías disponibles %>
+                    <h2>Categorías</h2>
+                    <%# Imprime los checkbox con todas las categorías disponibles %>
+                    <div id="category-container">
                         <% categories.forEach(category => { %>
-                            <div>
-                                <input type="checkbox" name="category" value="<%= category.id %>" id="<%= category.name %>">
-                                <label for="<%= category.name %>"><%= category.name %></label><br>
-                            </div>
+                        <div>
+                            <input type="checkbox" name="category" value="<%= category.id %>" id="<%= category.name %>">
+                            <label for="<%= category.name %>"><%= category.name %></label><br>
+                        </div>
                         <% }); %>
+                    </div>
 
-                    </section>
-                    <section class="filter-groups" id="filter-products">
-                        <h2>Descuento</h2>
-                        <div>
-                            <input type="radio" id="with" name="discount" value="1">
-                            <label for="with">Con descuento</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="without" name="discount" value="0">
-                            <label for="without">Sin descuento</label>
-                        </div>
+                </section>
+                <section class="filter-groups" id="filter-products">
+                    <h2>Descuento</h2>
+                    <div>
+                        <input type="radio" id="with-discount" name="discount" value="1">
+                        <label for="with">Con descuento</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="without-discount" name="discount" value="0">
+                        <label for="without">Sin descuento</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="indisc-discount" name="discount" checked>
+                        <label for="without">Indistinto</label>
+                    </div>
 
 
-                        <h2>Precio</h2>
-                        <input type="number" name="minimum" placeholder="Mínimo" rows="1" maxlength="120">
-                        <input type="number" name="maximum" placeholder="Máximo" rows="1" maxlength="120">
-                        <!-- <dl class="filter-discount">
-                            <dt>
-                                <h2>Descuentos</h2>
-                            </dt>
-                            <dd>
-                                <a href="#">
-                                    <span>Desde 10% off</span>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>Desde 20% off</span>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>Desde 30% off</span>
-                                </a>
-                            </dd>
-                        </dl>
-                        <dl class="filter-delivery">
-                            <dt>
-                                <h2>Tipo de entrega</h2>
-                            </dt>
-                            <dd>
-                                <a href="#">
-                                    <span>Retiro por sucursal</span>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>Con envío</span>
-                                </a>
-                            </dd>
-                        </dl>
-                        Seguir agregando más tipos de filtrados -->
-                    </section>
+                    <h2>Precio</h2>
+                    <input type="number" name="minimum" placeholder="Mínimo" rows="1" maxlength="120" id="min-price">
+                    <input type="number" name="maximum" placeholder="Máximo" rows="1" maxlength="120" id="max-price">
 
-                    <button type="submit" class="action-button">Aplicar</button>
-                </form>
+                </section>
             </aside>
         </section>
 
-        <section class="products-section flex column">
+        <section class="products-section flex column" id="productsSection">
 
             <%# Los datos se envía a esta vista dentro de un array de objetos literales llamado "products" %>
             <% if(products.length != 0) { %>
-                <% products.forEach(product => { %>
-                    
-                    <article>
-                        <a href="/products/<%= product.id %>">
-                            <img src="/img/uploaded/<%= product.images[0].url %>" alt="Imagen ilustrativa del producto">
-                            <div class="products-section-info">
-                                <span class="products-section-info-price">$<%= product.price %></span>
-                                <% if(product.discount > 0) { %>
-                                    <span class="products-section-info-discount"><%= product.discount %>% off</span>
-                                <% } %>
-                            </div>
-                            <h2><%= product.name %></h2>
-                        </a>
-                    </article>
-        
-                <% }); %>
-            <% } else { %> 
-                <h1>¡UPS! ¡No hubo coincidencias!</h1>
-            <% } %> 
-            
+            <% products.forEach(product => { %>
+
+            <article>
+                <a href="/products/<%= product.id %>">
+                    <img src="/img/uploaded/<%= product.images[0].url %>" alt="Imagen ilustrativa del producto">
+                    <div class="products-section-info">
+                        <span class="products-section-info-price">$<%= product.price %></span>
+                        <% if(product.discount > 0) { %>
+                        <span class="products-section-info-discount"><%= product.discount %>% off</span>
+                        <% } %>
+                    </div>
+                    <h2><%= product.name %></h2>
+                </a>
+            </article>
+
+            <% }); %>
+            <% } else { %>
+            <h1>¡UPS! ¡No hubo coincidencias!</h1>
+            <% } %>
+
         </section>
 
     </main>
 
     <%# Import del footer %>
     <%- include("../partials/footer") %>
-
-    <script src="/js/interactive/products.js"></script>
 
 </body>
 
