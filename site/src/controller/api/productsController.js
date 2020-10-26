@@ -134,6 +134,11 @@ module.exports = {
         let order = req.query.order; // Orden de elementos
 
         // Filtros
+
+        if(req.query.search){ // Nombre del producto
+            where.name = { [Op.like] : `%${req.query.search}%` };
+        }
+
         if(req.query.min || req.query.max){ // Precio
             where.price = {};
 
@@ -150,8 +155,6 @@ module.exports = {
             let catArray = req.query.categories.split(",");
             where.categoryId = { [Op.in] :  catArray};
         }
-
-        console.log(where);
 
         product.findAll({ 
             where : where,

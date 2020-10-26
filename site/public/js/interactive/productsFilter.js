@@ -35,6 +35,7 @@ window.addEventListener("load", function(){
     function apiCall(){
 
         let query = `/api/products/filter?order=${queryState.order}`;
+        if(queryState.search) query += `&search=${queryState.search}`;
         if(queryState.min) query += `&min=${queryState.min}`;
         if(queryState.max) query += `&max=${queryState.max}`;
         if(queryState.discount) query += `&discount=${queryState.discount}`;
@@ -72,6 +73,7 @@ window.addEventListener("load", function(){
     let withoutDiscount = document.getElementById("without-discount");
     let indiscDiscount = document.getElementById("indisc-discount");
     let categoryContainer = document.getElementById("category-container");
+    let searchBar = document.getElementById("search-bar");
     
     let queryState = { // Objeto que representa el "estado" del sistema de filtrado 
         order : order.value,
@@ -142,7 +144,23 @@ window.addEventListener("load", function(){
         });
     }
 
-    // Inicialización de la vista
+    // Interacción con la barra de búsquedas
+     searchBar.addEventListener("blur", function(){
+        if(this.value == "" && queryState.search){
+            delete queryState.search;
+        } else {
+            queryState.search = this.value;
+        }
+
+        apiCall();
+     });
+
+    // Inicialización de la vista y parseo del query string
+    let searchParams = new URLSearchParams(window.location.search);
+    
+    if(searchParams.get("search")) // Filtra por la barra de búsqueda
+        queryState.search = searchParams.get("search");
+
     apiCall();
 
 });
