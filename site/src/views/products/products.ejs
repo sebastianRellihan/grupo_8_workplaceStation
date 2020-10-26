@@ -99,27 +99,7 @@
 
         <section class="products-section flex column" id="productsSection">
 
-            <%# Los datos se envía a esta vista dentro de un array de objetos literales llamado "products" %>
-            <% if(products.length != 0) { %>
-            <% products.forEach(product => { %>
-
-            <article>
-                <a href="/products/<%= product.id %>">
-                    <img src="/img/uploaded/<%= product.images[0].url %>" alt="Imagen ilustrativa del producto">
-                    <div class="products-section-info">
-                        <span class="products-section-info-price">$<%= product.price %></span>
-                        <% if(product.discount > 0) { %>
-                        <span class="products-section-info-discount"><%= product.discount %>% off</span>
-                        <% } %>
-                    </div>
-                    <h2><%= product.name %></h2>
-                </a>
-            </article>
-
-            <% }); %>
-            <% } else { %>
-            <h1>¡UPS! ¡No hubo coincidencias!</h1>
-            <% } %>
+            
 
         </section>
 

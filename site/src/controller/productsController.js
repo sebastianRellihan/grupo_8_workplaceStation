@@ -8,7 +8,6 @@
 const path = require("path");
 const fileDeleter = require("../utils/fileDeleter"); // Factory de borrado de archivos
 const { product, category, image, productPurchase } = require("../database/models");
-const { Op } = require("sequelize");
 
 // Validaciones
 const { validationResult } = require("express-validator");
@@ -24,60 +23,11 @@ module.exports = {
     // Envía la vista principal de todos los productos (products.ejs)
     index: (req, res) => {
 
-        let allProducts;
-
-        console.log(Object.keys(req.query).length);
-
-        if(Object.keys(req.query).length != 0){
-            if (req.query.search) {
-                let likeParam = `%${req.query.search}%`
-                // Búsqueda por nombre del producto
-                allProducts = product.findAll({
-                    include : image,
-                    where : {
-                        name : {
-                            [Op.like] : likeParam
-                        }
-                    }
-                });
-            } else {
-                let category = req.query.category;
-                let discount = req.query.discount || 0;
-                let order;
-                let minimum;
-                let maximum;
-
-                // Búsqueda de productos por criterios de filtrado seleccionados
-                allProducts = product.findAll({
-                    include : image,
-                    where : {
-                        categoryId : category,
-                        order: [
-                            ['price', order],
-                        ],
-                        price: {
-                            [Op.between]: [minimum, maximum],
-                        },
-                        discount: {
-                            [Op.gte]: discount,
-                        }
-                    }
-                });
-            }
-        } else {
-            allProducts = product.findAll({
-                include : image
-            });
-        }
-
-        let allCategories = category.findAll();
-
-        Promise.all([allProducts, allCategories])
+        category.findAll()
             .then(results => {
                 res.render("products/products", 
                 { // Envío de resultados a las vistas
-                    products: results[0],
-                    categories : results[1]
+                    categories : results
                 });
             })
             .catch(error => {
