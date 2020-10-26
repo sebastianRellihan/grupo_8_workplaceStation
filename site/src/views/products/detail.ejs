@@ -56,6 +56,13 @@
                 <div class="product-info">
                     <h2><%= product.name %></h2>
                     <p>$<%= product.price %></p>
+                    <% if (product.discount != 0) { %>
+                        <p>
+                            <span class="products-section-info-discount">
+                                <%= product.discount != 0 ? product.discount : "" %>% Off
+                            </span>
+                        </p>
+                    <% } %>
                     <p><%= product.briefDescription %></p>
                 </div>
                 <div class="product-more-info flex column">
@@ -96,12 +103,12 @@
                     </div>
                 </div>
                 <div class="product-actions flex column">
-                    <div class="quantity-selector flex">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <form action="/products/cart" method="POST">
+                    <form action="/products/cart" method="POST" class="flex column">
+                        <div class="quantity-selector flex">
+                            <!-- <button type="button">-</button> -->
+                            <input type="number" name="quantity" placeholder="1" value="1">
+                            <!-- <button type="button">+</button> -->
+                        </div>
                         <input type="hidden" value="<%= product.id %>" name="productId">
                         <button class="action-button" type="submit">Agregar al carrito</button>
                     </form>

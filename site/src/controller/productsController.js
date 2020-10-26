@@ -64,13 +64,21 @@ module.exports = {
         if(req.session.cart && req.session.cart.length != 0){
             // Obtengo promesas para todos los productos lamacenados en el carrito de la sesión
             req.session.cart.forEach(index => {
-                promises.push(product.findByPk(index, {
+                promises.push(product.findByPk(index.id, {
                     include : image
                 }));
             });
+
             // Ejecución de promesas
             Promise.all(promises)
                 .then(products => {
+                    products.forEach(product => {
+                        req.session.cart.forEach(cartProduct => {
+                            if (product.id == cartProduct.id) {
+                                product.quantity = cartProduct.quantity;
+                            }
+                        })
+                    })
                     res.render("products/cart", { products });
                 })
                 .catch(error => {
@@ -89,19 +97,23 @@ module.exports = {
         if(!req.session.cart){ // Crea la instancia en caso de que no exista
             req.session.cart = [];
         }
-        // Añade el producto sólo si este no ha sido añadido anteriormente
+        // Añade el producto sólo si este no ha sido añadido anteriormente y la cantidad seleccionada
         if(!req.session.cart.includes(req.body.productId)){
-            req.session.cart.push(req.body.productId);
+            req.session.cart.push({
+                id: req.body.productId,
+                quantity: req.body.quantity
+            });
         }
         res.redirect("/products/cart");
     },
 
     /** Remueve un producto del carrito de la sesión */
     removeFromCart: (req, res) => {
+        console.log(req.session.cart);
         if(req.session.cart && req.session.cart.length != 0){
             // Filtra el producto por su ID
-            req.session.cart = req.session.cart.filter(productId => {
-                return productId != req.params.id;
+            req.session.cart = req.session.cart.filter(product => {
+                return product.id != req.params.id;
             });
         }
         res.redirect("/products/cart");

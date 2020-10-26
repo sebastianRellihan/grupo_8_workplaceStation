@@ -37,30 +37,26 @@ window.addEventListener("load", () => {
         products.addEventListener("mouseover", () => {
             productsList.style.display = "flex";
         })
-    
-        productsAnchor.addEventListener("click", (e) => {
-            e.preventDefault();
-        })
 
         products.addEventListener("mouseout", () => {
             productsList.style.display = "none";
         })
 
-        if (document.URL.includes("products")) {
-            productsAnchor.classList.add("active-nav");
+        if (document.URL.includes("create")) {
+            createAnchor.classList.add("active-nav");
         } else if (document.URL.includes("about")) {
             aboutAnchor.classList.add("active-nav");
         } else if (document.URL.includes("contact")) {
             contactAnchor.classList.add("active-nav");
-        } else if (document.URL.includes("create")) {
-            createAnchor.classList.add("active-nav");
+        } else if (document.URL.includes("products")) {
+            productsAnchor.classList.add("active-nav");
         } else {
             homeAnchor.classList.add("active-nav");
         }
     } else {
         // Para la vista Mobile o Tablet
 
-        products.addEventListener("click", (e) => {
+        productsAnchor.addEventListener("click", (e) => {
             e.preventDefault();
             if (productsList.style.display == "none") {
                 productsList.style.display = "block";
