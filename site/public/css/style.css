@@ -97,6 +97,7 @@ header {
 }
     .site-header {
         justify-content: space-around;
+        height: 115px;
     }
         .site-header-start {
             padding: 0;
@@ -120,15 +121,15 @@ header {
         }
             .site-header-center-img-1 {
                 margin-top: 5px;
-                width: 75px;
+                width: 50px;
             }
             .site-header-center-img-2 {
-                width: 270px;
+                width: 225px;
             }
             .site-header-end-button a {
                 text-align: center;
                 width: 100%;
-                height: 133px;
+                height: 115px;
             }
             .site-header-start i,
             .site-header-end-button i,
@@ -775,12 +776,13 @@ footer {
                         height: 30px;
                         text-align: center;
                     }
-                        .quantity-selector span{
+                        .quantity-selector input{
                             height: inherit;
                             padding: 0 10px;
                             font-size: 1rem;
                             line-height: initial;
                             background-color: var(--background-3);
+                            width: 60px;
                         }
                         .quantity-selector button{
                             cursor: pointer;
