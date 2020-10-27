@@ -6,6 +6,8 @@ En Workplace Station vas a poder encontrar todos los productos necesarios para a
 
 Este sitio esta dirigido a todas aquellas personas que pasen mucho tiempo trabajando, jugando, estudiando, diseñando, etc... desde sus hogares y que busquen el mayor confort posible. 
 
+[Sitio en funcionamiento](http://workplacestation.dhalumnos.com)
+
 ## Descripción de los integrantes:
 
 - ### Eduardo Brahim Alí: 
