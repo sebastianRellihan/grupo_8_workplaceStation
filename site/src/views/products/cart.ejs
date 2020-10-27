@@ -14,14 +14,14 @@
         <h1>Carrito de compras</h1>
         <section class="cart-container">
             <% if(Array.isArray(products) && products.length != 0){ %>
-                <div class="cart-products flex column">
+                <div class="cart-products flex column" id="cart-products">
                     <% products.forEach( product => { %>
 
                         <article class="cart-item flex">
                             <img src="/img/uploaded/<%= product.images[0].url %>" alt="<%= product.shortDescription %>">
                             <div class="cart-item-info">
                                 <h2><%= product.name %></h2>
-                                <p><span>$<%= product.price %></span></p>
+                                <p><span class="product-price">$<%= product.price %></span></p>
                                 <% if (product.discount != 0) { %>
                                     <p>
                                         <span class="products-section-info-discount">
@@ -32,11 +32,11 @@
                                 <div class="cart-item-actions flex">
                                     <div class="quantity-selector flex">
                                         <!-- <button type="button">-</button> -->
-                                        <input type="number" name="quantity" value="<%= product.quantity %>">
+                                        <input type="number" name="quantity" id="cart-quantity-input-<%= product.id %>" value="<%= product.quantity %>">
                                         <!-- <button type="button">+</button> -->
                                     </div>
                                     <form action="/products/cart/<%= product.id %>?_method=DELETE" method="POST">
-                                        <button class="cart-actions-empty" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="cart-actions-empty" id="cart-delete-btn-<%= product.id %>" type="button"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -69,8 +69,8 @@
                         let totalDiscount = withoutDiscount - total;
 
                     %>
-                    <p>Descuento: <span>$<%= totalDiscount %></span></p>
-                    <p>Total: <span>$<%= total %></span></p>
+                    <p>Descuento: <span id="total-discount">$<%= totalDiscount %></span></p>
+                    <p>Total: <span id="total-price">$<%= total %></span></p>
                 </div>
                 <div class="cart-actions flex column">
                     <a href="/products/purchase" class="action-button">Comprar</a>
@@ -91,7 +91,7 @@
 
     <%# Import del footer %>
     <%- include("../partials/footer") %>
-
+    <script src="/js/interactive/cart.js"></script>
 </body>
 
 </html>

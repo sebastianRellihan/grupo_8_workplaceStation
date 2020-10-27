@@ -26,6 +26,13 @@ Este sitio opera con una base de datos relacional MySQL. Todos los detalles se e
 - Una sentencia [structure.sql](https://github.com/sebastianRellihan/grupo_8_workplaceStation/blob/master/project/database-model/structure.sql) para poder generarla.
 - Otra sentencia [data.sql](https://github.com/sebastianRellihan/grupo_8_workplaceStation/blob/master/project/database-model/data.sql) para poder poblarla con datos coherentes.
 
+## Dashboard de administración
+Este sitio cuenta con un Dashboard sólo accesible para usuarios de tipo **Admin**, para propósitos de monitoreo general del sitio.
+Dicho dashboard fue desarollado con [React JS](https://es.reactjs.org/), y se encuentra en un repositorio aparte.
+
+Para más detalles e instrucciones de cómo se integra la SPA generada en **React** en este proyecto, 
+visitar el link a su [correspondiente repositorio](https://github.com/sebastianRellihan/workplaceStation_react_dashboard).
+
 ## Instrucciones de uso
 
 1. Clonar el repositorio que contiene el proyecto desde la terminal, ubicado en el directorio deseado, ejecutando el comando:
