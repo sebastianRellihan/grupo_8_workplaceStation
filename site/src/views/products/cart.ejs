@@ -14,14 +14,14 @@
         <h1>Carrito de compras</h1>
         <section class="cart-container">
             <% if(Array.isArray(products) && products.length != 0){ %>
-                <div class="cart-products flex column" id="cart-products">
+                <div class="cart-products flex column">
                     <% products.forEach( product => { %>
 
                         <article class="cart-item flex">
                             <img src="/img/uploaded/<%= product.images[0].url %>" alt="<%= product.shortDescription %>">
-                            <div class="cart-item-info" id="<%= product.id %> ">
+                            <div class="cart-item-info">
                                 <h2><%= product.name %></h2>
-                                <p><span class="product-price">$<%= product.price %></span></p>
+                                <p><span>$<%= product.price %></span></p>
                                 <% if (product.discount != 0) { %>
                                     <p>
                                         <span class="products-section-info-discount">
@@ -31,12 +31,11 @@
                                 <% } %>
                                 <div class="cart-item-actions flex">
                                     <div class="quantity-selector flex">
-                                        <!-- <button type="button">-</button> -->
-                                        <input type="number" name="quantity" id="cart-quantity-input-<%= product.id %>" value="1">
-                                        <!-- <button type="button">+</button> -->
+                                        <input type="number" name="quantity" id="cart-quantity-input-<%= product.id %>" value="1"
+                                            class="input-text">
                                     </div>
                                     <form action="/products/cart/<%= product.id %>?_method=DELETE" method="POST">
-                                        <button class="cart-actions-empty" id="cart-delete-btn-<%= product.id %>" type="button"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="cart-actions-empty" type="submit"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -47,30 +46,23 @@
                 <div class="cart-summary flex column">
                     <% 
                         /* 
-                        * Calcula el valor total y el descuento acumulado de los productos 
+                        * Calcula el valor total de los productos.
+                        * Cuando se pueda acceder a variables definidas por el usuario,
+                        * se va a tener en cuenta el multiplicador de la cantidad que
+                        * se desea comprar.
                         */
-                        let total = products.reduce((acum, element) => {
+                        var total = products.reduce((acum, element) => {
                             
                             if(element.discount == 0){
-                                return acum + Number(element.price * element.quantity);
+                                return acum + Number(element.price);
                             } else { // Aplica el descuento si lo hay
-                                let applied = Number(element.price * element.quantity) - Number(element.price * element.quantity) * (Number(element.discount) / 100);
+                                let applied = Number(element.price) - Number(element.price) * (Number(element.discount) / 100);
                                 return acum + applied; 
                             }
 
                         }, 0); // El 0 es el valor inicial del acumulador
-
-                        let withoutDiscount = products.reduce((acum, element) => {
-
-                            return acum + Number(element.price * element.quantity);
-
-                        }, 0);
-
-                        let totalDiscount = withoutDiscount - total;
-
                     %>
-                    <p>Descuento: <span id="total-discount">$<%= totalDiscount %></span></p>
-                    <p>Total: <span id="total-price">$<%= total %></span></p>
+                    <p>Total: <span>$<%= total %></span></p>
                 </div>
                 <div class="cart-actions flex column">
                     <a href="/products/purchase" class="action-button">Comprar</a>
@@ -91,7 +83,7 @@
 
     <%# Import del footer %>
     <%- include("../partials/footer") %>
-    <script src="/js/interactive/cart.js"></script>
+
 </body>
 
 </html>

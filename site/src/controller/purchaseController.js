@@ -10,9 +10,9 @@ module.exports = {
         let promises = []; // Array de promesas
 
         if(req.session.cart && req.session.cart.length != 0){
-            // Obtengo promesas para todos los productos almacenados en el carrito de la sesión
-            req.session.cart.forEach(cartProduct => {
-                promises.push(product.findByPk(cartProduct.id));
+            // Obtengo promesas para todos los productos lamacenados en el carrito de la sesión
+            req.session.cart.forEach(index => {
+                promises.push(product.findByPk(index));
             });
 
             // Promesa para los métodos de envío
@@ -24,14 +24,6 @@ module.exports = {
                     // Obtengo el resultado de la última promesa (categorías),
                     // e método .pop() tambien elimina el último resultado del array
                     let shippings = results.pop();
-
-                    results.forEach(product => {
-                        req.session.cart.forEach(cartProduct => {
-                            if (product.id == cartProduct.id) {
-                                product.quantity = cartProduct.quantity;
-                            }
-                        })
-                    })
 
                     res.render("products/purchase", { 
                         products : results,
@@ -128,6 +120,7 @@ module.exports = {
                     return Promise.all(stockDecrease);
                 })
                 .then(() => {
+                    req.session.cart = [];
                     res.redirect("/");
                 })
                 .catch(error => {
