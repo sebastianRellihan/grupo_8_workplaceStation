@@ -21,7 +21,7 @@
                             <img src="/img/uploaded/<%= product.images[0].url %>" alt="<%= product.shortDescription %>">
                             <div class="cart-item-info">
                                 <h2><%= product.name %></h2>
-                                <p><span>$<%= product.price %></span></p>
+                                <p><span class="product-price">$<%= product.price %></span></p>
                                 <% if (product.discount != 0) { %>
                                     <p>
                                         <span class="products-section-info-discount">
@@ -69,8 +69,8 @@
                         let totalDiscount = withoutDiscount - total;
 
                     %>
-                    <p>Descuento: <span>$<%= totalDiscount %></span></p>
-                    <p>Total: <span>$<%= total %></span></p>
+                    <p>Descuento: <span id="total-discount">$<%= totalDiscount %></span></p>
+                    <p>Total: <span id="total-price">$<%= total %></span></p>
                 </div>
                 <div class="cart-actions flex column">
                     <a href="/products/purchase" class="action-button">Comprar</a>

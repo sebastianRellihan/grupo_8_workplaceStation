@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
     let deleteButtons = document.querySelectorAll("div.cart-item-actions > form > button");
 
     quantityInputs.forEach(input => {
-        
+        // Imprime la cantidad de prouctos que hay en localStorage
         let inputProductId = input.id.slice(-1);
 
         let newValue = Number(JSON.parse(localStorage.getItem("cart")).filter( cartData => {
@@ -15,6 +15,7 @@ window.addEventListener("load", () => {
 
         input.value = newValue;
 
+        // Cuando se cambia la cantidad de productos se actualiza en localStorage
         input.addEventListener("change", () => {
 
             let existing = JSON.parse(localStorage.getItem("cart"));
@@ -29,6 +30,7 @@ window.addEventListener("load", () => {
         })
     });
 
+    // Cuando se elimina un producto se actualiza localStorage
     deleteButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -48,6 +50,4 @@ window.addEventListener("load", () => {
             form.submit();
         })
     })
-
-    
 })
