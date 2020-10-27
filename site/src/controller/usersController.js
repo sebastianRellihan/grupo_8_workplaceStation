@@ -281,16 +281,23 @@ module.exports = {
         // Borra los intereses del usuario 
         categoryUser.destroy({
             where: {
-                user_id: req.session.user.id
+                userId: req.session.user.id
             }
         })
 
         // Borrado de BD
-        user.destroy({
-            where: {
-                id: req.session.user.id
+        token.destroy({
+            where : {
+                userId : req.session.user.id
             }
         })
+            .then(() => {
+                return user.destroy({
+                    where: {
+                        id: req.session.user.id
+                    }
+                })
+            })
             .then(() => {
                 // Borrado de la imagen de perfil
                 fileDeleter(IMAGE_PATH).deleteFile(req.session.user.image);
