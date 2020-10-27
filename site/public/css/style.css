@@ -864,7 +864,7 @@ footer {
     flex-wrap: nowrap;
 }
     .purchase-item h2{ width: 40%; }
-    .purchase-item p:first-of-type{ width: 35%; }
+    .purchase-item p:first-of-type{ width: 15%; }
     .purchase-item p:last-of-type{ width: 10%; }
         .purchase-item p span{ color: green; }
 /* Productos */

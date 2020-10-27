@@ -1,14 +1,39 @@
 window.addEventListener("load", () => {
+    // Array de elementos contenedores de productos 
+    let products = document.querySelectorAll("div.cart-item-info");
+    // Elemento donde figura el descuento total
+    let totalDiscount = document.getElementById("total-discount");
+    // Elemento donde figura el precio total
+    let totalPrice = document.getElementById("total-price");
+    let totalDiscountAcum = 0; 
+    let totalPriceAcum = 0;
     
-    let quantityInputs = document.querySelectorAll("div.quantity-selector > input");
-    let deleteButtons = document.querySelectorAll("div.cart-item-actions > form > button");
+    // Por cada producto que haya en la vista del carrito...
+    products.forEach(product => {
 
-    quantityInputs.forEach(input => {
-        // Imprime la cantidad de prouctos que hay en localStorage
-        let inputProductId = input.id.slice(-1);
+        // ID del producto
+        let productId = Number(product.id);
+        // Elemento input
+        let input = product.lastElementChild.children[0].children[0];
+        // Elemento boton submit del form
+        let deleteBtn = product.lastElementChild.children[1].children[0];
+        // Precio del producto
+        let productPrice = Number(product.children[1].children[0].innerText.substring(1));
+        // Descuento del producto
+        let productDiscount = 0;
+        if (product.children[2].children[0].nodeName == "SPAN") {
+            productDiscount = Number(product.children[2].children[0].innerText.slice(0, -5));
+        }
+        
+        console.log(productId);
+        console.log(input);
+        console.log(deleteBtn);
+        console.log(productPrice);
+        console.log(productDiscount);
 
+        // Imprime la cantidad de productos que hay en localStorage dentro del input
         let newValue = Number(JSON.parse(localStorage.getItem("cart")).filter( cartData => {
-            if (cartData.id == inputProductId) {
+            if (cartData.id == productId) {
                 return cartData;
             }
         })[0].quantity);
@@ -21,28 +46,26 @@ window.addEventListener("load", () => {
             let existing = JSON.parse(localStorage.getItem("cart"));
 
             existing.map(cartData => {
-                if (cartData.id == inputProductId) {
+                if (cartData.id == productId) {
                     cartData.quantity = input.value;
                 }
             });
 
             localStorage.setItem("cart", JSON.stringify(existing));
         })
-    });
 
-    // Cuando se elimina un producto se actualiza localStorage
-    deleteButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
+        // Cuando se elimina un producto se actualiza localStorage
+        deleteBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
-            let form = document.getElementById(btn.id).parentElement;
+            let form = document.getElementById(deleteBtn.id).parentElement;
 
-            let btnProductId = btn.id.slice(-1);
+            let deleteBtnProductId = deleteBtn.id.slice(-1);
 
             let existing = JSON.parse(localStorage.getItem("cart"));
 
             let modified = existing.filter(cartData => {
-                return Number(cartData.id) != btnProductId;
+                return Number(cartData.id) != deleteBtnProductId;
             });
         
             localStorage.setItem("cart", JSON.stringify(modified));

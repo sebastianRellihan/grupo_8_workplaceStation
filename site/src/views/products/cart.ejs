@@ -19,7 +19,7 @@
 
                         <article class="cart-item flex">
                             <img src="/img/uploaded/<%= product.images[0].url %>" alt="<%= product.shortDescription %>">
-                            <div class="cart-item-info">
+                            <div class="cart-item-info" id="<%= product.id %> ">
                                 <h2><%= product.name %></h2>
                                 <p><span class="product-price">$<%= product.price %></span></p>
                                 <% if (product.discount != 0) { %>

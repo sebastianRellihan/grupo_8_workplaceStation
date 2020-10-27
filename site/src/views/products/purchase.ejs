@@ -23,16 +23,18 @@
                             <p><span>Precio</span></p>
                             <p><span>Descuento</span></p>
                             <p>Cant.</p>
+                            <p>Total</p>
                         </div>
                     </article>
                     <% products.forEach( product => { %>
 
                         <article class="cart-item flex">
-                            <div class="cart-item-info purchase-item flex">
+                            <div class="cart-item-info cart-item-info-product purchase-item flex" id="<%= product.id %>">
                                 <h2><%= product.name %></h2>
                                 <p><span>$<%= product.price %></span></p>
-                                <p><span>$<%= product.discount %></span></p>
+                                <p><span><%= product.discount %>%</span></p>
                                 <p><%= product.quantity %></p>
+                                <p><span><%= product.price %></span></p>
                             </div>
                         </article>
 
@@ -62,8 +64,8 @@
 
                         let totalDiscount = withoutDiscount - total;
                     %>
-                    <p>Descuento: <span>$<%= totalDiscount %></span></p>
-                    <p>Total: <span>$<%= total %></span></p>
+                    <p>Descuento: <span id="total-discount">$<%= totalDiscount %></span></p>
+                    <p>Total: <span id="total-price">$<%= total %></span></p>
                 </div>
                 <!-- Sección de formulario -->
                 <div class="cart-actions flex column">
@@ -103,7 +105,7 @@
                             </p>
                         </div>
 
-                        <button type="submit" class="action-button">Finalizar compra</button>
+                        <button type="submit" class="action-button" id="purchase-form-submit-btn">Finalizar compra</button>
 
                     </form>
                     <a href="/products/cart" class="cart-actions-empty">Volver</a>
