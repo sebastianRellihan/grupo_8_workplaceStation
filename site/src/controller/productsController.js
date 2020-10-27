@@ -64,7 +64,7 @@ module.exports = {
         if(req.session.cart && req.session.cart.length != 0){
             // Obtengo promesas para todos los productos lamacenados en el carrito de la sesión
             req.session.cart.forEach(index => {
-                promises.push(product.findByPk(index.id, {
+                promises.push(product.findByPk(index, {
                     include : image
                 }));
             });
@@ -99,10 +99,7 @@ module.exports = {
         }
         // Añade el producto sólo si este no ha sido añadido anteriormente y la cantidad seleccionada
         if(!req.session.cart.includes(req.body.productId)){
-            req.session.cart.push({
-                id: req.body.productId,
-                quantity: req.body.quantity
-            });
+            req.session.cart.push(req.body.productId);
         }
         res.redirect("/products/cart");
     },

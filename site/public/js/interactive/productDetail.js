@@ -14,11 +14,19 @@ window.addEventListener("load", () => {
 
         } else {
             let existing = JSON.parse(localStorage.getItem("cart"));
-
-            existing.push({
-                id: document.URL.slice(-1),
-                quantity: productDetailQuantity.value
+            
+            existing.forEach(cartProduct => {
+                if (cartProduct.id == document.URL.slice(-1)) {
+                    console.log(cartProduct.quantity);
+                    cartProduct.quantity = Number(cartProduct.quantity) + Number(productDetailQuantity.value)
+                } else {
+                    existing.push({
+                        id: document.URL.slice(-1),
+                        quantity: productDetailQuantity.value
+                    });
+                }
             });
+
 
             localStorage.setItem("cart", JSON.stringify(existing));
         }

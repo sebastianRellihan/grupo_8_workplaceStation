@@ -32,7 +32,7 @@
                                 <div class="cart-item-actions flex">
                                     <div class="quantity-selector flex">
                                         <!-- <button type="button">-</button> -->
-                                        <input type="number" name="quantity" id="cart-quantity-input-<%= product.id %>" value="<%= product.quantity %>">
+                                        <input type="number" name="quantity" id="cart-quantity-input-<%= product.id %>" value="1">
                                         <!-- <button type="button">+</button> -->
                                     </div>
                                     <form action="/products/cart/<%= product.id %>?_method=DELETE" method="POST">
