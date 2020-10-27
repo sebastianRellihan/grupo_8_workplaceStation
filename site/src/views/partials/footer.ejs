@@ -30,7 +30,10 @@
             </li>
             <% if(locals.user && locals.user.isAdmin) { %>
                 <li>
-                    <a href="/products/create">Vender Producto</a>
+                    <a href="/products/create">Crear</a>
+                </li>
+                <li>
+                    <a href="/dashboard">Dashboard</a>
                 </li>
             <% } %>  
             <% if(!locals.user) { %>
