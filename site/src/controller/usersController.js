@@ -120,21 +120,28 @@ module.exports = {
             user.create(userObj)
                 .then(created => {
                     let promises = [];
+                    // Se auto-loguea al usuario después de haber creado su cuenta
+                    req.session.user = created;
                     // Si el usuario seleccionó intereses se almacenan en la base
                     if(req.body.interests) {
-                        req.body.interests.forEach(interest => {
+                        if(Array.isArray(req.body.interests)){
+                            req.body.interests.forEach(interest => {
+                                promises.push(categoryUser.create({
+                                    categoryId : Number(interest),
+                                    userId : created.id
+                                }));
+                            });
+                        } else {
                             promises.push(categoryUser.create({
-                                categoryId : Number(interest),
+                                categoryId : Number(req.body.interests),
                                 userId : created.id
                             }));
-                        });
+                        }
                     }
                     Promise.all(promises);
                 })
                 // Se redirige la vista al index
                 .then(() => {
-                    // Se auto-loguea al usuario después de haber creado su cuenta
-                    req.session.user = userObj;
                     res.redirect("/");
                 })
                 .catch(error => {
