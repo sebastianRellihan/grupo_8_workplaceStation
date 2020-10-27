@@ -1,5 +1,50 @@
 window.addEventListener("load", function(){
 
+    // Interactividad y ajustes para las versiones de menor tamaño
+
+    if(document.body.offsetWidth < 768){
+        document.querySelector(".views").style.display = "none"
+    }
+
+    if (document.body.offsetWidth < 1024) {
+        let filterButton = document.getElementById("filter-button");
+        let categoryButton = document.getElementById("category-button");
+        let orderButton = document.getElementById("order-button");
+        let orderOptions = document.getElementById("order-products");
+        let categoriesOptions = document.getElementById("categories-products");
+        let filterOptions = document.getElementById("filter-products");
+
+        filterButton.addEventListener("click", () => {
+            if (filterOptions.style.display == "none") {
+                filterOptions.style.display = "block";
+                categoriesOptions.style.display = "none";
+                orderOptions.style.display = "none";
+            } else {
+                filterOptions.style.display = "none";
+            }
+        })
+
+        categoryButton.addEventListener("click", () => {
+            if (categoriesOptions.style.display == "none") {
+                categoriesOptions.style.display = "block";
+                filterOptions.style.display = "none";
+                orderOptions.style.display = "none";
+            } else {
+                categoriesOptions.style.display = "none";
+            }
+        })
+
+        orderButton.addEventListener("click", () => {
+            if (orderOptions.style.display == "none") {
+                orderOptions.style.display = "block";
+                filterOptions.style.display = "none";
+                categoriesOptions.style.display = "none";
+            } else {
+                orderOptions.style.display = "none";
+            }
+        })
+    }
+
     /**
      * Plantilla para la adición de productos.
      * @param {Number} id El ID del producto a mostrar.
@@ -7,7 +52,7 @@ window.addEventListener("load", function(){
      * @param {Number} price Precio sin aplicar descuentos.
      * @param {Number} discount Porcentaje de descuento.
      * @param {String} name Nombre del producto.
-     * @returns {string} Un strng que contiene la estructura HTML para ser insertada dentro del nodo 
+     * @returns {string} Un string que contiene la estructura HTML para ser insertada dentro del nodo 
      *                   contenedor de productos (productsSection).
      */
     function productTemplate(id, image, price, discount, name){
