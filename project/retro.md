@@ -81,3 +81,28 @@
 4. Hacer menos:
     - Cambios a último minuto
 5. Dejar de hacer:
+
+## Sprint 6 - Bases de datos
+1. Comenzar a hacer:
+    - 
+2. Hacer más:
+    - Commits claros para que entendamos bien que hizo el otro
+3. Continuar haciendo:
+    - Testear las cosas antes de seguir avanzando
+    - Seguir actualizando el diagrama de entidad relación y los script a medida que hayan cambios en el modelo de datos
+4. Hacer menos:
+    - 
+5. Dejar de hacer:
+    - Dedicarle tanto tiempo a tareas que no son consignas del sprint sin antes haber finalizado
+
+## Sprint 7 - Validaciones
+1. Comenzar a hacer:
+    - Alinearnos a la importancia de cada campo (opcionales y obligatorios)
+2. Hacer más:
+    - Testear más las validaciones a fondo
+3. Continuar haciendo:
+    - Dividir las tareas por conjunto de datos para que los dos realicemos de todo (no uno back y otro front, sino que uno productos y otro usuarios por ejemplo)
+4. Hacer menos:
+    - 
+5. Dejar de hacer:
+    - Subestimar el tiempo que nos lleva realizar cada tarea
